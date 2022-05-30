@@ -1,9 +1,9 @@
 <?php
 
 $db_host = 'localhost'; // 主機名稱
-$db_user = 'shinder'; // 資料庫連線的用戶
-$db_pass = 'admin'; // 連線用戶的密碼
-$db_name = 'mfee26';  // 資料庫名稱
+$db_user = 'fteam'; // 資料庫連線的用戶
+$db_pass = 'fteam'; // 連線用戶的密碼
+$db_name = 'fteam';  // 資料庫名稱
 
 $dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8mb4";
 
