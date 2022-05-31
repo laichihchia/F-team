@@ -5,8 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- boostrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="boostrap-color-set.css">
+
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <!-- fontawesome link -->
     <link rel="stylesheet" href="fontawesome/css/all.css" />
     <title>Document</title>
     <style>
@@ -41,7 +50,8 @@
             float: left;
             width: 20%;
             height: 100vh;
-            border: 1px solid rgb(212, 212, 212);
+            margin-top: 10px;
+            /* border: 1px solid rgb(212, 212, 212); */
         }
 
         .list-section::after {
@@ -56,7 +66,9 @@
         .list-a {
             border: none;
         }
-        .fa-cart-shopping, .fa-user{
+
+        .fa-cart-shopping,
+        .fa-user {
             color: white;
         }
     </style>
