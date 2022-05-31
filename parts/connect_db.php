@@ -17,4 +17,9 @@ try {
     $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
 } catch (PDOException $ex) {
     echo $ex->getMessage();
-}
+};
+
+// 判斷有無啟用 session
+if(! isset($_SESSION)){
+    session_start();
+};
