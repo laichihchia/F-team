@@ -17,7 +17,7 @@
 
     <!-- fontawesome link -->
     <link rel="stylesheet" href="fontawesome/css/all.css" />
-    <title>Document</title>
+    <title><?=$pageName?></title>
     <style>
         .header-color {
             background-color: black;
