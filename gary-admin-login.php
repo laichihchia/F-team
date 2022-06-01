@@ -43,12 +43,12 @@ require __DIR__ . '/parts/connect_db.php';
                 <div class="card-body">
                     <h5 class="register-title mb-5 mt-3">LOGIN</h5>
                     <div class="mb-5">
-                        <input type="text" class="form-control" id="" name="" placeholder="Admin Username" require>
+                        <input type="text" class="form-control" name="mem_account" placeholder="Admin Username" require>
                         <div class="form-text red"></div>
                     </div>
                     <div class="mb-5">
                         <div class="form-control d-flex justify-content-between">
-                            <input type="password" class="form-control eyes-input" id="" name="mem_password" placeholder="Admin Password" require>
+                            <input type="password" class="form-control eyes-input" name="mem_password" placeholder="Admin Password" require>
                             <a class="eyes d-flex align-items-center" onclick="togglePwd()">
                                 <img src="./gary-img/eyes_off.png" alt="" id="eyes">
                             </a>
