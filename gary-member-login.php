@@ -59,7 +59,7 @@ require __DIR__ . '/parts/connect_db.php';
                         <button type="submit" class="btn btn-primary btn-lg">登入</button>
                     </div>
                     <div class="mb-3 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg">SIGN UP</button>
+                        <a class="btn btn-primary btn-lg" href="gary-register.php">SIGN UP</a>
                     </div>
                     <div class="d-flex justify-content-end">
                         <a href="gary-admin-login.php" class="text-decoration-none">

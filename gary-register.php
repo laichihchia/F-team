@@ -29,17 +29,17 @@ require __DIR__ . '/parts/connect_db.php';
         width: 1.2rem;
     }
 
-    .btn {
-        display: block;
-        margin-left: auto;
-    }
-
     .red {
         color: red;
     }
 
     .form2 {
         display: none;
+    }
+
+    .login {
+        background: white;
+        color: black;
     }
 
     #btn {
@@ -61,7 +61,7 @@ require __DIR__ . '/parts/connect_db.php';
         <div class="card">
             <form name="form1" onsubmit="sendData(); return false;" novoalidate>
                 <h5 class="register-title">會員註冊</h5>
-
+                <input type="hidden" name="mem_avatar">
                 <div class="card-body d-flex justify-content-between">
                     <div class="col-6">
                         <div class="mb-3">
@@ -139,7 +139,10 @@ require __DIR__ . '/parts/connect_db.php';
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">立即註冊</button>
+                    <div class="d-flex justify-content-between">
+                        <a href="gary-member-login.php" class="btn btn-primary login">LOGIN</a>
+                        <button type="submit" class="btn btn-primary">立即註冊</button>
+                    </div>
                 </div>
             </form>
 
@@ -279,6 +282,10 @@ require __DIR__ . '/parts/connect_db.php';
             method: 'POST',
             body: fd,
         });
+        // .then(d=>d.json())
+        // .then(d=>{
+        //     console.log(d);
+        // })
 
         // 回傳的資料是JSON 轉回JS的陣列
         const result = await r.json();
@@ -334,6 +341,7 @@ require __DIR__ . '/parts/connect_db.php';
 
         // 顯示的照片路徑 uploaded這個資料夾+回傳過來的檔名
         myimg.src = "./gary-uploaded/" + obj.filename;
+        document.form1.mem_avatar.value = obj.filename;
     });
 
     // 點擊btn等於點擊了input
