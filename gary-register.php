@@ -48,8 +48,8 @@ require __DIR__ . '/parts/connect_db.php';
 
     #myimg {
         margin-left: 20%;
-        width: 160px;
-        height: 160px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         overflow: hidden;
         object-fit: cover;
@@ -68,7 +68,7 @@ require __DIR__ . '/parts/connect_db.php';
                             <label for="" class="form-label">個人照片</label>
                         </div>
                         <div class="avatar">
-                            <img id="myimg" src="" alt="" />
+                            <img id="myimg" src="" />
                         </div>
                         <button id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera"></i></button>
                     </div>
