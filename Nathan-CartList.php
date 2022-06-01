@@ -1,5 +1,5 @@
 <?php require __DIR__ . '/parts/connect_db.php';
-$pageName = 'Nathan-CartList';
+$pageName = "Nathan's cart";
 $title = "Nathan-CartList - Nathan's cart";
 //MV 資料處理 後端邏輯
 
@@ -10,7 +10,7 @@ if ($page < 1) {
     exit;
 };
 // 每一頁要幾筆
-$perpage = 8;
+$perpage = 4;
 
 // 取得總比數
 $t_sql = "SELECT COUNT(1) FROM `products`";
@@ -55,7 +55,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
 </style>
 <div class="cart-container">
     <!-- 內導覽 -->
-    <div class="row">
+    <div class="row" id="cart-info-nav">
         <header class="mt-3">
             <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
                 <a href="#" class="d-flex align-items-center text-dark text-decoration-none">
@@ -81,12 +81,13 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                     <img  src="./test-img/<?= $r['img'] ?>" class="cart-card-img card-img-top text-center w-100" alt="">
                     <div class="card-body">
                         <p class="card-text"><?= htmlentities($r['name']) ?></p>
-                        <p class="card-text"><?= htmlentities($r['price']) ?></p>
+                        <p class="card-text">$ <?= htmlentities($r['price']) ?></p>
                     </div>
                     <form class="text-center" action="Nathan-AddCart-api.php" method="post">
-                        <input type="hidden" name="name" value="Pent">
-                        <input type="hidden" name="price" value="2000">
-                        <input class="mb-2  w-75" type="text" name="qty" placeholder="input qty:" class="form-control">
+                        <input type="hidden" name="id" value="<?=$r['sid']?>">
+                        <input type="hidden" name="name" value="<?=$r['name']?>">
+                        <input type="hidden" name="price" value="<?=$r['price']?>">
+                        <input class="mb-2  w-75" type="number" name="qty" class="form-control" value="1">
                         <input type="submit" class="mb-2 btn btn-sm btn-dark text-center" value="Add to Cart">
                     </form>
                 </div>
