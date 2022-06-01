@@ -1,5 +1,4 @@
 <?php require __DIR__ . '/parts/connect_db.php';
-
 // session_destroy();
 // foreach($_SESSION as $v){
 //     echo json_encode($v);
@@ -78,37 +77,37 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($_SESSION as $k => $v) : ?>
-                    <tr class="text-center">
-                        <td scope="col"><?= $v[0]; // id
-                                        ?></td>
-                        <td scope="col"><?= $v[1]; // name
-                                        ?></td>
-                        <td scope="col"><?= $v[2]; // price
-                                        ?></td>
-                        <td><input class="w-25" type="number" value="<?= $v[3]; // qty
-                                                                        ?>"></td>
-                        <td scope="col"><?= $v[2] * $v[3]; // totalprice count
-                                        ?></td>
-                        <td><a href="#" class="text-decoration-none btn-sm btn-dark">Update</a></td>
-                        <td><a onclick="" href="#" class="text-decoration-none btn-sm btn-dark">Delete</a></td>
-                    </tr>
+                <?php 
+                // 計算每樣商品總價
+                $total = 0;
+                foreach ($_SESSION['cart'] as $key => $ar) : 
+                    $total = $ar['productPrice'] * $ar['productQty'];
+                ?>
+                    <form action="Nathan-AddCart-api.php" method="POST">
+                        <tr class="text-center">
+                            <td scope="col"><?= $ar['productID']; ?></td>
+                            <input type="hidden" name="id" value="<?= $ar['productID']; ?>">
+                            <td scope="col"><?= $ar['productName']; ?></td>
+                            <input type="hidden" name="name" value="<?= $ar['productName']; ?>">
+                            <td scope="col"><?= $ar['productPrice']; ?></td>
+                            <input type="hidden" name="price" value="<?= $ar['productPrice']; ?>">
+                            <td><input class="w-50" type="number" name="qty" value="<?= $ar['productQty']; ?>"></td>
+                            <td scope="col singlePrice"><?= $total;?></td>
+                            <td><button name="update" class=" btn-sm btn-dark">Update</button></td>
+                            <td><button name="remove" class=" btn-sm btn-dark">Delete</button></td>
+                            <input type="hidden" name="item" value="<?= $ar['productID']; ?>">
+                        </tr>
+                    </form>
                 <?php endforeach; ?>
-                <tr>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col">總計</td>
-                    <td scope="col"></td>
-                </tr>
             </tbody>
         </table>
     </div>
     <!-- 呈現區 -->
 </div>
 
-
 <?php require __DIR__ . '/parts/scripts.php' ?>
+<script>
+    const singlePrice = document.querySelector('.singlePrice');
+    console.log(singlePrice);
+</script>
 <?php require __DIR__ . '/parts/html-foot.php' ?>
