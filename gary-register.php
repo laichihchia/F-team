@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
+$pageName = 'Login';
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
