@@ -63,6 +63,8 @@ $mobile = $_POST['mem_mobile'] ?? '';
 // 沒有給的話給空字值
 $birthday = empty($_POST['mem_birthday']) ? NULL : $_POST['mem_birthday'];
 // 沒有給的話給空字串
+$avatar = $_POST['mem_avatar'] ?? '';
+// 沒有給的話給空字串
 $address = $_POST['mem_address'] ?? '';
 
 
@@ -79,11 +81,11 @@ if(! empty($email) and filter_var($email, FILTER_VALIDATE_EMAIL) === false){
 $sql ="INSERT INTO `member`(
     `mem-name`, `mem-nickname`, `mem-level`, 
     `mem-account`, `mem-password`, `mem-email`, 
-    `mem-mobile`, `mem-birthday`, `mem-address`, `mem-created_at`
+    `mem-mobile`, `mem-birthday`, `mem-address`, `mem-avatar`, `mem-created_at`
     ) VALUES (
         ?, ?, ?,
         ?, ?, ?,
-        ?, ?, ?, NOW()
+        ?, ?, ?, ?, NOW()
         )";
 
 $stmt = $pdo->prepare($sql);
@@ -98,6 +100,7 @@ $stmt->execute([
     $mobile,
     $birthday,
     $address,
+    $avatar,
 ]);
 
 // rowCount() 輸入的返回值是不是對的
