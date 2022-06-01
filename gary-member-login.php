@@ -157,7 +157,7 @@ $pageName = 'Login';
         // 如果新增成功 success=true
         if (result.success) {
             setTimeout(() => {
-                location.href = 'gary-admin-login.php'; //跳轉到列表頁
+                location.href = 'Nathan-CartList.php'; //跳轉到列表頁
             }, 2000);
             // 如果新增失敗 success=false
         } else {
