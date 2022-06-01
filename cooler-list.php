@@ -99,12 +99,13 @@ if ($totalRows > 0) {
                     
                     <td><?= $r['sid'] ?></td>
                     <td><?= htmlentities($r['name']) ?></td>
+                    <td><?= htmlentities($r['info']) ?></td>
                     <!-- <td><?= $r['categories_id'] ?></td> -->
                     <td><?= $r['duringtime_begin'] ?></td>
                     <td><?= $r['duringtime_end'] ?></td>
                     
                     <td><?= ($r['number_of_people']) ?></td>
-                    <td><?= $r['duringtime_end'] ?></td>
+                    
                     <td><?= $r['price'] ?></td>
                     <td><?= $r['teacher'] ?></td>
                     <td><?= $r['location'] ?></td>
