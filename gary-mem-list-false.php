@@ -12,7 +12,7 @@ if ($page < 1) {
     exit;
 }
 
-$t_sql = "SELECT COUNT(1) FROM member";
+$t_sql = "SELECT COUNT(1) FROM member WHERE `mem-bollen` = 0";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; //總筆數 索引式陣列
 
 // echo $totalRows; exit; 
