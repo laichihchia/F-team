@@ -31,7 +31,7 @@ if ($totalRows > 0) {
     }
 
     //索引值 資料筆數 ORDER BY sid DESC LIMIT降冪排序
-    $sql = sprintf("SELECT * FROM member ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM `member` WHERE `mem-bollen` = 0 ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 
     $rows = $pdo->query($sql)->fetchAll();
 }
@@ -44,12 +44,16 @@ if ($totalRows > 0) {
     .mgtp10 {
         margin-top: 3%;
     }
+
+    #bollen {
+        display: none;
+    }
 </style>
 
 <div class="row">
 
     <div class="mgtp10">
-        <div class="col">
+        <div class="col d-flex justify-content-between">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
 
@@ -100,6 +104,9 @@ if ($totalRows > 0) {
 
                 </ul>
             </nav>
+            <div>
+                <a href="gary-mem-list-true.php"><button type="submit" class="btn btn-primary btn-lg">查看激活會員</button></a>
+            </div>
         </div>
 
         <table class="table table-bordered table-striped">
@@ -107,7 +114,7 @@ if ($totalRows > 0) {
                 <tr>
                     <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     <th scope="col">#</th>
-                    <th scope="col">會員狀態</th>
+                    <th scope="col">狀態</th>
                     <th scope="col">姓名</th>
                     <th scope="col">暱稱</th>
                     <th scope="col">會員等級</th>
@@ -121,13 +128,7 @@ if ($totalRows > 0) {
                 <?php foreach ($rows as $r) : ?>
 
                     <?php //設定布林值名稱
-
-                    if ($r['mem-bollen'] == 1) {
-                        $r['mem-bollen'] = '正常';
-                    } else{
-                        $r['mem-bollen'] = '停用';
-                    }
-                    ?>
+                    $r['mem-bollen'] = '停用'; ?>
                     <tr>
 
 
@@ -148,7 +149,12 @@ if ($totalRows > 0) {
 
                         <!-- htmlentities裡面內容跳脫成一般文字 -->
                         <td><?= $r['sid'] ?></td>
-                        <td><?= $r['mem-bollen'] ?></td>
+                        <td>
+                            <?= $r['mem-bollen'] ?>
+                            <a href="javascript: bollen_it(<?= $r['sid'] ?>)">
+                                <i class="fa-solid fa-rotate"></i>
+                            </a>
+                        </td>
                         <td><?= htmlentities($r['mem-name']) ?></td>
                         <td><?= htmlentities($r['mem-nickname']) ?></td>
                         <td><?= htmlentities($r['mem-level']) ?></td>
@@ -177,6 +183,12 @@ if ($totalRows > 0) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
             // 如館按確定 轉到刪除檔
             location.href = `gary-member-delete.php?sid=${sid}`;
+        }
+    }
+
+    function bollen_it(sid) {
+        if (confirm(`確定要激活編號為 ${sid} 的資料嗎?`)) {
+            location.href = `gary-list-1-api.php?sid=${sid}`;
         }
     }
 </script>
