@@ -74,7 +74,7 @@ if ($totalRows > 0) {
                     <td class="text-center"><?= $r['create_at'] ?></td>
                     <td class="text-center"><?= $r['update_at'] ?></td>
                     <td>
-                        <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
