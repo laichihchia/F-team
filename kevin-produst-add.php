@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'kevin-produst-add';
-$title = '新增通訊錄資料 - 小新的網站';
+$title = 'Product Update';
 ?>
 <?php require __DIR__ . '/parts/html-head.php' ?>
 <?php require __DIR__ . '/parts/product-list.php' ?>
@@ -10,16 +10,16 @@ $title = '新增通訊錄資料 - 小新的網站';
         <div class="col">
             <!-- <div class="card">
                 <div class="card-body"> -->
-            <h5 class="card-title">新增商品</h5>
+            <h5 class="card-title">Product Add</h5>
             <form class="row g-3" name="form1" onsubmit="sendData();return false" novalidate>
                 <input type="hidden" name="mem_avatar">
 
 
 
                 <div class="col-md-6">
-                    <label for="produst_img" class="form-label">商品圖片</label>
+                    <label for="produst_img" class="form-label">Product Update</label>
                     <!-- <!-- <input type="file" class="form-control" id="produst_img" name="produst_img" accept="image/png,image/jpeg" required> -->
-                    <button id="btn" onclick="uploadAvatar()">上傳大頭貼</button>
+                    <button id="btn" onclick="uploadAvatar()">Upload Image</button>
                 </div>
 
                 <div class="col-md-6">
@@ -29,24 +29,24 @@ $title = '新增通訊錄資料 - 小新的網站';
 
 
                 <div class="col-md-6">
-                    <label for="brand" class="form-label">品牌名稱</label>
+                    <label for="brand" class="form-label">Brand</label>
                     <input type="text" class="form-control" id="brand" name="brand">
                 </div>
                 <div class="col-6">
-                    <label for="produst_name" class="form-label">商品名稱</label>
+                    <label for="produst_name" class="form-label">Product</label>
                     <input type="text" class="form-control" id="produst_name" name="produst_name">
                 </div>
                 <div class="col-md-12">
-                    <label for="info" class="form-label">商品特色</label>
+                    <label for="info" class="form-label">Info</label>
                     <br>
                     <textarea name="info" id="info" cols="30" rows="10" style="width: 100%;"></textarea>
                 </div>
                 <div class="col-md-3">
-                    <label for="price" class="form-label">價錢</label>
+                    <label for="price" class="form-label">Price</label>
                     <input type="text" class="form-control" id="price" name="price">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">新增</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
 

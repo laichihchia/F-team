@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'kevin-produst-list';
-$title = '商品列表';
+$title = 'Product-List';
 
-$perPage = 20; // 每一頁有幾筆
+$perPage = 10; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // intval -> 轉換成整數值
@@ -36,9 +36,32 @@ if ($totalRows > 0) {
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
 <?php require __DIR__ . '/parts/product-list.php' ?>
-<div class="row">
-    <div class="col">
+<style>
+    .kevin {
+        border-radius: 15px;
+        margin: 15px;
+        border: 2px solid black;
+        /* background-color: lightgray; */
+    }
 
+    .kevin a {
+        text-decoration: none;
+        padding: 15px;
+    }
+
+    option {
+        padding: 15px;
+    }
+</style>
+<div class="row">
+    <div class="col d-flex">
+        <button class="kevin"><a href="kevin-produst-add.php">Product Update</a></button>
+        <select class="kevin">
+            <option selected>---Open this select menu---</option>
+            <option value="1"> One </option>
+            <option value="2"> Two </option>
+            <option value="3"> Three </option>
+        </select>
     </div>
 </div>
 <div class="row">
@@ -64,12 +87,12 @@ if ($totalRows > 0) {
                         <a href="kevin-produst-delete-api.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')"><i class="fa-solid fa-trash-can"></i></a>
                     </td>
                     <td><?= $r['sid'] ?></td>
-                    <td>
+                    <td class="w-25">
                         <img src=./Fteam-produst_img/<?= $r['img'] ?> class="w-100" alt="">
                     </td>
                     <td class="text-center"><?= $r['brand'] ?></td>
                     <td class="text-center"><?= $r['name'] ?></td>
-                    <td><?= $r['info'] ?></td>
+                    <td class="text-center"><?= $r['info'] ?></td>
                     <td class="text-center"><?= $r['price'] ?></td>
                     <td class="text-center"><?= $r['create_at'] ?></td>
                     <td class="text-center"><?= $r['update_at'] ?></td>
