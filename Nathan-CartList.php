@@ -93,7 +93,6 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                 </div>
             </div>
         <?php endforeach; ?>
-
         <!-- 商品卡 -->
 
     </div>

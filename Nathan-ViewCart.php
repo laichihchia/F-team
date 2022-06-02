@@ -65,13 +65,15 @@ $title = "Nathan-ViewCart - Nathan's cart";
                 // 計算每樣商品總價
                 $total = 0;
                 $productTotal = 0;
+                $i = 1;
                 foreach ($_SESSION['cart'] as $key => $ar) : 
                     $productTotal = $ar['productPrice'] * $ar['productQty'];
                     $total += $ar['productPrice'] * $ar['productQty'];
+                    $i = $key+1;
                 ?>
                     <form action="Nathan-AddCart-api.php" method="POST">
                         <tr class="text-center prod-bottom">
-                            <td scope="col"><?= $ar['productID']; ?></td>
+                            <td scope="col"><?= $i ?></td>
                             <input type="hidden" name="id" value="<?= $ar['productID']; ?>">
                             <td scope="col"><?= $ar['productName']; ?></td>
                             <input type="hidden" name="name" value="<?= $ar['productName']; ?>">
