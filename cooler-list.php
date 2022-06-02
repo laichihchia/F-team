@@ -2,7 +2,7 @@
 $pageName = '課程資訊';
 $title = '通訊錄列表 - 小新的網站';
 
-$perPage = 20; // 每一頁有幾筆
+$perPage = 5; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -141,7 +141,7 @@ if ($totalRows > 0) {
 <script>
     function delete_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
-            location.href = `ab-delete.php?sid=${sid}`;
+            location.href = `cooler-list-delete.php?sid=${sid}`;
         }
     }
 </script>
