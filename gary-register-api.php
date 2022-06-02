@@ -51,7 +51,7 @@ $name = $_POST['mem_name'];
 // 沒有給的話給空字串
 $nickname = $_POST['mem_nickname'] ?? '';
 // 沒有給的話給平民
-$level = $_POST['mem_level'] ?? '平民';
+$level = '平民';
 // account必填
 $account = $_POST['mem_account'];
 // password必填
@@ -66,6 +66,7 @@ $birthday = empty($_POST['mem_birthday']) ? NULL : $_POST['mem_birthday'];
 $avatar = $_POST['mem_avatar'] ?? '';
 // 沒有給的話給空字串
 $address = $_POST['mem_address'] ?? '';
+$bollen = 1;
 
 
 //後端欄位檢查Email filter_var過濾
@@ -81,11 +82,11 @@ if(! empty($email) and filter_var($email, FILTER_VALIDATE_EMAIL) === false){
 $sql ="INSERT INTO `member`(
     `mem-name`, `mem-nickname`, `mem-level`, 
     `mem-account`, `mem-password`, `mem-email`, 
-    `mem-mobile`, `mem-birthday`, `mem-address`, `mem-avatar`, `mem-created_at`
+    `mem-mobile`, `mem-birthday`, `mem-address`, `mem-avatar`, `mem-created_at`, `mem-bollen`
     ) VALUES (
         ?, ?, ?,
         ?, ?, ?,
-        ?, ?, ?, ?, NOW()
+        ?, ?, ?, ?, NOW(), ?
         )";
 
 $stmt = $pdo->prepare($sql);
@@ -101,6 +102,7 @@ $stmt->execute([
     $birthday,
     $address,
     $avatar,
+    $bollen
 ]);
 
 // rowCount() 輸入的返回值是不是對的

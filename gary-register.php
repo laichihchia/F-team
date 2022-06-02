@@ -6,9 +6,19 @@ $pageName = 'Login';
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <style>
+    .list-section {
+        display: none;
+    }
+
+    body {
+        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
+        background-attachment: fixed;
+    }
+
     .card {
         margin-top: 10%;
         width: 100%;
+        border: 3px solid black;
     }
 
     .register-title {
@@ -57,103 +67,105 @@ $pageName = 'Login';
     }
 </style>
 
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <form name="form1" onsubmit="sendData(); return false;" novoalidate>
-                <h5 class="register-title">會員註冊</h5>
-                <input type="hidden" name="mem_avatar">
-                <div class="card-body d-flex justify-content-between">
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">個人照片</label>
-                        </div>
-                        <div class="avatar">
-                            <img id="myimg" src="" />
-                        </div>
-                        <button id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera"></i></button>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="mem_account" class="form-label">帳號</label>
-                            <!-- require 表示必填 -->
-                            <input type="text" class="form-control" id="mem_account" name="mem_account" require>
-                            <div class="form-text red"></div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="mem_password" class="form-label">密碼</label>
-                            <div class="form-control d-flex justify-content-between">
-                                <input type="password" class="form-control eyes-input" id="mem_password" name="mem_password" require>
-                                <a class="eyes d-flex align-items-center" onclick="togglePwd()">
-                                    <img src="./gary-img/eyes_off.png" alt="" id="eyes">
-                                </a>
-                            </div>
-                            <div class="form-text red password-red"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <h5 class="register-title">申請人資訊</h5>
-
-                <div class="card-body">
-                    <div class="d-flex justify-content-around">
-                        <!-- novoalidate 不要用HTML5的檢查方式 -->
-                        <div class="col-4">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <form name="form1" onsubmit="sendData(); return false;" novoalidate>
+                    <h5 class="register-title">會員註冊</h5>
+                    <input type="hidden" name="mem_avatar">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="col-6">
                             <div class="mb-3">
-                                <label for="mem_name" class="form-label">姓名</label>
+                                <label for="" class="form-label">個人照片</label>
+                            </div>
+                            <div class="avatar">
+                                <img id="myimg" src="" />
+                            </div>
+                            <button id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera"></i></button>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="mem_account" class="form-label">帳號</label>
                                 <!-- require 表示必填 -->
-                                <input type="text" class="form-control" id="mem_name" name="mem_name" require>
+                                <input type="text" class="form-control" id="mem_account" name="mem_account" require>
                                 <div class="form-text red"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="mem_mobile" class="form-label">手機</label>
-                                <!-- pattern 設定輸入格式 -->
-                                <input type="text" class="form-control" id="mem_mobile" name="mem_mobile" pattern="09\d{2}-?\d{3}-?\d{3}">
+                                <label for="mem_password" class="form-label">密碼</label>
+                                <div class="form-control d-flex justify-content-between">
+                                    <input type="password" class="form-control eyes-input" id="mem_password" name="mem_password" require>
+                                    <a class="eyes d-flex align-items-center" onclick="togglePwd()">
+                                        <img src="./gary-img/eyes_off.png" alt="" id="eyes">
+                                    </a>
+                                </div>
+                                <div class="form-text red password-red"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="register-title">申請人資訊</h5>
+
+                    <div class="card-body">
+                        <div class="d-flex justify-content-around">
+                            <!-- novoalidate 不要用HTML5的檢查方式 -->
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="mem_name" class="form-label">姓名</label>
+                                    <!-- require 表示必填 -->
+                                    <input type="text" class="form-control" id="mem_name" name="mem_name" require>
+                                    <div class="form-text red"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mem_mobile" class="form-label">手機</label>
+                                    <!-- pattern 設定輸入格式 -->
+                                    <input type="text" class="form-control" id="mem_mobile" name="mem_mobile" pattern="09\d{2}-?\d{3}-?\d{3}">
+                                    <div class="form-text red"></div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="mem_nickname" class="form-label">暱稱</label>
+                                    <input type="text" class="form-control" id="mem_nickname" name="mem_nickname">
+                                    <div class="form-text red"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mem_birthday" class="form-label">生日</label>
+                                    <input type="date" class="form-control" id="mem_birthday" name="mem_birthday">
+                                    <div class="form-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="mb-3 col-6">
+                                <label for="mem_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="mem_email" name="mem_email">
                                 <div class="form-text red"></div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="mb-3">
-                                <label for="mem_nickname" class="form-label">暱稱</label>
-                                <input type="text" class="form-control" id="mem_nickname" name="mem_nickname">
-                                <div class="form-text red"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="mem_birthday" class="form-label">生日</label>
-                                <input type="date" class="form-control" id="mem_birthday" name="mem_birthday">
+                        <div class="d-flex justify-content-center">
+                            <div class="mb-3 col-6">
+                                <label for="mem_address" class="form-label">地址</label>
+                                <textarea class="form-control" name="mem_address" id="mem_address" cols="30" rows="1"></textarea>
                                 <div class="form-text"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="mb-3 col-6">
-                            <label for="mem_email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="mem_email" name="mem_email">
-                            <div class="form-text red"></div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="mb-3 col-6">
-                            <label for="mem_address" class="form-label">地址</label>
-                            <textarea class="form-control" name="mem_address" id="mem_address" cols="30" rows="1"></textarea>
-                            <div class="form-text"></div>
-                        </div>
-                    </div>
 
-                    <div class="d-flex justify-content-between">
-                        <a href="gary-member-login.php" class="btn btn-primary login">LOGIN</a>
-                        <button type="submit" class="btn btn-primary">立即註冊</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="gary-member-login.php" class="btn btn-primary login">LOGIN</a>
+                            <button type="submit" class="btn btn-primary">立即註冊</button>
+                        </div>
                     </div>
+                </form>
+
+                <form name="form2" action="gary-upload-avatar-api.php" method="post" enctype="multipart/form-data" style="display: none">
+                    <input type="file" name="avatar" accept="image/*" />
+                </form>
+
+                <!-- 回應提示 -->
+                <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
+                    註冊成功
                 </div>
-            </form>
-
-            <form name="form2" action="gary-upload-avatar-api.php" method="post" enctype="multipart/form-data" style="display: none">
-                <input type="file" name="avatar" accept="image/*" />
-            </form>
-
-            <!-- 回應提示 -->
-            <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
-                註冊成功
             </div>
         </div>
     </div>

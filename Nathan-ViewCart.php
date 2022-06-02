@@ -7,35 +7,6 @@
 
 $pageName = "Nathan's cart";
 $title = "Nathan-ViewCart - Nathan's cart";
-//MV 資料處理 後端邏輯
-
-// 用戶要看第幾頁
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-if ($page < 1) {
-    header('Location: Nathan-CartList.php'); //轉向自己 或 給page=1 給值
-    exit;
-};
-// 每一頁要幾筆
-$perpage = 4;
-
-// 取得總比數
-$t_sql = "SELECT COUNT(1) FROM `products`";
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; // 拿出來是索引式陣列用法
-
-// 取得總頁數
-$totalPage = ceil($totalRows / $perpage);
-
-
-$rows = []; // 給預設值 如果沒有資料 跑回圈用到 會出錯
-if ($totalPage > 0) { //如果有資料 在執行if內的內容
-    if ($page > $totalPage) {
-        header("Location: ?page=$totalPage"); // 如果使用著輸入urlencoded > 總頁數,跳轉最後一頁
-        exit;
-    };
-    $sql = sprintf("SELECT * FROM `products` LIMIT %s,%s", ($page - 1) * $perpage, $perpage);
-
-    $rows = $pdo->query($sql)->fetchAll();
-};
 
 ?>
 <?php require __DIR__ . '/parts/html-head.php' ?>
@@ -43,6 +14,19 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
 <style>
     .cart-container {
         font-family: 'Anton', sans-serif;
+    }
+    .prod-bottom td{
+        border: 0;
+    }
+    .total-text{
+        border-bottom: 2px solid #777;
+        font-weight: 600;
+        color: #777;
+    }
+    .total-text-info{
+        font-weight: 600;
+        color: #777;
+        padding-right: 0;
     }
 </style>
 <div class="cart-container">
@@ -64,37 +48,41 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
     <!-- 內導覽 -->
     <!-- 呈現區 -->
     <div class="row justify-content-center">
-        <table class="table w-100">
+        <table class="table w-100 ">
             <thead>
                 <tr class="text-center">
                     <th scope="col">NO.</th>
-                    <th scope="col">品名</th>
-                    <th scope="col">商品價格</th>
-                    <th scope="col">數量</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
-                    <th scope="col">更改數量</th>
-                    <th scope="col">刪除商品</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
                 // 計算每樣商品總價
                 $total = 0;
+                $productTotal = 0;
+                $i = 1;
                 foreach ($_SESSION['cart'] as $key => $ar) : 
-                    $total = $ar['productPrice'] * $ar['productQty'];
+                    $productTotal = $ar['productPrice'] * $ar['productQty'];
+                    $total += $ar['productPrice'] * $ar['productQty'];
+                    $i = $key+1;
                 ?>
                     <form action="Nathan-AddCart-api.php" method="POST">
-                        <tr class="text-center">
-                            <td scope="col"><?= $ar['productID']; ?></td>
+                        <tr class="text-center prod-bottom">
+                            <td scope="col"><?= $i ?></td>
                             <input type="hidden" name="id" value="<?= $ar['productID']; ?>">
                             <td scope="col"><?= $ar['productName']; ?></td>
                             <input type="hidden" name="name" value="<?= $ar['productName']; ?>">
                             <td scope="col"><?= $ar['productPrice']; ?></td>
                             <input type="hidden" name="price" value="<?= $ar['productPrice']; ?>">
                             <td><input class="w-50" type="number" name="qty" value="<?= $ar['productQty']; ?>"></td>
-                            <td scope="col singlePrice"><?= $total;?></td>
-                            <td><button name="update" class=" btn-sm btn-dark">Update</button></td>
-                            <td><button name="remove" class=" btn-sm btn-dark">Delete</button></td>
+                            <td scope="col"><?= $productTotal;?></td>
+                            <td><button onclick="confirm('確定要變更此商品數量嗎?');" name="update" class=" btn-sm btn-dark">Update</button></td>
+                            <td><button onclick="confirm('確定要將此商品移除購物車嗎?');" name="remove" class=" btn-sm btn-dark">Delete</button></td>
                             <input type="hidden" name="item" value="<?= $ar['productID']; ?>">
                         </tr>
                     </form>
@@ -102,12 +90,26 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <div class="col-12">
+        <h5 class="total-text pb-2">TotalPrice :</h5>
+        </div>
+    </div>
+    <div class="row total-text-wrap pb-3">
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2 total-text-info d-flex align-content-center justify-content-end pe-2">NT$ <?=$total?></div>
+        <div class="col-2 text-end">
+            <a href="" class="btn btn-sm btn-dark">Go to Checkout</a>
+        </div>
+    </div>
     <!-- 呈現區 -->
 </div>
 
 <?php require __DIR__ . '/parts/scripts.php' ?>
 <script>
-    const singlePrice = document.querySelector('.singlePrice');
-    console.log(singlePrice);
+    
 </script>
 <?php require __DIR__ . '/parts/html-foot.php' ?>

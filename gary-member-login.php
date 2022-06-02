@@ -1,14 +1,23 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
-$pageName = 'Login';
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <style>
+    .list-section {
+        display: none;
+    }
+
+    body {
+        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
+        background-attachment: fixed;
+    }
+
     .card {
-        margin-top: 10%;
+        margin-top: 40%;
         width: 100%;
+        border: 3px solid black;
     }
 
     .register-title {
@@ -45,39 +54,41 @@ $pageName = 'Login';
     }
 </style>
 
-<div class="row justify-content-center">
-    <div class="col-md-4">
-        <div class="card">
-            <form name="form1" onsubmit="sendData(); return false;" novoalidate>
-                <div class="card-body">
-                    <h5 class="register-title mb-5 mt-3">LOGIN</h5>
-                    <div class="mb-5">
-                        <input type="text" class="form-control" name="mem_account" placeholder="Username" require>
-                        <div class="form-text red accword-red"></div>
-                    </div>
-                    <div class="mb-5">
-                        <div class="form-control d-flex justify-content-between">
-                            <input type="password" class="form-control eyes-input" name="mem_password" placeholder="Password" require>
-                            <a class="eyes d-flex align-items-center" onclick="togglePwd()">
-                                <img src="./gary-img/eyes_off.png" alt="" id="eyes">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <form name="form1" onsubmit="sendData(); return false;" novoalidate>
+                    <div class="card-body">
+                        <h5 class="register-title mb-5 mt-3">LOGIN</h5>
+                        <div class="mb-5">
+                            <input type="text" class="form-control" name="mem_account" placeholder="Username" require>
+                            <div class="form-text red accword-red"></div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="form-control d-flex justify-content-between">
+                                <input type="password" class="form-control eyes-input" name="mem_password" placeholder="Password" require>
+                                <a class="eyes d-flex align-items-center" onclick="togglePwd()">
+                                    <img src="./gary-img/eyes_off.png" alt="" id="eyes">
+                                </a>
+                            </div>
+                            <div class="form-text red password-red"></div>
+                        </div>
+                        <p id="info-bar" class="red" style="display:none;"></p>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-lg">登入</button>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <a class="btn btn-primary btn-lg" href="gary-register.php">SIGN UP</a>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a href="gary-admin-login.php" class="text-decoration-none">
+                                <p>切換至管理員</p>
                             </a>
                         </div>
-                        <div class="form-text red password-red"></div>
                     </div>
-                    <p id="info-bar" class="red"  style="display:none;"></p>
-                    <div class="mb-3 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg">登入</button>
-                    </div>
-                    <div class="mb-3 d-flex justify-content-center">
-                        <a class="btn btn-primary btn-lg" href="gary-register.php">SIGN UP</a>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <a href="gary-admin-login.php" class="text-decoration-none">
-                            <p>切換至管理員</p>
-                        </a>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -154,12 +165,15 @@ $pageName = 'Login';
         const info_bar = document.querySelector('#info-bar');
 
 
-        // 如果新增成功 success=true
+        // 如果成功 success=true
         if (result.success) {
             setTimeout(() => {
                 location.href = 'Nathan-CartList.php'; //跳轉到列表頁
             }, 2000);
-            // 如果新增失敗 success=false
+            // 如果失敗 success=false
+        } else if (result.bollen) {
+            info_bar.style.display = 'block'; //顯示提示訊息
+            info_bar.innerText = result.error || '帳號已被停用';
         } else {
             info_bar.style.display = 'block'; //顯示提示訊息
             info_bar.innerText = result.error || '帳號或密碼錯誤';

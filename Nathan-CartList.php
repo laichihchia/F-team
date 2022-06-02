@@ -88,12 +88,11 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                         <input type="hidden" name="name" value="<?=$r['name']?>">
                         <input type="hidden" name="price" value="<?=$r['price']?>">
                         <input class="mb-2  w-75" type="number" name="qty" class="form-control" value="1">
-                        <input type="submit" name="addCart" value="Add cart" class="btn btn-dark">
+                        <input onclick="confirm('確認將此商品加入購物車嗎?')" type="submit" name="addCart" value="Add cart" class="btn btn-dark">
                     </form>
                 </div>
             </div>
         <?php endforeach; ?>
-
         <!-- 商品卡 -->
 
     </div>
