@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
+$pageName = "會員管理";
 $perPage = 20; //每一頁有幾筆
 
 //頁碼 用戶要看第幾頁
@@ -34,6 +35,7 @@ if ($totalRows > 0) {
 
     $rows = $pdo->query($sql)->fetchAll();
 }
+
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
@@ -105,6 +107,7 @@ if ($totalRows > 0) {
                 <tr>
                     <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     <th scope="col">#</th>
+                    <th scope="col">會員狀態</th>
                     <th scope="col">姓名</th>
                     <th scope="col">暱稱</th>
                     <th scope="col">會員等級</th>
@@ -116,6 +119,15 @@ if ($totalRows > 0) {
             </thead>
             <tbody>
                 <?php foreach ($rows as $r) : ?>
+
+                    <?php //設定布林值名稱
+
+                    if ($r['mem-bollen'] == 1) {
+                        $r['mem-bollen'] = '正常';
+                    } else{
+                        $r['mem-bollen'] = '停用';
+                    }
+                    ?>
                     <tr>
 
 
@@ -136,6 +148,7 @@ if ($totalRows > 0) {
 
                         <!-- htmlentities裡面內容跳脫成一般文字 -->
                         <td><?= $r['sid'] ?></td>
+                        <td><?= $r['mem-bollen'] ?></td>
                         <td><?= htmlentities($r['mem-name']) ?></td>
                         <td><?= htmlentities($r['mem-nickname']) ?></td>
                         <td><?= htmlentities($r['mem-level']) ?></td>
