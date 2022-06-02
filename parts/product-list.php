@@ -47,7 +47,7 @@ if (isset($_SESSION['cart'])) {
                                         <a class="nav-link active" aria-current="page" href="#" style="color: white;">News</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="kevin-produst.php" style="color:white ;">Produst</a>
+                                        <a class="nav-link" href="kevin-produst.php" style="color:white ;">Product</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" style="color:white ;">Member</a>

@@ -47,13 +47,13 @@ if ($totalRows > 0) {
             <tr>
                 <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                 <th scope="col">#</th>
-                <th scope="col" class="text-center">商品圖片</th>
-                <th scope="col" class="text-center">品牌名稱</th>
-                <th scope="col" class="text-center">商品名稱</th>
-                <th scope="col" class="text-center">商品特色</th>
-                <th scope="col" class="text-center">價錢</th>
-                <th scope="col" class="text-center">商品新增時間</th>
-                <th scope="col" class="text-center">最後編輯時間</th>
+                <th scope="col" class="text-center">Product</th>
+                <th scope="col" class="text-center">Brand</th>
+                <th scope="col" class="text-center">Product Name</th>
+                <th scope="col" class="text-center">Info</th>
+                <th scope="col" class="text-center">Price</th>
+                <th scope="col" class="text-center">Creat Time</th>
+                <th scope="col" class="text-center">Update Time</th>
                 <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
         </thead>
