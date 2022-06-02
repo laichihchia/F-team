@@ -19,20 +19,20 @@ if (isset($_POST['addCart'])) {
             window.location.href = 'Nathan-CartList.php';
             </script>";
     } else {
-    $_SESSION['cart'][] = array(
-        'productID' => $product_id,
-        'productName' => $product_name,
-        'productPrice' => $product_price,
-        'productQty' => $product_qty
+        $_SESSION['cart'][] = array(
+            'productID' => $product_id,
+            'productName' => $product_name,
+            'productPrice' => $product_price,
+            'productQty' => $product_qty
         );
         header('Location: Nathan-CartList.php');
     }
 };
 
 // get Delete post
-if(isset($_POST['remove'])){
+if (isset($_POST['remove'])) {
     foreach ($_SESSION['cart'] as $k => $v) {
-        if($v['productID'] === $_POST['item']){
+        if ($v['productID'] === $_POST['item']) {
             unset($_SESSION['cart'][$k]);
             $_SESSION['cart'] = array_values($_SESSION['cart']);
             header('Location: Nathan-ViewCart.php');
@@ -41,18 +41,16 @@ if(isset($_POST['remove'])){
 }
 
 // get Update post
-if(isset($_POST['update'])){
+if (isset($_POST['update'])) {
     foreach ($_SESSION['cart'] as $k => $v) {
-        if($v['productID'] === $_POST['item']){
+        if ($v['productID'] === $_POST['item']) {
             $_SESSION['cart'][$k] = array(
                 'productID' => $product_id,
                 'productName' => $product_name,
                 'productPrice' => $product_price,
                 'productQty' => $product_qty
-                );
-                header('Location: Nathan-ViewCart.php');
+            );
+            header('Location: Nathan-ViewCart.php');
         }
     }
 }
-
-?>
