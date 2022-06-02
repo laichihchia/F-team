@@ -49,5 +49,8 @@ if(isset($_SESSION['cart'])){
         <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
         <a href="#" class="list-a list-group-item list-group-item-action">課程資訊</a>
         <a href="Nathan-CartList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : '';?>">購物車</a>
+        <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : '';?>">課程資訊</a>
+
+        <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : '';?>">購物車</a>
     </div>
 </div>
