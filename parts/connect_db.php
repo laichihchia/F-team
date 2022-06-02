@@ -20,6 +20,6 @@ try {
 };
 
 // 判斷有無啟用 session
-if(! isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 };

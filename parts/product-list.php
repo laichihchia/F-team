@@ -1,14 +1,15 @@
 <?php
 $cartCount = 0;
-if(isset($_SESSION['cart'])){
+if (isset($_SESSION['cart'])) {
     $cartCount = count($_SESSION['cart']);
 };
 ?>
 <style>
-    .cart-icon{
+    .cart-icon {
         position: relative;
     }
-    .cart-count{
+
+    .cart-count {
         position: absolute;
         top: -2px;
         right: -2px;
@@ -23,6 +24,7 @@ if(isset($_SESSION['cart'])){
         opacity: 0.9;
     }
 </style>
+
 <body>
     <header class="header-color">
         <div class="container container-maxWidth">
@@ -35,20 +37,20 @@ if(isset($_SESSION['cart'])){
                 <div class="col-6 nav-right">
                     <a href=""><i class="fa-solid fa-user"></i></a>
                     <a class="cart-icon" onclick="confirm('要前往購物車嗎?')" href="Nathan-ViewCart.php"><i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart-count"><?= $cartCount ?></span>
-                </a>
+                        <span class="cart-count"><?= $cartCount ?></span>
+                    </a>
                 </div>
             </div>
         </div>
     </header>
-<div class="list-section">
-    <div class="list-group">
-        <a href="#" class="list-a list-group-item list-group-item-action">最新消息</a>
-        <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "Login" ? 'active' : '';?>">登入/註冊</a>
-        <a href="#" class="list-a list-group-item list-group-item-action">會員管理</a>
-        <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
-        <a href="cooler-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : '';?>">課程資訊</a>
-        <a href="Nathan-CartList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : '';?>">購物車</a>
-        
+    <div class="list-section">
+        <div class="list-group">
+            <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
+            <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "Login" ? 'active' : ''; ?>">登入/註冊</a>
+            <a href="#" class="list-a list-group-item list-group-item-action">會員管理</a>
+            <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
+            <a href="cooler-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : ''; ?>">課程資訊</a>
+            <a href="Nathan-CartList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : ''; ?>">購物車</a>
+
+        </div>
     </div>
-</div>
