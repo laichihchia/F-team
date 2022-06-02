@@ -9,9 +9,15 @@ require __DIR__ . '/parts/connect_db.php';
         display: none;
     }
 
+    body {
+        background: url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
+        background-attachment: fixed;
+    }
+
     .card {
-        margin-top: 10%;
+        margin-top: 40%;
         width: 100%;
+        border: 3px solid black;
     }
 
     .register-title {
