@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
 $pageName = "會員管理";
-$perPage = 20; //每一頁有幾筆
+$perPage = 15; //每一頁有幾筆
 
 //頁碼 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
