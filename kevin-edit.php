@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/parts/connect_db.php';
-$pageName = 'ab-edit';
-$title = '編輯通訊錄資料 - 小新的網站';
+$pageName = 'kevin-edit';
+$title = '商品編輯';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 if (empty($sid)) {
@@ -18,6 +18,7 @@ if (empty($row)) {
 
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
+
 <?php require __DIR__ . '/parts/product-list.php' ?>
 <style>
     .form-control.red {

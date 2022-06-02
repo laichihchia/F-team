@@ -29,10 +29,38 @@ if (isset($_SESSION['cart'])) {
     <header class="header-color">
         <div class="container container-maxWidth">
             <div class="row nav-info">
-                <div class="col-6 nav-left">
+                <div class="col-6 nav-left d-flex">
                     <div class="logo-container">
                         <a href=""><img src="./images/Street_logo.png" alt=""></a>
                     </div>
+
+                    <!-- NAVBAR 連結 BY KEVIN -->
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="index_.php" style="color:white ;">Home</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">News</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="kevin-produst.php" style="color:white ;">Produst</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" style="color:white ;">Member</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" style="color:white ;">Event</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+
                 </div>
                 <div class="col-6 nav-right">
                     <a href=""><i class="fa-solid fa-user"></i></a>

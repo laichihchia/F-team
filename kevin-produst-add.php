@@ -39,7 +39,7 @@ $title = '新增通訊錄資料 - 小新的網站';
                 <div class="col-md-12">
                     <label for="info" class="form-label">商品特色</label>
                     <br>
-                    <textarea name="info" id="info" cols="30" rows="10"></textarea>
+                    <textarea name="info" id="info" cols="30" rows="10" style="width: 100%;"></textarea>
                 </div>
                 <div class="col-md-3">
                     <label for="price" class="form-label">價錢</label>
