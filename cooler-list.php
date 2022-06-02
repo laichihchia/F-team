@@ -30,8 +30,15 @@ if ($totalRows > 0) {
 }
 ?>
 
-<?php include __DIR__ . '/parts/html-head.php' ?>
 
+
+<?php include __DIR__ . '/parts/html-head.php' ?>
+<style>
+    .cooler-creat:hover {
+        background-color: #dee2e6;
+        color: #222;
+    }
+</style>
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <div class="row">
@@ -67,6 +74,8 @@ if ($totalRows > 0) {
                     </a>
                 </li>
             </ul>
+
+            <button type="button" class="btn btn-outline-secondary float-end mb-3 cooler-creat"><a href="cooler-list-add.php" class="text-decoration-none">新增</a></button>
         </nav>
         <table class="table table-bordered table-striped">
             <thead>
@@ -126,7 +135,7 @@ if ($totalRows > 0) {
 
         </table>
     </div>
-    
+
 </div>
 
 
