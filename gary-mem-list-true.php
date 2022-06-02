@@ -122,6 +122,7 @@ if ($totalRows > 0) {
                     <th scope="col">Email</th>
                     <th scope="col">生日</th>
                     <th scope="col">地址</th>
+                    <th scope="col">創建時間</th>
                 </tr>
             </thead>
             <tbody>
@@ -166,6 +167,7 @@ if ($totalRows > 0) {
                     -->
                         <!-- strip_tags 有出現tag的就直接去掉tag -->
                         <td><?= strip_tags($r['mem-address']) ?></td>
+                        <td><?= $r['mem-created_at'] ?></td>
 
                     </tr>
                 <?php endforeach; ?>
