@@ -74,7 +74,7 @@ if (isset($_SESSION['cart'])) {
     <div class="list-section">
         <div class="list-group">
             <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
-            <a href="gary-member-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "會員管理" ? 'active' : ''; ?>">會員管理</a>
+            <a href="gary-mem-list-true.php" class="list-a list-group-item list-group-item-action <?= $pageName === "會員管理" ? 'active' : ''; ?>">會員管理</a>
             <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
             <a href="cooler-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : ''; ?>">課程資訊</a>
             <a href="Nathan-CartList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : ''; ?>">購物車</a>
