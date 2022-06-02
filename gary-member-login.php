@@ -154,12 +154,12 @@ $pageName = 'Login';
         const info_bar = document.querySelector('#info-bar');
 
 
-        // 如果新增成功 success=true
+        // 如果成功 success=true
         if (result.success) {
             setTimeout(() => {
                 location.href = 'Nathan-CartList.php'; //跳轉到列表頁
             }, 2000);
-            // 如果新增失敗 success=false
+            // 如果失敗 success=false
         } else {
             info_bar.style.display = 'block'; //顯示提示訊息
             info_bar.innerText = result.error || '帳號或密碼錯誤';
