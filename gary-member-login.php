@@ -1,6 +1,5 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
-$pageName = 'Login';
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
@@ -160,7 +159,10 @@ $pageName = 'Login';
                 location.href = 'Nathan-CartList.php'; //跳轉到列表頁
             }, 2000);
             // 如果失敗 success=false
-        } else {
+        } else if(result.bollen) {
+            info_bar.style.display = 'block'; //顯示提示訊息
+            info_bar.innerText = result.error || '帳號已被停用';
+        }else{
             info_bar.style.display = 'block'; //顯示提示訊息
             info_bar.innerText = result.error || '帳號或密碼錯誤';
         }

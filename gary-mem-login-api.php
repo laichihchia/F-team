@@ -8,7 +8,8 @@ $output = [
     'success' => false,
     'postData' => $_POST,
     'code' => 0,
-    'error' => ''
+    'error' => '',
+    'bollen' => false,
 ];
 
 // TODO: 欄位檢查, 後端的檢查
@@ -23,7 +24,7 @@ $mem_account = $_POST['mem_account'];
 $mem_password = $_POST['mem_password'];
 
 
-$sql = "SELECT  `mem-account`, `mem-password` FROM `member` WHERE 1;";
+$sql = "SELECT  `mem-account`, `mem-password`, `mem-bollen` FROM `member` WHERE 1;";
 
 $stmt = $pdo->query($sql);
 
@@ -45,19 +46,29 @@ foreach( $AccAndPwd as $k => $v){
             if (!empty($AccAndPwd[$k])) {
                 // echo json_encode($rrr[1]['member_password'], JSON_UNESCAPED_UNICODE);
     
-                if ($_POST['mem_password'] ===  $AccAndPwd[$k]['mem-password']) {
-                    // 登入成功
+                if ($_POST['mem_password'] === $AccAndPwd[$k]['mem-password']) {
+
+                    $output['bollen'] = true;
+
+                    if($AccAndPwd[$k]['mem-bollen'] == 1 ) {
+                        // 登入成功
                     // 把資料設定到 session 裡 
                     $output['success'] = true;
                     $_SESSION['user'] = [
                         'mem_account' => $_POST['mem_account'],
-                        
                     ];
+                    }
+
                 }
             }
         }
         if (!isset($_SESSION['user'])) {
-            $error_msg = '帳號或密碼錯誤';
+
+            if($output['bollen'] = true){
+                $error_msg = '帳號已被停用';
+            } else {
+                $error_msg = '帳號或密碼錯誤';
+            }
         }
     
     }
