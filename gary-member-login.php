@@ -10,7 +10,7 @@ require __DIR__ . '/parts/connect_db.php';
     }
 
     body {
-        background: url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
+        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
         background-attachment: fixed;
     }
 
