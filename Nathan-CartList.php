@@ -57,7 +57,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
     <!-- 內導覽 -->
     <div class="row" id="cart-info-nav">
         <header class="mt-3">
-            <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
+            <div class=" d-flex align-items-center pb-3 mb-3 border-bottom">
                 <a href="#" class="d-flex align-items-center text-dark text-decoration-none">
                     <span class="fs-4">Street Born Online Shop</span>
                 </a>
@@ -88,7 +88,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                         <input type="hidden" name="name" value="<?=$r['name']?>">
                         <input type="hidden" name="price" value="<?=$r['price']?>">
                         <input class="mb-2  w-75" type="number" name="qty" class="form-control" value="1">
-                        <input type="submit" class="mb-2 btn btn-sm btn-dark text-center" value="Add to Cart">
+                        <input type="submit" name="addCart" value="Add cart" class="btn btn-dark">
                     </form>
                 </div>
             </div>
