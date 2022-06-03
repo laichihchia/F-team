@@ -4,9 +4,15 @@
 // test code
 // session_destroy();
 // exit;
-// var_dump($_SESSION['cart'][0]['productID']);
+// var_dump($_SESSION['Allmember']);
 // exit;
 //get Add post
+if(empty($_SESSION['user']['mem_account'])){
+    echo "<script>alert('請先登入會員');
+    window.location.href = 'gary-member-login.php';
+    </script>";
+    exit;
+}
 $product_id = $_POST['id'];
 $product_name = $_POST['name'];
 $product_price = $_POST['price'];

@@ -45,7 +45,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         border: none;
     }
     .cart-card-info{
-        height: 450px;
+        height: 430px;
         border: none;
     }
     .cart-card-img{
