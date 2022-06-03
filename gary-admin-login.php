@@ -64,7 +64,7 @@ $pageName = 'Login';
                         <h5 class="register-title mb-5 mt-3">LOGIN</h5>
                         <div class="mb-5">
                             <input type="text" class="form-control" name="ad_account" placeholder="Admin Username" require>
-                            <div class="form-text red"></div>
+                            <div class="form-text red accword-red"></div>
                         </div>
                         <div class="mb-5">
                             <div class="form-control d-flex justify-content-between">
