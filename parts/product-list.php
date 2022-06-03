@@ -87,4 +87,5 @@ if (isset($_SESSION['cart'])) {
                 window.location.href = href;
             }
         }
+        
     </script>
