@@ -37,14 +37,13 @@ if (isset($_SESSION['cart'])) {
                     <!-- NAVBAR 連結 BY KEVIN -->
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="index_.php" style="color:white ;">Home</a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">News</a>
+                                        <a class="nav-link" href="#" style="color: white;">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" style="color: white;">News</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="kevin-produst.php" style="color:white ;">Product</a>
@@ -53,7 +52,7 @@ if (isset($_SESSION['cart'])) {
                                         <a class="nav-link" href="#" style="color:white ;">Member</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link disabled" style="color:white ;">Event</a>
+                                        <a class="nav-link" href="#" style="color:white ;">Event</a>
                                     </li>
                                 </ul>
                             </div>
@@ -73,7 +72,7 @@ if (isset($_SESSION['cart'])) {
     </header>
     <div class="list-section">
         <div class="list-group">
-            <a href="#" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
+            <a href="der-NewsList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
             <a href="gary-mem-list-true.php" class="list-a list-group-item list-group-item-action <?= $pageName === "會員管理" ? 'active' : ''; ?>">會員管理</a>
             <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
             <a href="cooler-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : ''; ?>">課程資訊</a>
