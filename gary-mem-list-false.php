@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
-$perPage = 20; //每一頁有幾筆
+$pageName = "會員管理";
+$perPage = 15; //每一頁有幾筆
 
 //頁碼 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -11,7 +12,7 @@ if ($page < 1) {
     exit;
 }
 
-$t_sql = "SELECT COUNT(1) FROM member";
+$t_sql = "SELECT COUNT(1) FROM member WHERE `mem-bollen` = 0";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; //總筆數 索引式陣列
 
 // echo $totalRows; exit; 
@@ -30,10 +31,11 @@ if ($totalRows > 0) {
     }
 
     //索引值 資料筆數 ORDER BY sid DESC LIMIT降冪排序
-    $sql = sprintf("SELECT * FROM member ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM `member` WHERE `mem-bollen` = 0 ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 
     $rows = $pdo->query($sql)->fetchAll();
 }
+
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
@@ -42,12 +44,16 @@ if ($totalRows > 0) {
     .mgtp10 {
         margin-top: 3%;
     }
+
+    #bollen {
+        display: none;
+    }
 </style>
 
 <div class="row">
 
     <div class="mgtp10">
-        <div class="col">
+        <div class="col d-flex justify-content-between">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
 
@@ -98,6 +104,9 @@ if ($totalRows > 0) {
 
                 </ul>
             </nav>
+            <div>
+                <a href="gary-mem-list-true.php"><button type="submit" class="btn btn-primary btn-lg">查看激活會員</button></a>
+            </div>
         </div>
 
         <table class="table table-bordered table-striped">
@@ -105,6 +114,7 @@ if ($totalRows > 0) {
                 <tr>
                     <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     <th scope="col">#</th>
+                    <th scope="col">狀態</th>
                     <th scope="col">姓名</th>
                     <th scope="col">暱稱</th>
                     <th scope="col">會員等級</th>
@@ -112,10 +122,14 @@ if ($totalRows > 0) {
                     <th scope="col">Email</th>
                     <th scope="col">生日</th>
                     <th scope="col">地址</th>
+                    <th scope="col">創建時間</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($rows as $r) : ?>
+
+                    <?php //設定布林值名稱
+                    $r['mem-bollen'] = '停用'; ?>
                     <tr>
 
 
@@ -136,6 +150,12 @@ if ($totalRows > 0) {
 
                         <!-- htmlentities裡面內容跳脫成一般文字 -->
                         <td><?= $r['sid'] ?></td>
+                        <td>
+                            <?= $r['mem-bollen'] ?>
+                            <a href="javascript: bollen_it(<?= $r['sid'] ?>)">
+                                <i class="fa-solid fa-rotate"></i>
+                            </a>
+                        </td>
                         <td><?= htmlentities($r['mem-name']) ?></td>
                         <td><?= htmlentities($r['mem-nickname']) ?></td>
                         <td><?= htmlentities($r['mem-level']) ?></td>
@@ -147,6 +167,7 @@ if ($totalRows > 0) {
                     -->
                         <!-- strip_tags 有出現tag的就直接去掉tag -->
                         <td><?= strip_tags($r['mem-address']) ?></td>
+                        <td><?= $r['mem-created_at'] ?></td>
 
                     </tr>
                 <?php endforeach; ?>
@@ -164,6 +185,12 @@ if ($totalRows > 0) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
             // 如館按確定 轉到刪除檔
             location.href = `gary-member-delete.php?sid=${sid}`;
+        }
+    }
+
+    function bollen_it(sid) {
+        if (confirm(`確定要激活編號為 ${sid} 的資料嗎?`)) {
+            location.href = `gary-list-1-api.php?sid=${sid}`;
         }
     }
 </script>

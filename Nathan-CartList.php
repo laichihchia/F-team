@@ -13,7 +13,7 @@ if ($page < 1) {
 $perpage = 4;
 
 // 取得總比數
-$t_sql = "SELECT COUNT(1) FROM `products`";
+$t_sql = "SELECT COUNT(1) FROM `produst`";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; // 拿出來是索引式陣列用法
 
 // 取得總頁數
@@ -26,7 +26,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         header("Location: ?page=$totalPage"); // 如果使用著輸入urlencoded > 總頁數,跳轉最後一頁
         exit;
     };
-    $sql = sprintf("SELECT * FROM `products` LIMIT %s,%s", ($page - 1) * $perpage, $perpage);
+    $sql = sprintf("SELECT * FROM `produst` LIMIT %s,%s", ($page - 1) * $perpage, $perpage);
 
     $rows = $pdo->query($sql)->fetchAll();
 };
