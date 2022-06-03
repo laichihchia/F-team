@@ -63,7 +63,7 @@ if (isset($_SESSION['cart'])) {
                 </div>
                 <div class="col-6 nav-right">
                     <a href=""><i class="fa-solid fa-user"></i></a>
-                    <a style="cursor: pointer;" class="cart-icon" onclick="ifconfirm('Go Cart?','Nathan-CartList.php')" ><i class="fa-solid fa-cart-shopping"></i>
+                    <a class="cart-icon" onclick="confirm('要前往購物車嗎?')" href="Nathan-ViewCart.php"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= $cartCount ?></span>
                     </a>
                 </div>
@@ -80,11 +80,3 @@ if (isset($_SESSION['cart'])) {
 
         </div>
     </div>
-    <script>
-        // confirm 專用 function
-        const ifconfirm = (text,href) =>{
-            if(confirm(text)){
-                window.location.href = href;
-            }
-        }
-    </script>
