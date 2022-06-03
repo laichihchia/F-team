@@ -30,6 +30,10 @@ if ($totalRows > 0) {
     $rows = $pdo->query($sql)->fetchAll();
 }
 
+$hobbies = [
+    '1' => '價格從高到低',
+    '2' => '價格從低到高',
+];
 
 
 ?>
@@ -59,13 +63,18 @@ if ($totalRows > 0) {
     <div class="col-md-3 d-flex justify-content-around">
         <button type="button" class="btn btn-outline-secondary"><a href="kevin-produst-add.php">Product Update</a></button>
 
+        <form action="kevin-produst.php" method="get">
 
-        <select class="select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
+            <select class="select" aria-label="Default select example" name="option_price">
+
+                <option selected>Open this select menu</option>
+                <?php foreach ($hobbies as $k => $v) : ?>
+                    <option value="<?= $k ?>" name="option_price"><?= $v ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
     </div>
 
@@ -206,10 +215,7 @@ if ($totalRows > 0) {
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
 <script>
-    let option = document.getElementsByClassName("opt");
 
-    console.log(option[0]);
-    console.log(option[1]);
 </script>
 
 <?php require __DIR__ . '/parts/html-foot.php' ?>
