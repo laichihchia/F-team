@@ -5,7 +5,8 @@
 // session_destroy();
 // var_dump($_SESSION['user']) ;
 // exit;
-
+// var_dump($_SESSION['cart'][0]['productID']);
+// exit;
 //get Add post
 $product_id = $_POST['id'];
 $product_name = $_POST['name'];
