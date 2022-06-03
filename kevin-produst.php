@@ -30,6 +30,10 @@ if ($totalRows > 0) {
     $rows = $pdo->query($sql)->fetchAll();
 }
 
+$hobbies = [
+    '1' => '價格從高到低',
+    '2' => '價格從低到高',
+];
 
 ?>
 
@@ -69,21 +73,31 @@ if ($totalRows > 0) {
         height: 1.25rem;
     }
 </style>
-<div class="row">
-    <div class="col d-flex">
-        <!-- 新增產品 -->
-        <button class="col kevin"><a href="kevin-produst-add.php">Product Update</a></button>
-        <select class="col kevin">
-            <!-- 產品篩選功能 (價錢高低) -->
-            <option selected>---Open this select menu---</option>
-            <option value="1" id='price-AEC' class="opt"> One </option>
-            <option value="2" id='price-DEC' class="opt"> Two </option>
-            <option value="3" class="opt"> Three </option>
-        </select>
-        <div class="col lable-box">
-            <label for="">
-                <input type="checkbox" value="1" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Shortboard</span>
+<div class="row d-flex">
+    <div class="col-md-3 d-flex justify-content-around">
+        <button type="button" class="btn btn-outline-secondary"><a href="kevin-produst-add.php">Product Update</a></button>
+
+        <form action="kevin-produst.php" method="get">
+
+            <select class="select" aria-label="Default select example" name="option_price">
+
+                <option selected>Open this select menu</option>
+                <?php foreach ($hobbies as $k => $v) : ?>
+                    <option value="<?= $k ?>" name="option_price"><?= $v ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+
+    <div class="col d-flex justify-content-flex-start align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Shortboard
             </label>
 
             <label for="">
@@ -206,10 +220,7 @@ if ($totalRows > 0) {
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
 <script>
-    let option = document.getElementsByClassName("opt");
 
-    console.log(option[0]);
-    console.log(option[1]);
 </script>
 
 <?php require __DIR__ . '/parts/html-foot.php' ?>
