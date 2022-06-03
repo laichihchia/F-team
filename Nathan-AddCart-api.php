@@ -3,8 +3,8 @@
 
 // test code
 // session_destroy();
+// var_dump($_SESSION['user']) ;
 // exit;
-
 
 //get Add post
 $product_id = $_POST['id'];
