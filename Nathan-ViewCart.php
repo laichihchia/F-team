@@ -4,6 +4,12 @@
 //     echo json_encode($v);
 // }
 // exit;
+if(empty($_SESSION['user']['mem_account'])){
+    echo "<script>alert('請先登入會員');
+    window.location.href = 'gary-member-login.php';
+    </script>";
+    exit;
+}
 
 $pageName = "Nathan's cart";
 $title = "Nathan-ViewCart - Nathan's cart";
