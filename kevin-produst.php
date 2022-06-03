@@ -35,28 +35,42 @@ $hobbies = [
     '2' => '價格從低到高',
 ];
 
-
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
 <?php require __DIR__ . '/parts/product-list.php' ?>
 <style>
-    a {
+    .kevin {
+        border-radius: 15px;
+        margin: 8px;
+        width: 100px;
+        border: 2px solid black;
+        /* background-color: lightgray; */
+    }
+
+    .kevin a {
         text-decoration: none;
+        padding: 8px;
     }
 
-    .form-check {
-        margin-right: 0.6rem;
+    option {
+        padding: 8px;
     }
 
-    .form-check input {
-        width: 0.75vw;
-        height: 1.5vh;
-        vertical-align: middle;
+    label {
+        margin: 8px;
     }
 
-    .form-check label {
-        vertical-align: middle;
+    .lable-box {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input {
+        width: 1.25rem;
+        height: 1.25rem;
     }
 </style>
 <div class="row d-flex">
@@ -85,52 +99,43 @@ $hobbies = [
             <label class="form-check-label" for="flexCheckDefault">
                 Shortboard
             </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Old School
+
+            <label for="">
+                <input type="checkbox" value="2" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Old School</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="3" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Decks</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="4" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Trucks</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="5" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Wheels</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="6" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Bearings</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="7" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Safety Gear</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="8" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Spray Paint</span>
             </label>
         </div>
 
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Decks
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Trucks
-            </label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Wheels
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Bearings
-            </label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Safety Gear
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Spray Paint
-            </label>
-        </div>
     </div>
 </div>
 <div class="row">

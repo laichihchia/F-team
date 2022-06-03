@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
+$title = 'Gary-False-Member';
 $pageName = "會員管理";
 $perPage = 15; //每一頁有幾筆
 
