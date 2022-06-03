@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/parts/connect_db.php';
 $pageName = '課程資訊';
-$title = '通訊錄列表 - 小新的網站';
+$title = '課程資訊';
 
 $perPage = 5; // 每一頁有幾筆
 
