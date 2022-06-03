@@ -32,7 +32,6 @@ if ($totalRows > 0) {
 
 
 ?>
-?>
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
 <?php require __DIR__ . '/parts/product-list.php' ?>
