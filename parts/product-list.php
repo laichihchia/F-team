@@ -62,7 +62,7 @@ if (isset($_SESSION['cart'])) {
 
                 </div>
                 <div class="col-6 nav-right">
-                    <a href=""><i class="fa-solid fa-user"></i></a>
+                    <a href="gary-member-login.php"><i class="fa-solid fa-user"></i></a>
                     <a class="cart-icon" onclick="confirm('要前往購物車嗎?')" href="Nathan-ViewCart.php"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= $cartCount ?></span>
                     </a>

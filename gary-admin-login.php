@@ -7,7 +7,7 @@ $pageName = 'Login';
 
 <style>
     body {
-        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://pbs.twimg.com/media/DzqvS6DWoAAztYc.jpg:large')center center/cover;
         background-attachment: fixed;
     }
 
@@ -45,28 +45,37 @@ $pageName = 'Login';
         background: white;
         color: black;
     }
+
+    .red {
+        color: red;
+    }
+
+    #info-bar {
+        text-align: center;
+    }
 </style>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card">
-                <form action="" name="form1">
+                <form name="form1" onsubmit="sendData(); return false;" novoalidate>
                     <div class="card-body">
                         <h5 class="register-title mb-5 mt-3">LOGIN</h5>
                         <div class="mb-5">
-                            <input type="text" class="form-control" name="mem_account" placeholder="Admin Username" require>
+                            <input type="text" class="form-control" name="ad_account" placeholder="Admin Username" require>
                             <div class="form-text red"></div>
                         </div>
                         <div class="mb-5">
                             <div class="form-control d-flex justify-content-between">
-                                <input type="password" class="form-control eyes-input" name="mem_password" placeholder="Admin Password" require>
+                                <input type="password" class="form-control eyes-input" name="ad_password" placeholder="Admin Password" require>
                                 <a class="eyes d-flex align-items-center" onclick="togglePwd()">
                                     <img src="./gary-img/eyes_off.png" alt="" id="eyes">
                                 </a>
                             </div>
                             <div class="form-text red password-red"></div>
                         </div>
+                        <p id="info-bar" class="red" style="display:none;"></p>
                         <div class="mb-3 d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary btn-lg">登入</button>
                         </div>
@@ -105,6 +114,66 @@ $pageName = 'Login';
             seePwd();
         }
     };
+
+    async function sendData() {
+
+        const account_f = document.form1.ad_account;
+        const password_f = document.form1.ad_password;
+
+        let isPass = true;
+        if (account_f.value === '') {
+            const accred = document.querySelector('.accword-red');
+            // 寫入
+            accred.innerText = '請輸入帳號';
+            // 沒通過檢查
+            isPass = false;
+        }
+
+        if (password_f.value === '') {
+            const passred = document.querySelector('.password-red');
+            // 寫入
+            passred.innerText = '請輸入密碼';
+            // 沒通過檢查
+            isPass = false;
+        }
+
+        // 如果isPass是false 程式碼就不要繼續往下走
+        if (!isPass) {
+            return; // 結束函式
+        }
+
+        // 把整個表單內容抓出來
+        const fd = new FormData(document.form1);
+
+        // 把表單送給誰
+        const r = await fetch('gary-ad-login-api.php', {
+            method: 'POST',
+            body: fd,
+        });
+        // .then(d=>d.json())
+        // .then(d=>{
+        //     console.log(d);
+        // })
+
+        // 回傳的資料是JSON 轉回JS的陣列
+        const result = await r.json();
+
+        console.log(result);
+
+        const info_bar = document.querySelector('#info-bar');
+
+
+        // 如果成功 success=true
+        if (result.success) {
+            setTimeout(() => {
+                location.href = 'gary-mem-list-true.php'; //跳轉到列表頁
+            }, 2000);
+            // 如果失敗 success=false
+        } else {
+            info_bar.style.display = 'block'; //顯示提示訊息
+            info_bar.innerText = result.error || '帳號或密碼錯誤';
+        }
+    }
 </script>
 
 <?php include __DIR__ . '/parts/html-foot.php' ?>
