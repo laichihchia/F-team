@@ -39,29 +39,90 @@ if ($totalRows > 0) {
 <style>
     .kevin {
         border-radius: 15px;
-        margin: 15px;
+        margin: 8px;
+        width: 100px;
         border: 2px solid black;
         /* background-color: lightgray; */
     }
 
     .kevin a {
         text-decoration: none;
-        padding: 15px;
+        padding: 8px;
     }
 
     option {
-        padding: 15px;
+        padding: 8px;
+    }
+
+    label {
+        margin: 8px;
+    }
+
+    .lable-box {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input {
+        width: 1.25rem;
+        height: 1.25rem;
     }
 </style>
 <div class="row">
     <div class="col d-flex">
-        <button class="kevin"><a href="kevin-produst-add.php">Product Update</a></button>
-        <select class="kevin">
+        <!-- 新增產品 -->
+        <button class="col kevin"><a href="kevin-produst-add.php">Product Update</a></button>
+        <select class="col kevin">
+            <!-- 產品篩選功能 (價錢高低) -->
             <option selected>---Open this select menu---</option>
-            <option value="1"> One </option>
-            <option value="2"> Two </option>
-            <option value="3"> Three </option>
+            <option value="1" id='price-AEC' class="opt"> One </option>
+            <option value="2" id='price-DEC' class="opt"> Two </option>
+            <option value="3" class="opt"> Three </option>
         </select>
+        <div class="col lable-box">
+            <label for="">
+                <input type="checkbox" value="1" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Shortboard</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="2" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Old School</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="3" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Decks</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="4" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Trucks</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="5" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Wheels</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="6" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Bearings</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="7" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Safety Gear</span>
+            </label>
+
+            <label for="">
+                <input type="checkbox" value="8" style="vertical-align:middle;">
+                <span style="vertical-align:middle;">Spray Paint</span>
+            </label>
+        </div>
+
     </div>
 </div>
 <div class="row">
@@ -144,4 +205,12 @@ if ($totalRows > 0) {
     </div>
 </div>
 <?php require __DIR__ . '/parts/scripts.php' ?>
+
+<script>
+    let option = document.getElementsByClassName("opt");
+
+    console.log(option[0]);
+    console.log(option[1]);
+</script>
+
 <?php require __DIR__ . '/parts/html-foot.php' ?>
