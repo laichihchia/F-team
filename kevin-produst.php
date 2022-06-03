@@ -31,98 +31,97 @@ if ($totalRows > 0) {
 }
 
 
-?>
+
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
 <?php require __DIR__ . '/parts/product-list.php' ?>
 <style>
-    .kevin {
-        border-radius: 15px;
-        margin: 8px;
-        width: 100px;
-        border: 2px solid black;
-        /* background-color: lightgray; */
-    }
-
-    .kevin a {
+    a {
         text-decoration: none;
-        padding: 8px;
     }
 
-    option {
-        padding: 8px;
+    .form-check {
+        margin-right: 0.6rem;
     }
 
-    label {
-        margin: 8px;
+    .form-check input {
+        width: 0.75vw;
+        height: 1.5vh;
+        vertical-align: middle;
     }
 
-    .lable-box {
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    input {
-        width: 1.25rem;
-        height: 1.25rem;
+    .form-check label {
+        vertical-align: middle;
     }
 </style>
-<div class="row">
-    <div class="col d-flex">
-        <!-- 新增產品 -->
-        <button class="col kevin"><a href="kevin-produst-add.php">Product Update</a></button>
-        <select class="col kevin">
-            <!-- 產品篩選功能 (價錢高低) -->
-            <option selected>---Open this select menu---</option>
-            <option value="1" id='price-AEC' class="opt"> One </option>
-            <option value="2" id='price-DEC' class="opt"> Two </option>
-            <option value="3" class="opt"> Three </option>
+<div class="row d-flex">
+    <div class="col-md-3 d-flex justify-content-around">
+        <button type="button" class="btn btn-outline-secondary"><a href="kevin-produst-add.php">Product Update</a></button>
+
+
+        <select class="select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
         </select>
-        <div class="col lable-box">
-            <label for="">
-                <input type="checkbox" value="1" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Shortboard</span>
-            </label>
 
-            <label for="">
-                <input type="checkbox" value="2" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Old School</span>
-            </label>
+    </div>
 
-            <label for="">
-                <input type="checkbox" value="3" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Decks</span>
-            </label>
 
-            <label for="">
-                <input type="checkbox" value="4" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Trucks</span>
+    <div class="col d-flex justify-content-flex-start align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Shortboard
             </label>
-
-            <label for="">
-                <input type="checkbox" value="5" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Wheels</span>
-            </label>
-
-            <label for="">
-                <input type="checkbox" value="6" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Bearings</span>
-            </label>
-
-            <label for="">
-                <input type="checkbox" value="7" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Safety Gear</span>
-            </label>
-
-            <label for="">
-                <input type="checkbox" value="8" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Spray Paint</span>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+                Old School
             </label>
         </div>
 
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Decks
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+                Trucks
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Wheels
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+                Bearings
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Safety Gear
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+                Spray Paint
+            </label>
+        </div>
     </div>
 </div>
 <div class="row">
