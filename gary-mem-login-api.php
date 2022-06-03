@@ -24,23 +24,20 @@ $mem_account = $_POST['mem_account'];
 $mem_password = $_POST['mem_password'];
 
 
-$sql = "SELECT  `mem-account`, `mem-password`, `mem-bollen` FROM `member` WHERE 1;";
+$sql = "SELECT  * FROM `member` WHERE 1;";
 
-$stmt = $pdo->query($sql);
+// $stmt = $pdo->query($sql);
 
 $AccAndPwd = $pdo->query($sql)->fetchAll();
 // echo json_encode($rrr, JSON_UNESCAPED_UNICODE);
 
-
+$_SESSION['Allmember'] = $AccAndPwd;
 
 foreach( $AccAndPwd as $k => $v){
             
     if (isset($_POST['mem_account'])) {
     
-        if (!empty($_POST['mem_account']) and !empty($_POST['mem_password'])) {
-            
-    
-            
+        if (!empty($_POST['mem_account']) and !empty($_POST['mem_password'])) {       
     
     
             if (!empty($AccAndPwd[$k])) {
