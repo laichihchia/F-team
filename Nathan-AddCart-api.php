@@ -3,7 +3,6 @@
 
 // test code
 // session_destroy();
-// var_dump($_SESSION['user']) ;
 // exit;
 // var_dump($_SESSION['cart'][0]['productID']);
 // exit;
