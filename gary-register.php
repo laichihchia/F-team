@@ -73,7 +73,7 @@ $title = 'Gary-Register';
             <div class="card">
                 <form name="form1" onsubmit="sendData(); return false;" novoalidate>
                     <h5 class="register-title">會員註冊</h5>
-                    <input type="hidden" name="mem_avatar">
+                    <input type="hidden" name="mem_avatar" value="images.png">
                     <div class="card-body d-flex justify-content-between">
                         <div class="col-6">
                             <div class="mb-3">

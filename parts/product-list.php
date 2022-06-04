@@ -14,6 +14,7 @@ if (isset($_SESSION['user'])) {
             // 右上角稱呼的顯示
             $memName = $member_r['mem-name'];
             $memNick = $member_r['mem-nickname'];
+            $memAvatar = $member_r['mem-avatar'];
             $iconName = $memNick;
             if ($memNick == '') {
                 $iconName = $memName;
@@ -51,6 +52,20 @@ if (isset($_SESSION['user'])) {
     .memName:hover {
         color: white;
     }
+
+    .AvatarImg {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .iconDiv {
+        width: 20%;
+    }
+
+    .dsn {
+        display: none;
+    }
 </style>
 
 <body>
@@ -86,12 +101,23 @@ if (isset($_SESSION['user'])) {
 
 
                 </div>
-                <div class="col-6 nav-right">
-                    <a href="<?= isset($_SESSION['user']) ? 'gary-mem-edit.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none"><i class="fa-solid fa-user"></i><?= isset($iconName) ? $iconName : 'Visitor'; ?></a>
-                    <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
-                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
-                    </a>
+                <div class="col-6 d-flex justify-content-end">
+                    <div class="d-flex justify-content-between align-items-center iconDiv">
+                        <a href="<?= isset($_SESSION['user']) ? 'gary-mem-edit.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
+                            <!-- 有登入就把訪客icon隱藏 -->
+                            <?= isset($_SESSION['user']) ? '' : '<i class="fa-solid fa-user"></i>'; ?>
+                            <!-- 有登入就顯示個人照片 -->
+                            <!-- 沒登入就把img欄位隱藏 -->
+                            <img src="<?= isset($_SESSION['user']) ? "gary-uploaded/$memAvatar" : '' ;?>"
+                            class="AvatarImg <?= isset($_SESSION['user']) ? '' : 'dsn' ; ?>">
+                            <!-- 顯示的名稱 -->
+                            <?= isset($iconName) ? $iconName : 'Visitor'; ?>
+                        </a>
+                        <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
+                        <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
+                            <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,4 +139,7 @@ if (isset($_SESSION['user'])) {
                 window.location.href = href;
             }
         }
+
+        const Avatar = document.querySelector('.AvatarImg');
+        const icon = document.querySelector('#ICON');
     </script>

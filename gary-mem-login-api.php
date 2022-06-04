@@ -31,8 +31,6 @@ $sql = "SELECT  * FROM `member` WHERE 1;";
 $AccAndPwd = $pdo->query($sql)->fetchAll();
 // echo json_encode($rrr, JSON_UNESCAPED_UNICODE);
 
-$_SESSION['Allmember'] = $AccAndPwd;
-
 foreach( $AccAndPwd as $k => $v){
             
     if (isset($_POST['mem_account'])) {
