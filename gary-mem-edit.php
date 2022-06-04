@@ -163,7 +163,7 @@ if (isset($_SESSION['user'])) {
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="gary-member-login.php" class="btn btn-primary login">Back</a>
+                            <a href="#" class="btn btn-primary login">Back</a>
                             <button type="submit" class="btn btn-primary">確認修改</button>
                         </div>
                     </div>

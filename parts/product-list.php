@@ -10,9 +10,18 @@ if (isset($_SESSION['user'])) {
             $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
             $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
             $cartCount = $count_sql[0]['COUNT(1)'];
+
+            // 右上角稱呼的顯示
+            $memName = $member_r['mem-name'];
+            $memNick = $member_r['mem-nickname'];
+            $iconName = $memNick;
+            if ($memNick == '') {
+                $iconName = $memName;
+            }
         }
     }
 }
+
 
 ?>
 <style>
@@ -33,6 +42,14 @@ if (isset($_SESSION['user'])) {
         text-align: center;
         line-height: 15px;
         opacity: 0.9;
+    }
+
+    .memName {
+        color: white;
+    }
+
+    .memName:hover {
+        color: white;
     }
 </style>
 
@@ -60,9 +77,6 @@ if (isset($_SESSION['user'])) {
                                         <a class="nav-link" href="kevin-produst.php" style="color:white ;">Product</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color:white ;">Member</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" href="#" style="color:white ;">Event</a>
                                     </li>
                                 </ul>
@@ -73,10 +87,11 @@ if (isset($_SESSION['user'])) {
 
                 </div>
                 <div class="col-6 nav-right">
-                    <a href="gary-member-login.php"><i class="fa-solid fa-user"></i></a>
+                    <a href="<?= isset($_SESSION['user']) ? 'gary-mem-edit.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none"><i class="fa-solid fa-user"></i><?= isset($iconName) ? $iconName : 'Visitor'; ?></a>
                     <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                     </a>
+                    <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
                 </div>
             </div>
         </div>
