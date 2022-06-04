@@ -83,7 +83,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                         <p class="card-text"><?= htmlentities($r['name']) ?></p>
                         <p class="card-text">$ <?= htmlentities($r['price']) ?></p>
                     </div>
-                    <form class="text-center" action="Nathan-AddCart-api.php" method="post">
+                    <form class="text-center" action="test.php" method="post">
                         <input type="hidden" name="id" value="<?=$r['sid']?>">
                         <input type="hidden" name="name" value="<?=$r['name']?>">
                         <input type="hidden" name="price" value="<?=$r['price']?>">

@@ -1,18 +1,24 @@
 <?php require __DIR__ . '/parts/connect_db.php';
-
+// 取得會員表格
+$sql = "SELECT  * FROM `member` WHERE 1;";
+$mem_sql = $pdo->query($sql)->fetchAll();
 
 // test code
 // session_destroy();
 // exit;
 // var_dump($_SESSION['Allmember']);
 // exit;
-//get Add post
+
+
+// 判斷是否登入會員
 if(empty($_SESSION['user']['mem_account'])){
     echo "<script>alert('請先登入會員');
     window.location.href = 'gary-member-login.php';
     </script>";
     exit;
 }
+
+//get Add post
 $product_id = $_POST['id'];
 $product_name = $_POST['name'];
 $product_price = $_POST['price'];
