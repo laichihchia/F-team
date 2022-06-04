@@ -11,46 +11,53 @@ if (isset($_SESSION['user'])) {
         }
     }
     $memLogin_sid = $memLogin['sid'];
-    // 取得此會員的購物車紀錄
+
+    // 取得此會員的所有購物車紀錄
     $sql = "SELECT * FROM `cart` WHERE `member_id` = $memLogin_sid";
     $cart_sql = $pdo->query($sql)->fetchAll();
-    // echo json_encode($cart_sql);
-    // exit;
-    // add to cart
+    // 取得 post
+
     $product_id = $_POST['id'];
     $product_name = $_POST['name'];
     $product_price = $_POST['price'];
     $product_qty = $_POST['qty'];
+
+    // add cart
+    $empty_ar = [];
     if (isset($_POST['addCart'])) {
         foreach ($cart_sql as $key => $val) {
-            if ($product_id === $val['sid']) {
-                echo "<script>alert('此商品已加入購物車');
+            // 取得該會員所有商品的商品編號
+            array_push($empty_ar, $val['produst_id']);
+        }
+        // 跟 add post 商品編號比對
+        if (in_array($product_id, $empty_ar)) { 
+            echo "<script>alert('此商品已加入購物車');
             window.location.href = 'Nathan-CartList.php';
             </script>";
-            };
-        }
-        $sql = "INSERT INTO `cart`(
-        `sid`,`name`,`qty`,
+        } else {
+            $sql = "INSERT INTO `cart`(
+        `produst_id`,`name`,`qty`,
         `price`,`member_id`
         ) VALUES (
             ?, ?, ?,
             ?, ?
         )";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            $product_id,
-            $product_name,
-            $product_qty,
-            $product_price,
-            $memLogin_sid,
-        ]);
-        header('Location: Nathan-CartList.php');
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                $product_id,
+                $product_name,
+                $product_qty,
+                $product_price,
+                $memLogin_sid,
+            ]);
+            header('Location: Nathan-CartList.php');
+        }
     };
 
     // cart delete
     if (isset($_POST['remove'])) {
         $delete_id = $_POST['cart_id'];
-        $cart_delete_sql = "DELETE FROM `cart` WHERE `sid`= $delete_id";
+        $cart_delete_sql = "DELETE FROM `cart` WHERE `produst_id`= $delete_id";
         $pdo->query($cart_delete_sql);
         header('Location: Nathan-ViewCart.php');
     };
@@ -59,11 +66,11 @@ if (isset($_SESSION['user'])) {
     if (isset($_POST['update'])) {
         $edit_id = $_POST['cart_id'];
         $edit_qty = $_POST['cart_qty'];
-        $cart_edit_sql = "UPDATE `cart` SET `qty` = $edit_qty WHERE `cart`.`sid` = $edit_id";
+        $cart_edit_sql = "UPDATE `cart` SET `qty` = $edit_qty WHERE `cart`.`produst_id` = $edit_id";
         $pdo->query($cart_edit_sql);
         header('Location: Nathan-ViewCart.php');
     };
-}else{
+} else {
     echo "<script>alert('請登入會員');
     window.location.href = 'gary-member-login.php';
     </script>";

@@ -74,7 +74,7 @@ if (isset($_SESSION['user'])) {
                 </div>
                 <div class="col-6 nav-right">
                     <a href="gary-member-login.php"><i class="fa-solid fa-user"></i></a>
-                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-CartList.php')"><i class="fa-solid fa-cart-shopping"></i>
+                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                     </a>
                 </div>

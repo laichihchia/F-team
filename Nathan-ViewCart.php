@@ -97,7 +97,7 @@ $title = "Nathan-ViewCart - Nathan's cart";
                     <form action="Nathan-AddCart-api.php" method="POST">
                         <tr class="text-center prod-bottom">
                             <td scope="col"><?= $i ?></td>
-                            <input type="hidden" name="cart_id" value="<?= $r['sid']; ?>">
+                            <input type="hidden" name="cart_id" value="<?= $r['produst_id']; ?>">
                             <td scope="col"><?= $r['name']; ?></td>
                             <input type="hidden" name="cart_name" value="<?= $r['name']; ?>">
                             <td scope="col"><?= $r['price']; ?></td>
