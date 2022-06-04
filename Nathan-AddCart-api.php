@@ -1,68 +1,65 @@
 <?php require __DIR__ . '/parts/connect_db.php';
-// 取得會員表格
+// unset($_SESSION['user']);
+
 $sql = "SELECT  * FROM `member` WHERE 1;";
 $mem_sql = $pdo->query($sql)->fetchAll();
 
-// test code
-// session_destroy();
-// exit;
-// var_dump($_SESSION['Allmember']);
-// exit;
-
-
-// 判斷是否登入會員
-if(empty($_SESSION['user']['mem_account'])){
-    echo "<script>alert('請先登入會員');
-    window.location.href = 'gary-member-login.php';
-    </script>";
-    exit;
+foreach ($mem_sql as $rows => $r) {
+    if ($r['mem-account'] === $_SESSION['user']['mem_account']) {
+        // 取得登入中的會員資料
+        $memLogin = $r;
+    }
 }
-
-//get Add post
+$memLogin_sid = $memLogin['sid'];
+// 取得此會員的購物車紀錄
+$sql = "SELECT * FROM `cart` WHERE `member_id` = $memLogin_sid";
+$cart_sql = $pdo->query($sql)->fetchAll();
+// echo json_encode($cart_sql);
+// exit;
+// add to cart
 $product_id = $_POST['id'];
 $product_name = $_POST['name'];
 $product_price = $_POST['price'];
 $product_qty = $_POST['qty'];
-
 if (isset($_POST['addCart'])) {
-    $check_product = array_column($_SESSION['cart'], 'productID');
-    if (in_array($product_id, $check_product)) {
-        echo "<script>alert('此商品已加入購物車');
+    foreach ($cart_sql as $key => $val) {
+        if ($product_id === $val['sid']) {
+            echo "<script>alert('此商品已加入購物車');
             window.location.href = 'Nathan-CartList.php';
             </script>";
-    } else {
-        $_SESSION['cart'][] = array(
-            'productID' => $product_id,
-            'productName' => $product_name,
-            'productPrice' => $product_price,
-            'productQty' => $product_qty
-        );
-        header('Location: Nathan-CartList.php');
+        };
     }
+    $sql = "INSERT INTO `cart`(
+        `sid`,`name`,`qty`,
+        `price`,`member_id`
+        ) VALUES (
+            ?, ?, ?,
+            ?, ?
+        )";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        $product_id,
+        $product_name,
+        $product_qty,
+        $product_price,
+        $memLogin_sid,
+    ]);
+    header('Location: Nathan-CartList.php');
 };
 
-// get Delete post
+// cart delete
 if (isset($_POST['remove'])) {
-    foreach ($_SESSION['cart'] as $k => $v) {
-        if ($v['productID'] === $_POST['item']) {
-            unset($_SESSION['cart'][$k]);
-            $_SESSION['cart'] = array_values($_SESSION['cart']);
-            header('Location: Nathan-ViewCart.php');
-        }
-    }
-}
+    $delete_id = $_POST['cart_id'];
+    $cart_delete_sql = "DELETE FROM `cart` WHERE `sid`= $delete_id";
+    $pdo->query($cart_delete_sql);
+    header('Location: Nathan-ViewCart.php');
+};
 
-// get Update post
+// cart edit 
 if (isset($_POST['update'])) {
-    foreach ($_SESSION['cart'] as $k => $v) {
-        if ($v['productID'] === $_POST['item']) {
-            $_SESSION['cart'][$k] = array(
-                'productID' => $product_id,
-                'productName' => $product_name,
-                'productPrice' => $product_price,
-                'productQty' => $product_qty
-            );
-            header('Location: Nathan-ViewCart.php');
-        }
-    }
-}
+    $edit_id = $_POST['cart_id'];
+    $edit_qty = $_POST['cart_qty'];
+    $cart_edit_sql = "UPDATE `cart` SET `qty` = $edit_qty WHERE `cart`.`sid` = $edit_id";
+    $pdo->query($cart_edit_sql);
+    header('Location: Nathan-ViewCart.php');
+};

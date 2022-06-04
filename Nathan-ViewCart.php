@@ -8,8 +8,8 @@ foreach ($mem_sql as $rows => $r) {
         $memLoginID = $r['sid'];
     }
 }
-$sql = "SELECT * FROM `cart` WHERE `member_id` = $memLoginID";
-$cart_sql = $pdo->query($sql)->fetchAll();
+// 取得此會員的購物車紀錄
+$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
 
 if (empty($_SESSION['user']['mem_account'])) {
     echo "<script>alert('請先登入會員');
@@ -93,16 +93,15 @@ $title = "Nathan-ViewCart - Nathan's cart";
                     <form action="Nathan-AddCart-api.php" method="POST">
                         <tr class="text-center prod-bottom">
                             <td scope="col"><?= $i ?></td>
-                            <input type="hidden" name="id" value="<?= $r['sid']; ?>">
+                            <input type="hidden" name="cart_id" value="<?= $r['sid']; ?>">
                             <td scope="col"><?= $r['name']; ?></td>
-                            <input type="hidden" name="name" value="<?= $r['name']; ?>">
+                            <input type="hidden" name="cart_name" value="<?= $r['name']; ?>">
                             <td scope="col"><?= $r['price']; ?></td>
-                            <input type="hidden" name="price" value="<?= $r['price']; ?>">
-                            <td><input class="w-50" type="number" name="qty" min="0" value="<?= $r['qty']; ?>"></td>
+                            <input type="hidden" name="cart_price" value="<?= $r['price']; ?>">
+                            <td><input class="w-50" type="number" name="cart_qty" min="0" value="<?= $r['qty']; ?>"></td>
                             <td scope="col"><?= $productTotal; ?></td>
                             <td><button onclick="confirm('確定要變更此商品數量嗎?');" name="update" class=" btn-sm btn-dark">Update</button></td>
                             <td><button onclick="confirm('確定要將此商品移除購物車嗎?');" name="remove" class=" btn-sm btn-dark">Delete</button></td>
-                            <input type="hidden" name="item" value="<?= $ar['productID']; ?>">
                         </tr>
                     </form>
                 <?php endforeach; ?>
