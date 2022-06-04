@@ -55,12 +55,8 @@ if (isset($_SESSION['user'])) {
 
     .AvatarImg {
         border-radius: 50%;
-        width: 30px;
+        width: 30px !important;
         height: 30px;
-    }
-
-    .iconDiv {
-        width: 20%;
     }
 
     .dsn {
@@ -101,8 +97,7 @@ if (isset($_SESSION['user'])) {
 
 
                 </div>
-                <div class="col-6 d-flex justify-content-end">
-                    <div class="d-flex justify-content-between align-items-center iconDiv">
+                <div class="col-6 nav-right">
                         <a href="<?= isset($_SESSION['user']) ? 'gary-mem-edit.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
                             <!-- 有登入就把訪客icon隱藏 -->
                             <?= isset($_SESSION['user']) ? '' : '<i class="fa-solid fa-user"></i>'; ?>
@@ -113,11 +108,13 @@ if (isset($_SESSION['user'])) {
                             <!-- 顯示的名稱 -->
                             <?= isset($iconName) ? $iconName : 'Visitor'; ?>
                         </a>
+
+                        <!-- LOGIN/LOGOUT -->
                         <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
+                        
                         <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                             <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                         </a>
-                    </div>
                 </div>
             </div>
         </div>
