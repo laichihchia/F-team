@@ -1,8 +1,14 @@
 <?php
-$cartCount = 0;
-if (isset($_SESSION['cart'])) {
-    $cartCount = count($_SESSION['cart']);
-};
+$mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
+foreach ($mem_sql as $member_rows => $member_r) {
+    if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
+        // 取得登入中的會員id
+        $memLoginID = $member_r['sid'];
+    }
+}
+$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+$count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+$cartCount = $count_sql[0]['COUNT(1)'];
 ?>
 <style>
     .cart-icon {
