@@ -88,10 +88,10 @@ if (isset($_SESSION['user'])) {
                 </div>
                 <div class="col-6 nav-right">
                     <a href="<?= isset($_SESSION['user']) ? 'gary-mem-edit.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none"><i class="fa-solid fa-user"></i><?= isset($iconName) ? $iconName : 'Visitor'; ?></a>
+                    <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
                     <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                     </a>
-                    <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
                 </div>
             </div>
         </div>
