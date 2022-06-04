@@ -62,7 +62,7 @@ if (isset($_SESSION['cart'])) {
 
                 </div>
                 <div class="col-6 nav-right">
-                    <a href=""><i class="fa-solid fa-user"></i></a>
+                    <a href="gary-member-login.php"><i class="fa-solid fa-user"></i></a>
                     <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-CartList.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= $cartCount ?></span>
                     </a>
