@@ -1,4 +1,5 @@
 <?php
+// 會員在登入狀態 購物車紀錄數量 右上角顯示
 $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
 foreach ($mem_sql as $member_rows => $member_r) {
     if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
