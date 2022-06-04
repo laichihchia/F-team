@@ -26,7 +26,7 @@ if ($totalRows > 0) {
         exit;
     }
 
-    $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM produst ORDER BY `sid` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 }
 
@@ -34,6 +34,26 @@ $hobbies = [
     '1' => '價格從高到低',
     '2' => '價格從低到高',
 ];
+
+
+if (isset($_GET['option_price'])) {
+    // 查詢商品的價格 (降冪)
+
+    $option_price = $_GET["option_price"];
+
+    if ($option_price  == 1) {
+        $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+        $rows = $pdo->query($sql)->fetchAll();
+    } else if ($option_price  == 2) {
+        $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+        $rows = $pdo->query($sql)->fetchAll();
+    }
+} else {
+    // 查詢所有商品
+
+    $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $rows = $pdo->query($sql)->fetchAll();
+}
 
 ?>
 
@@ -77,17 +97,18 @@ $hobbies = [
     <div class="col-md-3 d-flex justify-content-around">
         <button type="button" class="btn btn-outline-secondary"><a href="kevin-produst-add.php">Product Update</a></button>
 
-        <form action="kevin-produst.php" method="get">
-
+        <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
             <select class="select" aria-label="Default select example" name="option_price">
 
                 <option selected>Open this select menu</option>
+
                 <?php foreach ($hobbies as $k => $v) : ?>
                     <option value="<?= $k ?>" name="option_price"><?= $v ?></option>
                 <?php endforeach; ?>
             </select>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+
         </form>
 
     </div>
@@ -220,7 +241,17 @@ $hobbies = [
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
 <script>
+    // async function priceDesc() {
+    //     const fd = new FormData(document.form1);
 
+    //     const r = await fetch('/kevin-produst-api.php', {
+    //         method: 'POST',
+    //         body: fd,
+    //     });
+    //     const result = await r.json();
+
+    //     console.log(result);
+    // }
 </script>
 
 <?php require __DIR__ . '/parts/html-foot.php' ?>
