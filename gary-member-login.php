@@ -170,7 +170,7 @@ $title = 'Gary-Login';
         if (result.success) {
             setTimeout(() => {
                 location.href = 'Nathan-CartList.php'; //跳轉到列表頁
-            }, 2000);
+            }, 1000);
             // 如果失敗 success=false
         } else if (result.bollen) {
             info_bar.style.display = 'block'; //顯示提示訊息
