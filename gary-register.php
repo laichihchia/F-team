@@ -310,8 +310,8 @@ $title = 'Gary-Register';
         // 如果新增成功 success=true
         if (result.success) {
             // 關於顏色的CSS
-            info_bar.classList.remove('alert-danger');
-            info_bar.classList.add('alert-success');
+            // info_bar.classList.remove('alert-danger');
+            // info_bar.classList.add('alert-success');
             // 寫入文字
             info_bar.innerText = '註冊成功';
 
@@ -320,8 +320,8 @@ $title = 'Gary-Register';
             // }, 2000);
             // 如果新增失敗 success=false
         } else {
-            info_bar.classList.remove('alert-success');
-            info_bar.classList.add('alert-danger');
+            // info_bar.classList.remove('alert-success');
+            // info_bar.classList.add('alert-danger');
             info_bar.innerText = result.error || '會員無法註冊';
         }
 
