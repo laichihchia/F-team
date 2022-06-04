@@ -1,15 +1,19 @@
 <?php
 // 會員在登入狀態 購物車紀錄數量 右上角顯示
-$mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
-foreach ($mem_sql as $member_rows => $member_r) {
-    if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
-        // 取得登入中的會員id
-        $memLoginID = $member_r['sid'];
+
+if (isset($_SESSION['user'])) {
+    $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
+    foreach ($mem_sql as $member_rows => $member_r) {
+        if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
+            // 取得登入中的會員id
+            $memLoginID = $member_r['sid'];
+            $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+            $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+            $cartCount = $count_sql[0]['COUNT(1)'];
+        }
     }
 }
-$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-$count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-$cartCount = $count_sql[0]['COUNT(1)'];
+
 ?>
 <style>
     .cart-icon {
@@ -71,7 +75,7 @@ $cartCount = $count_sql[0]['COUNT(1)'];
                 <div class="col-6 nav-right">
                     <a href="gary-member-login.php"><i class="fa-solid fa-user"></i></a>
                     <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-CartList.php')"><i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-count"><?= $cartCount ?></span>
+                        <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                     </a>
                 </div>
             </div>
@@ -89,10 +93,9 @@ $cartCount = $count_sql[0]['COUNT(1)'];
     </div>
     <script>
         // confirm 專用 function
-        const ifconfirm = (text,href) =>{
-            if(confirm(text)){
+        const ifconfirm = (text, href) => {
+            if (confirm(text)) {
                 window.location.href = href;
             }
         }
-        
     </script>

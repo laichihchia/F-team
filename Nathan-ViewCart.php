@@ -1,5 +1,9 @@
 <?php require __DIR__ . '/parts/connect_db.php';
-
+if (!isset($_SESSION['user'])) {
+    echo "<script>alert('請登入會員');
+    window.location.href = 'gary-member-login.php';
+    </script>";
+}
 $sql = "SELECT  * FROM `member` WHERE 1;";
 $mem_sql = $pdo->query($sql)->fetchAll();
 foreach ($mem_sql as $rows => $r) {
