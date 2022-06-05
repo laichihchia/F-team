@@ -47,7 +47,8 @@ foreach( $AccAndPwd as $k => $v){
                     // 把資料設定到 session 裡 
                     $output['success'] = true;
                     $_SESSION['user'] = [
-                        'ad_account' => $_POST['ad_account'],
+                        'mem_account' => $_POST['ad_account'],
+                        'grade' => 'high',
                     ];
 
 

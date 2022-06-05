@@ -79,7 +79,7 @@ $title = 'Gary-MemberCard';
 <div class="container">
     <div class="row">
         <div class="photo">
-            <div class="front" onclick="Click()">
+            <div class="front" <?= $_SESSION['user']['grade'] = 'high'? '': 'onclick="Click()"' ; ?>>
                 <div class="Bigcard">
                     <div class="CardBGC"></div>
                     <div class="cardBOX">

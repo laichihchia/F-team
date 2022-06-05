@@ -51,6 +51,7 @@ foreach( $AccAndPwd as $k => $v){
                     $output['success'] = true;
                     $_SESSION['user'] = [
                         'mem_account' => $_POST['mem_account'],
+                        'grade' => 'low',
                     ];
                     }
 
