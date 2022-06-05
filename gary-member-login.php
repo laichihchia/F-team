@@ -169,7 +169,7 @@ $title = 'Gary-Login';
         // 如果成功 success=true
         if (result.success) {
             setTimeout(() => {
-                location.href = 'Nathan-CartList.php'; //跳轉到列表頁
+                location.href = 'gary-member-card.php'; //跳轉到列表頁
             }, 1000);
             // 如果失敗 success=false
         } else if (result.bollen) {
