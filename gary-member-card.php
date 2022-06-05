@@ -1,6 +1,46 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
 $title = 'Gary-MemberCard';
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user']['grade'] === 'low') {
+        $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
+        foreach ($mem_sql as $member_rows => $member_r) {
+            if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
+                // 取得登入中的會員id
+                $memLoginID = $member_r['sid'];
+                $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+                $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+                $cartCount = $count_sql[0]['COUNT(1)'];
+
+                // 右上角稱呼的顯示跟其他資訊
+                $memName = $member_r['mem-name'];
+                $memNick = $member_r['mem-nickname'];
+                $memAvatar = $member_r['mem-avatar'];
+                $memLevel = $member_r['mem-level'];
+                $memCreated = $member_r['mem-created_at'];
+                $iconName = $memNick;
+                if ($memNick == '') {
+                    $iconName = $memName;
+                }
+            }
+        }
+    }
+    if ($_SESSION['user']['grade'] === 'high') {
+        $ad_sql = $pdo->query("SELECT  * FROM `admin` WHERE 1;")->fetchAll();
+        foreach ($ad_sql as $ad_rows => $ad_r) {
+            if ($ad_r['ad-account'] === $_SESSION['user']['mem_account']) {
+                // 取得登入中的會員id
+                $memLoginID = $ad_r['sid'];
+    
+                // 右上角稱呼的顯示跟其他資訊
+                $memName = $ad_r['ad-name'];
+                $memAvatar = $ad_r['ad-avatar'];
+    
+                $iconName = $memName;
+            }
+        }
+    }
+}
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
@@ -79,7 +119,7 @@ $title = 'Gary-MemberCard';
 <div class="container">
     <div class="row">
         <div class="photo">
-            <div class="front" <?= $_SESSION['user']['grade'] = 'high'? '': 'onclick="Click()"' ; ?>>
+            <div class="front" <?= $_SESSION['user']['grade'] === 'high' ?'': 'onclick="Click()"' ?>>
                 <div class="Bigcard">
                     <div class="CardBGC"></div>
                     <div class="cardBOX">

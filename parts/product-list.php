@@ -1,31 +1,70 @@
 <?php
 // 會員在登入狀態 購物車紀錄數量 右上角顯示
 
-if (isset($_SESSION['user'])) {
-    $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
-    foreach ($mem_sql as $member_rows => $member_r) {
-        if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
-            // 取得登入中的會員id
-            $memLoginID = $member_r['sid'];
-            $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-            $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-            $cartCount = $count_sql[0]['COUNT(1)'];
+// if (isset($_SESSION['user'])) {
+//     $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
+//     foreach ($mem_sql as $member_rows => $member_r) {
+//         if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
+//             // 取得登入中的會員id
+//             $memLoginID = $member_r['sid'];
+//             $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+//             $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+//             $cartCount = $count_sql[0]['COUNT(1)'];
 
-            // 右上角稱呼的顯示跟其他資訊
-            $memName = $member_r['mem-name'];
-            $memNick = $member_r['mem-nickname'];
-            $memAvatar = $member_r['mem-avatar'];
-            $memLevel = $member_r['mem-level'];
-            $memCreated = $member_r['mem-created_at'];
-            $iconName = $memNick;
-            if ($memNick == '') {
+//             // 右上角稱呼的顯示跟其他資訊
+//             $memName = $member_r['mem-name'];
+//             $memNick = $member_r['mem-nickname'];
+//             $memAvatar = $member_r['mem-avatar'];
+//             $memLevel = $member_r['mem-level'];
+//             $memCreated = $member_r['mem-created_at'];
+//             $iconName = $memNick;
+//             if ($memNick == '') {
+//                 $iconName = $memName;
+//             }
+//         }
+//     }
+// }
+
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user']['grade'] === 'low') {
+        $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
+        foreach ($mem_sql as $member_rows => $member_r) {
+            if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
+                // 取得登入中的會員id
+                $memLoginID = $member_r['sid'];
+                $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+                $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+                $cartCount = $count_sql[0]['COUNT(1)'];
+
+                // 右上角稱呼的顯示跟其他資訊
+                $memName = $member_r['mem-name'];
+                $memNick = $member_r['mem-nickname'];
+                $memAvatar = $member_r['mem-avatar'];
+                $memLevel = $member_r['mem-level'];
+                $memCreated = $member_r['mem-created_at'];
+                $iconName = $memNick;
+                if ($memNick == '') {
+                    $iconName = $memName;
+                }
+            }
+        }
+    }
+    if ($_SESSION['user']['grade'] === 'high') {
+        $ad_sql = $pdo->query("SELECT  * FROM `admin` WHERE 1;")->fetchAll();
+        foreach ($ad_sql as $ad_rows => $ad_r) {
+            if ($ad_r['ad-account'] === $_SESSION['user']['mem_account']) {
+                // 取得登入中的會員id
+                $memLoginID = $ad_r['sid'];
+    
+                // 右上角稱呼的顯示跟其他資訊
+                $memName = $ad_r['ad-name'];
+                $memAvatar = $ad_r['ad-avatar'];
+    
                 $iconName = $memName;
             }
         }
     }
 }
-
-
 ?>
 <style>
     .cart-icon {
@@ -92,6 +131,9 @@ if (isset($_SESSION['user'])) {
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" style="color:white ;">Event</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '':'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -100,23 +142,22 @@ if (isset($_SESSION['user'])) {
 
                 </div>
                 <div class="col-8 nav-right">
-                        <a href="<?= isset($_SESSION['user']) ? 'gary-member-card.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
-                            <!-- 有登入就把訪客icon隱藏 -->
-                            <?= isset($_SESSION['user']) ? '' : '<i class="fa-solid fa-user"></i>'; ?>
-                            <!-- 有登入就顯示個人照片 -->
-                            <!-- 沒登入就把img欄位隱藏 -->
-                            <img src="<?= isset($_SESSION['user']) ? "gary-uploaded/$memAvatar" : '' ;?>"
-                            class="AvatarImg <?= isset($_SESSION['user']) ? '' : 'dsn' ; ?>">
-                            <!-- 顯示的名稱 -->
-                            <?= isset($iconName) ? $iconName : 'Visitor'; ?>
-                        </a>
+                    <a href="<?= isset($_SESSION['user']) ? 'gary-member-card.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
+                        <!-- 有登入就把訪客icon隱藏 -->
+                        <?= isset($_SESSION['user']) ? '' : '<i class="fa-solid fa-user"></i>'; ?>
+                        <!-- 有登入就顯示個人照片 -->
+                        <!-- 沒登入就把img欄位隱藏 -->
+                        <img src="<?= isset($_SESSION['user']) ? "gary-uploaded/$memAvatar" : ''; ?>" class="AvatarImg <?= isset($_SESSION['user']) ? '' : 'dsn'; ?>">
+                        <!-- 顯示的名稱 -->
+                        <?= isset($iconName) ? $iconName : 'Visitor'; ?>
+                    </a>
 
-                        <!-- LOGIN/LOGOUT -->
-                        <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
-                        
-                        <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
-                            <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
-                        </a>
+                    <!-- LOGIN/LOGOUT -->
+                    <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
+
+                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
+                    </a>
                 </div>
             </div>
         </div>
