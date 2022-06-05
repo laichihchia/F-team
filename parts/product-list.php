@@ -11,10 +11,12 @@ if (isset($_SESSION['user'])) {
             $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
             $cartCount = $count_sql[0]['COUNT(1)'];
 
-            // 右上角稱呼的顯示
+            // 右上角稱呼的顯示跟其他資訊
             $memName = $member_r['mem-name'];
             $memNick = $member_r['mem-nickname'];
             $memAvatar = $member_r['mem-avatar'];
+            $memLevel = $member_r['mem-level'];
+            $memCreated = $member_r['mem-created_at'];
             $iconName = $memNick;
             if ($memNick == '') {
                 $iconName = $memName;
@@ -68,7 +70,7 @@ if (isset($_SESSION['user'])) {
     <header class="header-color">
         <div class="container container-maxWidth">
             <div class="row nav-info">
-                <div class="col-6 nav-left d-flex">
+                <div class="col-4 nav-left d-flex">
                     <div class="logo-container">
                         <a href=""><img src="./images/Street_logo.png" alt=""></a>
                     </div>
@@ -97,7 +99,7 @@ if (isset($_SESSION['user'])) {
 
 
                 </div>
-                <div class="col-6 nav-right">
+                <div class="col-8 nav-right">
                         <a href="<?= isset($_SESSION['user']) ? 'gary-mem-edit.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
                             <!-- 有登入就把訪客icon隱藏 -->
                             <?= isset($_SESSION['user']) ? '' : '<i class="fa-solid fa-user"></i>'; ?>
