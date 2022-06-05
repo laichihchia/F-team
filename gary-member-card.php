@@ -123,7 +123,7 @@ if (isset($_SESSION['user'])) {
                 <div class="Bigcard">
                     <div class="CardBGC"></div>
                     <div class="cardBOX">
-                        <h5 class="d-flex justify-content-center mb-5 mt-5 WordColor">MEMBERSHIP CARD</h5>
+                        <h5 class="d-flex justify-content-center mb-5 mt-5 WordColor"><?= $_SESSION['user']['grade'] === 'high' ?'ADMIN CARD': 'MEMBERSHIP CARD' ?></h5>
                         <div class="d-flex justify-content-around">
                             <div class="WordColor">
                                 <p><?= $iconName ?></p>
