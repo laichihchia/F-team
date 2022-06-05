@@ -2,7 +2,7 @@
 $pageName = '課程資訊';
 $title = '課程資訊';
 
-$perPage = 5; // 每一頁有幾筆
+$perPage = 10; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -37,6 +37,10 @@ if ($totalRows > 0) {
     .cooler-creat:hover {
         background-color: #dee2e6;
         color: #222;
+    }
+
+    .table {
+        border: 0px solid transparent;
     }
 </style>
 <?php include __DIR__ . '/parts/product-list.php' ?>
@@ -75,9 +79,9 @@ if ($totalRows > 0) {
                 </li>
             </ul>
 
-            <button type="button" class="btn btn-outline-secondary float-end mb-3 cooler-creat"><a href="cooler-list-add.php" class="text-decoration-none">新增</a></button>
+            <a href="cooler-list-add.php" class=" btn btn-outline-secondary float-end mb-3 cooler-creat">新增</a>
         </nav>
-        <table class="table table-bordered table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
 

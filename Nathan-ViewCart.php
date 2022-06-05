@@ -70,15 +70,15 @@ $title = "Nathan-ViewCart - Nathan's cart";
     </div>
     <!-- 內導覽 -->
     <!-- 呈現區 -->
-    <button class="btn-sm btn-danger" onclick="delete_select()">Delete</button>
+    <button class="btn-sm btn-dark" onclick="delete_select()">Delete</button>
     <div class="row justify-content-center">
-        
+
         <table class="table w-100 ">
             <thead>
                 <tr class="text-center">
                     <th>
                         <div class="form-check">
-                            <input class="form-check-input totalCheck" type="checkbox" value="" id="flexCheckDefault" name="all" onclick="check_all(this,'c')">
+                            <input class="form-check-input totalCheck" type="checkbox" value="" id="flexCheckDefault" name="all" onclick="check_all(this,'select')">
                         </div>
                     </th>
                     <th scope="col">NO.</th>
@@ -106,7 +106,7 @@ $title = "Nathan-ViewCart - Nathan's cart";
                         <tr class="text-center prod-bottom">
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['produst_id'] ?>" id="singleSelect" name="c">
+                                    <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['produst_id'] ?>" id="singleSelect" name="select">
                                 </div>
                             </td>
                             <td scope="col"><?= $i ?></td>
@@ -116,7 +116,11 @@ $title = "Nathan-ViewCart - Nathan's cart";
                             <input type="hidden" name="cart_name" value="<?= $r['name']; ?>">
                             <td scope="col"><?= $r['price']; ?></td>
                             <input type="hidden" name="cart_price" value="<?= $r['price']; ?>">
-                            <td><input class="w-50" type="number" name="cart_qty" min="0" value="<?= $r['qty']; ?>"></td>
+                            <td>
+                                <button class="btn btn-dark"><i class="fa-solid fa-minus"></i></button>
+                                <input class="w-50" type="number" name="cart_qty" min="0" value="<?= $r['qty']; ?>">
+                                <button class="btn btn-dark"><i class="fa-solid fa-plus"></i></button>
+                            </td>
                             <td scope="col"><?= $productTotal; ?></td>
                             <td><button onclick="confirm('確定要變更此商品數量嗎?');" name="update" class=" btn-sm btn-dark">Update</button></td>
                             <td><button onclick="confirm('確定要將此商品移除購物車嗎?');" name="remove" class=" btn-sm btn-dark">Delete</button></td>
@@ -138,7 +142,7 @@ $title = "Nathan-ViewCart - Nathan's cart";
         <div class="col-2"></div>
         <div class="col-2 total-text-info d-flex align-content-center justify-content-end pe-2">NT$ <?= $total ?></div>
         <div class="col-2 text-end">
-            <a href="" class="btn btn-sm btn-dark">Go to Checkout</a>
+            <a style="cursor: pointer;" onclick="checkout_select();" class="btn btn-sm btn-dark">Checkout</a>
         </div>
     </div>
     <!-- 呈現區 -->
@@ -155,7 +159,8 @@ $title = "Nathan-ViewCart - Nathan's cart";
     }
     const singleSelect = document.querySelectorAll('#singleSelect');
 
-    async function delete_select() {
+    // 刪除所選商品
+    function delete_select() {
         const select_ar = [];
         for (let i of singleSelect) {
             if (i.checked) {
@@ -163,8 +168,22 @@ $title = "Nathan-ViewCart - Nathan's cart";
             }
         }
         // console.log(select_ar);
-        if(confirm(`確定要商品編號為${select_ar}的資料嗎`)){
+        if (confirm(`確定要移除商品編號為${select_ar}的資料嗎`)) {
             location.href = `Nathan-Cart-Delete-Select-api.php?produst_id=${select_ar}`;
+        }
+    }
+
+    // 結帳所選商品
+    function checkout_select() {
+        const select_produst_id = [];
+        for (let i of singleSelect) {
+            if (i.checked) {
+                select_produst_id.push(Number(i.value));
+            }
+        }
+        console.log(select_produst_id);
+        if (confirm('是否前往結帳頁面?')) {
+            location.href = `Nathan-InsertOrder.php?produst_id=${select_produst_id}`;
         }
     }
 </script>
