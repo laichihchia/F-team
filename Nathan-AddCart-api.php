@@ -50,7 +50,9 @@ if (isset($_SESSION['user'])) {
                 $product_price,
                 $memLogin_sid,
             ]);
-            header('Location: Nathan-CartList.php');
+            echo "<script>alert('加入成功');
+            window.location.href = 'Nathan-CartList.php';
+            </script>";
         }
     };
 
