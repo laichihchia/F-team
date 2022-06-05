@@ -58,15 +58,6 @@ foreach( $AccAndPwd as $k => $v){
                 }
             }
         }
-        if (!isset($_SESSION['user'])) {
-
-            if($output['bollen'] = true){
-                $error_msg = '帳號已被停用';
-            } else {
-                $error_msg = '帳號或密碼錯誤';
-            }
-        }
-    
     }
 
 

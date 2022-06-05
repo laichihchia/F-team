@@ -174,10 +174,10 @@ $title = 'Gary-Login';
             // 如果失敗 success=false
         } else if (result.bollen) {
             info_bar.style.display = 'block'; //顯示提示訊息
-            info_bar.innerText = result.error || '帳號已被停用';
+            info_bar.innerText = '帳號已被停用';
         } else {
             info_bar.style.display = 'block'; //顯示提示訊息
-            info_bar.innerText = result.error || '帳號或密碼錯誤';
+            info_bar.innerText = '帳號或密碼錯誤';
         }
     }
 </script>
