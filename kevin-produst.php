@@ -53,7 +53,49 @@ if (isset($_GET['option_price'])) {
 
     $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
-}
+};
+
+if (isset($_GET['checkbox'])) {
+    $checkbox = $_GET["checkbox"];
+    // 技術板篩選
+    if ($checkbox  == 1) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 3";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 交通板篩選
+    } else if ($checkbox  == 2) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 4";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 板身篩選
+    } else if ($checkbox  == 3) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 6";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 輪架篩選
+    } else if ($checkbox  == 4) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 7";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 輪子篩選
+    } else if ($checkbox  == 5) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 8";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 培林篩選
+    } else if ($checkbox  == 6) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 9";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 護具篩選
+    } else if ($checkbox  == 7) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 10";
+        $rows = $pdo->query($sql)->fetchAll();
+        // 噴漆篩選
+    } else if ($checkbox  == 8) {
+        $sql = "SELECT * FROM `produst` WHERE category_id = 2";
+        $rows = $pdo->query($sql)->fetchAll();
+    } else {
+        // 查詢所有商品
+
+        $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+        $rows = $pdo->query($sql)->fetchAll();
+    }
+};
 
 ?>
 
@@ -94,11 +136,11 @@ if (isset($_GET['option_price'])) {
     }
 </style>
 <div class="row d-flex">
-    <div class="col-md-3 d-flex justify-content-around">
+    <div class="col-6 d-flex justify-content-around align-items-center">
         <button type="button" class="btn btn-outline-secondary"><a href="kevin-produst-add.php">Product Update</a></button>
 
         <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
-            <select class="select" aria-label="Default select example" name="option_price">
+            <select class="select jc" aria-label="Default select example" name="option_price">
 
                 <option selected>Open this select menu</option>
 
@@ -114,47 +156,51 @@ if (isset($_GET['option_price'])) {
     </div>
 
 
-    <div class="col d-flex justify-content-flex-start align-items-center">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Shortboard
-            </label>
+    <div class="col d-flex justify-content-between align-items-center">
+        <div class="form-check d-flex">
+            <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
+                <label for="">
+                    <input type="checkbox" value="1" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Shortboard</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="2" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Old School</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="2" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Old School</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="3" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Decks</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="3" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Decks</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="4" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Trucks</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="4" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Trucks</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="5" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Wheels</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="5" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Wheels</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="6" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Bearings</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="6" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Bearings</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="7" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Safety Gear</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="7" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Safety Gear</span>
+                </label>
 
-            <label for="">
-                <input type="checkbox" value="8" style="vertical-align:middle;">
-                <span style="vertical-align:middle;">Spray Paint</span>
-            </label>
+                <label for="">
+                    <input type="checkbox" value="8" style="vertical-align:middle;" name="checkbox">
+                    <span style="vertical-align:middle;">Spray Paint</span>
+                </label>
+
+                <button type="submit" class="btn btn-primary">Type Submit</button>
+            </form>
         </div>
 
     </div>
