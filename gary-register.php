@@ -28,6 +28,10 @@ $title = 'Gary-Register';
         width: 100%;
     }
 
+    .cameraICON {
+        cursor: pointer;
+    }
+
     .eyes-input {
         width: 90%;
     }
@@ -82,7 +86,7 @@ $title = 'Gary-Register';
                             <div class="avatar">
                                 <img id="myimg" src="" />
                             </div>
-                            <button id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera"></i></button>
+                            <div class="" id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera cameraICON"></i></div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">

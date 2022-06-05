@@ -38,6 +38,10 @@ if (isset($_SESSION['user'])) {
         width: 100%;
     }
 
+    .cameraICON {
+        cursor: pointer;
+    }
+
     .eyes-input {
         width: 90%;
     }
@@ -93,7 +97,7 @@ if (isset($_SESSION['user'])) {
                             <div class="avatar">
                                 <img id="myimg" src="./gary-uploaded/<?= ($memLogin['mem-avatar']) ?>" />
                             </div>
-                            <button id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera"></i></button>
+                            <div id="btn" onclick="uploadAvatar()"><i class="fa-solid fa-camera cameraICON"></i></div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
