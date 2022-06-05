@@ -70,11 +70,19 @@ $title = "Nathan-ViewCart - Nathan's cart";
     </div>
     <!-- 內導覽 -->
     <!-- 呈現區 -->
+    <button class="btn-sm btn-danger" onclick="delete_select()">Delete</button>
     <div class="row justify-content-center">
+        
         <table class="table w-100 ">
             <thead>
                 <tr class="text-center">
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input totalCheck" type="checkbox" value="" id="flexCheckDefault" name="all" onclick="check_all(this,'c')">
+                        </div>
+                    </th>
                     <th scope="col">NO.</th>
+                    <th scope="col">Pro-id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
@@ -96,8 +104,14 @@ $title = "Nathan-ViewCart - Nathan's cart";
                 ?>
                     <form action="Nathan-AddCart-api.php" method="POST">
                         <tr class="text-center prod-bottom">
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['produst_id'] ?>" id="singleSelect" name="c">
+                                </div>
+                            </td>
                             <td scope="col"><?= $i ?></td>
                             <input type="hidden" name="cart_id" value="<?= $r['produst_id']; ?>">
+                            <td scope="col"><?= $r['produst_id']; ?></td>
                             <td scope="col"><?= $r['name']; ?></td>
                             <input type="hidden" name="cart_name" value="<?= $r['name']; ?>">
                             <td scope="col"><?= $r['price']; ?></td>
@@ -132,6 +146,26 @@ $title = "Nathan-ViewCart - Nathan's cart";
 
 <?php require __DIR__ . '/parts/scripts.php' ?>
 <script>
+    // 全選checkbox同步設定
+    function check_all(obj, cName) {
+        const allCheck = document.getElementsByName(cName);
+        for (let i = 0; i < allCheck.length; i++) {
+            allCheck[i].checked = obj.checked;
+        }
+    }
+    const singleSelect = document.querySelectorAll('#singleSelect');
 
+    async function delete_select() {
+        const select_ar = [];
+        for (let i of singleSelect) {
+            if (i.checked) {
+                select_ar.push(Number(i.value));
+            }
+        }
+        // console.log(select_ar);
+        if(confirm(`確定要商品編號為${select_ar}的資料嗎`)){
+            location.href = `Nathan-Cart-Delete-Select-api.php?produst_id=${select_ar}`;
+        }
+    }
 </script>
 <?php require __DIR__ . '/parts/html-foot.php' ?>
