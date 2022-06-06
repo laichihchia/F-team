@@ -57,9 +57,9 @@ if ($stmt->rowCount() == 1) {
 
 } 
 // 後端呈現但我的會影響畫面
-// else {
-//     $output['error'] = '資料無法修改';  
-// }
+else {
+    $output['error'] = '資料沒有修改';  
+}
 // isset() vs empty()
 
 
