@@ -34,9 +34,7 @@ $hobbies = [
     '1' => '價格從高到低',
     '2' => '價格從低到高',
 ];
-
-// 商品價格從高到低 and 從低到高
-$x = isset($_GET['x']) ? intval($_GET['x']) : 0;
+$x = $_GET['x'] ? intval($_GET['x']) : '';
 
 if ($x === 1) {
     $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
@@ -44,10 +42,9 @@ if ($x === 1) {
 } else if ($x === 2) {
     $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
-} else {
-    $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-    $rows = $pdo->query($sql)->fetchAll();
 };
+
+
 // if (isset($_GET['option_price'])) {
 //     // 查詢商品的價格 (降冪)
 
@@ -138,10 +135,6 @@ if (isset($_GET['checkbox'])) {
     .list-section {
         display: none;
     }
-
-    /* b {
-        display: none;
-    } */
 </style>
 <div class="container">
     <div class="row d-flex">
@@ -159,7 +152,7 @@ if (isset($_GET['checkbox'])) {
 
                 </select>
 
-                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                <!-- <button type="submit" class="btn btn-primary" id="option_price2">Submit</button> -->
 
             </form>
 
@@ -168,7 +161,7 @@ if (isset($_GET['checkbox'])) {
 
         <div class="col d-flex justify-content-between align-items-center">
             <div class="form-check d-flex">
-                <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
+                <form action="kevin-produst.php" method="post" name="form1" enctype="multipart/form-data">
                     <label for="">
                         <input type="checkbox" value="1" style="vertical-align:middle;" name="checkbox">
                         <span style="vertical-align:middle;">Shortboard</span>
@@ -216,7 +209,7 @@ if (isset($_GET['checkbox'])) {
         </div>
     </div>
     <div class="row">
-        <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
+        <button onclick="delete_select()" class="btn btn-danger">Delete Select</button>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -301,7 +294,6 @@ if (isset($_GET['checkbox'])) {
     </div>
 </div>
 <?php require __DIR__ . '/parts/scripts.php' ?>
-
 <script>
     // async function priceDesc() {
     //     const fd = new FormData(document.form1);
@@ -329,7 +321,7 @@ if (isset($_GET['checkbox'])) {
             location.href = `kevin-produst-delete-api.php?sid=${select_ar}`;
         }
     }
-    let x;
+    // let x;
 
     function select() {
         let x = document.getElementById('option_price').value;
