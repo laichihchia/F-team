@@ -120,7 +120,7 @@ if (isset($_SESSION['user'])) {
     }
 
     .scrollbar::-webkit-scrollbar-thumb {
-        background-color: black;
+        background-color: white;
         border: 1px solid slategrey;
     }
 
@@ -155,28 +155,28 @@ if (isset($_SESSION['user'])) {
 
     .box-TN {
         color: red;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
-        line-height: 10px;
+        line-height: 4px;
         margin-top: 20px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .box-word {
         /* color: purple; */
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 600;
     }
 
     .box-word2 {
         /* color: red; */
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 600;
     }
 
     .box-word3 {
         /* color: red; */
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 600;
         margin-left: 5px;
     }
@@ -231,11 +231,11 @@ if (isset($_SESSION['user'])) {
                 <div class="scrollbarIN">
                 <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
                     <div class="scrollbarbox">
-                        <a href="" class="d-flex text-decoration-none">
+                        <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
                             <div class="scrollbarbox_left">
-                                <img src="/Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
+                                <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
                             </div>
-                            <div class="scrollbarbox_right d-flex justify-content-center align-items-center">
+                            <div class="scrollbarbox_right d-flex align-items-center">
                                 <div>
                                     <p class="box-TN"><?= $rec_r['order_date'] ?></p>
                                     <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
