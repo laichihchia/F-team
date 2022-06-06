@@ -56,13 +56,6 @@ if (isset($_SESSION['user'])) {
         }
     };
 
-    // cart delete
-    if (isset($_POST['remove'])) {
-        $delete_id = $_POST['cart_id'];
-        $cart_delete_sql = "DELETE FROM `cart` WHERE `produst_id`= $delete_id";
-        $pdo->query($cart_delete_sql);
-        header('Location: Nathan-ViewCart.php');
-    };
 
     // cart edit 
     if (isset($_POST['update'])) {

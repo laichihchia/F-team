@@ -14,10 +14,15 @@ foreach ($mem_sql as $rows => $r) {
 }
 // 變更商品數量
 $nowQty = isset($_GET['nowQty']) ? intval($_GET['nowQty']) : 0;
-
+$pro_id = isset($_GET['proId']) ? intval($_GET['proId']) : 0;
+$pdo->query("UPDATE `cart` SET `qty` = $nowQty WHERE `produst_id` = $pro_id;");
+if($nowQty === 0){
+    $pdo->query("DELETE FROM `cart` WHERE `produst_id` = $pro_id;");
+};
 
 // 取得此會員的購物車紀錄
-$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
+$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID;")->fetchAll();
+
 
 if (empty($_SESSION['user']['mem_account'])) {
     echo "<script>alert('請先登入會員');
@@ -93,7 +98,6 @@ $title = "Nathan-ViewCart - Nathan's cart";
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,15 +126,14 @@ $title = "Nathan-ViewCart - Nathan's cart";
                             <td scope="col"><?= $r['price']; ?></td>
                             <input type="hidden" name="cart_price" value="<?= $r['price']; ?>">
                             <td>
-                                <button type="button" onclick="minusQty();" class="btn btn-dark"><i class="fa-solid fa-minus"></i></button>
+                                <button type="button" class="minusBtn btn btn-dark"><i class="fa-solid fa-minus"></i></button>
                                 <input class="w-25 qty-input" type="number" name="cart_qty" min="0" value="<?= $r['qty']; ?>">
-                                <button type="button" onclick="plusQty()" class="btn btn-dark">
+                                <button type="button" class="plusBtn btn btn-dark">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                             </td>
-                            <td scope="col"><?= $productTotal; ?></td>
+                            <td scope="col">NT$ <?= $productTotal; ?></td>
                             <td><button onclick="confirm('確定要變更此商品數量嗎?');" name="update" class=" btn-sm btn-dark">Update</button></td>
-                            <td><button onclick="confirm('確定要將此商品移除購物車嗎?');" name="remove" class=" btn-sm btn-dark">Delete</button></td>
                         </tr>
                     </form>
                 <?php endforeach; ?>
@@ -175,21 +178,32 @@ $title = "Nathan-ViewCart - Nathan's cart";
             }
         }
         // console.log(select_ar);
-        if (confirm(`確定要移除商品編號為${select_ar}的資料嗎`)) {
+        if (confirm(`確定要刪除編號 ${select_ar} 商品嗎？`)) {
             location.href = `Nathan-Cart-Delete-Select-api.php?produst_id=${select_ar}`;
         }
     }
+    
     // plus & minus qty
-    const qtyInputList = document.querySelectorAll('.qty-input');
-    console.log(qtyInputList);
-    function plusQty() {
-        qtyInput.value = +qtyInput.value + 1;
-        location.href = `Nathan-ViewCart.php?nowQty=${qtyInput.value}`;
-    };
-    function minusQty() {
-        qtyInput.value = +qtyInput.value - 1;
-        location.href = `Nathan-ViewCart.php?nowQty=${qtyInput.value}`;
-    };
+    const minusBtnList = document.querySelectorAll('.minusBtn');
+    const plusBtnList = document.querySelectorAll('.plusBtn');
+    for(let i of plusBtnList){
+        i.addEventListener('click',(e)=>{
+            const produstId = i.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
+            console.log(produstId);
+            let plusInput = i.previousElementSibling;
+            plusInput.value = +plusInput.value +1;
+            location.href = `Nathan-ViewCart.php?nowQty=${plusInput.value}&proId=${produstId}`;
+        })
+    }
+    for(let i of minusBtnList){
+        i.addEventListener('click',(e)=>{
+            const produstId = i.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
+            console.log(produstId);
+            let minusInput = i.nextElementSibling;
+            minusInput.value = +minusInput.value -1;
+            location.href = `Nathan-ViewCart.php?nowQty=${minusInput.value}&proId=${produstId}`;
+        })
+    }
 
 
 
