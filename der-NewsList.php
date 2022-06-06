@@ -39,9 +39,17 @@ if ($totalRows > 0) {
 <div class="row">
     <div class="col-12">
         <a class=" d-inline-block mt-3 text-decoration-none btn-sm btn-dark" href="der-NewsAdd.php">新增</a>
+
+        <a style="cursor:pointer;" onclick="delete_select()" class=" d-inline-block mt-3 text-decoration-none btn-sm btn-dark">Delete Select</a>
+
         <table class="table w-100">
             <thead>
                 <tr>
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input totalCheck" type="checkbox" value="" id="flexCheckDefault" name="all" onclick="check_all(this,'c')">
+                        </div>
+                    </th>
                     <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     <th scope="col">#</th>
                     <th scope="col">title</th>
@@ -56,10 +64,16 @@ if ($totalRows > 0) {
                 <?php foreach ($rows as $r) : ?>
                     <tr>
                         <td>
+                            <div class="form-check">
+                                <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="c">
+                            </div>
+                        </td>
+                        <td>
                             <a href="javascript: delete_it(<?= $r['sid'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </td>
+
                         <td><?= $r['sid'] ?></td>
                         <td><?= $r['title'] ?></td>
                         <td><?= $r['info'] ?></td>
@@ -116,6 +130,25 @@ if ($totalRows > 0) {
     function delete_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
             location.href = `der-NewsDelete.php?sid=${sid}`;
+        }
+    }
+    // 全選checkbox同步設定
+    function check_all(obj, cName) {
+        const allCheck = document.getElementsByName(cName);
+        for (let i = 0; i < allCheck.length; i++) {
+            allCheck[i].checked = obj.checked;
+        }
+    }
+    async function delete_select() {
+        const select_ar = [];
+        for (let i of singleSelect) {
+            if (i.checked) {
+                select_ar.push(Number(i.value));
+            }
+        }
+        // console.log(select_ar);
+        if (confirm(`確定要刪除編號為${select_ar}的資料嗎`)) {
+            location.href = `der-Newsdeleteallapi.php?sid=${select_ar}`;
         }
     }
 </script>
