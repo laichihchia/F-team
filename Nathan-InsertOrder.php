@@ -9,9 +9,15 @@ if (!isset($_SESSION['user'])) {
 }
 
 // get 拿取 被選取項目的 produst_id
-$produst_id = isset($_GET['produst_id'])?($_GET['produst_id']):[];
-// var_dump($produst_id);
-// exit;
+$produst_id = isset($_GET['produst_id'])?($_GET['produst_id']):'';
+if($produst_id === ""){
+    echo "
+        <script>
+            alert('請勾選您要結帳的商品');
+            window.location.href = 'Nathan-ViewCart.php';
+        </script>
+    ";
+};
 
 
 // 取得登入中的會員sid
@@ -24,14 +30,8 @@ foreach ($mem_sql as $rows => $r) {
 }
 
 // 取得此會員的購物車紀錄 and 被選取的項目
-$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `produst_id` in ($produst_id) AND `member_id` = $memLoginID;")->fetchAll();
+$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `produst_id` IN ($produst_id) AND `member_id` = $memLoginID;")->fetchAll();
 
-if (empty($_SESSION['user']['mem_account'])) {
-    echo "<script>alert('請先登入會員');
-    window.location.href = 'gary-member-login.php';
-    </script>";
-    exit;
-}
 
 // 取得此筆消費總金額
 $od_total_price = 0;

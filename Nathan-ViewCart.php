@@ -12,6 +12,10 @@ foreach ($mem_sql as $rows => $r) {
         $memLoginID = $r['sid'];
     }
 }
+// 變更商品數量
+$nowQty = isset($_GET['nowQty']) ? intval($_GET['nowQty']) : 0;
+
+
 // 取得此會員的購物車紀錄
 $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
 
@@ -23,6 +27,7 @@ if (empty($_SESSION['user']['mem_account'])) {
 }
 $sql = "SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID";
 $count_sql = $pdo->query($sql)->fetchAll();
+
 
 
 $pageName = "Nathan's cart";
@@ -117,9 +122,11 @@ $title = "Nathan-ViewCart - Nathan's cart";
                             <td scope="col"><?= $r['price']; ?></td>
                             <input type="hidden" name="cart_price" value="<?= $r['price']; ?>">
                             <td>
-                                <button class="btn btn-dark"><i class="fa-solid fa-minus"></i></button>
-                                <input class="w-50" type="number" name="cart_qty" min="0" value="<?= $r['qty']; ?>">
-                                <button class="btn btn-dark"><i class="fa-solid fa-plus"></i></button>
+                                <button type="button" onclick="minusQty();" class="btn btn-dark"><i class="fa-solid fa-minus"></i></button>
+                                <input class="w-25 qty-input" type="number" name="cart_qty" min="0" value="<?= $r['qty']; ?>">
+                                <button type="button" onclick="plusQty()" class="btn btn-dark">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
                             </td>
                             <td scope="col"><?= $productTotal; ?></td>
                             <td><button onclick="confirm('確定要變更此商品數量嗎?');" name="update" class=" btn-sm btn-dark">Update</button></td>
@@ -172,6 +179,19 @@ $title = "Nathan-ViewCart - Nathan's cart";
             location.href = `Nathan-Cart-Delete-Select-api.php?produst_id=${select_ar}`;
         }
     }
+    // plus & minus qty
+    const qtyInputList = document.querySelectorAll('.qty-input');
+    console.log(qtyInputList);
+    function plusQty() {
+        qtyInput.value = +qtyInput.value + 1;
+        location.href = `Nathan-ViewCart.php?nowQty=${qtyInput.value}`;
+    };
+    function minusQty() {
+        qtyInput.value = +qtyInput.value - 1;
+        location.href = `Nathan-ViewCart.php?nowQty=${qtyInput.value}`;
+    };
+
+
 
     // 結帳所選商品
     function checkout_select() {
