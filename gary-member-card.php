@@ -1,47 +1,27 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
 $title = 'Gary-MemberCard';
-// if (isset($_SESSION['user'])) {
-//     if ($_SESSION['user']['grade'] === 'low') {
-//         $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
-//         foreach ($mem_sql as $member_rows => $member_r) {
-//             if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
-//                 // 取得登入中的會員id
-//                 $memLoginID = $member_r['sid'];
-//                 $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-//                 $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-//                 $cartCount = $count_sql[0]['COUNT(1)'];
 
-//                 // 右上角稱呼的顯示跟其他資訊
-//                 $memName = $member_r['mem-name'];
-//                 $memNick = $member_r['mem-nickname'];
-//                 $memAvatar = $member_r['mem-avatar'];
-//                 $memLevel = $member_r['mem-level'];
-//                 $memCreated = $member_r['mem-created_at'];
-//                 $iconName = $memNick;
-//                 if ($memNick == '') {
-//                     $iconName = $memName;
-//                 }
-//             }
-//         }
-//     }
-//     if ($_SESSION['user']['grade'] === 'high') {
-//         $ad_sql = $pdo->query("SELECT  * FROM `admin` WHERE 1;")->fetchAll();
-//         foreach ($ad_sql as $ad_rows => $ad_r) {
-//             if ($ad_r['ad-account'] === $_SESSION['user']['mem_account']) {
-//                 // 取得登入中的會員id
-//                 $memLoginID = $ad_r['sid'];
-    
-//                 // 右上角稱呼的顯示跟其他資訊
-//                 $memName = $ad_r['ad-name'];
-//                 $memAvatar = $ad_r['ad-avatar'];
-    
-//                 $iconName = $memName;
-//             }
-//         }
-//     }
-// }
-// ?>
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user']['grade'] === 'low') {
+        $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
+        foreach ($mem_sql as $member_rows => $member_r) {
+            if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
+                // 取得登入中的會員id
+                $memLoginID = $member_r['sid'];
+                }
+            }
+        }
+
+        $rec_sql = $pdo->query("SELECT `orders`.member_sid, `order_details`.*, `produst`.name, `produst`.img, `orders`.order_date FROM `orders`
+        JOIN `order_details`
+            ON `orders`.sid=`order_details`.order_sid
+        JOIN `produst`
+            ON `produst`.sid=`order_details`.produst_sid
+        WHERE `orders`.member_sid= $memLoginID
+        ORDER BY `orders`.order_date DESC, `order_details`.sid;")->fetchAll();
+    }
+?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
@@ -51,19 +31,20 @@ $title = 'Gary-MemberCard';
     }
 
     body {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
+        background: url('./gary-img/cfebdd19f08e16165b2935a0552c749b.jpg')center center/cover;
+        background-position: 0 0;
         background-attachment: fixed;
     }
 
     .photo {
         width: 400px;
-        margin-top: 10%;
+        margin-top: 5%;
         position: relative;
         transition: 1s;
         transform-style: preserve-3d;
         transform-origin: center;
     }
-    
+
     .cardRotate {
         transform: rotateY(180deg);
     }
@@ -72,7 +53,7 @@ $title = 'Gary-MemberCard';
         /* 背面朝向用戶時不可見 */
         width: 400px;
         height: 250px;
-        position: absolute; 
+        position: absolute;
         top: 0px;
         left: 0px;
         border-radius: 15px;
@@ -127,16 +108,88 @@ $title = 'Gary-MemberCard';
         width: 100px;
         height: 100px;
     }
+
+    .scrollbar {
+        width: 38%;
+        height: 80vh;
+        overflow: auto;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background-color: black;
+        border: 1px solid slategrey;
+    }
+
+    .scrollbarbox {
+        background-color: white;
+        border-radius: 10px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    .scrollbarbox:hover {
+        opacity: 0.8;
+        border: 3px solid black;
+    }
+
+    .scrollbarbox_left {
+        width: 35%;
+        height: 150px;
+    }
+
+    .box_img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        object-fit: contain;
+    }
+
+    .scrollbarbox_right {
+        width: 65%;
+        height: 150px;
+    }
+
+    .box-TN {
+        color: red;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 10px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .box-word {
+        /* color: purple; */
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .box-word2 {
+        /* color: red; */
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .box-word3 {
+        /* color: red; */
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="photo" <?= $_SESSION['user']['grade'] === 'high' ?'': 'onclick="Click()"' ?>>
+        <div class="photo" <?= $_SESSION['user']['grade'] === 'high' ? '' : 'onclick="Click()"' ?>>
             <div class="front">
                 <div class="Bigcard">
                     <div class="CardBGC"></div>
                     <div class="cardBOX">
-                        <h5 class="d-flex justify-content-center mb-5 mt-5 WordColor"><?= $_SESSION['user']['grade'] === 'high' ?'ADMIN CARD': 'MEMBERSHIP CARD' ?></h5>
+                        <h5 class="d-flex justify-content-center mb-5 mt-5 WordColor"><?= $_SESSION['user']['grade'] === 'high' ? 'ADMIN CARD' : 'MEMBERSHIP CARD' ?></h5>
                         <div class="d-flex justify-content-around">
                             <div class="WordColor">
                                 <p><?= $iconName ?></p>
@@ -173,6 +226,33 @@ $title = 'Gary-MemberCard';
                 </div>
             </div>
         </div>
+        <div class="d-flex justify-content-end">
+            <div class="scrollbar">
+                <div class="scrollbarIN">
+                <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
+                    <div class="scrollbarbox">
+                        <a href="" class="d-flex text-decoration-none">
+                            <div class="scrollbarbox_left">
+                                <img src="/Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
+                            </div>
+                            <div class="scrollbarbox_right d-flex justify-content-center align-items-center">
+                                <div>
+                                    <p class="box-TN"><?= $rec_r['order_date'] ?></p>
+                                    <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
+                                    <p class="box-word"><?= $rec_r['name'] ?></p>
+                                    <div class="d-flex">
+                                        <p class="box-word2">$<?= $rec_r['price'] ?></p>
+                                        <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
