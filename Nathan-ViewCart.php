@@ -16,7 +16,7 @@ foreach ($mem_sql as $rows => $r) {
 $nowQty = isset($_GET['nowQty']) ? intval($_GET['nowQty']) : 0;
 $pro_id = isset($_GET['proId']) ? intval($_GET['proId']) : 0;
 $pdo->query("UPDATE `cart` SET `qty` = $nowQty WHERE `produst_id` = $pro_id;");
-if($nowQty === 0){
+if ($nowQty === 0) {
     $pdo->query("DELETE FROM `cart` WHERE `produst_id` = $pro_id;");
 };
 
@@ -182,26 +182,35 @@ $title = "Nathan-ViewCart - Nathan's cart";
             location.href = `Nathan-Cart-Delete-Select-api.php?produst_id=${select_ar}`;
         }
     }
-    
+
     // plus & minus qty
     const minusBtnList = document.querySelectorAll('.minusBtn');
     const plusBtnList = document.querySelectorAll('.plusBtn');
-    for(let i of plusBtnList){
-        i.addEventListener('click',(e)=>{
+    for (let i of plusBtnList) {
+        i.addEventListener('click', (e) => {
             const produstId = i.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
             console.log(produstId);
             let plusInput = i.previousElementSibling;
-            plusInput.value = +plusInput.value +1;
+            plusInput.value = +plusInput.value + 1;
             location.href = `Nathan-ViewCart.php?nowQty=${plusInput.value}&proId=${produstId}`;
         })
     }
-    for(let i of minusBtnList){
-        i.addEventListener('click',(e)=>{
+    for (let i of minusBtnList) {
+        i.addEventListener('click', (e) => {
             const produstId = i.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
             console.log(produstId);
             let minusInput = i.nextElementSibling;
-            minusInput.value = +minusInput.value -1;
-            location.href = `Nathan-ViewCart.php?nowQty=${minusInput.value}&proId=${produstId}`;
+            minusInput.value = +minusInput.value - 1;
+            if (minusInput.value === '0') {
+                if (confirm('是否刪除此商品？')) {
+                    location.href = `Nathan-Delete-zeroQty-api.php?proId=${produstId}`;
+                } else {
+                    minusInput.value = +minusInput.value + 1;
+                }
+            } else {
+                location.href = `Nathan-ViewCart.php?nowQty=${minusInput.value}&proId=${produstId}`;
+            }
+
         })
     }
 
