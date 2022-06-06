@@ -73,6 +73,14 @@ $title = 'Product Update';
         });
         const result = await r.json();
         console.log(result);
+        if (result.success === true) {
+            alert('商品新增成功,');
+            setTimeout(() => {
+                location.href = 'kevin-produst.php';
+            }, 1000);
+        } else {
+            alert('操你媽');
+        }
         // info_bar.style.display = 'block'; // 顯示訊息列
         // if (result.success) {
         //     info_bar.classList.remove('alert-danger');
@@ -87,9 +95,7 @@ $title = 'Product Update';
         //     info_bar.classList.add('alert-danger');
         //     info_bar.innerText = result.error || '資料無法新增';
         // }
-
     }
-
     const btn = document.querySelector("#btn");
     const myimg = document.querySelector("#myimg");
     const avatar = document.form2.avatar;
