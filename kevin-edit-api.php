@@ -13,7 +13,7 @@ $sid = isset($_POST['sid']) ? intval($_POST['sid']) : 0;
 
 // TODO: 欄位檢查, 後端的檢查
 if (empty($sid) or empty($_POST['produst_name'])) {
-    $output['error'] = '沒有姓名資料';
+    $output['error'] = '沒有商品資料';
     $output['code'] = 400;
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
