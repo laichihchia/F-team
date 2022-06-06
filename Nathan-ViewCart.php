@@ -22,6 +22,11 @@ if ($nowQty === 0) {
 
 // 取得此會員的購物車紀錄
 $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID;")->fetchAll();
+if($cart_sql === []){
+    echo "<script>alert('購物車內沒有商品');
+    window.location.href = 'Nathan-CartList.php';
+    </script>";
+}
 
 
 if (empty($_SESSION['user']['mem_account'])) {
