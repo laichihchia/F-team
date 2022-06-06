@@ -2,7 +2,7 @@
 $pageName = '課程資訊';
 $title = '課程資訊';
 
-$perPage = 10; // 每一頁有幾筆
+$perPage = 5; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -120,7 +120,7 @@ if ($totalRows > 0) {
                         <td><?= $r['created_at'] ?></td>
 
                         <td>
-                            <a href="ab-edit.php?sid=<?= $r['sid'] ?>">
+                            <a href="cooler-list-edit.php?sid=<?= $r['sid'] ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
