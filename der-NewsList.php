@@ -38,6 +38,7 @@ if ($totalRows > 0) {
 
 <div class="row">
     <div class="col-12">
+        <a class=" d-inline-block mt-3 text-decoration-none btn-sm btn-dark" href="der-NewsAdd.php">新增</a>
         <table class="table w-100">
             <thead>
                 <tr>
@@ -55,10 +56,6 @@ if ($totalRows > 0) {
                 <?php foreach ($rows as $r) : ?>
                     <tr>
                         <td>
-                            <?php /*
-                        <a href="ab-delete.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')">
-                        */ ?>
-
                             <a href="javascript: delete_it(<?= $r['sid'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
@@ -66,18 +63,19 @@ if ($totalRows > 0) {
                         <td><?= $r['sid'] ?></td>
                         <td><?= $r['title'] ?></td>
                         <td><?= $r['info'] ?></td>
-                        <td><?= $r['image'] ?></td>
+                        <td>
+                            <img class="w-50" src="./test-img/<?= $r['image'] ?>" alt="">
+                        </td>
                         <td><?= $r['created_at'] ?></td>
                         <td><?= $r['update_at'] ?></td>
                         <td>
-                            <a href="ab-edit.php?sid=<?= $r['sid'] ?>">
+                            <a href="der-NewsEdit.php?sid=<?= $r['sid'] ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-
         </table>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
@@ -113,13 +111,6 @@ if ($totalRows > 0) {
         </nav>
     </div>
 </div>
-
-
-
-
-
-
-
 <?php require __DIR__ . '/parts/scripts.php' ?>
 <script>
     function delete_it(sid) {
