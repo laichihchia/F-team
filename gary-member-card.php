@@ -56,28 +56,41 @@ $title = 'Gary-MemberCard';
     }
 
     .photo {
+        width: 400px;
         margin-top: 10%;
+        position: relative;
+        transition: 1s;
+        transform-style: preserve-3d;
+        transform-origin: center;
+    }
+    
+    .cardRotate {
+        transform: rotateY(180deg);
     }
 
     .front {
         /* 背面朝向用戶時不可見 */
-        backface-visibility: hidden;
-        transition: 0.6s;
-        transform-style: preserve-3d;
-        position: absolute;
+        width: 400px;
+        height: 250px;
+        position: absolute; 
+        top: 0px;
+        left: 0px;
         border-radius: 15px;
         cursor: pointer;
+        backface-visibility: hidden;
     }
 
     .back {
         /* 背面朝向用戶時不可見 */
-        backface-visibility: hidden;
-        transition: 0.6s;
-        transform-style: preserve-3d;
+        width: 400px;
+        height: 250px;
         position: absolute;
+        top: 0px;
+        left: 0px;
         transform: rotateY(-180deg);
         border-radius: 15px;
         cursor: pointer;
+        backface-visibility: hidden;
     }
 
     .WordColor {
@@ -118,8 +131,8 @@ $title = 'Gary-MemberCard';
 
 <div class="container">
     <div class="row">
-        <div class="photo">
-            <div class="front" <?= $_SESSION['user']['grade'] === 'high' ?'': 'onclick="Click()"' ?>>
+        <div class="photo" <?= $_SESSION['user']['grade'] === 'high' ?'': 'onclick="Click()"' ?>>
+            <div class="front">
                 <div class="Bigcard">
                     <div class="CardBGC"></div>
                     <div class="cardBOX">
@@ -136,7 +149,7 @@ $title = 'Gary-MemberCard';
                     </div>
                 </div>
             </div>
-            <div class="back" onclick="Click2()">
+            <div class="back">
                 <div class="Bigcard">
                     <div class="CardBGC"></div>
                     <div class="cardBOX">
@@ -169,15 +182,10 @@ $title = 'Gary-MemberCard';
 
 <script>
     // 卡片點擊反轉
-    const back = document.querySelector('.back');
-    const front = document.querySelector('.front');
+    const photo = document.querySelector('.photo');
+
     Click = () => {
-        back.style.transform = 'rotateY(0deg)';
-        front.style.transform = 'rotateY(180deg)';
-    }
-    Click2 = () => {
-        back.style.transform = 'rotateY(180deg)';
-        front.style.transform = 'rotateY(0deg)';
+        photo.classList.toggle('cardRotate');
     }
 </script>
 
