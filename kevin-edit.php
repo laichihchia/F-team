@@ -71,9 +71,9 @@ if (empty($row)) {
 
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </form>
-                    <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
+                    <!-- <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
                         資料編輯成功
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -84,60 +84,7 @@ if (empty($row)) {
 <script>
     const row = <?= json_encode($row, JSON_UNESCAPED_UNICODE); ?>;
 
-
-    // const email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
-    // const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
-
-    // const info_bar = document.querySelector('#info-bar');
-    // const name_f = document.form1.name;
-    // const email_f = document.form1.email;
-    // const mobile_f = document.form1.mobile;
-
-    // const fields = [name_f, email_f, mobile_f];
-    // const fieldTexts = [];
-    // for (let f of fields) {
-    //     fieldTexts.push(f.nextElementSibling);
-    // }
-
-
-
     async function sendData() {
-        // 讓欄位的外觀回復原來的狀態
-        // for (let i in fields) {
-        //     fields[i].classList.remove('red');
-        //     fieldTexts[i].innerText = '';
-        // }
-        // info_bar.style.display = 'none'; // 隱藏訊息列
-
-        // // TODO: 欄位檢查, 前端的檢查
-        // let isPass = true; // 預設是通過檢查的
-
-        // if (name_f.value.length < 2) {
-        //     // alert('姓名至少兩個字');
-        //     // name_f.classList.add('red');
-        //     // name_f.nextElementSibling.classList.add('red');
-        //     // name_f.closest('.mb-3').querySelector('.form-text').classList.add('red');
-        //     fields[0].classList.add('red');
-        //     fieldTexts[0].innerText = '姓名至少兩個字';
-        //     isPass = false;
-        // }
-        // if (email_f.value && !email_re.test(email_f.value)) {
-        //     // alert('email 格式錯誤');
-        //     fields[1].classList.add('red');
-        //     fieldTexts[1].innerText = 'email 格式錯誤';
-        //     isPass = false;
-        // }
-        // if (mobile_f.value && !mobile_re.test(mobile_f.value)) {
-        //     // alert('手機號碼格式錯誤');
-        //     fields[2].classList.add('red');
-        //     fieldTexts[2].innerText = '手機號碼格式錯誤';
-        //     isPass = false;
-        // }
-
-        // if (!isPass) {
-        //     return; // 結束函式
-        // }
-
         const fd = new FormData(document.form1);
         const r = await fetch('kevin-edit-api.php', {
             method: 'POST',
@@ -145,19 +92,13 @@ if (empty($row)) {
         });
         const result = await r.json();
         console.log(result);
-        info_bar.style.display = 'block'; // 顯示訊息列
-        if (result.success) {
-            info_bar.classList.remove('alert-danger');
-            info_bar.classList.add('alert-success');
-            info_bar.innerText = '修改成功';
-
+        if (result.success == true) {
+            alert('商品編輯成功,');
             setTimeout(() => {
-                // location.href = 'ab-list.php'; // 跳轉到列表頁
-            }, 2000);
+                location.href = 'kevin-produst.php';
+            }, 1000);
         } else {
-            info_bar.classList.remove('alert-success');
-            info_bar.classList.add('alert-danger');
-            info_bar.innerText = result.error || '資料沒有修改';
+            alert('商品編輯失敗');
         }
 
     }
