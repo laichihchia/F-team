@@ -76,18 +76,11 @@ foreach ($cart_sql as $rows => $r) {
 // 訂單成立 刪除已結帳的商品
 echo "
         <script>
-            alert('恭喜您結帳成功, 您的訂單編號為$last_insert_sid,即將回到購物區);
+            alert('恭喜您結帳成功, 您的訂單編號為$last_insert_sid,即將回到購物區,買買買起來');
             setTimeout(() => {
                 window.location.href = 'Nathan-CartList.php';
-            }, 1500);
+            }, 1000);
         </script>
 ";
 $pdo->query("DELETE FROM `cart` WHERE `produst_id` in ($produst_id) AND `member_id` = $memLoginID;");
 ?>
-<?php require __DIR__ . '/parts/html-head.php' ?>
-<?php require __DIR__ . '/parts/product-list.php' ?>
-<div class="row">
-    <div class="table"></div>
-</div>
-<?php require __DIR__ . '/parts/scripts.php' ?>
-<?php require __DIR__ . '/parts/html-foot.php' ?>
