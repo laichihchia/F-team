@@ -76,7 +76,7 @@ foreach ($cart_sql as $rows => $r) {
 // 訂單成立 刪除已結帳的商品
 echo "
         <script>
-            alert('恭喜您結帳成功, 您的訂單編號為$last_insert_sid,即將回到購物區,買買買起來');
+            alert('恭喜您結帳成功, 您的訂單編號為$last_insert_sid,即將回到購物區);
             setTimeout(() => {
                 window.location.href = 'Nathan-CartList.php';
             }, 1500);

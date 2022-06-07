@@ -103,7 +103,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                     <div class="card-body">
                         <p class="card-text"><?= htmlentities($r['name']) ?></p>
                         <p class="money-tag card-text mb-1"><?=$r['price']?></p>
-                        <p class="money-discount-tag card-text discount-price"><?= $_SESSION['user']['new'] = true ? $r['price']*0.8 : ''; ?></p>
+                        <p class="money-discount-tag card-text discount-price"><?= $_SESSION['user']['new'] === true ? $r['price']*0.8 : ''; ?></p>
                     </div>
                     <form class="text-center" action="Nathan-AddCart-api.php" method="post">
                         <input type="hidden" name="id" value="<?=$r['sid']?>">
@@ -163,10 +163,11 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
     }
     // if new member discount
     const discountPriceList = document.querySelectorAll('.discount-price');
-    console.log(discountPriceList)
     for(let i of discountPriceList){
         if(+i.innerText === +i.previousElementSibling.innerText*.8){
             i.previousElementSibling.style.textDecoration = 'line-through';
+        }else{
+            i.style.display = 'none';
         }
     }
 </script>
