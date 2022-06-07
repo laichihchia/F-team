@@ -2,7 +2,7 @@
 $pageName = "Nathan's cart";
 $title = "Nathan-CartList - Nathan's cart";
 //MV 資料處理 後端邏輯
-
+// echo json_encode($_SESSION['user']);
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 if ($page < 1) {
@@ -103,7 +103,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                     <div class="card-body">
                         <p class="card-text"><?= htmlentities($r['name']) ?></p>
                         <p class="money-tag card-text mb-1"><?=$r['price']?></p>
-                        <p class="money-discount-tag card-text discount-price"><?= $_SESSION['user']['new'] === true ? $r['price']*0.8 : ''; ?></p>
+                        <p class="money-discount-tag card-text discount-price"><?= $_SESSION['user']['new'] === true ? $r['price']*0.8 : $r['price']; ?></p>
                     </div>
                     <form class="text-center" action="Nathan-AddCart-api.php" method="post">
                         <input type="hidden" name="id" value="<?=$r['sid']?>">
