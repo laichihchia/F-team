@@ -12,12 +12,12 @@ $output = [
 $sid = isset($_POST['sid']) ? intval($_POST['sid']) : 0;
 
 // TODO: 欄位檢查, 後端的檢查
-// if (empty($_POST['name'])) {
-//     $output['error'] = '沒有課程名稱資料';
-//     $output['code'] = 400;
-//     echo json_encode($output, JSON_UNESCAPED_UNICODE);
-//     exit;
-// }
+if (empty($_POST['name'])) {
+    $output['error'] = '沒有課程名稱資料';
+    $output['code'] = 400;
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+    exit;
+}
 
 $name = $_POST['name'];
 $info = $_POST['info'];
@@ -31,7 +31,7 @@ $location = $_POST['location'];
 // TODO: 其他欄位檢查
 
 
-$sql = "UPDATE `lesson` SET `name`=?, `info`=?, `duringtime_begin`=?, `duringtime_end`=?, `number_of_people`=?, `price`=?, `teacher`=?, `location`=?  WHERE `sid`=$sid";
+$sql = "UPDATE `lesson` SET `name`=?, `info`=?, `duringtime_begin`=?, `duringtime_end`=?, `number_of_people`=?, `price`=?, `teacher`=?, `location`=?, `updated_at`=NOW() WHERE `sid`=$sid";
 
 // `created_at`=NOW()
 

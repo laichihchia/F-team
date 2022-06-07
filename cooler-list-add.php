@@ -93,7 +93,7 @@ if (isset($_SESSION['cart'])) {
     } */
 
     .data-added-successfully {
-        margin-top: 5px;
+        margin-top: 10px;
 
     }
 </style>
