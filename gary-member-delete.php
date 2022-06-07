@@ -2,13 +2,18 @@
 
 // 有設定的話轉換成整數 沒有的話就是0
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sid_ar = isset($_GET['sid']) ? ($_GET['sid']) : [];
 
 // 如果不是空字串或者是0
 if (!empty($sid)) {
     $pdo->query("DELETE FROM `member` WHERE sid=$sid");
 }
 
-$come_from = 'gary-member-list.php';
+if (!empty($sid_ar)) { // 如果我這個陣列沒有勾，
+    $pdo->query("DELETE FROM `member` WHERE `sid` IN ($sid_ar)");
+}
+
+$come_from = 'gary-member-list-true.php';
 
 // 如果SEVER裡的HTTP_REFERER不是空值
 // HTTP_REFERER是ab-list.php的待留頁面
