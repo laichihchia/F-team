@@ -54,7 +54,8 @@ foreach( $AccAndPwd as $k => $v){
                         'mem_account' => $_POST['mem_account'],
                         'grade' => 'low',
                     ];
-
+                    //台灣時間
+                    date_default_timezone_set('Asia/Taipei');
                     # 取得日期與時間
                     $now = date('Y/m/d H:i:s');
                     // 會員創建時間
