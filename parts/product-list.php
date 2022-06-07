@@ -81,6 +81,7 @@ if (isset($_SESSION['user'])) {
         color: red;
         font-size: 20px;
         font-weight: 600;
+        opacity: 0.8;
     }
 
     .newDis span {
@@ -210,7 +211,7 @@ if (isset($_SESSION['user'])) {
             const sec = (parseInt((only % 60000) / 1000) + '').padStart(2, '0');
             const time = document.querySelector('.timeWord');
             time.innerText = `${hours}:${min}:${sec}`;
-            setTimeout(doRun, 30);
+            setTimeout(doRun, 1000);
         };
 
         doRun();
