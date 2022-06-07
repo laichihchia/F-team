@@ -42,6 +42,21 @@ if ($totalRows > 0) {
     .table {
         border: 0px solid transparent;
     }
+
+    .cooler-info-text-limited {
+        /* overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        box-sizing: border-box; */
+        width: 200px;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        border: 1px solid;
+
+    }
 </style>
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
@@ -80,6 +95,8 @@ if ($totalRows > 0) {
             </ul>
 
             <a href="cooler-list-add.php" class=" btn btn-outline-secondary float-end mb-3 cooler-creat">新增</a>
+
+            <p class="cooler-info-text-limited">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias eos quam non, dolorem eius consequuntur sequi quos veritatis veniam quasi esse vel cupiditate. Dolore qui quasi voluptatum! Dolorum, neque necessitatibus.</p>
         </nav>
         <table class="table table-striped">
             <thead>
@@ -108,7 +125,7 @@ if ($totalRows > 0) {
 
                         <td><?= $r['sid'] ?></td>
                         <td><?= htmlentities($r['name']) ?></td>
-                        <td><?= htmlentities($r['info']) ?></td>
+                        <td class="cooler-info-text-limited"><?= htmlentities($r['info']) ?></td>
                         <!-- <td><?= $r['categories_id'] ?></td> -->
                         <td><?= $r['duringtime_begin'] ?></td>
                         <td><?= $r['duringtime_end'] ?></td>
@@ -120,7 +137,7 @@ if ($totalRows > 0) {
                         <td><?= $r['location'] ?></td>
                         <td><?= $r['created_at'] ?></td>
                         <td><?= $r['updated_at'] ?></td>
-                        
+
                         <td>
                             <a href="cooler-list-edit.php?sid=<?= $r['sid'] ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>

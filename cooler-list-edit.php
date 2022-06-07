@@ -193,8 +193,8 @@ if (isset($_SESSION['cart'])) {
     // const price_f = document.form1.price;
     // const teacher_f = document.form1.teacher;
     // const location_f = document.form1.location;
-    // const duringtime_begin_f = document.form1.duringtime_begin;
-    // const duringtime_end_f = document.form1.duringtime_end;
+    const duringtime_begin_f = document.form1.duringtime_begin;
+    const duringtime_end_f = document.form1.duringtime_end;
     // const info_f = document.form1.info;
 
     const fields = [
@@ -203,8 +203,8 @@ if (isset($_SESSION['cart'])) {
         // price_f,
         // teacher_f,
         // location_f,
-        // duringtime_begin_f,
-        // duringtime_end_f,
+        duringtime_begin_f,
+        duringtime_end_f,
         // info_f
     ];
     const fieldTexts = [];
@@ -242,6 +242,20 @@ if (isset($_SESSION['cart'])) {
             isPass = false;
         }
 
+
+        let day1 = new Date(duringtime_begin_f.value);
+        let day2 = new Date(duringtime_end_f.value);
+
+        let difference = day2.getTime() - day1.getTime();
+
+
+        if (difference < 0) {
+            // fields[2].classList.add('red');
+            // fieldTexts[2].innerText = '';
+            fields[3].classList.add('red');
+            fieldTexts[3].innerText = '結束時間要大於開始時間';
+            isPass = false;
+        }
 
         if (!isPass) {
             return; // 結束函式
