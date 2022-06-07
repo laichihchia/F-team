@@ -67,47 +67,61 @@ if ($x === 1) {
 //     $rows = $pdo->query($sql)->fetchAll();
 // };
 
-if (isset($_GET['checkbox'])) {
-    $checkbox = $_GET["checkbox"];
-    // 技術板篩選
-    if ($checkbox  == 1) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 3";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 交通板篩選
-    } else if ($checkbox  == 2) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 4";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 板身篩選
-    } else if ($checkbox  == 3) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 6";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 輪架篩選
-    } else if ($checkbox  == 4) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 7";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 輪子篩選
-    } else if ($checkbox  == 5) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 8";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 培林篩選
-    } else if ($checkbox  == 6) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 9";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 護具篩選
-    } else if ($checkbox  == 7) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 10";
-        $rows = $pdo->query($sql)->fetchAll();
-        // 噴漆篩選
-    } else if ($checkbox  == 8) {
-        $sql = "SELECT * FROM `produst` WHERE category_id = 2";
-        $rows = $pdo->query($sql)->fetchAll();
-    } else {
-        // 查詢所有商品
 
-        $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-        $rows = $pdo->query($sql)->fetchAll();
-    }
+
+// checkbox 多條件篩選
+$checkbox = isset($_GET["checkbox"]) ? ($_GET['checkbox']) : [];
+
+if (!empty($checkbox)) {
+    $str_tag = implode(',', $checkbox);
+
+    $sql = "SELECT * FROM `produst` WHERE `category_id` IN ($str_tag)";
+    $rows = $pdo->query($sql)->fetchAll();
 };
+
+
+
+// if (isset($_GET['checkbox'])) {
+//     $checkbox = $_GET["checkbox"];
+//     // 技術板篩選
+//     if ($checkbox  == 1) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 3";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 交通板篩選
+//     } else if ($checkbox  == 2) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 4";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 板身篩選
+//     } else if ($checkbox  == 3) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 6";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 輪架篩選
+//     } else if ($checkbox  == 4) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 7";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 輪子篩選
+//     } else if ($checkbox  == 5) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 8";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 培林篩選
+//     } else if ($checkbox  == 6) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 9";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 護具篩選
+//     } else if ($checkbox  == 7) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 10";
+//         $rows = $pdo->query($sql)->fetchAll();
+//         // 噴漆篩選
+//     } else if ($checkbox  == 8) {
+//         $sql = "SELECT * FROM `produst` WHERE category_id = 2";
+//         $rows = $pdo->query($sql)->fetchAll();
+//     } else {
+//         // 查詢所有商品
+
+//         $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+//         $rows = $pdo->query($sql)->fetchAll();
+//     }
+// };
 
 ?>
 
@@ -170,46 +184,46 @@ if (isset($_GET['checkbox'])) {
             <div class="form-check d-flex">
                 <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                     <label for="">
-                        <input type="checkbox" value="1" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="3" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Shortboard</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="2" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="4" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Old School</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="3" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="6" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Decks</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="4" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="7" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Trucks</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="5" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="8" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Wheels</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="6" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="9" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Bearings</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="7" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="10" style="vertical-align:middle;" name="checkbox">
                         <span style="vertical-align:middle;">Safety Gear</span>
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="8" style="vertical-align:middle;" name="checkbox">
+                        <input type="checkbox" value="2" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Spray Paint</span>
                     </label>
 
-                    <button type="submit" class="btn btn-primary">Type Submit</button>
+                    <button type="submit" class="btn btn-primary" name="ok">Type Submit</button>
                 </form>
             </div>
 
