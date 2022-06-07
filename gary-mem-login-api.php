@@ -61,6 +61,11 @@ foreach( $AccAndPwd as $k => $v){
                     $created = $AccAndPwd[$k]['mem-created_at'] ;
                     if((strtotime($now) - strtotime($created))/ (60*60*24)<1){
                         $output['new'] = true;
+                        $_SESSION['user'] = [
+                            'mem_account' => $_POST['mem_account'],
+                            'grade' => 'low',
+                            'new'=> true,
+                        ];
                     }
                     }
 
