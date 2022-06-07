@@ -6,10 +6,11 @@ header('Content-Type: application/json');
 
 $output = [
     'success' => false,
+    'bollen' => false,
+    'new' => false,
     'postData' => $_POST,
     'code' => 0,
     'error' => '',
-    'bollen' => false,
 ];
 
 // TODO: 欄位檢查, 後端的檢查
@@ -53,6 +54,14 @@ foreach( $AccAndPwd as $k => $v){
                         'mem_account' => $_POST['mem_account'],
                         'grade' => 'low',
                     ];
+
+                    # 取得日期與時間
+                    $now = date('Y/m/d H:i:s');
+                    // 會員創建時間
+                    $created = $AccAndPwd[$k]['mem-created_at'] ;
+                    if((strtotime($now) - strtotime($created))/ (60*60*24)<1){
+                        $output['new'] = true;
+                    }
                     }
 
                 }
