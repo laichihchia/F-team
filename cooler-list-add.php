@@ -56,10 +56,10 @@ if (isset($_SESSION['cart'])) {
                                         <a class="nav-link" href="kevin-produst.php" style="color:white ;">Product</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color:white ;">Member</a>
+                                        <a class="nav-link" href="cooler-list.php" style="color:white ;">Event</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color:white ;">Event</a>
+                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '':'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
                                     </li>
                                 </ul>
                             </div>
