@@ -83,11 +83,11 @@ echo "
         </script>
 ";
 $pdo->query("DELETE FROM `cart` WHERE `produst_id` in ($produst_id) AND `member_id` = $memLoginID;");
-
-
-exit;
 ?>
 <?php require __DIR__ . '/parts/html-head.php' ?>
 <?php require __DIR__ . '/parts/product-list.php' ?>
+<div class="row">
+    <div class="table"></div>
+</div>
 <?php require __DIR__ . '/parts/scripts.php' ?>
 <?php require __DIR__ . '/parts/html-foot.php' ?>

@@ -19,7 +19,11 @@ if (isset($_SESSION['user'])) {
 
     $product_id = $_POST['id'];
     $product_name = $_POST['name'];
-    $product_price = $_POST['price'];
+    if($_SESSION['user']['new'] = true){
+        $product_price = $_POST['price']*0.8;
+    }else{
+        $product_price = $_POST['price'];
+    }
     $product_qty = $_POST['qty'];
 
     // add cart

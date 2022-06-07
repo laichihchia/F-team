@@ -52,6 +52,27 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         width: 100%;
         height: 229px;
     }
+    .btn{
+        transition: all 0.2s ease;
+        border: none;
+        border-radius: 7px;
+    }
+    .btn:hover{
+        background-color: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(33,33,33,.5); 
+    }
+    .discount-price{
+        color: red;
+    }
+    .money-tag::before{
+        content: "$ ";
+        color: black;
+    }
+    .money-discount-tag::before{
+        content: "$ ";
+        color: red;
+    }
 </style>
 <div class="cart-container">
     <!-- 內導覽 -->
@@ -78,10 +99,11 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         <?php foreach ($rows as $r) : ?>
             <div class="col-3 cart-card mb-3">
                 <div class="cart-card-info card w-100 justify-content-center">
-                    <img  src="./test-img/<?= $r['img'] ?>" class="cart-card-img card-img-top text-center w-100" alt="">
+                    <img  src="Fteam-produst_img/<?= $r['img'] ?>" class="cart-card-img card-img-top text-center w-100" alt="">
                     <div class="card-body">
                         <p class="card-text"><?= htmlentities($r['name']) ?></p>
-                        <p class="card-text">$ <?= htmlentities($r['price']) ?></p>
+                        <p class="money-tag card-text mb-1"><?=$r['price']?></p>
+                        <p class="money-discount-tag card-text discount-price"><?= $_SESSION['user']['new'] = true ? $r['price']*0.8 : ''; ?></p>
                     </div>
                     <form class="text-center" action="Nathan-AddCart-api.php" method="post">
                         <input type="hidden" name="id" value="<?=$r['sid']?>">
@@ -137,6 +159,14 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
             return true;
         }else{
             return false;
+        }
+    }
+    // if new member discount
+    const discountPriceList = document.querySelectorAll('.discount-price');
+    console.log(discountPriceList)
+    for(let i of discountPriceList){
+        if(+i.innerText === +i.previousElementSibling.innerText*.8){
+            i.previousElementSibling.style.textDecoration = 'line-through';
         }
     }
 </script>
