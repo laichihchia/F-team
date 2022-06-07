@@ -94,7 +94,8 @@ if ($totalRows > 0) {
                     <th scope="col">價格</th>
                     <th scope="col">老師</th>
                     <th scope="col">活動位置</th>
-                    <th scope="col">現在時間</th>
+                    <th scope="col">上傳時間</th>
+                    <th scope="col">更新時間</th>
 
                     <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
                     <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
@@ -118,7 +119,8 @@ if ($totalRows > 0) {
                         <td><?= $r['teacher'] ?></td>
                         <td><?= $r['location'] ?></td>
                         <td><?= $r['created_at'] ?></td>
-
+                        <td><?= $r['updated_at'] ?></td>
+                        
                         <td>
                             <a href="cooler-list-edit.php?sid=<?= $r['sid'] ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>
