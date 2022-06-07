@@ -6,6 +6,7 @@ header('Content-Type: application/json');
 
 $output = [
     'success' => false,
+    'new' => false,
     'postData' => $_POST,
     'code' => 0,
     'error' => '',

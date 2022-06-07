@@ -59,7 +59,7 @@ if (isset($_SESSION['cart'])) {
                                         <a class="nav-link" href="cooler-list.php" style="color:white ;">Event</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '':'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
+                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '' : 'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
                                     </li>
                                 </ul>
                             </div>
@@ -93,7 +93,7 @@ if (isset($_SESSION['cart'])) {
     } */
 
     .data-added-successfully {
-        margin-top: 5px;
+        margin-top: 10px;
 
     }
 </style>
@@ -140,17 +140,17 @@ if (isset($_SESSION['cart'])) {
                         <div class="mb-3">
                             <label for="duringtime_begin" class="form-label">開始時間</label>
                             <input type="date" class="form-control" id="duringtime_begin" name="duringtime_begin">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="duringtime_end" class="form-label">結束時間</label>
                             <input type="date" class="form-control" id="duringtime_end" name="duringtime_end">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="info" class="form-label">課程內容</label>
                             <textarea class="form-control" name="info" id="info" cols="30" rows="3"></textarea>
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
 
                         <button type="submit" class="btn btn-primary ">新增</button>
@@ -175,8 +175,8 @@ if (isset($_SESSION['cart'])) {
     // const price_f = document.form1.price;
     // const teacher_f = document.form1.teacher;
     // const location_f = document.form1.location;
-    // const duringtime_begin_f = document.form1.duringtime_begin;
-    // const duringtime_end_f = document.form1.duringtime_end;
+    const duringtime_begin_f = document.form1.duringtime_begin;
+    const duringtime_end_f = document.form1.duringtime_end;
     // const info_f = document.form1.info;
 
     const fields = [
@@ -185,8 +185,8 @@ if (isset($_SESSION['cart'])) {
         // price_f,
         // teacher_f,
         // location_f,
-        // duringtime_begin_f,
-        // duringtime_end_f,
+        duringtime_begin_f,
+        duringtime_end_f,
         // info_f
     ];
     const fieldTexts = [];
@@ -218,9 +218,23 @@ if (isset($_SESSION['cart'])) {
             isPass = false;
         }
 
-        if (parseInt(number_of_people_f.value) < 1){
+        if (parseInt(number_of_people_f.value) < 1) {
             fields[1].classList.add('red');
             fieldTexts[1].innerText = '人數至少1人';
+            isPass = false;
+        }
+
+        let day1 = new Date(duringtime_begin_f.value);
+        let day2 = new Date(duringtime_end_f.value);
+
+        let difference = day2.getTime() - day1.getTime();
+
+
+        if (difference < 0) {
+            // fields[2].classList.add('red');
+            // fieldTexts[2].innerText = '';
+            fields[3].classList.add('red');
+            fieldTexts[3].innerText = '結束時間要大於開始時間';
             isPass = false;
         }
 

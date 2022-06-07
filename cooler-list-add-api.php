@@ -40,6 +40,7 @@ $sql = "INSERT INTO `lesson`(
     `location`,
     `created_at`
     
+    
     ) VALUES (
         ?, ?, ?, ?, ?, ?, ?, ?, NOW()
     )";
