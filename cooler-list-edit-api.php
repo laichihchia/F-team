@@ -9,13 +9,15 @@ $output = [
     'error' => ''
 ];
 
+$sid = isset($_POST['sid']) ? intval($_POST['sid']) : 0;
+
 // TODO: 欄位檢查, 後端的檢查
-// if (empty($_POST['name'])) {
-//     $output['error'] = '沒有課程名稱資料';
-//     $output['code'] = 400;
-//     echo json_encode($output, JSON_UNESCAPED_UNICODE);
-//     exit;
-// }
+if (empty($_POST['name'])) {
+    $output['error'] = '沒有課程名稱資料';
+    $output['code'] = 400;
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+    exit;
+}
 
 $name = $_POST['name'];
 $info = $_POST['info'];
@@ -29,21 +31,9 @@ $location = $_POST['location'];
 // TODO: 其他欄位檢查
 
 
-$sql = "INSERT INTO `lesson`(
-    `name`,
-    `info`,
-    `duringtime_begin`,
-    `duringtime_end`,
-    `number_of_people`,
-    `price`,
-    `teacher`,
-    `location`,
-    `created_at`
-    
-    
-    ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, NOW()
-    )";
+$sql = "UPDATE `lesson` SET `name`=?, `info`=?, `duringtime_begin`=?, `duringtime_end`=?, `number_of_people`=?, `price`=?, `teacher`=?, `location`=?, `updated_at`=NOW() WHERE `sid`=$sid";
+
+// `created_at`=NOW()
 
 $stmt = $pdo->prepare($sql);
 
@@ -56,7 +46,7 @@ $stmt->execute([
     $price,
     $teacher,
     $location,
-    
+
 
 ]);
 
@@ -64,9 +54,11 @@ $stmt->execute([
 if ($stmt->rowCount() == 1) {
     $output['success'] = true;
     // 最近新增資料的 primery key
-    $output['lastInsertId'] = $pdo->lastInsertId();
-} else {
-    $output['error'] = '資料無法新增';
+
+} 
+// 後端呈現但我的會影響畫面
+else {
+    $output['error'] = '資料沒有修改';  
 }
 // isset() vs empty()
 

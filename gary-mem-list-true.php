@@ -110,9 +110,15 @@ if ($totalRows > 0) {
             </div>
         </div>
 
+        <button onclick="delete_select()" class="btn btn-danger">Delete</button>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input totalCheck" type="checkbox" value="" id="flexCheckDefault" name="all" onclick="check_all(this,'delALL')">
+                        </div>
+                    </th>
                     <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     <th scope="col">#</th>
                     <th scope="col">狀態</th>
@@ -131,8 +137,14 @@ if ($totalRows > 0) {
 
                     <?php //設定布林值名稱
                     $r['mem-bollen'] = '正常'; ?>
-                    <tr>
 
+                    <tr>
+                        <!-- 多選刪除 -->
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="delALL">
+                            </div>
+                        </td>
 
                         <!-- 刪除 -->
                         <td>
@@ -192,6 +204,28 @@ if ($totalRows > 0) {
     function bollen_it(sid) {
         if (confirm(`確定要停用編號為 ${sid} 的資料嗎?`)) {
             location.href = `gary-list-0-api.php?sid=${sid}`;
+        }
+    }
+
+    // 全選checkbox同步設定
+    function check_all(obj, delALL) {
+        const allCheck = document.getElementsByName(delALL);
+        for (let i = 0; i < allCheck.length; i++) {
+            allCheck[i].checked = obj.checked;
+        }
+    }
+    const singleSelect = document.querySelectorAll('#singleSelect');
+
+    async function delete_select() {
+        const select_ar = [];
+        for (let i of singleSelect) {
+            if (i.checked) {
+                select_ar.push(Number(i.value));
+            }
+        }
+        // console.log(select_ar);
+        if(confirm(`確定要刪除編號為${select_ar}的資料嗎`)){
+            location.href = `gary-member-delete.php?sid=${select_ar}`;
         }
     }
 </script>

@@ -19,7 +19,11 @@ if (isset($_SESSION['user'])) {
 
     $product_id = $_POST['id'];
     $product_name = $_POST['name'];
-    $product_price = $_POST['price'];
+    if($_SESSION['user']['new'] = true){
+        $product_price = $_POST['price']*0.8;
+    }else{
+        $product_price = $_POST['price'];
+    }
     $product_qty = $_POST['qty'];
 
     // add cart
@@ -30,7 +34,7 @@ if (isset($_SESSION['user'])) {
             array_push($empty_ar, $val['produst_id']);
         }
         // 跟 add post 商品編號比對
-        if (in_array($product_id, $empty_ar)) { 
+        if (in_array($product_id, $empty_ar)) {
             echo "<script>alert('此商品已加入購物車');
             window.location.href = 'Nathan-CartList.php';
             </script>";
@@ -55,14 +59,9 @@ if (isset($_SESSION['user'])) {
             </script>";
         }
     };
-
-    // cart delete
-    if (isset($_POST['remove'])) {
-        $delete_id = $_POST['cart_id'];
-        $cart_delete_sql = "DELETE FROM `cart` WHERE `produst_id`= $delete_id";
-        $pdo->query($cart_delete_sql);
-        header('Location: Nathan-ViewCart.php');
-    };
+    // cart delete 刪除數量被改為0的商品
+    $proId = isset($_GET['proId']) ? intval($_GET['proId']) : 0;
+    $pdo->query("DELETE FROM cart WHERE `produst_id` = $proId");
 
     // cart edit 
     if (isset($_POST['update'])) {
