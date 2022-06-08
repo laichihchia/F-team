@@ -77,7 +77,7 @@ if (isset($_SESSION['user'])) {
 
     .newDis {
         height: 60px;
-        background-color: black;
+        background-color: WHITE;
         color: red;
         font-size: 20px;
         font-weight: 600;

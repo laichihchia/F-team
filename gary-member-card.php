@@ -30,8 +30,10 @@ if (isset($_SESSION['user'])) {
     }
 
     body {
-        background: url('./gary-img/cfebdd19f08e16165b2935a0552c749b.jpg')center center/cover;
-        background-position: 0 0;
+        background: url('./gary-img/d481ad3029497cb33cf6f580a701615b.gif')center center no-repeat;
+        background-size: 40%;
+        background-position: 45% 20%;
+        background-color: black;
         background-attachment: fixed;
     }
 
