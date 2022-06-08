@@ -147,9 +147,11 @@ if (isset($_SESSION['user'])) {
                     <!-- LOGIN/LOGOUT -->
                     <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
 
-                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
+
+                    <a class="cart-icon <?= $_SESSION['user']['grade'] === 'high' ? 'dsn' : ''; ?>" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                     </a>
+
                 </div>
             </div>
         </div>
