@@ -21,13 +21,12 @@ if ($nowQty === 0) {
 };
 
 // 取得此會員的購物車紀錄
-$cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID;")->fetchAll();
-if($cart_sql === []){
+$cart = $pdo->query("SELECT c.*, p.`img` FROM `cart` c JOIN `produst` p ON c.produst_id = p.sid WHERE c.member_id = $memLoginID;")->fetchAll();
+if ($cart === []) {
     echo "<script>alert('購物車內沒有商品');
     window.location.href = 'Nathan-CartList.php';
     </script>";
 }
-
 
 if (empty($_SESSION['user']['mem_account'])) {
     echo "<script>alert('請先登入會員');
@@ -55,16 +54,44 @@ $title = "Nathan-ViewCart - Nathan's cart";
         border: 0;
     }
 
+    .total-text-wrap {
+        border-top: 2px solid black;
+    }
+
     .total-text {
-        border-bottom: 2px solid #777;
         font-weight: 600;
         color: #777;
     }
 
     .total-text-info {
+        font-size: 1.2rem;
         font-weight: 600;
         color: #777;
         padding-right: 0;
+    }
+    .btn{
+        transition: all 0.2s ease;
+        border: none;
+        border-radius: 7px;
+    }
+    .btn:hover{
+        background-color: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(33,33,33,.5); 
+    }
+    .cart-img-wrap{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        background-size: cover;
+    }
+    .cart-img-wrap>img{
+        width: 100%;
+        object-fit: cover;
+    }
+    .cart-name-info{
+        font-size: 1rem;
     }
 </style>
 <div class="cart-container">
@@ -85,10 +112,10 @@ $title = "Nathan-ViewCart - Nathan's cart";
     </div>
     <!-- 內導覽 -->
     <!-- 呈現區 -->
-    <button class="btn-sm btn-dark" onclick="delete_select()">Delete</button>
-    <div class="row justify-content-center">
 
-        <table class="table w-100 ">
+    <div class="row">
+        <a style="width:10%; cursor:pointer;" class="btn btn-dark text-decoration-none" onclick="delete_select()">Delete</a>
+        <table class="table w-100">
             <thead>
                 <tr class="text-center">
                     <th>
@@ -97,12 +124,12 @@ $title = "Nathan-ViewCart - Nathan's cart";
                         </div>
                     </th>
                     <th scope="col">NO.</th>
-                    <th scope="col">Pro-id</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Edit</th>
+                    <th scope="col">Total price</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -111,7 +138,7 @@ $title = "Nathan-ViewCart - Nathan's cart";
                 $total = 0;
                 $productTotal = 0;
                 $i = 1;
-                foreach ($cart_sql as $rows => $r) :
+                foreach ($cart as $rows => $r) :
                     $productTotal = $r['price'] * $r['qty'];
                     $total += $r['price'] * $r['qty'];
                     $i = $rows + 1;
@@ -126,7 +153,10 @@ $title = "Nathan-ViewCart - Nathan's cart";
                             <td scope="col"><?= $i ?></td>
                             <input type="hidden" name="cart_id" value="<?= $r['produst_id']; ?>">
                             <td scope="col"><?= $r['produst_id']; ?></td>
-                            <td scope="col"><?= $r['name']; ?></td>
+                            <td class="d-flex justify-content-start align-content-center" scope="col">
+                                <div class="cart-img-wrap me-1"><img src="Fteam-produst_img/<?= $r['img']?>"></div>
+                                <span class="cart-name-info"><?= $r['name']; ?></span>
+                            </td>
                             <input type="hidden" name="cart_name" value="<?= $r['name']; ?>">
                             <td scope="col"><?= $r['price']; ?></td>
                             <input type="hidden" name="cart_price" value="<?= $r['price']; ?>">
@@ -138,27 +168,26 @@ $title = "Nathan-ViewCart - Nathan's cart";
                                 </button>
                             </td>
                             <td scope="col">NT$ <?= $productTotal; ?></td>
-                            <td><button onclick="confirm('確定要變更此商品數量嗎?');" name="update" class=" btn-sm btn-dark">Update</button></td>
+
                         </tr>
                     </form>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-    <div class="row">
-        <div class="col-12">
+    <div class="row total-text-wrap pt-2">
+        <div class="col-2">
             <h5 class="total-text pb-2">TotalPrice :</h5>
         </div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2 total-text-info d-flex align-content-center justify-content-end mt-1 pe-3">NT$ <?= $total ?></div>
+
     </div>
-    <div class="row total-text-wrap pb-3">
-        <div class="col-2"></div>
-        <div class="col-2"></div>
-        <div class="col-2"></div>
-        <div class="col-2"></div>
-        <div class="col-2 total-text-info d-flex align-content-center justify-content-end pe-2">NT$ <?= $total ?></div>
-        <div class="col-2 text-end">
-            <a style="cursor: pointer;" onclick="checkout_select();" class="btn btn-sm btn-dark">Checkout</a>
-        </div>
+    <div class="col-12 text-end pe-3">
+        <a style="cursor: pointer;" onclick="checkout_select();" class="btn btn-dark">Checkout</a>
     </div>
     <!-- 呈現區 -->
 </div>
@@ -183,7 +212,7 @@ $title = "Nathan-ViewCart - Nathan's cart";
             }
         }
         // console.log(select_ar);
-        if (confirm(`確定要刪除編號 ${select_ar} 商品嗎？`)) {
+        if (confirm(`確定要刪除商品ID ${select_ar} 商品嗎？`)) {
             location.href = `Nathan-Cart-Delete-Select-api.php?produst_id=${select_ar}`;
         }
     }
