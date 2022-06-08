@@ -157,7 +157,7 @@ $title = 'Gary-Register';
 
                         <div class="d-flex justify-content-between">
                             <a href="gary-member-login.php" class="btn btn-primary login">LOGIN</a>
-                            <button type="submit" class="btn btn-primary">立即註冊</button>
+                            <button  type="submit" class="btn btn-primary">立即註冊</button>
                         </div>
                     </div>
                 </form>
@@ -167,9 +167,9 @@ $title = 'Gary-Register';
                 </form>
 
                 <!-- 回應提示 -->
-                <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
+                <!-- <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
                     註冊成功
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -235,7 +235,7 @@ $title = 'Gary-Register';
             fieldTexts[i].innerText = '';
         }
 
-        info_bar.style.display = 'none';
+        // info_bar.style.display = 'none';
 
 
 
@@ -309,7 +309,7 @@ $title = 'Gary-Register';
 
         console.log(result);
 
-        info_bar.style.display = 'block'; //顯示提示訊息
+        // info_bar.style.display = 'block'; //顯示提示訊息
 
         // 如果新增成功 success=true
         if (result.success) {
@@ -317,7 +317,14 @@ $title = 'Gary-Register';
             // info_bar.classList.remove('alert-danger');
             // info_bar.classList.add('alert-success');
             // 寫入文字
-            info_bar.innerText = '註冊成功';
+            // info_bar.innerText = '註冊成功';
+            alert('註冊成功，新會員24小時內享8折優惠!');
+            // function trueFalse() {
+            //     location.href = 'gary-member-login.php';
+            // }
+
+                location.href = 'gary-member-login.php'; //跳轉到列表頁
+
 
             // setTimeout(() => {
             //     location.href = ''; //跳轉到列表頁
@@ -326,7 +333,8 @@ $title = 'Gary-Register';
         } else {
             // info_bar.classList.remove('alert-success');
             // info_bar.classList.add('alert-danger');
-            info_bar.innerText = result.error || '會員無法註冊';
+            // info_bar.innerText = result.error || '會員無法註冊';
+            alert('會員無法註冊');
         }
 
     }
