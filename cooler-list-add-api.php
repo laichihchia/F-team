@@ -38,11 +38,12 @@ $sql = "INSERT INTO `lesson`(
     `price`,
     `teacher`,
     `location`,
-    `created_at`
+    `created_at`,
+    `updated_at`
     
     
     ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, NOW()
+        ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW()
     )";
 
 $stmt = $pdo->prepare($sql);

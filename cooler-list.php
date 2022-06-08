@@ -2,7 +2,16 @@
 $pageName = '課程資訊';
 $title = '課程資訊';
 
-$perPage = 5; // 每一頁有幾筆
+$perPage = 10; // 每一頁有幾筆
+
+// 下拉式選單的選項
+$type = [
+    '1' => '公告',
+    '2' => '限時優惠',
+    '3' => '聯名合作',
+];
+
+
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -25,7 +34,7 @@ if ($totalRows > 0) {
         exit;
     }
 
-    $sql = sprintf("SELECT * FROM lesson ORDER BY updated_at DESC,created_at DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM lesson ORDER BY updated_at DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 }
 ?>
