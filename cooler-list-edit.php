@@ -14,7 +14,23 @@ if (empty($row)) {
     exit;
 }
 
+//   下拉式選單的選項 左k右v
 
+$teacher = [
+    '1' => '小雞',
+    '2' => '圈圈',
+    '3' => '小佑',
+    '4' => '大壯',
+    '5' => '小ㄗ',
+];
+
+$location = [
+    '1' => '台北市北投區',
+    '2' => '台北市大安區',
+    '3' => '台北市松山區',
+    '4' => '台北市中正區',
+    '5' => '台北市信義區',
+];
 
 ?>
 
@@ -145,14 +161,24 @@ if (isset($_SESSION['cart'])) {
 
                         <div class="mb-3">
                             <label for="teacher" class="form-label">老師</label>
-                            <input type="text" class="form-control" id="teacher" name="teacher" required value="<?= htmlentities($row['teacher']) ?>">
-                            <div class="form-text red"></div>
+                            <select class="form-select mb-3" aria-label="example" data-multiple id="teacher" name="teacher" >
+                                <option value="" selected disabled>-- 請選擇 --</option>
+                                <!-- 從teacher裡抓 左邊值K右邊值v -->
+                                <?php foreach ($teacher as $k => $v) : ?>
+                                    <option value="<?= $v ?>" <?=$row['teacher'] == $v ? ' selected="selected"' : ''?> ><?= $v ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
                         <div class="mb-3">
                             <label for="location" class="form-label">活動位置</label>
-                            <input type="text" class="form-control" id="location" name="location" required value="<?= htmlentities($row['location']) ?>">
-                            <div class="form-text red"></div>
+                            <select class="form-select mb-3" aria-label="example" data-multiple id="location" name="location">
+                                <option value="" selected disabled>-- 請選擇 --</option>
+                                <!-- 從location裡抓 左邊值K右邊值v -->
+                                <?php foreach ($location as $k => $v) : ?>
+                                    <option value="<?= $v ?>" <?=$row['location'] == $v ? ' selected="selected"' : ''?> ><?= $v ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
                         <div class="mb-3">
