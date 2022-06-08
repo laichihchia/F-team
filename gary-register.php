@@ -11,7 +11,7 @@ $title = 'Gary-Register';
     }
 
     body {
-        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
         background-attachment: fixed;
     }
 
@@ -157,7 +157,7 @@ $title = 'Gary-Register';
 
                         <div class="d-flex justify-content-between">
                             <a href="gary-member-login.php" class="btn btn-primary login">LOGIN</a>
-                            <button  type="submit" class="btn btn-primary">立即註冊</button>
+                            <button type="submit" class="btn btn-primary">立即註冊</button>
                         </div>
                     </div>
                 </form>
@@ -323,7 +323,35 @@ $title = 'Gary-Register';
             //     location.href = 'gary-member-login.php';
             // }
 
-                location.href = 'gary-member-login.php'; //跳轉到列表頁
+            // 把整個表單內容抓出來
+            const fd = new FormData(document.form1);
+
+            // 把表單送給誰
+            const r = await fetch('gary-mem-login-api.php', {
+                method: 'POST',
+                body: fd,
+            });
+            // .then(d=>d.json())
+            // .then(d=>{
+            //     console.log(d);
+            // })
+
+            // 回傳的資料是JSON 轉回JS的陣列
+            const result = await r.json();
+
+            console.log(result);
+
+            const info_bar = document.querySelector('#info-bar');
+
+
+            // 如果成功 success=true
+            // if (result.success) {
+            //     setTimeout(() => {
+            //         location.href = 'gary-member-card.php'; //跳轉到列表頁
+            //     }, 1000);
+            // }
+
+            location.href = 'gary-member-card.php'; //跳轉到列表頁
 
 
             // setTimeout(() => {
