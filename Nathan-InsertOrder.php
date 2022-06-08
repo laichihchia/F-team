@@ -54,12 +54,12 @@ if($last_insert['total'] === '0'){
     $pdo ->query("DELETE FROM `orders` WHERE `sid` = $last_insert_sid");
     echo "
     <script>
-        alert('訂單已新增成功');
+        alert('感謝您，訂單已經新增成功囉。');
         window.location.href = 'Nathan-CartList.php';
     </script>
 ";
 }
-// // insert order_detail
+// insert order_detail
 foreach ($cart_sql as $rows => $r) {
     $sql = "INSERT INTO `order_details`(
     `order_sid`,`member_sid`,`produst_sid`,
