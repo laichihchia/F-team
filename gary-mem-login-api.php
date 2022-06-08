@@ -67,6 +67,12 @@ foreach( $AccAndPwd as $k => $v){
                             'grade' => 'low',
                             'new'=> true,
                         ];
+                    }else{
+                        $_SESSION['user'] = [
+                            'mem_account' => $_POST['mem_account'],
+                            'grade' => 'low',
+                            'new'=> false,
+                        ];
                     }
                     }
 
