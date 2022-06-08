@@ -1,29 +1,4 @@
 <?php
-// 會員在登入狀態 購物車紀錄數量 右上角顯示
-
-// if (isset($_SESSION['user'])) {
-//     $mem_sql = $pdo->query("SELECT  * FROM `member` WHERE 1;")->fetchAll();
-//     foreach ($mem_sql as $member_rows => $member_r) {
-//         if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
-//             // 取得登入中的會員id
-//             $memLoginID = $member_r['sid'];
-//             $cart_sql = $pdo->query("SELECT * FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-//             $count_sql = $pdo->query("SELECT COUNT(1) FROM `cart` WHERE `member_id` = $memLoginID")->fetchAll();
-//             $cartCount = $count_sql[0]['COUNT(1)'];
-
-//             // 右上角稱呼的顯示跟其他資訊
-//             $memName = $member_r['mem-name'];
-//             $memNick = $member_r['mem-nickname'];
-//             $memAvatar = $member_r['mem-avatar'];
-//             $memLevel = $member_r['mem-level'];
-//             $memCreated = $member_r['mem-created_at'];
-//             $iconName = $memNick;
-//             if ($memNick == '') {
-//                 $iconName = $memName;
-//             }
-//         }
-//     }
-// }
 
 if (isset($_SESSION['user'])) {
     if ($_SESSION['user']['grade'] === 'low') {
@@ -55,11 +30,11 @@ if (isset($_SESSION['user'])) {
             if ($ad_r['ad-account'] === $_SESSION['user']['mem_account']) {
                 // 取得登入中的會員id
                 $memLoginID = $ad_r['sid'];
-    
+
                 // 右上角稱呼的顯示跟其他資訊
                 $memName = $ad_r['ad-name'];
                 $memAvatar = $ad_r['ad-avatar'];
-    
+
                 $iconName = $memName;
             }
         }
@@ -100,6 +75,23 @@ if (isset($_SESSION['user'])) {
         height: 30px;
     }
 
+    .newDis {
+        height: 60px;
+        background-color: WHITE;
+        color: red;
+        font-size: 20px;
+        font-weight: 600;
+        opacity: 0.8;
+    }
+
+    .newDis span {
+        margin-right: 20px;
+    }
+
+    .spanBig {
+        font-size: 30px;
+    }
+
     .dsn {
         display: none;
     }
@@ -132,7 +124,7 @@ if (isset($_SESSION['user'])) {
                                         <a class="nav-link" href="cooler-list.php" style="color:white ;">Event</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '':'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
+                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '' : 'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
                                     </li>
                                 </ul>
                             </div>
@@ -155,13 +147,27 @@ if (isset($_SESSION['user'])) {
                     <!-- LOGIN/LOGOUT -->
                     <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
 
-                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
+
+                    <a class="cart-icon <?= $_SESSION['user']['grade'] === 'high' ? 'dsn' : ''; ?>" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
                     </a>
+
                 </div>
             </div>
         </div>
     </header>
+    <div class="<?= $_SESSION['user']['new'] === true ? '' : 'dsn'; ?>">
+        <div class="newDis d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center">
+                <span class="spanBig">20%</span>
+                <span class="spanSmall">off for New members</span>
+                <span class="spanSmall">The promotion will end at</span>
+                <sapn class="timeWord spanBig"></sapn>
+                <input type="hidden" value="<?= $memCreated ?>" id="memCreat"></input>
+            </div>
+        </div>
+    </div>
+
     <div class="list-section">
         <div class="list-group">
             <a href="der-NewsList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
@@ -169,6 +175,7 @@ if (isset($_SESSION['user'])) {
             <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
             <a href="cooler-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : ''; ?>">課程資訊</a>
             <a href="Nathan-CartList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : ''; ?>">購物車</a>
+            <a href="Nathan-Orders.php" class="list-a list-group-item list-group-item-action <?= $pageName === 'Nathan-orders' ? 'active' : ''; ?>">訂單資訊</a>
 
         </div>
     </div>
@@ -182,4 +189,33 @@ if (isset($_SESSION['user'])) {
 
         const Avatar = document.querySelector('.AvatarImg');
         const icon = document.querySelector('#ICON');
+
+
+        const doRun = () => {
+            // 取得會員創建時間(PHP格式)
+            const memCreat = document.getElementById('memCreat').value;
+            // 轉成JS時間格式
+            const memTime = new Date(memCreat);
+            // 現在時間
+            const nowTime = new Date();
+            //讓創建日期+1天
+            Date.prototype.addDays = function(days) {
+                this.setDate(this.getDate() + days);
+                return this;
+            }
+            const newDis = memTime.addDays(1);
+
+            //計算剩下多久優惠時間
+            const only = newDis - nowTime;
+            const SEC_PER_DAY = 24 * 60 * 60000;
+            //padStart(2, '0') 字串方法 不足二位數補0
+            const hours = (parseInt((only % SEC_PER_DAY) / 3600000) + '').padStart(2, '0');
+            const min = (parseInt((only % 3600000) / 60000) + '').padStart(2, '0');;
+            const sec = (parseInt((only % 60000) / 1000) + '').padStart(2, '0');
+            const time = document.querySelector('.timeWord');
+            time.innerText = `${hours}:${min}:${sec}`;
+            setTimeout(doRun, 1000);
+        };
+
+        doRun();
     </script>

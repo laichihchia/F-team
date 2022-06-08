@@ -158,17 +158,17 @@ if (isset($_SESSION['cart'])) {
                         <div class="mb-3">
                             <label for="duringtime_begin" class="form-label">開始時間</label>
                             <input type="date" class="form-control" id="duringtime_begin" name="duringtime_begin" value="<?= htmlentities($row['duringtime_begin']) ?>">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="duringtime_end" class="form-label">結束時間</label>
                             <input type="date" class="form-control" id="duringtime_end" name="duringtime_end" value="<?= htmlentities($row['duringtime_end']) ?>">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="info" class="form-label">課程內容</label>
                             <textarea class="form-control" name="info" id="info" cols="30" rows="3"><?= htmlentities($row['info']) ?></textarea>
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
 
                         <button type="submit" class="btn btn-primary ">修改</button>

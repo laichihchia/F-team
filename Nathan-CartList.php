@@ -1,7 +1,6 @@
 <?php require __DIR__ . '/parts/connect_db.php';
 $pageName = "Nathan's cart";
 $title = "Nathan-CartList - Nathan's cart";
-//MV 資料處理 後端邏輯
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

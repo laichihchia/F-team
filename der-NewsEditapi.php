@@ -12,7 +12,7 @@ $sid = isset($_POST['sid']) ? $_POST['sid'] : '';
 $title = isset($_POST['title']) ? $_POST['title'] : '';
 $info = isset($_POST['info']) ? $_POST['info'] : '';
 
-$sql = "UPDATE `News` SET `title`=?,`info`=? WHERE `sid` = $sid";
+$sql = "UPDATE `News` SET `title`=?,`info`=? ,`update_at` = NOW() WHERE `sid` = $sid";
 
 $stmt = $pdo->prepare($sql);
 

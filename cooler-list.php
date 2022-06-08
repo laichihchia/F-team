@@ -2,7 +2,16 @@
 $pageName = '課程資訊';
 $title = '課程資訊';
 
-$perPage = 5; // 每一頁有幾筆
+$perPage = 10; // 每一頁有幾筆
+
+// 下拉式選單的選項
+$type = [
+    '1' => '公告',
+    '2' => '限時優惠',
+    '3' => '聯名合作',
+];
+
+
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -25,7 +34,7 @@ if ($totalRows > 0) {
         exit;
     }
 
-    $sql = sprintf("SELECT * FROM lesson ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM lesson ORDER BY updated_at DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 }
 ?>
@@ -39,23 +48,31 @@ if ($totalRows > 0) {
         color: #222;
     }
 
-    .table {
-        border: 0px solid transparent;
-    }
+    
 
     .cooler-info-text-limited {
-        /* overflow: hidden;
-        text-overflow: ellipsis;
+
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;
-        box-sizing: border-box; */
-        width: 200px;
-        overflow: hidden !important;
-        white-space: nowrap !important;
-        text-overflow: ellipsis !important;
-        border: 1px solid;
+        -webkit-line-clamp: 3;
+        white-space: normal;
+        /* line-height: 40px; */
 
+        box-sizing: border-box;
+        padding: 10px;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* border: 1px solid; */
+        word-wrap: break-word;
+        /* font-weight: 900; */
+
+
+    }
+
+    .table {
+        --bs-table-striped-bg: white;
+        border: 0px solid transparent;
     }
 </style>
 <?php include __DIR__ . '/parts/product-list.php' ?>
