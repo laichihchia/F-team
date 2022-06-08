@@ -78,7 +78,7 @@ if ($totalRows > 0) {
                         <td><?= $r['title'] ?></td>
                         <td><?= $r['info'] ?></td>
                         <td>
-                            <img class="w-50" src="./test-img/<?= $r['image'] ?>" alt="">
+                            <img class="w-75" src="./test-img/<?= $r['image'] ?>" alt="">
                         </td>
                         <td><?= $r['created_at'] ?></td>
                         <td><?= $r['update_at'] ?></td>

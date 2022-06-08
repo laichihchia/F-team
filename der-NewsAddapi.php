@@ -10,7 +10,7 @@ $output = [
 
 $title = isset($_POST['title']) ? $_POST['title'] : '';
 $info = isset($_POST['info']) ? $_POST['info'] : '';
-$image = isset($_POST['image']) ? $_POST['image'] : '';
+$image = isset($_POST['der_img']) ? $_POST['der_img'] : '';
 
 $sql = "INSERT INTO `News`(`title`, `info`, `image`, `created_at`, `update_at`) VALUES (?,?,?,NOW(),NOW())";
 
