@@ -12,7 +12,7 @@ $od_sql = $pdo->query($sql)->fetchAll();
 <?php require __DIR__ . '/parts/product-list.php' ?>
 <style>
     .od-img {
-        width: 70px;
+        width: 60px;
     }
 </style>
 <div class="row mb-4">
@@ -35,8 +35,8 @@ $od_sql = $pdo->query($sql)->fetchAll();
                 foreach ($od_sql as $r) : 
                 $od_total += $r['price'];
                 ?>
-                <tr class=" mb-2">
-                    <td class=" text-center" scope="col"><?= $r['produst_sid'] ?></td>
+                <tr class="mb-2">
+                    <td class="text-center" scope="col"><?= $r['produst_sid'] ?></td>
                     <td scope="col"><img class="od-img" src="./Fteam-produst_img/<?= $r['img'] ?>" alt=""></td>
                     <td scope="col"><?= $r['name'] ?></td>
                     <td scope="col"><?= $r['quantity'] ?></td>
