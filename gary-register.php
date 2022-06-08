@@ -319,12 +319,9 @@ $title = 'Gary-Register';
             // 寫入文字
             // info_bar.innerText = '註冊成功';
             alert('註冊成功，新會員24小時內享8折優惠!');
-            // function trueFalse() {
-            //     location.href = 'gary-member-login.php';
-            // }
 
             // 把整個表單內容抓出來
-            const fd = new FormData(document.form1);
+            // const fd = new FormData(document.form1);
 
             // 把表單送給誰
             const r = await fetch('gary-mem-login-api.php', {
