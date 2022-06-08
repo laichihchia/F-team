@@ -28,7 +28,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         exit;
     };
     if (!empty($seachValue)) {
-        $sql = "SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE o.sid LIKE '%$seachValue%'";
+        $sql = sprintf("SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE o.sid LIKE '%%$seachValue%%'  LIMIT %s,%s", ($page - 1) * $perpage, $perpage);
         $rows = $pdo->query($sql)->fetchAll();
     } else {
         $sql = sprintf("SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid LIMIT %s,%s", ($page - 1) * $perpage, $perpage);
@@ -36,6 +36,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         $rows = $pdo->query($sql)->fetchAll();
     }
 }
+
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
@@ -69,6 +70,29 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
     <div class="col-12 mt-4 mb-4">
         <h4 class=" fw-bold">Order Record</h4>
     </div>
+    <div class="col">
+        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item <?= $page == 1 ? 'disabled' : ''; ?>">
+                    <a class="page-link" href="?page=1"><i class="fa-solid fa-angles-left"></i></a>
+                </li>
+                <li class="page-item <?= $page == 1 ? 'disabled' : ''; ?>">
+                    <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-angle-left"></i></a>
+                </li>
+                <?php for ($i = $page; $i <= $page + 3; $i++) :
+                    if ($i >= 1 and $i <= $totalPage) : ?>
+                        <li class="page-item <?= $page == $i ? 'active' : ''; ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+                <?php endif;
+                endfor; ?>
+                <li class="page-item <?= $page == $totalPage ? 'disabled' : ''; ?>">
+                    <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-angle-right"></i></a>
+                </li>
+                <li class="page-item <?= $page == $totalPage ? 'disabled' : ''; ?>">
+                    <a class="page-link" href="?page=<?= $totalPage ?>"><i class="fa-solid fa-angles-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <div class="col-12 mb-4">
 
         <input class="search-inp" placeholder="Order Number:" type="search" value="">
@@ -98,31 +122,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
 
     </table>
 </div>
-<div class="row">
-    <div class="col">
-        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item <?= $page == 1 ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?page=1"><i class="fa-solid fa-angles-left"></i></a>
-                </li>
-                <li class="page-item <?= $page == 1 ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-angle-left"></i></a>
-                </li>
-                <?php for ($i = $page; $i <= $page + 3; $i++) :
-                    if ($i >= 1 and $i <= $totalPage) : ?>
-                        <li class="page-item <?= $page == $i ? 'active' : ''; ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-                <?php endif;
-                endfor; ?>
-                <li class="page-item <?= $page == $totalPage ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-angle-right"></i></a>
-                </li>
-                <li class="page-item <?= $page == $totalPage ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?page=<?= $totalPage ?>"><i class="fa-solid fa-angles-right"></i></a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
+
 <?php require __DIR__ . '/parts/scripts.php' ?>
 <script>
     const turnToDetail = (sid) => {
