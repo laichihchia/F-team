@@ -9,18 +9,17 @@ if (isset($_SESSION['user'])) {
             if ($member_r['mem-account'] === $_SESSION['user']['mem_account']) {
                 // 取得登入中的會員id
                 $memLoginID = $member_r['sid'];
-                }
-            }
-        }
-
-        $rec_sql = $pdo->query("SELECT `orders`.member_sid, `order_details`.*, `produst`.name, `produst`.img, `orders`.order_date FROM `orders`
+                $rec_sql = $pdo->query("SELECT `orders`.member_sid, `order_details`.*, `produst`.name, `produst`.img, `orders`.order_date FROM `orders`
         JOIN `order_details`
             ON `orders`.sid=`order_details`.order_sid
         JOIN `produst`
             ON `produst`.sid=`order_details`.produst_sid
         WHERE `orders`.member_sid= $memLoginID
         ORDER BY `orders`.order_date DESC, `order_details`.sid;")->fetchAll();
+            }
+        }
     }
+}
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/product-list.php' ?>
@@ -229,25 +228,25 @@ if (isset($_SESSION['user'])) {
         <div class="d-flex justify-content-end">
             <div class="scrollbar">
                 <div class="scrollbarIN">
-                <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
-                    <div class="scrollbarbox">
-                        <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
-                            <div class="scrollbarbox_left">
-                                <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
-                            </div>
-                            <div class="scrollbarbox_right d-flex align-items-center">
-                                <div>
-                                    <p class="box-TN"><?= $rec_r['order_date'] ?></p>
-                                    <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
-                                    <p class="box-word"><?= $rec_r['name'] ?></p>
-                                    <div class="d-flex">
-                                        <p class="box-word2">$<?= $rec_r['price'] ?></p>
-                                        <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                    <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
+                        <div class="scrollbarbox">
+                            <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
+                                <div class="scrollbarbox_left">
+                                    <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
+                                </div>
+                                <div class="scrollbarbox_right d-flex align-items-center">
+                                    <div>
+                                        <p class="box-TN"><?= $rec_r['order_date'] ?></p>
+                                        <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
+                                        <p class="box-word"><?= $rec_r['name'] ?></p>
+                                        <div class="d-flex">
+                                            <p class="box-word2">$<?= $rec_r['price'] ?></p>
+                                            <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
