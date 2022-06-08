@@ -168,6 +168,7 @@ if (isset($_SESSION['user'])) {
 
                         <div class="d-flex justify-content-between">
                             <a href="gary-member-card.php" class="btn btn-primary login">Back</a>
+                            <a href="javascript: delete_it(<?= $memLogin['sid'] ?>)" class="btn btn-primary login">刪除帳號</a>
                             <button type="submit" class="btn btn-primary">確認修改</button>
                         </div>
                     </div>
@@ -179,7 +180,7 @@ if (isset($_SESSION['user'])) {
 
                 <!-- 回應提示 -->
                 <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
-                    註冊成功
+                    修改成功
                 </div>
             </div>
         </div>
@@ -375,6 +376,14 @@ if (isset($_SESSION['user'])) {
     // 點擊btn等於點擊了input
     function uploadAvatar() {
         avatar.click(); // 模擬點擊
+    }
+
+    function delete_it(sid) {
+        // 跳詢問視窗
+        if (confirm(`確定要刪除此帳號嗎?`)) {
+            // 如館按確定 轉到刪除檔
+            location.href = `gary-memself-del.php?sid=${sid}`;
+        }
     }
 </script>
 <?php include __DIR__ . '/parts/html-foot.php' ?>
