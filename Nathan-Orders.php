@@ -11,7 +11,7 @@ if ($page < 1) {
     exit;
 };
 // 每一頁要幾筆
-$perpage = 5;
+$perpage = 10;
 
 // 取得總比數
 $t_sql = "SELECT COUNT(1) FROM `orders`";

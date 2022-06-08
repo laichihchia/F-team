@@ -4,12 +4,7 @@ $title = '課程資訊';
 
 $perPage = 10; // 每一頁有幾筆
 
-// 下拉式選單的選項
-$type = [
-    '1' => '公告',
-    '2' => '限時優惠',
-    '3' => '聯名合作',
-];
+
 
 
 
@@ -48,26 +43,23 @@ if ($totalRows > 0) {
         color: #222;
     }
 
-    
+
 
     .cooler-info-text-limited {
-
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         white-space: normal;
         /* line-height: 40px; */
-
         box-sizing: border-box;
-        padding: 10px;
+        padding: 0 .5rem !important;
+        margin: .5rem 0;
         width: 150px;
         overflow: hidden;
         text-overflow: ellipsis;
         /* border: 1px solid; */
         word-wrap: break-word;
         /* font-weight: 900; */
-
-
     }
 
     .table {
@@ -113,12 +105,11 @@ if ($totalRows > 0) {
 
             <a href="cooler-list-add.php" class=" btn btn-outline-secondary float-end mb-3 cooler-creat">新增</a>
 
-            <p class="cooler-info-text-limited">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias eos quam non, dolorem eius consequuntur sequi quos veritatis veniam quasi esse vel cupiditate. Dolore qui quasi voluptatum! Dolorum, neque necessitatibus.</p>
+
         </nav>
         <table class="table table-striped">
             <thead>
                 <tr>
-
                     <th scope="col">#</th>
                     <th scope="col">課程名稱</th>
                     <th scope="col">課程內容</th>
