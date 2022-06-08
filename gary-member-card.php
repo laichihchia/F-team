@@ -179,6 +179,10 @@ if (isset($_SESSION['user'])) {
         font-weight: 600;
         margin-left: 5px;
     }
+
+    .dsn {
+        display: none;
+    }
 </style>
 
 <div class="container">
@@ -225,9 +229,10 @@ if (isset($_SESSION['user'])) {
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end <?= $_SESSION['user']['grade'] === 'high' ? 'dsn' : '' ?>">
             <div class="scrollbar">
                 <div class="scrollbarIN">
+                    <?php if($_SESSION['user']['grade'] === 'low') : ?>
                     <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
                         <div class="scrollbarbox">
                             <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
@@ -248,6 +253,7 @@ if (isset($_SESSION['user'])) {
                             </a>
                         </div>
                     <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
