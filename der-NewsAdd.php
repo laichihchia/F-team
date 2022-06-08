@@ -28,7 +28,7 @@ $title = 'der-NewEdit';
                         <input type="hidden" name="der_img" value="images.png">
                         <div class="mb-3">
                             <label for="title" class="form-label">title</label>
-                            <input type="text" class="form-control" id="title" name="title" value="">
+                            <input type="text" class="form-control" id="title" name="title" value="" required="required">
                             <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
@@ -75,9 +75,9 @@ $title = 'der-NewEdit';
                 location.href = 'der-NewsList.php'; // 跳轉到列表頁
             }, 1000);
         } else {
-            alert('新增失敗,請再次嘗試,1秒後跳回列表頁')
+            alert('新增失敗,請再次嘗試')
             setTimeout(() => {
-                location.href = 'der-NewsList.php'; // 跳轉到列表頁
+                location.href = 'der-NewsAdd.php'; // 跳轉到新增頁
             }, 1000);
         }
     }
