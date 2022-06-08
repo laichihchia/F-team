@@ -4,7 +4,14 @@ $title = '新增課程資訊';
 ?>
 
 <?php include __DIR__ . '/parts/html-head.php' ?>
-
+<?php
+ // 下拉式選單的選項 左k右v-->
+$type = [
+    '1' => '公告',
+    '2' => '限時優惠',
+    '3' => '聯名合作',
+];
+?>
 <?php
 $cartCount = 0;
 if (isset($_SESSION['cart'])) {
@@ -153,11 +160,25 @@ if (isset($_SESSION['cart'])) {
                             <div class="form-text red"></div>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="type" class="form-label">類型</label>
+                            <select class="form-select mb-3" aria-label="example" data-multiple id="type" name="type">
+                                <option value="" selected disabled>-- 請選擇 --</option>
+                                <!-- 從type裡抓 左邊值K右邊值v -->
+                                <?php foreach ($type as $k => $v) : ?>
+                                    <option value="<?= $k ?>"><?= $v ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn btn-primary ">新增</button>
                     </form>
                     <div id="info-bar" class="alert alert-success data-added-successfully " role="alert" style="display:none;">
                         資料新增成功
                     </div>
+
+                    
+
                 </div>
             </div>
         </div>

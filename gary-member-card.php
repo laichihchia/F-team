@@ -179,6 +179,10 @@ if (isset($_SESSION['user'])) {
         font-weight: 600;
         margin-left: 5px;
     }
+
+    .dsn {
+        display: none;
+    }
 </style>
 
 <div class="container">
@@ -225,6 +229,7 @@ if (isset($_SESSION['user'])) {
                 </div>
             </div>
         </div>
+        <?php if($_SESSION['user']['grade'] === 'low') : ?>
         <div class="d-flex justify-content-end">
             <div class="scrollbar">
                 <div class="scrollbarIN">
@@ -251,6 +256,7 @@ if (isset($_SESSION['user'])) {
                 </div>
             </div>
         </div>
+        <?php endif; ?>
 
     </div>
 </div>
