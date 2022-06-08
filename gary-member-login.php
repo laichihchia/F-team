@@ -10,8 +10,13 @@ $title = 'Gary-Login';
         display: none;
     }
 
+    /* body {
+        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/originals/6b/31/fe/6b31fe32c7c47c1751d46299d68e1813.gif')center center/cover;
+        background-attachment: fixed;
+    } */
+
     body {
-        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
+        background: url('./gary-img/1e684d15ad21997f1a92adfae922cfe5.gif')center center/cover;
         background-attachment: fixed;
     }
 

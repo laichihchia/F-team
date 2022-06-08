@@ -8,7 +8,7 @@ $pageName = 'Login';
 
 <style>
     body {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
+        background: url('./gary-img/1e684d15ad21997f1a92adfae922cfe5.gif')center center/cover;
         background-attachment: fixed;
     }
 
