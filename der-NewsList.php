@@ -38,7 +38,7 @@ if ($totalRows > 0) {
 
 <div class="row">
     <div class="col-12">
-        <a class=" d-inline-block mt-3 text-decoration-none btn-sm btn-dark" href="der-NewsAdd.php">新增</a>
+        <a class=" d-inline-block mt-3 text-decoration-none btn-sm btn-dark" href="der-NewsAdd.php">Add item</a>
 
         <a style="cursor:pointer;" onclick="delete_select()" class=" d-inline-block mt-3 text-decoration-none btn-sm btn-dark">Delete Select</a>
 
