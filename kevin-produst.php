@@ -3,7 +3,7 @@ require __DIR__ . '/parts/connect_db.php';
 $pageName = 'kevin-produst-list';
 $title = 'Product-List';
 
-$perPage = 10; // 每一頁有幾筆
+$perPage = 20; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // intval -> 轉換成整數值
@@ -79,49 +79,32 @@ if (!empty($checkbox)) {
     $rows = $pdo->query($sql)->fetchAll();
 };
 
+// 關鍵字搜尋
+$search = isset($_GET["search"]) ? ($_GET['search']) : '';
 
 
-// if (isset($_GET['checkbox'])) {
-//     $checkbox = $_GET["checkbox"];
-//     // 技術板篩選
-//     if ($checkbox  == 1) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 3";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 交通板篩選
-//     } else if ($checkbox  == 2) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 4";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 板身篩選
-//     } else if ($checkbox  == 3) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 6";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 輪架篩選
-//     } else if ($checkbox  == 4) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 7";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 輪子篩選
-//     } else if ($checkbox  == 5) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 8";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 培林篩選
-//     } else if ($checkbox  == 6) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 9";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 護具篩選
-//     } else if ($checkbox  == 7) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 10";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 噴漆篩選
-//     } else if ($checkbox  == 8) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 2";
-//         $rows = $pdo->query($sql)->fetchAll();
-//     } else {
-//         // 查詢所有商品
+if (!empty($_GET["search"])) {
+    $str_tag = $_GET['search'];
+    $sql = "SELECT * FROM `produst` WHERE `name` LIKE '%$str_tag%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
 
-//         $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//         $rows = $pdo->query($sql)->fetchAll();
-//     }
-// };
+// 顏色塞選
+$yellow = isset($_GET["yellow"]) ? ($_GET['yellow']) : '';
+if (!empty($_GET["yellow"])) {
+    $yellow = $_GET['yellow'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$yellow%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$blue = isset($_GET["blue"]) ? ($_GET['blue']) : '';
+if (!empty($_GET["blue"])) {
+    $blue = $_GET['blue'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$blue%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
 
 ?>
 
@@ -153,9 +136,29 @@ if (!empty($checkbox)) {
         display: none;
     }
 
-    /* b {
-        display: none;
-    } */
+    .color_btn {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .color_btn button {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        border-radius: 50%;
+        border: none;
+    }
+
+    .btn_yellow {
+        background-color: yellow;
+    }
+
+    .btn_blue {
+        background-color: blue;
+    }
 </style>
 <div class="container">
     <div class="row d-flex">
@@ -177,7 +180,23 @@ if (!empty($checkbox)) {
 
             </form>
 
+
+            <form class="d-flex" action="kevin-produst-test.php" method="get" enctype="mu">
+                <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+
+
         </div>
+
+
+
+        <div class="col color_btn d-flex justify-content-between align-items-center">
+            <button value="yellow" class="btn_yellow" onclick="yellow()" id="yellow" name="color"></button>
+            <button value="blue" class="btn_blue" onclick="blue()" id="blue" name="color"></button>
+        </div>
+
 
 
         <div class="col d-flex justify-content-between align-items-center">
@@ -211,11 +230,6 @@ if (!empty($checkbox)) {
                     <label for="">
                         <input type="checkbox" value="9" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Bearings</span>
-                    </label>
-
-                    <label for="">
-                        <input type="checkbox" value="10" style="vertical-align:middle;" name="checkbox">
-                        <span style="vertical-align:middle;">Safety Gear</span>
                     </label>
 
                     <label for="">
@@ -349,6 +363,18 @@ if (!empty($checkbox)) {
         let x = document.getElementById('option_price').value;
         location.href = `kevin-produst-test.php?x=${x}`;
     }
+
+    function yellow() {
+        let btn = document.getElementById("yellow");
+        let yellow = btn.value;
+        location.href = `kevin-produst-test.php?yellow=${yellow}`;
+    };
+
+    function blue() {
+        let btn = document.getElementById("blue");
+        let blue = btn.value;
+        location.href = `kevin-produst-test.php?blue=${blue}`;
+    };
 </script>
 
 <?php require __DIR__ . '/parts/html-foot.php' ?>

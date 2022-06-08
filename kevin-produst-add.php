@@ -45,6 +45,7 @@ $title = 'Product Update';
                     <label for="price" class="form-label">Price</label>
                     <input type="text" class="form-control" id="price" name="price">
                 </div>
+
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
@@ -79,7 +80,7 @@ $title = 'Product Update';
                 location.href = 'kevin-produst.php';
             }, 1000);
         } else {
-            alert('操你媽');
+            alert('請檢查新增欄位');
         }
         // info_bar.style.display = 'block'; // 顯示訊息列
         // if (result.success) {
