@@ -246,24 +246,24 @@ if ($totalRows > 0) {
                             <td><?= $r['mem-created_at'] ?></td>
 
                             <td>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fa-solid fa-bag-shopping"></i>
-                                </button>
+                                    <!-- Button trigger modal -->
+                                    <a href="javascript: rec_it(<?= $r['sid'] ?>)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                    </a>
+                                    <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                            
-                                                <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
+
                                                     <div class="scrollbarbox">
                                                         <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
                                                             <div class="scrollbarbox_left">
@@ -276,21 +276,22 @@ if ($totalRows > 0) {
                                                                     <p class="box-word"><?= $rec_r['name'] ?></p>
                                                                     <div class="d-flex">
                                                                         <p class="box-word2">$<?= $rec_r['price'] ?></p>
-                                                                        <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                                                                        <p class="box-word3">* <?=     $rec_r['quantity'] ?></p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </a>
                                                     </div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php endforeach; ?>
                             </td>
 
                         </tr>
@@ -317,6 +318,10 @@ if ($totalRows > 0) {
         if (confirm(`確定要停用編號為 ${sid} 的資料嗎?`)) {
             location.href = `gary-list-0-api.php?sid=${sid}`;
         }
+    }
+
+    function rec_it(sid) {
+        location.href = `gary-member-rec.php?sid=${sid}`;
     }
 
     // 全選checkbox同步設定
