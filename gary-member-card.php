@@ -123,7 +123,7 @@ if (isset($_SESSION['user'])) {
     }
 
     .scro-left {
-        margin-top: 550px;
+        margin-top: 38%;
         width: 640px;
         height: 260px;
         overflow: auto;
