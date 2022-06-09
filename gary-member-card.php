@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])) {
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <style>
-    .list-section-product {
+    .list-section {
         display: none;
     }
 
