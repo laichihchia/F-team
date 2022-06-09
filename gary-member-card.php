@@ -16,6 +16,12 @@ if (isset($_SESSION['user'])) {
             ON `produst`.sid=`order_details`.produst_sid
         WHERE `orders`.member_sid= $memLoginID
         ORDER BY `orders`.order_date DESC, `order_details`.sid;")->fetchAll();
+
+        $coll_sql = $pdo->query("SELECT `favorite`.mem_id, `produst`.*, `favorite`.`product_img`, `favorite`.product_name, `favorite`.product_price FROM favorite
+        JOIN produst
+            ON `favorite`.product_img=`produst`.img
+        WHERE `favorite`.mem_id= $memLoginID
+        ORDER BY `favorite`.sid DESC, `produst`.sid;")->fetchAll();
             }
         }
     }
@@ -32,7 +38,7 @@ if (isset($_SESSION['user'])) {
     body {
         background: url('./gary-img/d481ad3029497cb33cf6f580a701615b.gif')center center no-repeat;
         background-size: 40%;
-        background-position: 45% 20%;
+        background-position: 45% 0%;
         background-color: black;
         background-attachment: fixed;
     }
@@ -111,8 +117,15 @@ if (isset($_SESSION['user'])) {
     }
 
     .scrollbar {
-        width: 38%;
+        width: 490px;
         height: 80vh;
+        overflow: auto;
+    }
+
+    .scro-left {
+        margin-top: 500px;
+        width: 640px;
+        height: 320px;
         overflow: auto;
     }
 
@@ -123,6 +136,40 @@ if (isset($_SESSION['user'])) {
     .scrollbar::-webkit-scrollbar-thumb {
         background-color: white;
         border: 1px solid slategrey;
+    }
+
+    .scro-left::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    .scro-left::-webkit-scrollbar-thumb {
+        background-color: black;
+        border: 1px solid slategrey;
+    }
+
+    .Leftscrollbarbox {
+        margin-right: 10px;
+    }
+
+    .boxLeft-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+
+    .Leftscrollbarbox img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: contain;
+    }
+
+    .Leftscrollbarbox p {
+        margin-top: 5px;
+        font-size: 20px;
+        text-align: center;
+        color: white;
     }
 
     .scrollbarbox {
@@ -231,33 +278,51 @@ if (isset($_SESSION['user'])) {
                 </div>
             </div>
         </div>
-        <?php if($_SESSION['user']['grade'] === 'low') : ?>
-        <div class="d-flex justify-content-end">
-            <div class="scrollbar">
-                <div class="scrollbarIN">
-                    <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
-                        <div class="scrollbarbox">
-                            <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
-                                <div class="scrollbarbox_left">
-                                    <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
-                                </div>
-                                <div class="scrollbarbox_right d-flex align-items-center">
+        <?php if ($_SESSION['user']['grade'] === 'low') : ?>
+            <div class="d-flex justify-content-between">
+                <div class="scrollbar scro-left">
+                    <div class="d-flex">
+                        <?php foreach ($coll_sql as $coll_rows => $coll_r) : ?>
+                            <div class="Leftscrollbarbox">
+                                <a href="kevin-edit.php?sid=<?= $coll_r['sid'] ?>" class="text-decoration-none">
+                                    <div class="boxLeft-img">
+                                        <img src="Fteam-produst_img/<?= $coll_r['img'] ?>" alt="">
+                                    </div>
                                     <div>
-                                        <p class="box-TN"><?= $rec_r['order_date'] ?></p>
-                                        <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
-                                        <p class="box-word"><?= $rec_r['name'] ?></p>
-                                        <div class="d-flex">
-                                            <p class="box-word2">$<?= $rec_r['price'] ?></p>
-                                            <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                                        <p><?= $coll_r['name'] ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <div class="scrollbar">
+                    <div class="scrollbarIN">
+                        <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
+                            <div class="scrollbarbox">
+                                <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
+                                    <div class="scrollbarbox_left">
+                                        <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
+                                    </div>
+                                    <div class="scrollbarbox_right d-flex align-items-center">
+                                        <div>
+                                            <p class="box-TN"><?= $rec_r['order_date'] ?></p>
+                                            <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
+                                            <p class="box-word"><?= $rec_r['name'] ?></p>
+                                            <div class="d-flex">
+                                                <p class="box-word2">$<?= $rec_r['price'] ?></p>
+                                                <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
+
             </div>
-        </div>
         <?php endif; ?>
 
     </div>
