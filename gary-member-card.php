@@ -89,7 +89,7 @@ if (isset($_SESSION['user'])) {
         width: 400px;
         height: 250px;
         background-color: gray;
-        opacity: 0.7;
+        opacity: 0.5;
         position: absolute;
         border-radius: 25px;
     }
