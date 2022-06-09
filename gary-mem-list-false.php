@@ -127,8 +127,6 @@ if ($totalRows > 0) {
                     <th scope="col">會員等級</th>
                     <th scope="col">手機</th>
                     <th scope="col">Email</th>
-                    <th scope="col">生日</th>
-                    <th scope="col">地址</th>
                     <th scope="col">創建時間</th>
                 </tr>
             </thead>
@@ -174,12 +172,12 @@ if ($totalRows > 0) {
                         <td><?= htmlentities($r['mem-level']) ?></td>
                         <td><?= $r['mem-mobile'] ?></td>
                         <td><?= $r['mem-email'] ?></td>
-                        <td><?= $r['mem-birthday'] ?></td>
+                        <!-- <td><?= $r['mem-birthday'] ?></td> -->
                         <!--
                     <td><?= htmlentities($r['mem-address']) ?></td>
                     -->
                         <!-- strip_tags 有出現tag的就直接去掉tag -->
-                        <td><?= strip_tags($r['mem-address']) ?></td>
+                        <!-- <td><?= strip_tags($r['mem-address']) ?></td> -->
                         <td><?= $r['mem-created_at'] ?></td>
 
                     </tr>
