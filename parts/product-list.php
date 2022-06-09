@@ -112,16 +112,7 @@ if (isset($_SESSION['user'])) {
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color: white;">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color: white;">News</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kevin-produst.php" style="color:white ;">Product</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="cooler-list.php" style="color:white ;">Event</a>
+                                        <a class="nav-link" href="der-NewsList.php" style="color: white;">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '' : 'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
@@ -172,7 +163,7 @@ if (isset($_SESSION['user'])) {
         <div class="list-group">
             <a href="der-NewsList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
             <a href="gary-mem-list-true.php" class="list-a list-group-item list-group-item-action <?= $pageName === "會員管理" ? 'active' : ''; ?>">會員管理</a>
-            <a href="#" class="list-a list-group-item list-group-item-action">商品列表</a>
+            <a href="kevin-produst.php" class="list-a list-group-item list-group-item-action">商品列表</a>
             <a href="cooler-list.php" class="list-a list-group-item list-group-item-action <?= $pageName === "課程資訊" ? 'active' : ''; ?>">課程資訊</a>
             <a href="Nathan-CartList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "Nathan's cart" ? 'active' : ''; ?>">購物車</a>
             <a href="Nathan-Orders.php" class="list-a list-group-item list-group-item-action <?= $pageName === 'Nathan-orders' ? 'active' : ''; ?>">訂單資訊</a>
