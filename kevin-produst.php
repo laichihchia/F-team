@@ -461,7 +461,7 @@ if (!empty($_GET["white"])) {
 
     function select() {
         let x = document.getElementById('option_price').value;
-        location.href = `kevin-produst-test.php?x=${x}`;
+        location.href = `kevin-produst.php?x=${x}`;
     }
 
     function yellow() {
