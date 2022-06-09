@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022 年 06 月 09 日 16:13
+-- 產生時間： 2022 年 06 月 10 日 00:11
 -- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.4.29
 
@@ -108,25 +108,21 @@ CREATE TABLE `favorite` (
   `product_brand` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `product_info` varchar(255) NOT NULL,
-  `product_price` varchar(255) NOT NULL
+  `product_price` varchar(255) NOT NULL,
+  `product_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `favorite`
 --
 
-INSERT INTO `favorite` (`sid`, `mem_id`, `product_img`, `product_brand`, `product_name`, `product_info`, `product_price`) VALUES
-(4, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(5, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(6, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(7, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(8, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(9, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(10, '10', '637894482025330000.jpg', 'POLAR', '他家蠻酷的 整組滑板 8.125', '已完成組裝✅\r\n板身：POLAR 他家蠻酷的 整組滑板 8.125\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F121998125', '6980'),
-(11, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(12, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(13, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000'),
-(14, '10', '637889068679000000.jpg', 'INDEPENDENT', '培林', '操你媽', '1200');
+INSERT INTO `favorite` (`sid`, `mem_id`, `product_img`, `product_brand`, `product_name`, `product_info`, `product_price`, `product_id`) VALUES
+(9, '10', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000', 1),
+(10, '10', '637894482025330000.jpg', 'POLAR', '他家蠻酷的 整組滑板 8.125', '已完成組裝✅\r\n板身：POLAR 他家蠻酷的 整組滑板 8.125\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F121998125', '6980', 2),
+(14, '10', '637889068679000000.jpg', 'INDEPENDENT', '培林', '操你媽', '1200', 21),
+(25, '15', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000', 1),
+(28, '15', '637894482031430000.jpg', 'POLAR', '真結合 整組滑板 7.875', '已完成組裝✅\r\n板身：（兒童/成人小尺寸）POLAR 真結合 整組滑板 7.875\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F118997875', '7650', 3),
+(46, '15', '637894482033000000.jpg', 'POLAR', '鯊魚跳起來 整組滑板 8.25', '已完成組裝✅\r\n板身：POLAR 鯊魚跳起來 整組滑板 8.25\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 質感黑色基本款輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F113998250', '8990', 4);
 
 -- --------------------------------------------------------
 
@@ -209,7 +205,7 @@ INSERT INTO `member` (`sid`, `mem-name`, `mem-nickname`, `mem-level`, `mem-accou
 (3, '安安', '哈哈', '平民', 'gfdgdgdg', 'sdfsdfsdfsdfsd', 'garylin0969@gmail.com', '0955555555', '2022-05-02', 'sdfsdf', '', '2022-05-31 17:00:44', 0),
 (4, '林宸皞', '', '平民', 'jghghjhgjop[u[', 'uopiui[op[o', '', '', NULL, '', '', '2022-06-01 00:19:27', 0),
 (5, '林宸皞', '', '平民', 'jghghjhgjop[u[', 'uopiui[op[o', '', '', NULL, '', '', '2022-06-01 00:30:14', 0),
-(6, 'gary', '', '平民', 'gary', 'gary', '', '', NULL, '', '23c751784e5af37463cfdb622abfd824.jpg', '2022-06-02 00:18:40', 1),
+(6, 'gary', '', '平民', 'gary', 'gary', '', '', NULL, '', '8d76a032d0e0d9b3ac09e78529f035c4.jpg', '2022-06-02 00:18:40', 1),
 (8, 'gary', '', '平民', 'vxcvxcv', 'xcvxcvxcvx', '', '', NULL, '', '', '2022-06-02 17:21:19', 1),
 (10, 'aaaa', '', '平民', 'aaaa', 'aaaa', '', '', NULL, '', 'ecca2292b6dd157b459e19b0690d56fd.png', '2022-06-03 13:44:21', 1),
 (11, 'shinder', '', '平民', '111', '111', '', '', NULL, '', 'images.png', '2022-06-06 14:42:09', 0),
@@ -263,9 +259,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`sid`, `member_sid`, `total`, `order_date`) VALUES
-(202200084, 14, 5584, '2022-06-08 21:33:22'),
-(202200086, 13, 21574, '2022-06-08 23:08:08'),
-(202200087, 6, 23620, '2022-06-08 23:08:31'),
+(202200084, 14, 5584, '2021-02-08 21:33:22'),
+(202200086, 13, 21574, '2021-10-08 23:08:08'),
+(202200087, 6, 23620, '2022-02-08 23:08:31'),
 (202200088, 10, 14650, '2022-06-08 23:33:07'),
 (202200089, 10, 15990, '2022-06-08 23:34:09'),
 (202200090, 10, 13980, '2022-06-08 23:34:43');
@@ -445,7 +441,7 @@ ALTER TABLE `category`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson`

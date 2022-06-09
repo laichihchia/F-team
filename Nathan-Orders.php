@@ -83,7 +83,7 @@ if(!empty($opValue)){
 </style>
 <div class="row mb-4">
     <div class="col-12 mt-4 mb-4">
-        <h4 class=" fw-bold">Order Record</h4>
+        <h4 class="ms-5 fw-bold">Order Record</h4>
     </div>
     <div class="col">
         <nav class="d-flex justify-content-center" aria-label="Page navigation example">
@@ -109,13 +109,13 @@ if(!empty($opValue)){
         </nav>
     </div>
     <div class="col-12 mb-4">
-        <input class="search-inp mb-3 ms-5" placeholder="Order Number:" type="search" value="">
+        <input title="輸入後三或後四碼" class="search-inp mb-3 ms-5" placeholder="Order Number:" type="search" value="">
         <a class="btn magnifying" onclick="seachOrder()"><i class="fa-solid fa-magnifying-glass"></i></a>
         <select onchange="chooseDate();" class="optionDate form-select ms-5" aria-label="Default select example">
             <option selected>-- Choose Date --</option>
-            <option value="1">3 Month ago</option>
-            <option value="2">6 Month ago</option>
-            <option value="3">1 Year ago</option>
+            <option value="1" <?= $opValue === 1 ? 'selected':''?>>Within 3 months</option>
+            <option value="2" <?= $opValue === 2 ? 'selected':''?>>Within 6 months</option>
+            <option value="3" <?= $opValue === 3 ? 'selected':''?>>Within 1 year</option>
         </select>
     </div>
     <table>

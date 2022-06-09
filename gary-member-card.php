@@ -17,11 +17,7 @@ if (isset($_SESSION['user'])) {
         WHERE `orders`.member_sid= $memLoginID
         ORDER BY `orders`.order_date DESC, `order_details`.sid;")->fetchAll();
 
-                $coll_sql = $pdo->query("SELECT `favorite`.mem_id, `produst`.*, `favorite`.`product_img`, `favorite`.product_name, `favorite`.product_price FROM favorite
-        JOIN produst
-            ON `favorite`.product_img=`produst`.img
-        WHERE `favorite`.mem_id= $memLoginID
-        ORDER BY `favorite`.sid DESC, `produst`.sid;")->fetchAll();
+                $coll_sql = $pdo->query("SELECT `favorite`.mem_id, `produst`.*, `favorite`.`product_img`, `favorite`.product_name, `favorite`.product_price, `favorite`.`product_id` FROM favorite JOIN produst ON `favorite`.product_img=`produst`.img WHERE `favorite`.mem_id= $memLoginID ORDER BY `favorite`.sid DESC, `produst`.sid;")->fetchAll();
             }
         }
     }
@@ -31,7 +27,7 @@ if (isset($_SESSION['user'])) {
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <style>
-    .list-section-product {
+    .list-section {
         display: none;
     }
 
@@ -118,7 +114,7 @@ if (isset($_SESSION['user'])) {
 
     .scrollbar {
         width: 490px;
-        height: 80vh;
+        height: 775px;
         overflow: auto;
     }
 
@@ -167,7 +163,7 @@ if (isset($_SESSION['user'])) {
         height: 150px;
         border-radius: 50%;
         overflow: hidden;
-        object-fit: contain;
+        object-fit: cover;
     }
     
     .Leftscrollbarbox img:hover {
@@ -298,7 +294,7 @@ if (isset($_SESSION['user'])) {
                     <div class="d-flex">
                         <?php foreach ($coll_sql as $coll_rows => $coll_r) : ?>
                             <div class="Leftscrollbarbox">
-                                <a href="kevin-edit.php?sid=<?= $coll_r['sid'] ?>" class="text-decoration-none">
+                                <a href="kevin-edit.php?sid=<?= $coll_r['product_id'] ?>" class="text-decoration-none">
                                     <div class="boxLeft-img">
                                         <img src="Fteam-produst_img/<?= $coll_r['img'] ?>" alt="">
                                     </div>
