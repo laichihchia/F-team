@@ -350,6 +350,7 @@ if (!empty($_GET["blue"])) {
     const favSend = (sid) => {
         location.href = `kevin-favorite-api.php?produstSid=${sid}`;
     }
+
 </script>
 
 <?php require __DIR__ . '/parts/html-foot.php' ?>
