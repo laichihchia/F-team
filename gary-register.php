@@ -6,7 +6,7 @@ $title = 'Gary-Register';
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <style>
-    .list-section {
+    .list-section-product {
         display: none;
     }
 

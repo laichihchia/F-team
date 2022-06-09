@@ -12,7 +12,7 @@ $pageName = 'Login';
         background-attachment: fixed;
     }
 
-    .list-section {
+    .list-section-product {
         display: none;
     }
 

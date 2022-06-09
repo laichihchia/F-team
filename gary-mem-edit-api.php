@@ -35,15 +35,6 @@ if (empty($_POST['mem_account'])) {
     exit;
 }
 
-// 如果是空字串 exit直接結束
-if (empty($_POST['mem_password'])) {
-    // 告訴用戶端沒有姓名資料
-    $output['error'] = '沒有密碼資料';
-    // 除錯用的代號 可以自己定義
-    $output['code'] = 400;
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
 
 
 // name必填
@@ -52,8 +43,6 @@ $name = $_POST['mem_name'];
 $nickname = $_POST['mem_nickname'] ?? '';
 // account必填
 $account = $_POST['mem_account'];
-// password必填
-$password = $_POST['mem_password'];
 // 沒有給的話給空字串
 $email = $_POST['mem_email'] ?? '';
 // 沒有給的話給空字串
@@ -77,7 +66,7 @@ if(! empty($email) and filter_var($email, FILTER_VALIDATE_EMAIL) === false){
 }
 
 $sid = $_POST['mem_sid'];
-$sql = "UPDATE `member` SET `mem-name`=?,`mem-nickname`=?,`mem-account`=?,`mem-password`=?,`mem-email`=?,`mem-mobile`=?,`mem-birthday`=?,`mem-address`=?,`mem-avatar`=?,`mem-bollen`=? WHERE `sid`=$sid";
+$sql = "UPDATE `member` SET `mem-name`=?,`mem-nickname`=?,`mem-account`=?,`mem-email`=?,`mem-mobile`=?,`mem-birthday`=?,`mem-address`=?,`mem-avatar`=?,`mem-bollen`=? WHERE `sid`=$sid";
 
 $stmt = $pdo->prepare($sql);
 
@@ -85,7 +74,6 @@ $stmt->execute([
     $name,
     $nickname,
     $account,
-    $password,
     $email,
     $mobile,
     $birthday,

@@ -11,7 +11,7 @@ if ($page < 1) {
     exit;
 };
 // 每一頁要幾筆
-$perpage = 8;
+$perpage = 20;
 
 // 取得總比數
 $t_sql = "SELECT COUNT(1) FROM `orders`";
@@ -36,7 +36,19 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         $rows = $pdo->query($sql)->fetchAll();
     }
 }
-
+$opValue = isset($_GET['opValue']) ? intval($_GET['opValue']) : 0;
+if(!empty($opValue)){
+    if($opValue === 1){
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 3 month) AND NOW()";
+        $rows = $pdo->query($sql)->fetchAll();
+    }elseif($opValue === 2){
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 6 month) AND NOW()";
+        $rows = $pdo->query($sql)->fetchAll();
+    }elseif($opValue === 3){
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 1 year) AND NOW()";
+        $rows = $pdo->query($sql)->fetchAll();
+    }
+}
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
@@ -64,6 +76,9 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
 
     .odNum:hover {
         text-decoration: none;
+    }
+    .optionDate{
+        width: 19%;
     }
 </style>
 <div class="row mb-4">
@@ -94,13 +109,13 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         </nav>
     </div>
     <div class="col-12 mb-4">
-        <input class="search-inp" placeholder="Order Number:" type="search" value="">
+        <input class="search-inp mb-3 ms-5" placeholder="Order Number:" type="search" value="">
         <a class="btn magnifying" onclick="seachOrder()"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <select class="form-select w-25" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+        <select onchange="chooseDate();" class="optionDate form-select ms-5" aria-label="Default select example">
+            <option selected>-- Choose Date --</option>
+            <option value="1">3 Month ago</option>
+            <option value="2">6 Month ago</option>
+            <option value="3">1 Year ago</option>
         </select>
     </div>
     <table>
@@ -136,6 +151,12 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
     const seachOrder = () => {
         const odValue = document.querySelector('.search-inp').value;
         location.href = `Nathan-Orders.php?search=${odValue}`;
+    }
+    let option;
+    const chooseDate = () =>{
+        let option = document.querySelector('.optionDate');
+        console.log(option.value);
+        location.href = `Nathan-Orders.php?opValue=${option.value}`;
     }
 </script>
 <?php require __DIR__ . '/parts/html-foot.php' ?>
