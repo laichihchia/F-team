@@ -86,6 +86,47 @@ if (!empty($_GET["blue"])) {
     $rows = $pdo->query($sql)->fetchAll();
 }
 
+$red = isset($_GET["red"]) ? ($_GET['red']) : '';
+if (!empty($_GET["red"])) {
+    $red = $_GET['red'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$red%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$pink = isset($_GET["pink"]) ? ($_GET['pink']) : '';
+if (!empty($_GET["pink"])) {
+    $blue = $_GET['pink'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$pink%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$green = isset($_GET["green"]) ? ($_GET['green']) : '';
+if (!empty($_GET["green"])) {
+    $blue = $_GET['green'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$green%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$black = isset($_GET["black"]) ? ($_GET['black']) : '';
+if (!empty($_GET["black"])) {
+    $black = $_GET['black'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$black%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$white = isset($_GET["white"]) ? ($_GET['white']) : '';
+if (!empty($_GET["white"])) {
+    $white = $_GET['white'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$white%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php' ?>
@@ -112,16 +153,18 @@ if (!empty($_GET["blue"])) {
     }
 
     /* 隱藏側邊攔 */
-    .list-section-product {
+    .kevin_product {
         display: none;
     }
 
     .color_btn {
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 50%;
+        border: none;
     }
 
     .color_btn button {
@@ -139,9 +182,31 @@ if (!empty($_GET["blue"])) {
     .btn_blue {
         background-color: blue;
     }
+
+    .btn_red {
+        background-color: red;
+    }
+
+    .btn_pink {
+        background-color: pink;
+    }
+
+    .btn_green {
+        background-color: green;
+    }
+
+    .btn_black {
+        background-color: black;
+    }
+
+    .btn_white {
+        background-color: white;
+    }
 </style>
-<div class="list-section">
-    <div class="row">
+
+
+<div class="container">
+    <div class="list-section">
         <div class="col">
             <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                 <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
@@ -150,9 +215,11 @@ if (!empty($_GET["blue"])) {
                     <option value="2" name="option_price">價格從低到高</option>
                 </select>
 
-                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-
             </form>
+
+        </div>
+
+        <div class="col">
             <form class="d-flex" action="kevin-produst.php" method="get" enctype="mu">
                 <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -160,10 +227,14 @@ if (!empty($_GET["blue"])) {
         </div>
 
 
-
         <div class="col">
-            <button value="yellow" class="btn_yellow" onclick="yellow()" id="yellow" name="color"></button>
-            <button value="blue" class="btn_blue" onclick="blue()" id="blue" name="color"></button>
+            <button value="yellow" class="btn_yellow color_btn" onclick="yellow()" id="yellow" name="color"></button>
+            <button value="blue" class="btn_blue color_btn" onclick="blue()" id="blue" name="color"></button>
+            <button value="red" class="btn_red color_btn" onclick="red()" id="red" name="color"></button>
+            <button value="pink" class="btn_pink color_btn" onclick="pink()" id="pink" name="color"></button>
+            <button value="green" class="btn_green color_btn" onclick="green()" id="green" name="color"></button>
+            <button value="black" class="btn_black color_btn" onclick="black()" id="black" name="color"></button>
+            <button value="white" class="btn_white color_btn" onclick="white()" id="white" name="color"></button>
         </div>
 
 
@@ -211,10 +282,7 @@ if (!empty($_GET["blue"])) {
             </div>
         </div>
     </div>
-</div>
 
-
-<div class="container">
     <div class="row">
         <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
         <button type="button" class="d-inline-block w-25 btn-sm btn-danger"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
@@ -340,6 +408,52 @@ if (!empty($_GET["blue"])) {
         let blue = btn.value;
         location.href = `kevin-produst.php?blue=${blue}`;
     };
+
+    function red() {
+        let btn = document.getElementById("red");
+        let red = btn.value;
+        location.href = `kevin-produst.php?red=${red}`;
+    };
+
+    function pink() {
+        let btn = document.getElementById("pink");
+        let pink = btn.value;
+        location.href = `kevin-produst.php?pink=${pink}`;
+    };
+
+    function green() {
+        let btn = document.getElementById("green");
+        let green = btn.value;
+        location.href = `kevin-produst.php?green=${green}`;
+    };
+
+    function black() {
+        let btn = document.getElementById("black");
+        let black = btn.value;
+        location.href = `kevin-produst.php?blue=${black}`;
+    };
+
+    function white() {
+        let btn = document.getElementById("white");
+        let white = btn.value;
+        location.href = `kevin-produst.php?white=${white}`;
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const favSend = (sid) => {
         location.href = `kevin-favorite-api.php?produstSid=${sid}`;
     }

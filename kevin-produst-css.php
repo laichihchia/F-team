@@ -139,10 +139,20 @@ if (!empty($_GET["blue"])) {
     .btn_blue {
         background-color: blue;
     }
+
+    .fliter_select {
+        border: 2px solid black;
+    }
 </style>
-<div class="list-section">
-    <div class="row">
-        <div class="col">
+
+
+
+
+
+
+<div class="container">
+    <div class="list-section">
+        <div class="col fliter_select">
             <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                 <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
 
@@ -154,20 +164,15 @@ if (!empty($_GET["blue"])) {
 
                 </select>
 
-                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-
             </form>
 
-
+        </div>
+        <div class="col">
             <form class="d-flex" action="kevin-produst.php" method="get" enctype="mu">
                 <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-
-
-
         </div>
-
 
 
         <div class="col">
@@ -221,13 +226,7 @@ if (!empty($_GET["blue"])) {
 
         </div>
     </div>
-</div>
 
-
-
-
-
-<div class="container">
     <div class="row">
         <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
         <button type="button" class="d-inline-block w-25 btn-sm btn-danger"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>

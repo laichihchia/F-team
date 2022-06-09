@@ -18,9 +18,25 @@ $produstSid = isset($_GET['produstSid']) ? intval($_GET['produstSid']) : 0;
 // 商品資料表拿到該欄位的所有資料
 $pro_sql = "SELECT * FROM `produst` WHERE `produst`.`sid` = $produstSid";
 $produst_sql = $pdo->query($pro_sql)->fetch();
+$fav_where = "SELECT * FROM `favorite` WHERE `mem_id`= $memLoginID";
+$fav_sql = $pdo->query($fav_where)->fetchAll();
+
+foreach ($fav_sql as $rows => $r) {
+    if ($r['product_id'] == $produstSid) {
+        echo "
+            <script>
+                alert('此商品已經收藏。');
+                history.back()
+            </script>
+        ";
+        exit;
+    }
+}
+
+
 
 // 把商品資料表拿到的資料新增到 收藏資料表裡
-$insert_fav_sql = "INSERT INTO `favorite`(`mem_id`, `product_img`, `product_brand`, `product_name`, `product_info`, `product_price`) VALUES (?,?,?,?,?,?);";
+$insert_fav_sql = "REPLACE INTO `favorite`(`mem_id`, `product_img`, `product_brand`, `product_name`, `product_info`, `product_price`,`product_id`) VALUES (?,?,?,?,?,?,?);";
 $stmt = $pdo->prepare($insert_fav_sql);
 $stmt->execute([
     $memLoginID,
@@ -28,8 +44,14 @@ $stmt->execute([
     $produst_sql['brand'],
     $produst_sql['name'],
     $produst_sql['info'],
-    $produst_sql['price']
+    $produst_sql['price'],
+    $produst_sql['sid']
 ]);
+
+
+
+
+
 
 $come_from = 'kevin-produst.php';
 if (!empty($_SERVER['HTTP_REFERER'])) {
