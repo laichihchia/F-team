@@ -18,6 +18,8 @@ $produstSid = isset($_GET['produstSid']) ? intval($_GET['produstSid']) : 0;
 // 商品資料表拿到該欄位的所有資料
 $pro_sql = "SELECT * FROM `produst` WHERE `produst`.`sid` = $produstSid";
 $produst_sql = $pdo->query($pro_sql)->fetch();
+
+// 避免重複收藏商品
 $fav_where = "SELECT * FROM `favorite` WHERE `mem_id`= $memLoginID";
 $fav_sql = $pdo->query($fav_where)->fetchAll();
 
