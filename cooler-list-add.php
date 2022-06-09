@@ -4,12 +4,23 @@ $title = '新增課程資訊';
 ?>
 
 <?php include __DIR__ . '/parts/html-head.php' ?>
+
+<!--  下拉式選單的選項 左k右v -->
 <?php
- // 下拉式選單的選項 左k右v-->
-$type = [
-    '1' => '公告',
-    '2' => '限時優惠',
-    '3' => '聯名合作',
+$teacher = [
+    '1' => '小雞',
+    '2' => '圈圈',
+    '3' => '小佑',
+    '4' => '大壯',
+    '5' => '小ㄗ',
+];
+
+$location = [
+    '1' => '台北市北投區',
+    '2' => '台北市大安區',
+    '3' => '台北市松山區',
+    '4' => '台北市中正區',
+    '5' => '台北市信義區',
 ];
 ?>
 <?php
@@ -134,15 +145,37 @@ if (isset($_SESSION['cart'])) {
 
                         <div class="mb-3">
                             <label for="teacher" class="form-label">老師</label>
+                            <select class="form-select mb-3" aria-label="example" data-multiple id="teacher" name="teacher">
+                                <option value="" selected disabled>-- 請選擇 --</option>
+                                <!-- 從teacher裡抓 左邊值K右邊值v -->
+                                <?php foreach ($teacher as $k => $v) : ?>
+                                    <option value="<?= $v ?>"><?= $v ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="teacher" class="form-label">老師</label>
                             <input type="text" class="form-control" id="teacher" name="teacher" required>
                             <div class="form-text red"></div>
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="location" class="form-label">活動位置</label>
+                            <select class="form-select mb-3" aria-label="example" data-multiple id="location" name="location">
+                                <option value="" selected disabled>-- 請選擇 --</option>
+                                <!-- 從location裡抓 左邊值K右邊值v -->
+                                <?php foreach ($location as $k => $v) : ?>
+                                    <option value="<?= $v ?>"><?= $v ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="location" class="form-label">活動位置</label>
                             <input type="text" class="form-control" id="location" name="location" required>
                             <div class="form-text red"></div>
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="duringtime_begin" class="form-label">開始時間</label>
@@ -160,16 +193,7 @@ if (isset($_SESSION['cart'])) {
                             <div class="form-text red"></div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="type" class="form-label">類型</label>
-                            <select class="form-select mb-3" aria-label="example" data-multiple id="type" name="type">
-                                <option value="" selected disabled>-- 請選擇 --</option>
-                                <!-- 從type裡抓 左邊值K右邊值v -->
-                                <?php foreach ($type as $k => $v) : ?>
-                                    <option value="<?= $k ?>"><?= $v ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+
 
                         <button type="submit" class="btn btn-primary ">新增</button>
                     </form>
@@ -177,7 +201,7 @@ if (isset($_SESSION['cart'])) {
                         資料新增成功
                     </div>
 
-                    
+
 
                 </div>
             </div>

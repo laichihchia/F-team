@@ -11,7 +11,7 @@ $title = 'Gary-Register';
     }
 
     body {
-        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
         background-attachment: fixed;
     }
 
@@ -167,9 +167,9 @@ $title = 'Gary-Register';
                 </form>
 
                 <!-- 回應提示 -->
-                <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
+                <!-- <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
                     註冊成功
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -235,7 +235,7 @@ $title = 'Gary-Register';
             fieldTexts[i].innerText = '';
         }
 
-        info_bar.style.display = 'none';
+        // info_bar.style.display = 'none';
 
 
 
@@ -309,7 +309,7 @@ $title = 'Gary-Register';
 
         console.log(result);
 
-        info_bar.style.display = 'block'; //顯示提示訊息
+        // info_bar.style.display = 'block'; //顯示提示訊息
 
         // 如果新增成功 success=true
         if (result.success) {
@@ -317,7 +317,39 @@ $title = 'Gary-Register';
             // info_bar.classList.remove('alert-danger');
             // info_bar.classList.add('alert-success');
             // 寫入文字
-            info_bar.innerText = '註冊成功';
+            // info_bar.innerText = '註冊成功';
+            alert('註冊成功，新會員24小時內享8折優惠!');
+
+            // 把整個表單內容抓出來
+            // const fd = new FormData(document.form1);
+
+            // 把表單送給誰
+            const r = await fetch('gary-mem-login-api.php', {
+                method: 'POST',
+                body: fd,
+            });
+            // .then(d=>d.json())
+            // .then(d=>{
+            //     console.log(d);
+            // })
+
+            // 回傳的資料是JSON 轉回JS的陣列
+            const result = await r.json();
+
+            console.log(result);
+
+            const info_bar = document.querySelector('#info-bar');
+
+
+            // 如果成功 success=true
+            // if (result.success) {
+            //     setTimeout(() => {
+            //         location.href = 'gary-member-card.php'; //跳轉到列表頁
+            //     }, 1000);
+            // }
+
+            location.href = 'gary-member-card.php'; //跳轉到列表頁
+
 
             // setTimeout(() => {
             //     location.href = ''; //跳轉到列表頁
@@ -326,7 +358,8 @@ $title = 'Gary-Register';
         } else {
             // info_bar.classList.remove('alert-success');
             // info_bar.classList.add('alert-danger');
-            info_bar.innerText = result.error || '會員無法註冊';
+            // info_bar.innerText = result.error || '會員無法註冊';
+            alert('會員無法註冊');
         }
 
     }
