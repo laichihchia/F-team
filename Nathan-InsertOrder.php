@@ -55,7 +55,7 @@ if($last_insert['total'] === '0'){
     echo "
     <script>
         alert('感謝您，訂單已經新增成功囉。');
-        window.location.href = 'Nathan-CartList.php';
+        window.location.href = 'Nathan-Orders.php';
     </script>
 ";
 }
@@ -135,7 +135,7 @@ $pdo->query("DELETE FROM `cart` WHERE `produst_id` in ($produst_id) AND `member_
         </div>
         <div>
             <a onclick="ifconfirm('Continue to shopping?','Nathan-CartList.php')" class="pointer btn btn-primary mb-5">繼續購物</a>
-            <a href="gary-member-card.php" class="pointer btn btn-primary mb-5">查看訂單</a>
+            <a href="Nathan-Orders.php" class="pointer btn btn-primary mb-5">查看訂單</a>
         </div>
     </div>
 </div>

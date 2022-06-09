@@ -3,7 +3,7 @@ require __DIR__ . '/parts/connect_db.php';
 $pageName = 'kevin-produst-list';
 $title = 'Product-List';
 
-$perPage = 10; // 每一頁有幾筆
+$perPage = 20; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // intval -> 轉換成整數值
@@ -48,26 +48,6 @@ if ($x === 1) {
     $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 };
-// if (isset($_GET['option_price'])) {
-//     // 查詢商品的價格 (降冪)
-
-//     $option_price = $_GET["option_price"];
-
-//     if ($option_price  == 1) {
-//         $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//         $rows = $pdo->query($sql)->fetchAll();
-//     } else if ($option_price  == 2) {
-//         $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//         $rows = $pdo->query($sql)->fetchAll();
-//     }
-// } else {
-//     // 查詢所有商品
-
-//     $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//     $rows = $pdo->query($sql)->fetchAll();
-// };
-
-
 
 // checkbox 多條件篩選
 $checkbox = isset($_GET["checkbox"]) ? ($_GET['checkbox']) : [];
@@ -79,49 +59,73 @@ if (!empty($checkbox)) {
     $rows = $pdo->query($sql)->fetchAll();
 };
 
+// 關鍵字搜尋
+$search = isset($_GET["search"]) ? ($_GET['search']) : '';
 
 
-// if (isset($_GET['checkbox'])) {
-//     $checkbox = $_GET["checkbox"];
-//     // 技術板篩選
-//     if ($checkbox  == 1) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 3";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 交通板篩選
-//     } else if ($checkbox  == 2) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 4";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 板身篩選
-//     } else if ($checkbox  == 3) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 6";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 輪架篩選
-//     } else if ($checkbox  == 4) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 7";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 輪子篩選
-//     } else if ($checkbox  == 5) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 8";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 培林篩選
-//     } else if ($checkbox  == 6) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 9";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 護具篩選
-//     } else if ($checkbox  == 7) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 10";
-//         $rows = $pdo->query($sql)->fetchAll();
-//         // 噴漆篩選
-//     } else if ($checkbox  == 8) {
-//         $sql = "SELECT * FROM `produst` WHERE category_id = 2";
-//         $rows = $pdo->query($sql)->fetchAll();
-//     } else {
-//         // 查詢所有商品
+if (!empty($_GET["search"])) {
+    $str_tag = $_GET['search'];
+    $sql = "SELECT * FROM `produst` WHERE `name` LIKE '%$str_tag%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
 
-//         $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//         $rows = $pdo->query($sql)->fetchAll();
-//     }
-// };
+// 顏色篩選
+$yellow = isset($_GET["yellow"]) ? ($_GET['yellow']) : '';
+if (!empty($_GET["yellow"])) {
+    $yellow = $_GET['yellow'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$yellow%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$blue = isset($_GET["blue"]) ? ($_GET['blue']) : '';
+if (!empty($_GET["blue"])) {
+    $blue = $_GET['blue'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$blue%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$red = isset($_GET["red"]) ? ($_GET['red']) : '';
+if (!empty($_GET["red"])) {
+    $red = $_GET['red'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$red%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$pink = isset($_GET["pink"]) ? ($_GET['pink']) : '';
+if (!empty($_GET["pink"])) {
+    $blue = $_GET['pink'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$pink%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$green = isset($_GET["green"]) ? ($_GET['green']) : '';
+if (!empty($_GET["green"])) {
+    $blue = $_GET['green'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$green%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$black = isset($_GET["black"]) ? ($_GET['black']) : '';
+if (!empty($_GET["black"])) {
+    $black = $_GET['black'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$black%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
+$white = isset($_GET["white"]) ? ($_GET['white']) : '';
+if (!empty($_GET["white"])) {
+    $white = $_GET['white'];
+
+    $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$white%'";
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
 
 ?>
 
@@ -149,38 +153,93 @@ if (!empty($checkbox)) {
     }
 
     /* 隱藏側邊攔 */
-    .list-section {
+    .kevin_product {
         display: none;
     }
 
-    /* b {
-        display: none;
-    } */
-</style>
-<div class="container">
-    <div class="row d-flex">
-        <div class="col-6 d-flex justify-content-around align-items-center">
-            <button type="button" class="btn btn-outline-secondary"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
+    .color_btn {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: none;
+    }
 
+    .color_btn button {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        border-radius: 50%;
+        border: none;
+    }
+
+    .btn_yellow {
+        background-color: yellow;
+    }
+
+    .btn_blue {
+        background-color: blue;
+    }
+
+    .btn_red {
+        background-color: red;
+    }
+
+    .btn_pink {
+        background-color: pink;
+    }
+
+    .btn_green {
+        background-color: green;
+    }
+
+    .btn_black {
+        background-color: black;
+    }
+
+    .btn_white {
+        background-color: white;
+    }
+</style>
+
+
+<div class="container">
+    <div class="list-section">
+        <div class="col">
             <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                 <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
-
                     <option selected>Open this select menu</option>
-
-
                     <option value="1" name="option_price">價格從高到低</option>
                     <option value="2" name="option_price">價格從低到高</option>
-
                 </select>
-
-                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
 
             </form>
 
         </div>
 
+        <div class="col">
+            <form class="d-flex" action="kevin-produst.php" method="get" enctype="mu">
+                <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
 
-        <div class="col d-flex justify-content-between align-items-center">
+
+        <div class="col">
+            <button value="yellow" class="btn_yellow color_btn" onclick="yellow()" id="yellow" name="color"></button>
+            <button value="blue" class="btn_blue color_btn" onclick="blue()" id="blue" name="color"></button>
+            <button value="red" class="btn_red color_btn" onclick="red()" id="red" name="color"></button>
+            <button value="pink" class="btn_pink color_btn" onclick="pink()" id="pink" name="color"></button>
+            <button value="green" class="btn_green color_btn" onclick="green()" id="green" name="color"></button>
+            <button value="black" class="btn_black color_btn" onclick="black()" id="black" name="color"></button>
+            <button value="white" class="btn_white color_btn" onclick="white()" id="white" name="color"></button>
+        </div>
+
+
+
+        <div class="col">
             <div class="form-check d-flex">
                 <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                     <label for="">
@@ -214,11 +273,6 @@ if (!empty($checkbox)) {
                     </label>
 
                     <label for="">
-                        <input type="checkbox" value="10" style="vertical-align:middle;" name="checkbox">
-                        <span style="vertical-align:middle;">Safety Gear</span>
-                    </label>
-
-                    <label for="">
                         <input type="checkbox" value="2" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Spray Paint</span>
                     </label>
@@ -226,11 +280,12 @@ if (!empty($checkbox)) {
                     <button type="submit" class="btn btn-primary" name="ok">Type Submit</button>
                 </form>
             </div>
-
         </div>
     </div>
+
     <div class="row">
         <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
+        <button type="button" class="d-inline-block w-25 btn-sm btn-danger"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -244,6 +299,7 @@ if (!empty($checkbox)) {
                     <th scope="col" class="text-center">Creat Time</th>
                     <th scope="col" class="text-center">Update Time</th>
                     <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
+                    <th scope="col" class="text-center"><i class="fa-solid fa-heart"></i></th>
                 </tr>
             </thead>
             <tbody>
@@ -268,6 +324,9 @@ if (!empty($checkbox)) {
                         <td class="text-center"><?= $r['update_at'] ?></td>
                         <td>
                             <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+                        <td>
+                            <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -317,18 +376,6 @@ if (!empty($checkbox)) {
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
 <script>
-    // async function priceDesc() {
-    //     const fd = new FormData(document.form1);
-
-    //     const r = await fetch('/kevin-produst-api.php', {
-    //         method: 'POST',
-    //         body: fd,
-    //     });
-    //     const result = await r.json();
-
-    //     console.log(result);
-    // }
-
     const singleSelect = document.querySelectorAll('#singleSelect');
 
     async function delete_select() {
@@ -348,6 +395,67 @@ if (!empty($checkbox)) {
     function select() {
         let x = document.getElementById('option_price').value;
         location.href = `kevin-produst-test.php?x=${x}`;
+    }
+
+    function yellow() {
+        let btn = document.getElementById("yellow");
+        let yellow = btn.value;
+        location.href = `kevin-produst.php?yellow=${yellow}`;
+    };
+
+    function blue() {
+        let btn = document.getElementById("blue");
+        let blue = btn.value;
+        location.href = `kevin-produst.php?blue=${blue}`;
+    };
+
+    function red() {
+        let btn = document.getElementById("red");
+        let red = btn.value;
+        location.href = `kevin-produst.php?red=${red}`;
+    };
+
+    function pink() {
+        let btn = document.getElementById("pink");
+        let pink = btn.value;
+        location.href = `kevin-produst.php?pink=${pink}`;
+    };
+
+    function green() {
+        let btn = document.getElementById("green");
+        let green = btn.value;
+        location.href = `kevin-produst.php?green=${green}`;
+    };
+
+    function black() {
+        let btn = document.getElementById("black");
+        let black = btn.value;
+        location.href = `kevin-produst.php?blue=${black}`;
+    };
+
+    function white() {
+        let btn = document.getElementById("white");
+        let white = btn.value;
+        location.href = `kevin-produst.php?white=${white}`;
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const favSend = (sid) => {
+        location.href = `kevin-favorite-api.php?produstSid=${sid}`;
     }
 </script>
 

@@ -16,7 +16,7 @@ if (isset($_SESSION['user'])) {
 <?php include __DIR__ . '/parts/product-list.php' ?>
 
 <style>
-    .list-section {
+    .list-section-product {
         display: none;
     }
 
@@ -29,6 +29,15 @@ if (isset($_SESSION['user'])) {
         margin-top: 10%;
         width: 100%;
         border: 3px solid black;
+    }
+
+    .passForm {
+        margin-top: 10%;
+        width: 40%;
+        height: 250px;
+        background-color: white;
+        border: 3px solid black;
+        margin-left: 20px;
     }
 
     .register-title {
@@ -67,6 +76,10 @@ if (isset($_SESSION['user'])) {
         color: black;
     }
 
+    .passBtn {
+        margin-left: 55%;
+    }
+
     #btn {
         border: 0px;
     }
@@ -83,7 +96,7 @@ if (isset($_SESSION['user'])) {
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8 d-flex">
             <div class="card">
                 <form name="form1" onsubmit="sendData(); return false;" novoalidate>
                     <h5 class="register-title">會員修改</h5>
@@ -105,16 +118,6 @@ if (isset($_SESSION['user'])) {
                                 <!-- require 表示必填 -->
                                 <input type="text" class="form-control" id="mem_account" name="mem_account" require value="<?= htmlentities($memLogin['mem-account']) ?>">
                                 <div class="form-text red"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="mem_password" class="form-label">密碼</label>
-                                <div class="form-control d-flex justify-content-between">
-                                    <input type="password" class="form-control eyes-input" id="mem_password" name="mem_password" require value="<?= htmlentities($memLogin['mem-password']) ?>">
-                                    <a class="eyes d-flex align-items-center" onclick="togglePwd()">
-                                        <img src="./gary-img/eyes_off.png" alt="" id="eyes">
-                                    </a>
-                                </div>
-                                <div class="form-text red password-red"></div>
                             </div>
                         </div>
                     </div>
@@ -168,6 +171,7 @@ if (isset($_SESSION['user'])) {
 
                         <div class="d-flex justify-content-between">
                             <a href="gary-member-card.php" class="btn btn-primary login">Back</a>
+                            <a href="javascript: delete_it(<?= $memLogin['sid'] ?>)" class="btn btn-primary login">刪除帳號</a>
                             <button type="submit" class="btn btn-primary">確認修改</button>
                         </div>
                     </div>
@@ -179,9 +183,28 @@ if (isset($_SESSION['user'])) {
 
                 <!-- 回應提示 -->
                 <div id="info-bar" class="alert alert-success" role="alert" style="display:none;">
-                    註冊成功
+                    修改成功
                 </div>
             </div>
+            <form class="passForm" name="form3" onsubmit="sendPass(); return false;" novoalidate>
+                <h5 class="register-title">密碼專區</h5>
+                <input type="hidden" name="mem_sid" value="<?= $memLogin['sid'] ?>">
+                <input type="hidden" class="form-control" id="hidden_password" value="<?= htmlentities($memLogin['mem-password']) ?>">
+                <div class="form-control d-flex justify-content-between">
+                    <input type="password" class="form-control eyes-input" id="your_password" name="your_password" require placeholder="Your Password">
+                    <a class="eyes d-flex align-items-center" onclick="togglePwd()">
+                        <img src="./gary-img/eyes_off.png" alt="" id="eyes">
+                    </a>
+                </div>
+                <div class="form-control d-flex justify-content-between">
+                    <input type="password" class="form-control eyes-input" id="new_password" name="new_password" require placeholder="New Password">
+                    <a class="eyes d-flex align-items-center" onclick="togglePwd2()">
+                        <img src="./gary-img/eyes_off.png" alt="" id="eyes2">
+                    </a>
+                </div>
+                <div class="form-text red password-red text-center"></div>
+                <button type="submit" class="btn btn-primary mt-3 passBtn">更新密碼</button>
+            </form>
         </div>
     </div>
 </div>
@@ -203,16 +226,16 @@ if (isset($_SESSION['user'])) {
     const account_f = document.form1.mem_account;
     const email_f = document.form1.mem_email;
     const mobile_f = document.form1.mem_mobile;
-    const password_f = document.form1.mem_password;
 
 
+    const your_password = document.form1.your_password;
     // 查看密碼的眼睛
     const eyes = document.querySelector('#eyes');
     const pwd = () => {
-        password_f.setAttribute('type', 'password');
+        your_password.setAttribute('type', 'password');
     };
     const seePwd = () => {
-        password_f.setAttribute('type', 'text');
+        your_password.setAttribute('type', 'text');
     };
     let isPwd = false;
     const togglePwd = () => {
@@ -223,6 +246,27 @@ if (isset($_SESSION['user'])) {
         } else {
             eyes.src = './gary-img/eyes_on.png';
             seePwd();
+        }
+    };
+
+    const new_password = document.form1.new_password;
+    // 查看密碼的眼睛
+    const eyes2 = document.querySelector('#eyes2');
+    const pwd2 = () => {
+        new_password.setAttribute('type', 'password');
+    };
+    const seePwd2 = () => {
+        new_password.setAttribute('type', 'text');
+    };
+
+    const togglePwd2 = () => {
+        isPwd = !isPwd;
+        if (isPwd) {
+            eyes2.src = './gary-img/eyes_off.png';
+            pwd2();
+        } else {
+            eyes2.src = './gary-img/eyes_on.png';
+            seePwd2();
         }
     };
 
@@ -276,13 +320,13 @@ if (isset($_SESSION['user'])) {
             isPass = false;
         }
 
-        if (password_f.value === '') {
-            const passred = document.querySelector('.password-red');
-            // 寫入
-            passred.innerText = '請輸入密碼';
-            // 沒通過檢查
-            isPass = false;
-        }
+        // if (password_f.value === '') {
+        //     const passred = document.querySelector('.password-red');
+        //     // 寫入
+        //     passred.innerText = '請輸入密碼';
+        //     // 沒通過檢查
+        //     isPass = false;
+        // }
 
         // 有填內容但不符合格式 裡面的值符不符合設定的格式
         if (email_f.value && !email_re.test(email_f.value)) {
@@ -324,16 +368,8 @@ if (isset($_SESSION['user'])) {
 
         // 如果新增成功 success=true
         if (result.success) {
-            // 關於顏色的CSS
-            // info_bar.classList.remove('alert-danger');
-            // info_bar.classList.add('alert-success');
-            // 寫入文字
-            info_bar.innerText = '修改成功';
-
-            // setTimeout(() => {
-            //     location.href = ''; //跳轉到列表頁
-            // }, 2000);
-            // 如果新增失敗 success=false
+            alert('修改成功');
+                location.href = 'gary-member-card.php';
         } else {
             // info_bar.classList.remove('alert-success');
             // info_bar.classList.add('alert-danger');
@@ -375,6 +411,44 @@ if (isset($_SESSION['user'])) {
     // 點擊btn等於點擊了input
     function uploadAvatar() {
         avatar.click(); // 模擬點擊
+    }
+
+    function delete_it(sid) {
+        // 跳詢問視窗
+        if (confirm(`確定要刪除此帳號嗎?`)) {
+            // 如館按確定 轉到刪除檔
+            location.href = `gary-memself-del.php?sid=${sid}`;
+        }
+    }
+
+
+    // 修改密碼專區
+    async function sendPass() {
+
+        const hidden_password = document.querySelector('#hidden_password');
+        const your_password = document.querySelector('#your_password');
+        const new_password = document.querySelector('#new_password');
+        const passred = document.querySelector('.password-red');
+
+        if (hidden_password.value === your_password.value) {
+            // 把整個表單內容抓出來
+            const fd3 = new FormData(document.form3);
+
+            // 把表單送給誰
+            const r = await fetch('gary-mem-editPass-api.php', {
+                method: 'POST',
+                body: fd3,
+            });
+            const result = await r.json();
+            if (result.success) {
+                alert('密碼已更新');
+                location.href = 'gary-member-card.php';
+            } else {
+                passred.innerText = '密碼更新失敗';
+            }
+        }else {
+            passred.innerText = '密碼更新失敗';
+        }
     }
 </script>
 <?php include __DIR__ . '/parts/html-foot.php' ?>

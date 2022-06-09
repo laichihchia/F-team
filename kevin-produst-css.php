@@ -48,26 +48,6 @@ if ($x === 1) {
     $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 };
-// if (isset($_GET['option_price'])) {
-//     // 查詢商品的價格 (降冪)
-
-//     $option_price = $_GET["option_price"];
-
-//     if ($option_price  == 1) {
-//         $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//         $rows = $pdo->query($sql)->fetchAll();
-//     } else if ($option_price  == 2) {
-//         $sql = sprintf("SELECT * FROM `produst` ORDER BY `price` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//         $rows = $pdo->query($sql)->fetchAll();
-//     }
-// } else {
-//     // 查詢所有商品
-
-//     $sql = sprintf("SELECT * FROM produst ORDER BY sid ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
-//     $rows = $pdo->query($sql)->fetchAll();
-// };
-
-
 
 // checkbox 多條件篩選
 $checkbox = isset($_GET["checkbox"]) ? ($_GET['checkbox']) : [];
@@ -79,8 +59,7 @@ if (!empty($checkbox)) {
     $rows = $pdo->query($sql)->fetchAll();
 };
 
-
-
+// 關鍵字搜尋
 $search = isset($_GET["search"]) ? ($_GET['search']) : '';
 
 
@@ -90,7 +69,7 @@ if (!empty($_GET["search"])) {
     $rows = $pdo->query($sql)->fetchAll();
 }
 
-
+// 顏色篩選
 $yellow = isset($_GET["yellow"]) ? ($_GET['yellow']) : '';
 if (!empty($_GET["yellow"])) {
     $yellow = $_GET['yellow'];
@@ -106,7 +85,6 @@ if (!empty($_GET["blue"])) {
     $sql = "SELECT * FROM `produst` WHERE `color` LIKE '%$blue%'";
     $rows = $pdo->query($sql)->fetchAll();
 }
-
 
 ?>
 
@@ -134,7 +112,7 @@ if (!empty($_GET["blue"])) {
     }
 
     /* 隱藏側邊攔 */
-    .list-section {
+    .list-section-product {
         display: none;
     }
 
@@ -161,12 +139,20 @@ if (!empty($_GET["blue"])) {
     .btn_blue {
         background-color: blue;
     }
-</style>
-<div class="container">
-    <div class="row d-flex">
-        <div class="col-6 d-flex justify-content-around align-items-center">
-            <button type="button" class="btn btn-outline-secondary"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
 
+    .fliter_select {
+        border: 2px solid black;
+    }
+</style>
+
+
+
+
+
+
+<div class="container">
+    <div class="list-section">
+        <div class="col fliter_select">
             <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                 <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
 
@@ -178,30 +164,25 @@ if (!empty($_GET["blue"])) {
 
                 </select>
 
-
-
             </form>
 
-            <form class="d-flex" action="kevin-produst-test.php" method="get" enctype="mu">
+        </div>
+        <div class="col">
+            <form class="d-flex" action="kevin-produst.php" method="get" enctype="mu">
                 <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-
-
         </div>
 
 
-
-        <div class="col color_btn d-flex justify-content-between align-items-center">
+        <div class="col">
             <button value="yellow" class="btn_yellow" onclick="yellow()" id="yellow" name="color"></button>
             <button value="blue" class="btn_blue" onclick="blue()" id="blue" name="color"></button>
         </div>
 
 
 
-
-
-        <div class="col d-flex justify-content-between align-items-center">
+        <div class="col">
             <div class="form-check d-flex">
                 <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                     <label for="">
@@ -245,8 +226,10 @@ if (!empty($_GET["blue"])) {
 
         </div>
     </div>
+
     <div class="row">
         <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
+        <button type="button" class="d-inline-block w-25 btn-sm btn-danger"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -260,6 +243,7 @@ if (!empty($_GET["blue"])) {
                     <th scope="col" class="text-center">Creat Time</th>
                     <th scope="col" class="text-center">Update Time</th>
                     <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
+                    <th scope="col" class="text-center"><i class="fa-solid fa-heart"></i></th>
                 </tr>
             </thead>
             <tbody>
@@ -284,6 +268,9 @@ if (!empty($_GET["blue"])) {
                         <td class="text-center"><?= $r['update_at'] ?></td>
                         <td>
                             <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+                        <td>
+                            <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -333,18 +320,6 @@ if (!empty($_GET["blue"])) {
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
 <script>
-    // async function priceDesc() {
-    //     const fd = new FormData(document.form1);
-
-    //     const r = await fetch('/kevin-produst-api.php', {
-    //         method: 'POST',
-    //         body: fd,
-    //     });
-    //     const result = await r.json();
-
-    //     console.log(result);
-    // }
-
     const singleSelect = document.querySelectorAll('#singleSelect');
 
     async function delete_select() {
@@ -369,14 +344,17 @@ if (!empty($_GET["blue"])) {
     function yellow() {
         let btn = document.getElementById("yellow");
         let yellow = btn.value;
-        location.href = `kevin-produst-test.php?yellow=${yellow}`;
+        location.href = `kevin-produst.php?yellow=${yellow}`;
     };
 
     function blue() {
         let btn = document.getElementById("blue");
         let blue = btn.value;
-        location.href = `kevin-produst-test.php?blue=${blue}`;
+        location.href = `kevin-produst.php?blue=${blue}`;
     };
+    const favSend = (sid) => {
+        location.href = `kevin-favorite-api.php?produstSid=${sid}`;
+    }
 </script>
 
 <?php require __DIR__ . '/parts/html-foot.php' ?>

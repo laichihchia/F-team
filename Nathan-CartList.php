@@ -1,8 +1,7 @@
 <?php require __DIR__ . '/parts/connect_db.php';
 $pageName = "Nathan's cart";
 $title = "Nathan-CartList - Nathan's cart";
-//MV 資料處理 後端邏輯
-// echo json_encode($_SESSION['user']);
+
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 if ($page < 1) {
@@ -131,7 +130,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                     <li class="page-item <?= $page == 1 ? 'disabled' : ''; ?>">
                         <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-angle-left"></i></a>
                     </li>
-                    <?php for ($i = $page; $i <= $page + 3; $i++) :
+                    <?php for ($i = $page - 2; $i <= $page + 2; $i++) :
                         if ($i >= 1 and $i <= $totalPage) : ?>
                             <li class="page-item <?= $page == $i ? 'active' : ''; ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
                     <?php endif;
