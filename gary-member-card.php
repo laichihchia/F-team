@@ -17,7 +17,7 @@ if (isset($_SESSION['user'])) {
         WHERE `orders`.member_sid= $memLoginID
         ORDER BY `orders`.order_date DESC, `order_details`.sid;")->fetchAll();
 
-        $coll_sql = $pdo->query("SELECT `favorite`.mem_id, `produst`.*, `favorite`.`product_img`, `favorite`.product_name, `favorite`.product_price FROM favorite
+                $coll_sql = $pdo->query("SELECT `favorite`.mem_id, `produst`.*, `favorite`.`product_img`, `favorite`.product_name, `favorite`.product_price FROM favorite
         JOIN produst
             ON `favorite`.product_img=`produst`.img
         WHERE `favorite`.mem_id= $memLoginID
@@ -123,9 +123,9 @@ if (isset($_SESSION['user'])) {
     }
 
     .scro-left {
-        margin-top: 500px;
+        margin-top: 550px;
         width: 640px;
-        height: 320px;
+        height: 260px;
         overflow: auto;
     }
 
@@ -149,6 +149,11 @@ if (isset($_SESSION['user'])) {
 
     .Leftscrollbarbox {
         margin-right: 10px;
+        width: 150px;
+    }
+
+    .Leftscrollbarbox:hover {
+        opacity: 0.8;
     }
 
     .boxLeft-img {
@@ -164,12 +169,24 @@ if (isset($_SESSION['user'])) {
         overflow: hidden;
         object-fit: contain;
     }
+    
+    .Leftscrollbarbox img:hover {
+        border: 3px solid gray;
+    }
 
     .Leftscrollbarbox p {
+        width: 100%;
         margin-top: 5px;
         font-size: 20px;
         text-align: center;
         color: white;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
     }
 
     .scrollbarbox {
@@ -211,19 +228,16 @@ if (isset($_SESSION['user'])) {
     }
 
     .box-word {
-        /* color: purple; */
         font-size: 16px;
         font-weight: 600;
     }
 
     .box-word2 {
-        /* color: red; */
         font-size: 16px;
         font-weight: 600;
     }
 
     .box-word3 {
-        /* color: red; */
         font-size: 16px;
         font-weight: 600;
         margin-left: 5px;
