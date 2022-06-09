@@ -158,8 +158,8 @@ if (!empty($_GET["white"])) {
     }
 
     .color_btn {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -200,178 +200,245 @@ if (!empty($_GET["white"])) {
     }
 
     .btn_white {
-        background-color: white;
+        background-color: wheat;
+    }
+
+    .fliter_select {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 5vh;
+        border: 2px solid black;
+    }
+
+    .fliter_search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 5vh;
+        border: 2px solid black;
+    }
+
+    .fliter_color {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border: 2px solid black;
+    }
+
+    .fliter_color_button {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fliter_color_button button {
+        margin: 15px;
+    }
+
+    .fliter_checkbox {
+        /* display: flex; */
+        flex-direction: column;
+        /* justify-content: center;
+        align-items: center; */
+        width: 100%;
+        /* height: 20vh; */
+        border: 2px solid black;
     }
 </style>
 
 
 <div class="container">
     <div class="list-section">
+
         <div class="col">
             <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
-                <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
-                    <option selected>Open this select menu</option>
-                    <option value="1" name="option_price">價格從高到低</option>
-                    <option value="2" name="option_price">價格從低到高</option>
-                </select>
-
+                <div class="fliter_select">
+                    <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
+                        <option selected>Open this select menu</option>
+                        <option value="1" name="option_price">價格從高到低</option>
+                        <option value="2" name="option_price">價格從低到高</option>
+                    </select>
+                </div>
             </form>
 
         </div>
 
-        <div class="col">
+        <div class="col ">
             <form class="d-flex" action="kevin-produst.php" method="get" enctype="mu">
-                <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="fliter_search">
+                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                </div>
             </form>
         </div>
 
 
-        <div class="col">
-            <button value="yellow" class="btn_yellow color_btn" onclick="yellow()" id="yellow" name="color"></button>
-            <button value="blue" class="btn_blue color_btn" onclick="blue()" id="blue" name="color"></button>
-            <button value="red" class="btn_red color_btn" onclick="red()" id="red" name="color"></button>
-            <button value="pink" class="btn_pink color_btn" onclick="pink()" id="pink" name="color"></button>
-            <button value="green" class="btn_green color_btn" onclick="green()" id="green" name="color"></button>
-            <button value="black" class="btn_black color_btn" onclick="black()" id="black" name="color"></button>
-            <button value="white" class="btn_white color_btn" onclick="white()" id="white" name="color"></button>
+        <div class="col fliter_color">
+            <h2>color</h2>
+            <div class="fliter_color_button">
+                <button value="yellow" class="btn_yellow color_btn" onclick="yellow()" id="yellow" name="color"></button>
+                <button value="blue" class="btn_blue color_btn" onclick="blue()" id="blue" name="color"></button>
+                <button value="red" class="btn_red color_btn" onclick="red()" id="red" name="color"></button>
+                <button value="pink" class="btn_pink color_btn" onclick="pink()" id="pink" name="color"></button>
+                <button value="green" class="btn_green color_btn" onclick="green()" id="green" name="color"></button>
+                <button value="black" class="btn_black color_btn" onclick="black()" id="black" name="color"></button>
+                <button value="white" class="btn_white color_btn" onclick="white()" id="white" name="color"></button>
+            </div>
         </div>
 
 
 
-        <div class="col">
-            <div class="form-check d-flex">
-                <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
+
+        <div class="fliter_checkbox">
+            <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="3" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Shortboard</span>
                     </label>
+                </div>
 
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="4" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Old School</span>
                     </label>
+                </div>
 
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="6" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Decks</span>
                     </label>
+                </div>
 
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="7" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Trucks</span>
                     </label>
+                </div>
 
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="8" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Wheels</span>
                     </label>
+                </div>
 
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="9" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Bearings</span>
                     </label>
+                </div>
 
+                <div class="fliter_checkbox_btn">
                     <label for="">
                         <input type="checkbox" value="2" style="vertical-align:middle;" name="checkbox[]">
                         <span style="vertical-align:middle;">Spray Paint</span>
                     </label>
+                </div>
 
-                    <button type="submit" class="btn btn-primary" name="ok">Type Submit</button>
-                </form>
-            </div>
+                <button type="submit" class="btn btn-primary" name="ok">Type Submit</button>
+            </form>
         </div>
     </div>
+</div>
+
+<div class="row">
+    <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
+    <button type="button" class="d-inline-block w-25 btn-sm btn-danger"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
+                <th scope="col" class="text-center">sid</th>
+                <th scope="col" class="text-center">Product</th>
+                <th scope="col" class="text-center">Brand</th>
+                <th scope="col" class="text-center">Product Name</th>
+                <th scope="col" class="text-center">Info</th>
+                <th scope="col" class="text-center">Price</th>
+                <th scope="col" class="text-center">Creat Time</th>
+                <th scope="col" class="text-center">Update Time</th>
+                <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
+                <th scope="col" class="text-center"><i class="fa-solid fa-heart"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($rows as $r) : ?>
+                <tr>
+                    <td class="">
+                        <div class="form-check">
+                            <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="c">
+                            <a href="kevin-produst-delete-api.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')"><i class="fa-solid fa-trash-can"></i></a>
+                        </div>
+
+                    </td>
+                    <td><?= $r['sid'] ?></td>
+                    <td class="w-25">
+                        <img src=./Fteam-produst_img/<?= $r['img'] ?> class="w-100" alt="">
+                    </td>
+                    <td class="text-center"><?= $r['brand'] ?></td>
+                    <td class="text-center"><?= $r['name'] ?></td>
+                    <td class="text-center"><?= $r['info'] ?></td>
+                    <td class="text-center"><?= $r['price'] ?></td>
+                    <td class="text-center"><?= $r['create_at'] ?></td>
+                    <td class="text-center"><?= $r['update_at'] ?></td>
+                    <td>
+                        <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                    <td>
+                        <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
 
     <div class="row">
-        <button onclick="delete_select()" class=" d-inline-block w-25 btn-sm btn-danger">Delete Select</button>
-        <button type="button" class="d-inline-block w-25 btn-sm btn-danger"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-                    <th scope="col" class="text-center">sid</th>
-                    <th scope="col" class="text-center">Product</th>
-                    <th scope="col" class="text-center">Brand</th>
-                    <th scope="col" class="text-center">Product Name</th>
-                    <th scope="col" class="text-center">Info</th>
-                    <th scope="col" class="text-center">Price</th>
-                    <th scope="col" class="text-center">Creat Time</th>
-                    <th scope="col" class="text-center">Update Time</th>
-                    <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
-                    <th scope="col" class="text-center"><i class="fa-solid fa-heart"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($rows as $r) : ?>
-                    <tr>
-                        <td class="">
-                            <div class="form-check">
-                                <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="c">
-                                <a href="kevin-produst-delete-api.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')"><i class="fa-solid fa-trash-can"></i></a>
-                            </div>
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+                        <a class="page-link" href="?page=1">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+                        <a class="page-link" href="?page=<?= $page - 1 ?>">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+                        if ($i >= 1 and $i <= $totalPages) :
+                    ?>
+                            <li class="page-item <?= $page == $i ? 'active' : '' ?>">
+                                <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                            </li>
+                    <?php endif;
+                    endfor; ?>
+                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
+                        <a class="page-link" href="?page=<?= $page + 1 ?>">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
+                        <a class="page-link" href="?page=<?= $totalPages ?>">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-                        </td>
-                        <td><?= $r['sid'] ?></td>
-                        <td class="w-25">
-                            <img src=./Fteam-produst_img/<?= $r['img'] ?> class="w-100" alt="">
-                        </td>
-                        <td class="text-center"><?= $r['brand'] ?></td>
-                        <td class="text-center"><?= $r['name'] ?></td>
-                        <td class="text-center"><?= $r['info'] ?></td>
-                        <td class="text-center"><?= $r['price'] ?></td>
-                        <td class="text-center"><?= $r['create_at'] ?></td>
-                        <td class="text-center"><?= $r['update_at'] ?></td>
-                        <td>
-                            <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
-                        <td>
-                            <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-
-        </table>
-
-        <div class="row">
-            <div class="col">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-                            <a class="page-link" href="?page=1">
-                                <i class="fa-solid fa-angles-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-                            <a class="page-link" href="?page=<?= $page - 1 ?>">
-                                <i class="fa-solid fa-angle-left"></i>
-                            </a>
-                        </li>
-                        <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
-                            if ($i >= 1 and $i <= $totalPages) :
-                        ?>
-                                <li class="page-item <?= $page == $i ? 'active' : '' ?>">
-                                    <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                                </li>
-                        <?php endif;
-                        endfor; ?>
-                        <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
-                            <a class="page-link" href="?page=<?= $page + 1 ?>">
-                                <i class="fa-solid fa-angle-right"></i>
-                            </a>
-                        </li>
-                        <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
-                            <a class="page-link" href="?page=<?= $totalPages ?>">
-                                <i class="fa-solid fa-angles-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </div>
         </div>
     </div>
+</div>
 </div>
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
