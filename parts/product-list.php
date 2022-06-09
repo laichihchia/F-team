@@ -159,7 +159,7 @@ if (isset($_SESSION['user'])) {
         </div>
     </div>
 
-    <div class="list-section">
+    <div class="list-section-product">
         <div class="list-group">
             <a href="der-NewsList.php" class="list-a list-group-item list-group-item-action <?= $pageName === "der-NewsList" ? 'active' : ''; ?>">最新消息</a>
             <a href="gary-mem-list-true.php" class="list-a list-group-item list-group-item-action <?= $pageName === "會員管理" ? 'active' : ''; ?>">會員管理</a>
