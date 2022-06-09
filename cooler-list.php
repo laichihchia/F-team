@@ -2,7 +2,7 @@
 $pageName = '課程資訊';
 $title = '課程資訊';
 
-$perPage = 10; // 每一頁有幾筆
+$perPage = 3; // 每一頁有幾筆
 
 
 
@@ -38,7 +38,7 @@ if ($totalRows > 0) {
 
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <style>
-    .cooler-creat:hover {
+    .cooler-creat-delete:hover {
         background-color: #dee2e6;
         color: #222;
     }
@@ -49,16 +49,17 @@ if ($totalRows > 0) {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
-        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* white-space: normal; */
         /* line-height: 40px; */
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
         padding: 0 .5rem !important;
         margin: .5rem 0;
         width: 150px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
         /* border: 1px solid; */
-        word-wrap: break-word;
+        /* word-wrap: break-word; */
         /* font-weight: 900; */
     }
 
@@ -83,7 +84,7 @@ if ($totalRows > 0) {
                         <i class="fa-solid fa-angle-left"></i>
                     </a>
                 </li>
-                <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+                <?php for ($i = $page - 2; $i <= $page + 2; $i++) :
                     if ($i >= 1 and $i <= $totalPages) :
                 ?>
                         <li class="page-item <?= $page == $i ? 'active' : '' ?>">
@@ -103,13 +104,23 @@ if ($totalRows > 0) {
                 </li>
             </ul>
 
-            <a href="cooler-list-add.php" class=" btn btn-outline-secondary float-end mb-3 cooler-creat">新增</a>
+            <div>
+                <button onclick="delete_select()" class="btn btn-danger cooler-creat-delete">Delete</button>
+                
+                    <a href="cooler-list-add.php" class="btn-danger btn  float-end  cooler-creat-delete">create</a>
+            </div>
 
 
         </nav>
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input totalCheck" type="checkbox" value="" id="flexCheckDefault" name="all" onclick="check_all(this,'delALL')">
+                        </div>
+                    </th>
+
                     <th scope="col">#</th>
                     <th scope="col">課程名稱</th>
                     <th scope="col">課程內容</th>
@@ -130,6 +141,12 @@ if ($totalRows > 0) {
             <tbody>
                 <?php foreach ($rows as $r) : ?>
                     <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="delALL">
+                            </div>
+                        </td>
+
 
                         <td><?= $r['sid'] ?></td>
                         <td><?= htmlentities($r['name']) ?></td>
@@ -182,6 +199,28 @@ if ($totalRows > 0) {
     function delete_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
             location.href = `cooler-list-delete.php?sid=${sid}`;
+        }
+    }
+
+    // 全選checkbox同步設定
+    function check_all(obj, delALL) {
+        const allCheck = document.getElementsByName(delALL);
+        for (let i = 0; i < allCheck.length; i++) {
+            allCheck[i].checked = obj.checked;
+        }
+    }
+    const singleSelect = document.querySelectorAll('#singleSelect');
+
+    async function delete_select() {
+        const select_ar = [];
+        for (let i of singleSelect) {
+            if (i.checked) {
+                select_ar.push(Number(i.value));
+            }
+        }
+        // console.log(select_ar);
+        if (confirm(`確定要刪除編號為${select_ar}的資料嗎`)) {
+            location.href = `cooler-list-delete.php?sid=${select_ar}`;
         }
     }
 </script>

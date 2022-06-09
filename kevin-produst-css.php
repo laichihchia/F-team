@@ -145,18 +145,27 @@ if (!empty($_GET["blue"])) {
         <div class="col">
             <form action="kevin-produst.php" method="get" enctype="multipart/form-data">
                 <select class="select jc" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
+
                     <option selected>Open this select menu</option>
+
+
                     <option value="1" name="option_price">價格從高到低</option>
                     <option value="2" name="option_price">價格從低到高</option>
+
                 </select>
 
                 <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
 
             </form>
+
+
             <form class="d-flex" action="kevin-produst.php" method="get" enctype="mu">
                 <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
+
+
         </div>
 
 
@@ -209,9 +218,13 @@ if (!empty($_GET["blue"])) {
                     <button type="submit" class="btn btn-primary" name="ok">Type Submit</button>
                 </form>
             </div>
+
         </div>
     </div>
 </div>
+
+
+
 
 
 <div class="container">

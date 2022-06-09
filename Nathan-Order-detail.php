@@ -32,8 +32,10 @@ $od_sql = $pdo->query($sql)->fetchAll();
         <tbody>
             <?php
                 $od_total = 0;
+                $od_total_qty = 0;
                 foreach ($od_sql as $r) : 
                 $od_total += $r['price'];
+                $od_total_qty += $r['quantity'];
                 ?>
                 <tr class="mb-2">
                     <td class="text-center" scope="col"><?= $r['produst_sid'] ?></td>
@@ -47,7 +49,7 @@ $od_sql = $pdo->query($sql)->fetchAll();
                 <td class="text-center fs-5 fw-bolder" scope="col">Total : </td>
                 <td scope="col"></td>
                 <td scope="col"></td>
-                <td scope="col"></td>
+                <td class="fs-5 fw-bolder" scope="col"><?= $od_total_qty ?></td>
                 <td class="fs-5 fw-bolder" scope="col">$ <?= $od_total ?></td>
             </tr>
         </tbody>

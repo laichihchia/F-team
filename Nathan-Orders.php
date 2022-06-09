@@ -11,7 +11,7 @@ if ($page < 1) {
     exit;
 };
 // 每一頁要幾筆
-$perpage = 10;
+$perpage = 8;
 
 // 取得總比數
 $t_sql = "SELECT COUNT(1) FROM `orders`";
@@ -79,7 +79,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                 <li class="page-item <?= $page == 1 ? 'disabled' : ''; ?>">
                     <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-angle-left"></i></a>
                 </li>
-                <?php for ($i = $page; $i <= $page + 3; $i++) :
+                <?php for ($i = $page - 2; $i <= $page + 2; $i++) :
                     if ($i >= 1 and $i <= $totalPage) : ?>
                         <li class="page-item <?= $page == $i ? 'active' : ''; ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
                 <?php endif;
@@ -94,13 +94,18 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         </nav>
     </div>
     <div class="col-12 mb-4">
-
         <input class="search-inp" placeholder="Order Number:" type="search" value="">
         <a class="btn magnifying" onclick="seachOrder()"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <select class="form-select w-25" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
     </div>
     <table>
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th scope="col">Order Numer</th>
                 <th scope="col">Total Price</th>
                 <th scope="col">Member Name</th>
@@ -109,7 +114,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         </thead>
         <tbody>
             <?php foreach ($rows as $r) : ?>
-                <tr class=" mb-2">
+                <tr class="text-center mb-2">
                     <td scope="col">
                         <a class="odNum btn" onclick="turnToDetail(<?= $r['sid'] ?>);"><?= $r['sid'] ?></a>
                     </td>

@@ -140,7 +140,7 @@ if (isset($_SESSION['cart'])) {
                 <div class="card-body">
                     <h5 class="card-title">編輯課程資訊</h5>
                     <form name="form1" onsubmit="sendData();return false;" novalidate>
-                    <input type="hidden" name="sid" value="<?= $row['sid'] ?>">
+                        <input type="hidden" name="sid" value="<?= $row['sid'] ?>">
                         <div class="mb-3">
                             <label for="name" class="form-label">課程名稱</label>
                             <input type="text" class="form-control" id="name" name="name" required value="<?= htmlentities($row['name']) ?>">
@@ -161,11 +161,11 @@ if (isset($_SESSION['cart'])) {
 
                         <div class="mb-3">
                             <label for="teacher" class="form-label">老師</label>
-                            <select class="form-select mb-3" aria-label="example" data-multiple id="teacher" name="teacher" >
+                            <select class="form-select mb-3" aria-label="example" data-multiple id="teacher" name="teacher">
                                 <option value="" selected disabled>-- 請選擇 --</option>
                                 <!-- 從teacher裡抓 左邊值K右邊值v -->
                                 <?php foreach ($teacher as $k => $v) : ?>
-                                    <option value="<?= $v ?>" <?=$row['teacher'] == $v ? ' selected="selected"' : ''?> ><?= $v ?></option>
+                                    <option value="<?= $v ?>" <?= $row['teacher'] == $v ? 'selected' : '' ?>><?= $v ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -176,7 +176,7 @@ if (isset($_SESSION['cart'])) {
                                 <option value="" selected disabled>-- 請選擇 --</option>
                                 <!-- 從location裡抓 左邊值K右邊值v -->
                                 <?php foreach ($location as $k => $v) : ?>
-                                    <option value="<?= $v ?>" <?=$row['location'] == $v ? ' selected="selected"' : ''?> ><?= $v ?></option>
+                                    <option value="<?= $v ?>" <?= $row['location'] == $v ? 'selected' : '' ?>><?= $v ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -262,7 +262,7 @@ if (isset($_SESSION['cart'])) {
             isPass = false;
         }
 
-        if (parseInt(number_of_people_f.value) < 1){
+        if (parseInt(number_of_people_f.value) < 1) {
             fields[1].classList.add('red');
             fieldTexts[1].innerText = '人數至少1人';
             isPass = false;
