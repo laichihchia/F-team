@@ -54,7 +54,7 @@ if($last_insert['total'] === '0'){
     $pdo ->query("DELETE FROM `orders` WHERE `sid` = $last_insert_sid");
     echo "
     <script>
-        alert('感謝您，訂單已經新增成功囉。');
+        alert('感謝您，訂單已經新增成功囉，前往查看訂單記錄吧。');
         window.location.href = 'Nathan-Orders.php';
     </script>
 ";

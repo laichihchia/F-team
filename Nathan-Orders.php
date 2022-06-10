@@ -11,7 +11,7 @@ if ($page < 1) {
     exit;
 };
 // 每一頁要幾筆
-$perpage = 15;
+$perpage = 20;
 
 // 取得總比數
 $t_sql = "SELECT COUNT(1) FROM `orders`";
@@ -39,13 +39,13 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
 $opValue = isset($_GET['opValue']) ? intval($_GET['opValue']) : 0;
 if(!empty($opValue)){
     if($opValue === 1){
-        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 3 month) AND NOW() ORDER BY order_date DESC";
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 3 month) AND NOW() ORDER BY order_date";
         $rows = $pdo->query($sql)->fetchAll();
     }elseif($opValue === 2){
-        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 6 month) AND NOW() ORDER BY order_date DESC";
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 6 month) AND NOW() ORDER BY order_date";
         $rows = $pdo->query($sql)->fetchAll();
     }elseif($opValue === 3){
-        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 1 year) AND NOW() ORDER BY order_date DESC";
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 1 year) AND NOW() ORDER BY order_date";
         $rows = $pdo->query($sql)->fetchAll();
     }
 }

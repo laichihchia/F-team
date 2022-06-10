@@ -95,6 +95,9 @@ if (isset($_SESSION['user'])) {
     .dsn {
         display: none;
     }
+    .product-icon>i{
+        color: white;
+    }
 </style>
 
 <body>
@@ -137,7 +140,8 @@ if (isset($_SESSION['user'])) {
 
                     <!-- LOGIN/LOGOUT -->
                     <a href=" <?= isset($_SESSION['user']) ? 'gary-logout.php' : 'gary-member-login.php'; ?> " class="memName text-decoration-none"><?= isset($_SESSION['user']) ? 'Logout' : 'Login'; ?></a>
-
+                    
+                    <a class="product-icon" href="kevin-produst.php"><i class="fa-solid fa-box-archive"></i></a>
 
                     <a class="cart-icon <?= $_SESSION['user']['grade'] === 'high' ? 'dsn' : ''; ?>" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-ViewCart.php')"><i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count"><?= isset($cartCount) ? $cartCount : '0'; ?></span>
