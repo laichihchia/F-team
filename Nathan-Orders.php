@@ -11,7 +11,7 @@ if ($page < 1) {
     exit;
 };
 // 每一頁要幾筆
-$perpage = 20;
+$perpage = 15;
 
 // 取得總比數
 $t_sql = "SELECT COUNT(1) FROM `orders`";
@@ -39,13 +39,13 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
 $opValue = isset($_GET['opValue']) ? intval($_GET['opValue']) : 0;
 if(!empty($opValue)){
     if($opValue === 1){
-        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 3 month) AND NOW()";
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 3 month) AND NOW() ORDER BY order_date DESC";
         $rows = $pdo->query($sql)->fetchAll();
     }elseif($opValue === 2){
-        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 6 month) AND NOW()";
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 6 month) AND NOW() ORDER BY order_date DESC";
         $rows = $pdo->query($sql)->fetchAll();
     }elseif($opValue === 3){
-        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 1 year) AND NOW()";
+        $sql ="SELECT o.*, m.`mem-name` FROM `orders` o JOIN member m ON o.member_sid = m.sid WHERE order_date BETWEEN DATE_SUB(NOW(),INTERVAL 1 year) AND NOW() ORDER BY order_date DESC";
         $rows = $pdo->query($sql)->fetchAll();
     }
 }
@@ -112,7 +112,7 @@ if(!empty($opValue)){
         <input title="輸入後三或後四碼" class="search-inp mb-3 ms-5" placeholder="Order Number:" type="search" value="">
         <a class="btn magnifying" onclick="seachOrder()"><i class="fa-solid fa-magnifying-glass"></i></a>
         <select onchange="chooseDate();" class="optionDate form-select ms-5" aria-label="Default select example">
-            <option selected>-- Choose Date --</option>
+            <option selected>---- Within ----</option>
             <option value="1" <?= $opValue === 1 ? 'selected':''?>>Within 3 months</option>
             <option value="2" <?= $opValue === 2 ? 'selected':''?>>Within 6 months</option>
             <option value="3" <?= $opValue === 3 ? 'selected':''?>>Within 1 year</option>
