@@ -23,6 +23,7 @@ if (isset($_SESSION['user'])) {
     body {
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
         background-attachment: fixed;
+        position: relative;
     }
 
     .card {
@@ -101,7 +102,7 @@ if (isset($_SESSION['user'])) {
         position: absolute;
         top: 85%;
         left: 80%;
-        animation: error 0.7s linear;
+        animation: error 0.8s linear;
         animation-fill-mode: forwards;
         display: none;
     }
@@ -118,7 +119,7 @@ if (isset($_SESSION['user'])) {
         }
 
         50% {
-            transform: translate(-300px, -300px);
+            transform: translate(-700px, -300px);
             width: 440px;
             height: 440px;
         }
