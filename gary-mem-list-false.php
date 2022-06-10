@@ -49,6 +49,11 @@ if ($totalRows > 0) {
     #bollen {
         display: none;
     }
+
+    .word19{
+        font-weight: 600;
+        font-size: 36px;
+    }
 </style>
 
 <div class="row">
@@ -105,6 +110,7 @@ if ($totalRows > 0) {
 
                 </ul>
             </nav>
+            <a href="https://price.housefun.com.tw/%E8%A1%8C%E6%83%85%E8%B3%87%E8%A8%8A/%E5%8F%B0%E5%8C%97%E5%B8%82" class="word19">2022/05北市平均成交價為72.8萬/坪，為公司加班也是為了自己</a>
             <div>
                 <a href="gary-mem-list-true.php"><button type="submit" class="btn btn-primary btn-lg">查看激活會員</button></a>
             </div>
