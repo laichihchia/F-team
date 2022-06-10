@@ -89,7 +89,7 @@ if (isset($_SESSION['user'])) {
         width: 400px;
         height: 250px;
         background-color: gray;
-        opacity: 0.7;
+        opacity: 0.5;
         position: absolute;
         border-radius: 25px;
     }
@@ -114,7 +114,7 @@ if (isset($_SESSION['user'])) {
 
     .scrollbar {
         width: 490px;
-        height: 80vh;
+        height: 775px;
         overflow: auto;
     }
 
@@ -163,7 +163,7 @@ if (isset($_SESSION['user'])) {
         height: 150px;
         border-radius: 50%;
         overflow: hidden;
-        object-fit: contain;
+        object-fit: cover;
     }
     
     .Leftscrollbarbox img:hover {

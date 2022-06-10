@@ -128,6 +128,7 @@ if ($totalRows > 0) {
                     <th scope="col">手機</th>
                     <th scope="col">Email</th>
                     <th scope="col">創建時間</th>
+                    <th scope="col"><i class="fa-solid fa-heart"></i></th>
                 </tr>
             </thead>
             <tbody>
@@ -179,6 +180,11 @@ if ($totalRows > 0) {
                         <!-- strip_tags 有出現tag的就直接去掉tag -->
                         <!-- <td><?= strip_tags($r['mem-address']) ?></td> -->
                         <td><?= $r['mem-created_at'] ?></td>
+                        <td>
+                            <a href="javascript: collect_it(<?= $r['sid'] ?>)">
+                                <i class="fa-solid fa-heart"></i>
+                            </a>
+                        </td>
 
                     </tr>
                 <?php endforeach; ?>
@@ -203,6 +209,10 @@ if ($totalRows > 0) {
         if (confirm(`確定要激活編號為 ${sid} 的資料嗎?`)) {
             location.href = `gary-list-1-api.php?sid=${sid}`;
         }
+    }
+
+    function collect_it(sid) {
+            location.href = `gary-collect.php?sid=${sid}`;
     }
 
     // 全選checkbox同步設定
