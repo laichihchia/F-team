@@ -2,7 +2,7 @@
 $pageName = '課程資訊';
 $title = '課程資訊';
 
-$perPage = 3; // 每一頁有幾筆
+$perPage = 10; // 每一頁有幾筆
 
 
 
