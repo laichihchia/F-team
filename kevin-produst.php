@@ -3,7 +3,7 @@ require __DIR__ . '/parts/connect_db.php';
 $pageName = 'kevin-produst-list';
 $title = 'Product-List';
 
-$perPage = 20; // 每一頁有幾筆
+$perPage = 16; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // intval -> 轉換成整數值
@@ -65,7 +65,7 @@ $search = isset($_GET["search"]) ? ($_GET['search']) : '';
 
 if (!empty($_GET["search"])) {
     $str_tag = $_GET['search'];
-    $sql = "SELECT * FROM `produst` WHERE `name` LIKE '%$str_tag%'";
+    $sql = "SELECT * FROM `produst` WHERE `info` LIKE '%$str_tag%'";
     $rows = $pdo->query($sql)->fetchAll();
 }
 
@@ -344,8 +344,8 @@ if (!empty($_GET["white"])) {
                 <div class="fliter_select">
                     <select class="select w-100 fliter_select_1" aria-label="Default select example" name="option_price" id="option_price" onchange="select()">
                         <option class="" selected>--Filter menu--</option>
-                        <option value="1" name="option_price">價格從高到低</option>
-                        <option value="2" name="option_price">價格從低到高</option>
+                        <option value="1" name="option_price">Price:High-Low</option>
+                        <option value="2" name="option_price">Price:Low-High</option>
                     </select>
                 </div>
             </form>
