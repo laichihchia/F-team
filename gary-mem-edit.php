@@ -228,7 +228,7 @@ if (isset($_SESSION['user'])) {
     const mobile_f = document.form1.mem_mobile;
 
 
-    const your_password = document.form1.your_password;
+    const your_password = document.form3.your_password;
     // 查看密碼的眼睛
     const eyes = document.querySelector('#eyes');
     const pwd = () => {
@@ -249,7 +249,7 @@ if (isset($_SESSION['user'])) {
         }
     };
 
-    const new_password = document.form1.new_password;
+    const new_password = document.form3.new_password;
     // 查看密碼的眼睛
     const eyes2 = document.querySelector('#eyes2');
     const pwd2 = () => {
