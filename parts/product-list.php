@@ -17,6 +17,7 @@ if (isset($_SESSION['user'])) {
                 $memAvatar = $member_r['mem-avatar'];
                 $memLevel = $member_r['mem-level'];
                 $memCreated = $member_r['mem-created_at'];
+                $memEmail = $member_r['mem-email'];
                 $iconName = $memNick;
                 if ($memNick == '') {
                     $iconName = $memName;
