@@ -101,7 +101,7 @@ if (isset($_SESSION['user'])) {
         position: absolute;
         top: 85%;
         left: 80%;
-        animation: error 0.5s linear;
+        animation: error 0.7s linear;
         animation-fill-mode: forwards;
         display: none;
     }
@@ -125,8 +125,8 @@ if (isset($_SESSION['user'])) {
 
         75% {
             transform: translate(-40px, -700px);
-            width: 420px;
-            height: 420px;
+            width: 150px;
+            height: 150px;
         }
 
         100% {
