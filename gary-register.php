@@ -184,7 +184,7 @@ $title = 'Gary-Register';
     const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
 
     // 取得新增提示的Element
-    const info_bar = document.querySelector('#info-bar');
+    // const info_bar = document.querySelector('#info-bar');
 
 
     // 取得該欄位的參照
@@ -338,7 +338,7 @@ $title = 'Gary-Register';
 
             console.log(result);
 
-            const info_bar = document.querySelector('#info-bar');
+            // const info_bar = document.querySelector('#info-bar');
 
 
             // 如果成功 success=true

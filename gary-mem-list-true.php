@@ -49,6 +49,11 @@ if ($totalRows > 0) {
     #bollen {
         display: none;
     }
+
+    .word19{
+        font-weight: 600;
+        font-size: 40px;
+    }
 </style>
 
 <div class="row">
@@ -105,6 +110,7 @@ if ($totalRows > 0) {
 
                 </ul>
             </nav>
+            <p class="word19">上班想睡覺嗎?不妨研究一下6/2(1+2)=是1?還是9?</p>
             <div>
                 <a href="gary-mem-list-false.php"><button type="submit" class="btn btn-primary btn-lg">查看停用會員</button></a>
             </div>
