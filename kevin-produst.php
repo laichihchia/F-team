@@ -443,6 +443,7 @@ if (!empty($_GET["white"])) {
 <?php require __DIR__ . '/parts/scripts.php' ?>
 
 <script>
+    // 多選垃圾桶刪除
     const singleSelect = document.querySelectorAll('#singleSelect');
 
     async function delete_select() {
@@ -457,13 +458,15 @@ if (!empty($_GET["white"])) {
             location.href = `kevin-produst-delete-api.php?sid=${select_ar}`;
         }
     }
-    let x;
 
+    let x;
+    // 下拉式選單
     function select() {
         let x = document.getElementById('option_price').value;
         location.href = `kevin-produst.php?x=${x}`;
     }
 
+    // 顏色篩選
     function yellow() {
         let btn = document.getElementById("yellow");
         let yellow = btn.value;
@@ -506,21 +509,7 @@ if (!empty($_GET["white"])) {
         location.href = `kevin-produst.php?white=${white}`;
     };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // 收藏商品
     const favSend = (sid) => {
         location.href = `kevin-favorite-api.php?produstSid=${sid}`;
     }
