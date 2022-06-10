@@ -49,53 +49,7 @@ if (isset($_SESSION['cart'])) {
         opacity: 0.9;
     }
 </style>
-
-<body>
-    <header class="header-color">
-        <div class="container container-maxWidth">
-            <div class="row nav-info">
-                <div class="col-6 nav-left d-flex">
-                    <div class="logo-container">
-                        <a href=""><img src="./images/Street_logo.png" alt=""></a>
-                    </div>
-
-                    <!-- NAVBAR 連結 BY KEVIN -->
-                    <nav class="navbar navbar-expand-lg">
-                        <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color: white;">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#" style="color: white;">News</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kevin-produst.php" style="color:white ;">Product</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="cooler-list.php" style="color:white ;">Event</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link <?= $_SESSION['user']['grade'] === 'high' ? '' : 'dsn'; ?>" href="gary-mem-list-true.php" style="color:white ;">Admin</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-
-
-                </div>
-                <div class="col-6 nav-right">
-                    <a href="gary-member-login.php"><i class="fa-solid fa-user"></i></a>
-                    <a class="cart-icon" style="cursor: pointer;" onclick="ifconfirm('Go cart?','Nathan-CartList.php')"><i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-count"><?= $cartCount ?></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-</body>
+<?php require __DIR__.'/parts/product-list.php'?>
 
 <style>
     .form-control.red {
@@ -113,6 +67,9 @@ if (isset($_SESSION['cart'])) {
     .data-added-successfully {
         margin-top: 10px;
 
+    }
+    .list-section{
+        display: none;
     }
 </style>
 
