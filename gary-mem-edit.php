@@ -23,6 +23,7 @@ if (isset($_SESSION['user'])) {
     body {
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('./gary-img/DzqvS6DWoAAztYc.jpg_large')center center/cover;
         background-attachment: fixed;
+        position: relative;
     }
 
     .card {
@@ -92,8 +93,54 @@ if (isset($_SESSION['user'])) {
         overflow: hidden;
         object-fit: cover;
     }
+
+    .error {
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        object-fit: contain;
+        position: absolute;
+        top: 85%;
+        left: 80%;
+        animation: error 0.8s linear;
+        animation-fill-mode: forwards;
+        display: none;
+    }
+
+    @keyframes error {
+        0% {
+            transform: translate(0px, 0px);
+        }
+
+        25% {
+            transform: translate(-150px, -200px);
+            width: 100px;
+            height: 100px;
+        }
+
+        50% {
+            transform: translate(-700px, -300px);
+            width: 440px;
+            height: 440px;
+        }
+
+        75% {
+            transform: translate(-40px, -700px);
+            width: 150px;
+            height: 150px;
+        }
+
+        100% {
+            transform: translate(-120px, -700px);
+            width: 350px;
+            height: 350px;
+        }
+    }
 </style>
 
+<div>
+    <img class="error" src="./gary-img/ebee6628b9bddb6fe101666410a58bb3.png" alt="">
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 d-flex">
@@ -228,7 +275,7 @@ if (isset($_SESSION['user'])) {
     const mobile_f = document.form1.mem_mobile;
 
 
-    const your_password = document.form1.your_password;
+    const your_password = document.form3.your_password;
     // 查看密碼的眼睛
     const eyes = document.querySelector('#eyes');
     const pwd = () => {
@@ -249,7 +296,7 @@ if (isset($_SESSION['user'])) {
         }
     };
 
-    const new_password = document.form1.new_password;
+    const new_password = document.form3.new_password;
     // 查看密碼的眼睛
     const eyes2 = document.querySelector('#eyes2');
     const pwd2 = () => {
@@ -369,7 +416,7 @@ if (isset($_SESSION['user'])) {
         // 如果新增成功 success=true
         if (result.success) {
             alert('修改成功');
-                location.href = 'gary-member-card.php';
+            location.href = 'gary-member-card.php';
         } else {
             // info_bar.classList.remove('alert-success');
             // info_bar.classList.add('alert-danger');
@@ -446,8 +493,10 @@ if (isset($_SESSION['user'])) {
             } else {
                 passred.innerText = '密碼更新失敗';
             }
-        }else {
+        } else {
             passred.innerText = '密碼更新失敗';
+            const error = document.querySelector('.error');
+            error.style.display='block';
         }
     }
 </script>

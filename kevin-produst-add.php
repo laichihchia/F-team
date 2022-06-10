@@ -12,6 +12,7 @@ $title = 'Product Update';
                 <div class="card-body"> -->
             <h5 class="card-title">Product Add</h5>
             <form class="row g-3" name="form1" onsubmit="sendData();return false" novalidate>
+                <!-- 拿到 -->
                 <input type="hidden" name="mem_avatar">
 
 
@@ -74,31 +75,18 @@ $title = 'Product Update';
         });
         const result = await r.json();
         console.log(result);
-        if (result.success === true) {
+        if (result.success == true) {
             alert('商品新增成功,');
             setTimeout(() => {
                 location.href = 'kevin-produst.php';
             }, 1000);
-        } else {
-            alert('請檢查新增欄位');
         }
-        // info_bar.style.display = 'block'; // 顯示訊息列
-        // if (result.success) {
-        //     info_bar.classList.remove('alert-danger');
-        //     info_bar.classList.add('alert-success');
-        //     info_bar.innerText = '新增成功';
-
-        //     setTimeout(() => {
-        //         // location.href = 'ab-list.php'; // 跳轉到列表頁
-        //     }, 2000);
-        // } else {
-        //     info_bar.classList.remove('alert-success');
-        //     info_bar.classList.add('alert-danger');
-        //     info_bar.innerText = result.error || '資料無法新增';
-        // }
     }
+    // 拿到上傳照片的button
     const btn = document.querySelector("#btn");
+    // 拿到顯示照片的img欄位
     const myimg = document.querySelector("#myimg");
+    // 拿到表單2的input
     const avatar = document.form2.avatar;
 
     avatar.addEventListener("change", async function() {
