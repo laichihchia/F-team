@@ -348,7 +348,7 @@ $title = 'Gary-Register';
             //     }, 1000);
             // }
 
-            location.href = 'gary-member-card.php'; //跳轉到列表頁
+            location.href = 'gary-Member.php'; //跳轉到列表頁
 
 
             // setTimeout(() => {
