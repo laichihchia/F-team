@@ -393,6 +393,128 @@ if (!empty($_GET["white"])) {
         margin-right: 10px;
         margin-bottom: 10px;
     }
+
+    .mycard .img-wrap {
+        width: 100%;
+        height: 260px;
+    }
+
+    .btn_best {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        padding: 9px 12px;
+        border: 1px solid #aba7a5;
+        border-radius: 10px;
+        background: #f4efeb;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f4efeb), to(#aba7a5));
+        background: -moz-linear-gradient(top, #f4efeb, #aba7a5);
+        background: linear-gradient(to bottom, #f4efeb, #aba7a5);
+        -webkit-box-shadow: #ffffff 0px 0px 0px 0px;
+        -moz-box-shadow: #ffffff 0px 0px 0px 0px;
+        box-shadow: #ffffff 0px 0px 0px 0px;
+        text-shadow: #ffffff 1px 1px 1px;
+        font: normal normal bold 12px arial;
+        color: #111111;
+        text-decoration: none;
+        text-transform: uppercase
+    }
+
+    .btn_best:hover {
+        border: 1px solid #f4efeb;
+        background: #ffffff;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cdc8c6));
+        background: -moz-linear-gradient(top, #ffffff, #cdc8c6);
+        background: linear-gradient(to bottom, #ffffff, #cdc8c6);
+        color: #111111;
+        text-decoration: none;
+        text-transform: uppercase
+    }
+
+    .btn_best:active {
+        background: #aba7a5;
+        background: -webkit-gradient(linear, left top, left bottom, from(#aba7a5), to(#aba7a5));
+        background: -moz-linear-gradient(top, #aba7a5, #aba7a5);
+        background: linear-gradient(to bottom, #aba7a5, #aba7a5);
+        text-transform: uppercase
+    }
+
+    .btn_best:focus {
+        text-transform: uppercase
+    }
+
+    .btn_best::before {
+        content: "\0000a0";
+        display: inline-block;
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+        margin: 0 4px -6px -4px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABUklEQVRIid3VP0oDQRgF8J8hhScQCcHKEwQsFGuLYGEndiktvIG1d7A0ldiJRU5gDCEEL5AypPAEFhIsZsQN7kxW10YfLDs7833vfTt/3vDXsVEhpoUT7MU2LDDBA+Y/FW+jjyEu0MFWfDqxbxhjdr5LfoRnHKORiWvEmGnMqUw+xPY3CtrGqIpIO1aTIj9HLyMyjRxJ9IVfTiEnIOb2ix3F+W1hF4NcBWswiBwfu21F4AS3WNYQWOIucn0R2MNTDfIPPEYu0CwMtKweml5J8j7eEsQ38T1XmKJmaWjAZklfMzNWiqLAQthiL/H7OpHz6rPaMrQjF1bXYIKDqpVlcIhxmcA9zuStYR0aOBVM8IvAAjN0awh0I8ciFVDXKp6tsQqCYY0yIinySmZXFJn6BbvO3WhtXAneciec0Hlh7FBY0BkuJW62OlfmWNgtyQX9H3gHYhk+PTN5BEoAAAAASUVORK5CYII=") no-repeat left center transparent;
+        background-size: 100% 100%;
+    }
+
+
+    .btn_best_del {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        padding: 9px 12px;
+        border: 1px solid #aba7a5;
+        border-radius: 10px;
+        background: #f4efeb;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f4efeb), to(#aba7a5));
+        background: -moz-linear-gradient(top, #f4efeb, #aba7a5);
+        background: linear-gradient(to bottom, #f4efeb, #aba7a5);
+        -webkit-box-shadow: #ffffff 0px 0px 0px 0px;
+        -moz-box-shadow: #ffffff 0px 0px 0px 0px;
+        box-shadow: #ffffff 0px 0px 0px 0px;
+        text-shadow: #ffffff 1px 1px 1px;
+        font: normal normal bold 12px arial;
+        color: #111111;
+        text-decoration: none;
+        text-transform: uppercase
+    }
+
+    .btn_best_del:hover {
+        border: 1px solid #f4efeb;
+        background: #ffffff;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cdc8c6));
+        background: -moz-linear-gradient(top, #ffffff, #cdc8c6);
+        background: linear-gradient(to bottom, #ffffff, #cdc8c6);
+        color: #111111;
+        text-decoration: none;
+        text-transform: uppercase
+    }
+
+    .btn_best_del:active {
+        background: #aba7a5;
+        background: -webkit-gradient(linear, left top, left bottom, from(#aba7a5), to(#aba7a5));
+        background: -moz-linear-gradient(top, #aba7a5, #aba7a5);
+        background: linear-gradient(to bottom, #aba7a5, #aba7a5);
+        text-transform: uppercase
+    }
+
+    .btn_best_del:focus {
+        text-transform: uppercase
+    }
+
+    .btn_best_del::before {
+        content: "\0000a0";
+        display: inline-block;
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+        margin: 0 4px -6px -4px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAg0lEQVRIie2VsQqAIBRFTyEO9RFtfU//v4RT/UANEdgiIqbFa2l5Bx6KPu/RSVA+0iU1AjPgs3JhL+290VTCXXLAALZykQM4w3wHhjBGzMsL3rAPcqD8glQiYS8tPgk2oaCXCrxQUMxqhSFiVKACFfwsWAU5kt7IBCzcP5q8ltCrfOMCYqkauSTV5I0AAAAASUVORK5CYII=") no-repeat left center transparent;
+        background-size: 100% 100%;
+    }
 </style>
 
 
@@ -536,57 +658,55 @@ if (!empty($_GET["white"])) {
 
 
     <div class="row">
-        <div class="btn_menu">
-            <button onclick="delete_select()">Delete Select</button>
-            <button type="button"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
+        <div class="btn_menu mb-4">
+            <button class="btn_best_del" onclick="delete_select()">Delete Select</button>
+            <button class="btn_best" type="button"><a style="text-decoration: none;" href="kevin-produst-add.php">Product Update</a></button>
         </div>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-                    <th scope="col" class="text-center">sid</th>
-                    <th scope="col" class="text-center">Product</th>
-                    <th scope="col" class="text-center">Brand</th>
-                    <th scope="col" class="text-center">Product Name</th>
-                    <th scope="col" class="text-center">Info</th>
-                    <th scope="col" class="text-center">Price</th>
-                    <th scope="col" class="text-center">Creat Time</th>
-                    <th scope="col" class="text-center">Update Time</th>
-                    <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
-                    <th scope="col" class="text-center"><i class="fa-solid fa-heart"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($rows as $r) : ?>
-                    <tr>
-                        <td class="">
-                            <div class="form-check">
-                                <input class="form-check-input singleCheck" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="c">
-                                <a href="kevin-produst-delete-api.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')"><i class="fa-solid fa-trash-can"></i></a>
-                            </div>
 
-                        </td>
-                        <td><?= $r['sid'] ?></td>
-                        <td class="w-25">
-                            <img src=./Fteam-produst_img/<?= $r['img'] ?> class="w-100" alt="">
-                        </td>
-                        <td class="text-center"><?= $r['brand'] ?></td>
-                        <td class="text-center"><?= $r['name'] ?></td>
-                        <td class="text-center"><?= $r['info'] ?></td>
-                        <td class="text-center"><?= $r['price'] ?></td>
-                        <td class="text-center"><?= $r['create_at'] ?></td>
-                        <td class="text-center"><?= $r['update_at'] ?></td>
-                        <td>
-                            <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
-                        <td>
-                            <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
+        <div class="row">
+            <?php foreach ($rows as $r) : ?>
 
-        </table>
+
+                <div class="col-4 mycard mb-5 d-flex flex-column">
+
+                    <div class="card_sid d-flex">
+                        <input class="form-check-input singleCheck me-1" type="checkbox" value="<?= $r['sid'] ?>" id="singleSelect" name="c">
+                        <a href="kevin-produst-delete-api.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')"><i class="fa-solid fa-trash-can"></i></a>
+                        <h5 class="ms-2"><?= $r['sid'] ?></h5>
+                    </div>
+
+                    <div class="img-wrap">
+                        <img src="./Fteam-produst_img/<?= $r['img'] ?>" class="w-100 h-100" alt="">
+                    </div>
+
+                    <div class="card-body d-flex flex-column h-100">
+                        <h5 class="card-title"><?= $r['name'] ?></h5>
+                        <p class="flex-grow-1"><?= $r['info'] ?></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h5>Brand: </h5><?= $r['brand'] ?>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Price: </h5><?= $r['price'] ?>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Creat Time: </h5><?= $r['create_at'] ?>
+                        </li>
+                        <li class="list-group-item">
+                            <h5>Update Time: </h5><?= $r['update_at'] ?>
+                        </li>
+                    </ul>
+                    <div class="card-body border-bottom">
+                        <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
+                    </div>
+                </div>
+
+
+            <?php endforeach; ?>
+
+        </div>
 
         <div class="row">
             <div class="col">
