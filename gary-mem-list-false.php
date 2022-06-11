@@ -54,12 +54,16 @@ if ($totalRows > 0) {
         font-weight: 600;
         font-size: 36px;
     }
+
+    .h76 {
+        height: 76px;
+    }
 </style>
 
 <div class="row">
 
     <div class="mgtp10">
-        <div class="col d-flex justify-content-between">
+        <div class="col d-flex justify-content-between h76">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
 
