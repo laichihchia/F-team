@@ -3,7 +3,7 @@ require __DIR__ . '/parts/connect_db.php';
 $pageName = 'kevin-produst-list';
 $title = 'Product-List';
 
-$perPage = 16; // 每一頁有幾筆
+$perPage = 15; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // intval -> 轉換成整數值
