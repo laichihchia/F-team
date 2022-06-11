@@ -17,6 +17,7 @@ if (isset($_SESSION['user'])) {
                 $memAvatar = $member_r['mem-avatar'];
                 $memLevel = $member_r['mem-level'];
                 $memCreated = $member_r['mem-created_at'];
+                $memEmail = $member_r['mem-email'];
                 $iconName = $memNick;
                 if ($memNick == '') {
                     $iconName = $memName;
@@ -128,7 +129,7 @@ if (isset($_SESSION['user'])) {
 
                 </div>
                 <div class="col-8 nav-right">
-                    <a href="<?= isset($_SESSION['user']) ? 'gary-member-card.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
+                    <a href="<?= isset($_SESSION['user']) ? 'gary-Member.php' : 'gary-member-login.php'; ?>" class="memName text-decoration-none">
                         <!-- 有登入就把訪客icon隱藏 -->
                         <?= isset($_SESSION['user']) ? '' : '<i class="fa-solid fa-user"></i>'; ?>
                         <!-- 有登入就顯示個人照片 -->

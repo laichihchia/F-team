@@ -174,7 +174,7 @@ $title = 'Gary-Login';
         // 如果成功 success=true
         if (result.success) {
             setTimeout(() => {
-                location.href = 'gary-member-card.php'; //跳轉到列表頁
+                location.href = 'gary-Member.php'; //跳轉到列表頁
             }, 1000);
             // 如果失敗 success=false
         } else if (result.bollen) {
