@@ -157,7 +157,7 @@ if (isset($_SESSION['user'])) {
             <div class="d-flex align-items-center">
                 <span class="spanBig">20%</span>
                 <span class="spanSmall">off for New members</span>
-                <span class="spanSmall">The promotion will end in</span>
+                <span class="spanSmall">The promotion ends in</span>
                 <sapn class="timeWord spanBig"></sapn>
                 <input type="hidden" value="<?= $memCreated ?>" id="memCreat"></input>
             </div>
