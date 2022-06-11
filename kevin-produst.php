@@ -173,36 +173,85 @@ if (!empty($_GET["white"])) {
         display: inline-block;
         border-radius: 50%;
         border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
     }
 
     .btn_yellow {
-        background-color: yellow;
+        background-color: #FAD689;
+    }
+
+    .btn_yellow:hover {
+        background-color: #FAD689;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(255, 214, 137);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(255, 214, 137);
+        box-shadow: 10px 10px 60px 6px rgba(255, 214, 137);
     }
 
     .btn_blue {
-        background-color: blue;
+        background-color: #58B2DC;
+    }
+
+    .btn_blue:hover {
+        background-color: #58B2DC;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(88, 178, 220);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(88, 178, 220);
+        box-shadow: 10px 10px 60px 6px rgba(88, 178, 220);
     }
 
     .btn_red {
-        background-color: red;
+        background-color: #CB4042;
+    }
+
+    .btn_red:hover {
+        background-color: #CB4042;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(203, 64, 66);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(203, 64, 66);
+        box-shadow: 10px 10px 60px 6px rgba(203, 64, 66);
     }
 
     .btn_pink {
-        background-color: pink;
+        background-color: #F596AA;
+    }
+
+    .btn_pink:hover {
+        background-color: #F596AA;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(245, 150, 170);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(245, 150, 170);
+        box-shadow: 10px 10px 60px 6px rgba(245, 150, 170);
     }
 
     .btn_green {
-        background-color: green;
+        background-color: #B1B479;
+    }
+
+    .btn_green:hover {
+        background-color: #B1B479;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(177, 180, 121);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(177, 180, 121);
+        box-shadow: 10px 10px 60px 6px rgba(177, 180, 121);
     }
 
     .btn_black {
-        background-color: black;
+        background-color: #1C1C1C;
+    }
+
+    .btn_black:hover {
+        background-color: #1C1C1C;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(28, 28, 28);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(28, 28, 28);
+        box-shadow: 10px 10px 60px 6px rgba(28, 28, 28);
     }
 
     .btn_white {
-        background-color: wheat;
+        background-color: whitesmoke;
     }
 
+    .btn_white:hover {
+        background-color: whitesmoke;
+        -webkit-box-shadow: 10px 10px 60px 6px rgba(255, 255, 251);
+        -moz-box-shadow: 10px 10px 60px 6px rgba(255, 255, 251);
+        box-shadow: 10px 10px 60px 6px rgba(255, 255, 251);
+    }
 
 
     .fliter_select {
@@ -291,6 +340,17 @@ if (!empty($_GET["white"])) {
         margin: 15px;
     }
 
+    .fliter_color_button span {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-size: small;
+        font-weight: 600;
+        position: relative;
+        bottom: 10px
+    }
+
+
     .fliter_checkbox {
         /* display: flex; */
         flex-direction: column;
@@ -373,13 +433,40 @@ if (!empty($_GET["white"])) {
             </div>
 
             <div class="fliter_color_button">
-                <button value="yellow" class="btn_yellow color_btn" onclick="yellow()" id="yellow" name="color"></button>
-                <button value="blue" class="btn_blue color_btn" onclick="blue()" id="blue" name="color"></button>
-                <button value="red" class="btn_red color_btn" onclick="red()" id="red" name="color"></button>
-                <button value="pink" class="btn_pink color_btn" onclick="pink()" id="pink" name="color"></button>
-                <button value="green" class="btn_green color_btn" onclick="green()" id="green" name="color"></button>
-                <button value="black" class="btn_black color_btn" onclick="black()" id="black" name="color"></button>
-                <button value="white" class="btn_white color_btn" onclick="white()" id="white" name="color"></button>
+                <div class="fliter_color_span">
+                    <button value="yellow" class="btn_yellow color_btn" onclick="yellow()" id="yellow" name="color"></button>
+                    <span>Yellow</span>
+                </div>
+
+                <div class="fliter_color_span">
+                    <button value="blue" class="btn_blue color_btn" onclick="blue()" id="blue" name="color"></button>
+                    <span>Blue</span>
+                </div>
+
+                <div class="fliter_color_span">
+                    <button value="red" class="btn_red color_btn" onclick="red()" id="red" name="color"></button>
+                    <span>Red</span>
+                </div>
+
+                <div class="fliter_color_span">
+                    <button value="pink" class="btn_pink color_btn" onclick="pink()" id="pink" name="color"></button>
+                    <span>Pink</span>
+                </div>
+
+                <div class="fliter_color_span">
+                    <button value="green" class="btn_green color_btn" onclick="green()" id="green" name="color"></button>
+                    <span>Green</span>
+                </div>
+
+                <div class="fliter_color_span">
+                    <button value="black" class="btn_black color_btn" onclick="black()" id="black" name="color"></button>
+                    <span>Black</span>
+                </div>
+
+                <div class="fliter_color_span">
+                    <button value="white" class="btn_white color_btn" onclick="white()" id="white" name="color"></button>
+                    <span>White</span>
+                </div>
             </div>
         </div>
 
