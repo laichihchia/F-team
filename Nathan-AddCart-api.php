@@ -19,14 +19,18 @@ if (isset($_SESSION['user'])) {
 
     $product_id = $_POST['id'];
     $product_name = $_POST['name'];
-    if($_SESSION['user']['new'] === true){
-        $product_price = $_POST['price']*0.8;
-    }else{
+    if ($_SESSION['user']['new'] === true) {
+        $product_price = $_POST['price'] * 0.8;
+    } else {
         $product_price = $_POST['price'];
     }
     $product_qty = $_POST['qty'];
 
     // add cart
+    $come_from = 'Nathan-CartList.php';
+    if (!empty($_SERVER['HTTP_REFERER'])) {
+        $come_from = $_SERVER['HTTP_REFERER'];
+    }
     $empty_ar = [];
     if (isset($_POST['addCart'])) {
         foreach ($cart_sql as $key => $val) {
@@ -36,7 +40,7 @@ if (isset($_SESSION['user'])) {
         // 跟 add post 商品編號比對
         if (in_array($product_id, $empty_ar)) {
             echo "<script>alert('此商品已加入購物車');
-            window.location.href = 'Nathan-CartList.php';
+            window.location.href = '$come_from';
             </script>";
         } else {
             $sql = "INSERT INTO `cart`(
@@ -55,7 +59,7 @@ if (isset($_SESSION['user'])) {
                 $memLogin_sid,
             ]);
             echo "<script>alert('加入成功');
-            window.location.href = 'Nathan-CartList.php';
+            window.location.href = '$come_from';
             </script>";
         }
     };

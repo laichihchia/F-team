@@ -79,6 +79,10 @@ $title = "Nathan-ViewCart - Nathan's cart";
         transform: translateY(-2px);
         box-shadow: 0 3px 8px rgba(33,33,33,.5); 
     }
+    .money-tag::before{
+        content: "$ ";
+        color: black;
+    }
     .cart-img-wrap{
         display: inline-block;
         width: 50px;
@@ -158,7 +162,7 @@ $title = "Nathan-ViewCart - Nathan's cart";
                                 <span class="cart-name-info"><?= $r['name']; ?></span>
                             </td>
                             <input type="hidden" name="cart_name" value="<?= $r['name']; ?>">
-                            <td scope="col"><?= $r['price']; ?></td>
+                            <td class="money-tag" scope="col"><?= $r['price']; ?></td>
                             <input type="hidden" name="cart_price" value="<?= $r['price']; ?>">
                             <td>
                                 <button type="button" class="minusBtn btn btn-dark"><i class="fa-solid fa-minus"></i></button>
