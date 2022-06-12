@@ -31,14 +31,16 @@ if (isset($_SESSION['user'])) {
 
     .gary-list {
         float: left;
-        padding: 300px 0;
+        padding: 30px 0 0;
         height: 100vh;
         width: 300px;
         background: black;
         border-top: 1px solid white;
         /* border-right: 1px solid white; */
     }
-
+    .list-group>a{
+        margin-bottom: 20px;
+    }
     .gary-list::after {
         content: '';
         clear: both;
