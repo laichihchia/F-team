@@ -24,7 +24,7 @@ $title = 'Product Update';
                 </div>
 
                 <div class="col-md-6">
-                    <img id="myimg" src="">
+                    <img class="w-100" id="myimg" src="">
                 </div>
 
 

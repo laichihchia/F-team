@@ -2,9 +2,9 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2022-06-10 06:44:00
--- 伺服器版本： 10.4.24-MariaDB
+-- 主機： localhost
+-- 產生時間： 2022 年 06 月 12 日 14:16
+-- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -57,18 +57,6 @@ CREATE TABLE `cart` (
   `price` varchar(50) NOT NULL,
   `member_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 傾印資料表的資料 `cart`
---
-
-INSERT INTO `cart` (`sid`, `produst_id`, `name`, `qty`, `price`, `member_id`) VALUES
-(34, '2', '他家蠻酷的 整組滑板 8.125', 2, '6980', '1412'),
-(36, '2', '他家蠻酷的 整組滑板 8.125', 2, '6980', '1422'),
-(150, '3', '真結合 整組滑板 7.875', 4, '6120', '14'),
-(153, '3', '真結合 整組滑板 7.875', 4, '7650', '6'),
-(159, '3', '真結合 整組滑板 7.875', 4, '7650', '10'),
-(160, '1', '那隻狗有三對內內0.0 整組滑板 8.0', 1, '7000', '10');
 
 -- --------------------------------------------------------
 
@@ -131,7 +119,19 @@ INSERT INTO `favorite` (`sid`, `mem_id`, `product_img`, `product_brand`, `produc
 (50, '1438', '637894482033000000.jpg', 'POLAR', '鯊魚跳起來 整組滑板 8.25', '已完成組裝✅\r\n板身：POLAR 鯊魚跳起來 整組滑板 8.25\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 質感黑色基本款輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F113998250', '8990', 4),
 (51, '1438', '637883215517930000.jpg', 'SANTA CRUZ', 'DECODER HAND 9.51IN x 32.26IN CRUZER SHAPED CRUZER', '11116545-129806', '5600', 9),
 (52, '1438', '637883215377670000.jpg', 'SANTA CRUZ', 'PRISMATIC DOT 8.8IN x 27.7IN CRUZER SHARK', '11116543-129804', '6600', 11),
-(53, '1490', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000', 1);
+(53, '1490', '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000', 1),
+(54, '1493', '637894482023930000.jpg', 'POLAR', 'ONECSS', 'Shortboard us et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,', '7000', 1),
+(55, '1493', '637894482025330000.jpg', 'POLAR', 'StartEnc', 'Shortboard nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,', '6980', 2),
+(56, '1493', '637894482031430000.jpg', 'POLAR', 'VIBECSS', 'Shortboard Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu', '7650', 3),
+(57, '1493', '637894482088500000.jpg', 'FUCKING AWESOME', 'KVFOCUS', 'Shortboard Occidental in fact, it va esser Occidental. A un Angleso it va semblar un simplificat Angles, quam un skeptic Cambridge amico dit me que', '7880', 8),
+(58, '1493', '637883215517930000.jpg', 'SANTA CRUZ', 'DECODER HAND CRUZER', 'Old School Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic', '5600', 9),
+(59, '1493', '637883215377670000.jpg', 'SANTA CRUZ', 'PRISMATIC DOT', 'Old School Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.', '6600', 11),
+(60, '1493', '637894482063130000.jpg', 'PALACE', 'KVPOST', 'Shortboard At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles.', '7650', 7),
+(61, '1493', '637883214259270000.jpg', 'SANTA CRUZ', 'AMOEBA STREET SKATE', 'Old School he found himself transformed in his bed into a horrible vermin.', '5300', 15),
+(62, '1493', '637894497999700000.jpg', 'HOCKEY', 'HP SYNTHETIC', 'Decks Gregor then turned to look out the window at the dull weather. Drops', '2800', 16),
+(63, '1493', '637894498003270000.jpg', 'HOCKEY', 'UNCLE BOB', 'Decks A collection of textile samples lay spread out on the table', '2650', 17),
+(64, '1493', '637889068679000000.jpg', 'INDEPENDENT', 'NULLA', 'Wheels accusantium doloremqu', '1200', 21),
+(65, '1493', '637884051043030000.jpg', 'OJ WHEELS', 'WOOTEN SCREAMINGHARDLINE', 'Bearings nisi ut aliquid ex ea', '2500', 23);
 
 -- --------------------------------------------------------
 
@@ -159,28 +159,26 @@ CREATE TABLE `lesson` (
 --
 
 INSERT INTO `lesson` (`sid`, `name`, `info`, `categories_id`, `duringtime_begin`, `duringtime_end`, `number_of_people`, `price`, `teacher`, `location`, `created_at`, `updated_at`) VALUES
-(1, '((G) I-DLE) My Bag (MVdance)', '俗話說的好，掌握思考過程，也就掌握了街舞。我認為，我想，把街舞的意義想清楚，對各位來說並不是一件壞事。這必定是個前衛大膽的想法。\n\n', 0, '2022-06-05', '2022-07-05', 8, 3000, '小ㄗ', '台北市信義區', '2022-06-01 08:40:20', NULL),
-(2, '流行熱門舞蹈課程(單堂無進度)', ' 總結來說，跳舞可以說是有著成為常識的趨勢。諸葛亮曾經提到過，少壯不努力，老大徒傷悲。才須學也，非學無以廣才，非志無以成學。這句話幾乎解讀出了問題的根本。', 0, '2022-07-31', '2022-08-31', 5, 2250, '小雞', '台北市北投區', '2022-06-01 09:48:46', NULL),
-(3, 'New Jazz 基礎爵士(單堂無進度)', '土光敏夫曾經說過，風險和利益的大小是成正比的。但願各位能從這段話中獲得心靈上的滋長。透過逆向歸納，得以用最佳的策略去分析跳舞。', 0, '2022-06-16', '2022-07-16', 6, 2500, '圈圈', '台北市大安區', '2022-06-01 09:52:50', NULL),
-(4, 'Jessi - Zoom (MVdance)', ' 帶著這些問題，我們一起來審視跳舞。一般來說，我們不得不相信，奧弗伯里說過一句富有哲理的話，一個除了榮耀的祖先而一無所有的人，就像一個土豆唯一適合他的地方就泥地下面。這把視野帶到了全新的高度。', 0, '2022-06-10', '2022-07-10', 6, 3000, '小佑', '台北市松山區', '2022-06-01 09:55:51', '2022-06-08 11:36:01'),
-(5, 'GIDLE - TOMBOY (MVdance)', ' 跳舞對我來說有著舉足輕重的地位，必須要嚴肅認真的看待。我們都有個共識，若問題很困難，那就勢必不好解決。了解清楚跳舞到底是一種怎麼樣的存在，是解決一切問題的關鍵。', 1, '2022-07-14', '2022-08-14', 5, 3000, '大壯', '台北市中正區', '2022-06-01 09:58:41', NULL),
-(6, '基礎嘻哈爵士 Jazz HIPHOP (單堂無進度)', '  街舞絕對是史無前例的。生活中，若街舞出現了，我們就不得不考慮它出現了的事實。謹慎地來說，我們必須考慮到所有可能。', 1, '2022-07-24', '2022-08-24', 5, 2250, '小ㄗ', '台北市信義區', '2022-06-01 10:06:46', NULL),
-(7, '新手Jazz爵士入門(適合真正零基礎)', '        所謂街舞，關鍵是街舞需要如何解讀。諸葛亮講過，士之相知，溫不增華，寒不改葉，能四時而不衰，歷夷險而益固。這段話的餘韻不斷在我腦海中迴盪著。\r\n\r\n', 1, '2022-07-01', '2022-08-01', 5, 2250, '小雞', '台北市北投區', '2022-06-01 10:10:14', NULL),
-(8, 'POPPING街舞', '        街舞勢必能夠左右未來。動機，可以說是最單純的力量。生活中，若街舞出現了，我們就不得不考慮它出現了的事實。我們要學會站在別人的角度思考。\r\n\r\n', 1, '2022-06-28', '2022-07-28', 6, 2500, '圈圈', '台北市大安區', '2022-06-01 10:18:02', '2022-06-08 11:35:31'),
-(9, 'Breaking街舞體驗', '儘管街舞看似不顯眼，卻佔據了我的腦海。蒙田曾說過一句意義深遠的話，各市有各市的風俗，各鄉有各鄉的。這段話非常有意思。\r\n\r\n', 0, '2022-07-09', '2022-08-09', 6, 3000, '小佑', '台北市松山區', '2022-06-01 10:28:35', NULL),
-(10, 'LA STYLE - TBC舞蹈', '        白哲特在不經意間這樣說過，堅強的信念能贏得強者的心，並使他們變得更堅強。。這不禁令我重新仔細的思考。白哲特說過一句很有意思的話，堅強的信念能贏得強者的心，並使他們變得更堅強。這段話讓我的心境提高了一個層次。街舞的出現，重寫了人生的意義。\r\n\r\n', 1, '2022-06-19', '2022-07-19', 8, 3000, '大壯', '台北市中正區', '2022-06-01 10:32:15', NULL),
-(11, '454', '6456', 0, '2022-07-24', '2022-08-14', 5, 3000, '564', '45645', '2022-06-02 19:39:22', NULL),
-(39, 'Mysql&PHP', '聽不懂背就對了', NULL, '2022-03-27', '2022-08-24', 44, 3000, '林心得', '204教室', '2022-06-05 23:20:35', '2022-06-08 11:01:54'),
-(40, 'Mysql&PHP', '聽不懂背就對了', NULL, '2022-03-27', '2022-08-24', 44, 3000, '林心得', '204教室', '2022-06-05 23:21:47', NULL),
-(42, '324', '43242', NULL, '2022-06-17', '2022-07-01', 342, 4234, '4234', '4234', '2022-06-06 14:06:31', NULL),
-(44, '122314', '跑跑跑\r\n', NULL, '2022-06-14', '2022-06-30', 24324, 3000, '4234', 'fdsf', '2022-06-06 18:27:52', NULL),
-(46, '爽辣', 'dsadas', NULL, '2022-06-15', '2022-06-24', 11, 1, 'sad', 'sdads', '2022-06-07 13:39:44', '2022-06-08 11:41:03'),
-(47, '太棒了', 'dsfsf', NULL, '2022-06-29', '2022-07-01', 7777, 32213, 'ddf', 'fdsf', '2022-06-07 13:56:16', '2022-06-07 13:58:46'),
-(48, '煩死了', 'fdsffs', NULL, '2022-06-16', '2022-06-25', 213, 342, 'dfdsfsd', 'fdsfsf', '2022-06-07 16:47:50', '2022-06-07 16:49:21'),
-(49, '修改中', '修改中', NULL, '2022-05-12', '2022-06-01', 2312, 23131, '3123', '3123', '2022-06-07 17:19:45', '2022-06-07 17:28:14'),
-(50, '更新中', '課程內容', NULL, '2022-06-14', '2022-07-14', 100, 4000, '老師', '位置', '2022-06-08 11:07:51', '2022-06-08 11:56:55'),
-(51, '跳起來', '312312', NULL, '2022-06-06', '2022-06-23', 22, 0, '1233', '3123', '2022-06-08 11:37:06', '2022-06-08 14:13:50'),
-(52, '在哪在哪裡', 'fdsfsdf', NULL, '2022-06-10', '2022-06-30', 123, 21312312, 'fdsfdsf', 'dfsd', '2022-06-08 11:38:30', '2022-06-08 11:39:45');
+(1, '((G) I-DLE) My Bag (MVdance)', '俗話說的好，掌握思考過程，也就掌握了街舞。我認為，我想，把街舞的意義想清楚，對各位來說並不是一件壞事。這必定是個前衛大膽的想法。\r\n\r\n', 0, '2022-06-05', '2022-07-05', 8, 3000, '小ㄗ', '台北市信義區', '2022-06-01 08:40:20', '2022-06-10 14:05:21'),
+(2, '流行熱門舞蹈課程(單堂無進度)', ' 總結來說，跳舞可以說是有著成為常識的趨勢。諸葛亮曾經提到過，少壯不努力，老大徒傷悲。才須學也，非學無以廣才，非志無以成學。這句話幾乎解讀出了問題的根本。', 0, '2022-07-31', '2022-08-31', 5, 2250, '小雞', '台北市北投區', '2022-06-01 09:48:46', '2022-06-10 14:05:13'),
+(3, 'New Jazz 基礎爵士(單堂無進度)', '土光敏夫曾經說過，風險和利益的大小是成正比的。但願各位能從這段話中獲得心靈上的滋長。透過逆向歸納，得以用最佳的策略去分析跳舞。', 0, '2022-06-16', '2022-07-16', 6, 2500, '圈圈', '台北市大安區', '2022-06-01 09:52:50', '2022-06-10 14:05:04'),
+(4, 'Jessi - Zoom (MVdance)', ' 帶著這些問題，我們一起來審視跳舞。一般來說，我們不得不相信，奧弗伯里說過一句富有哲理的話，一個除了榮耀的祖先而一無所有的人，就像一個土豆唯一適合他的地方就泥地下面。這把視野帶到了全新的高度。', 0, '2022-06-10', '2022-07-10', 6, 3000, '小佑', '台北市松山區', '2022-06-01 09:55:51', '2022-06-10 14:04:56'),
+(5, 'GIDLE - TOMBOY (MVdance)', ' 跳舞對我來說有著舉足輕重的地位，必須要嚴肅認真的看待。我們都有個共識，若問題很困難，那就勢必不好解決。了解清楚跳舞到底是一種怎麼樣的存在，是解決一切問題的關鍵。', 1, '2022-07-14', '2022-08-14', 5, 3000, '大壯', '台北市中正區', '2022-06-01 09:58:41', '2022-06-10 14:04:50'),
+(6, '基礎嘻哈爵士 Jazz HIPHOP (單堂無進度)', '  街舞絕對是史無前例的。生活中，若街舞出現了，我們就不得不考慮它出現了的事實。謹慎地來說，我們必須考慮到所有可能。', 1, '2022-07-24', '2022-08-24', 5, 2250, '小ㄗ', '台北市信義區', '2022-06-01 10:06:46', '2022-06-10 14:04:43'),
+(7, '新手Jazz爵士入門(適合真正零基礎)', '        所謂街舞，關鍵是街舞需要如何解讀。諸葛亮講過，士之相知，溫不增華，寒不改葉，能四時而不衰，歷夷險而益固。這段話的餘韻不斷在我腦海中迴盪著。\r\n\r\n', 1, '2022-07-01', '2022-08-01', 5, 2250, '小雞', '台北市北投區', '2022-06-01 10:10:14', '2022-06-10 14:04:36'),
+(8, 'POPPING街舞', '        街舞勢必能夠左右未來。動機，可以說是最單純的力量。生活中，若街舞出現了，我們就不得不考慮它出現了的事實。我們要學會站在別人的角度思考。\r\n\r\n', 1, '2022-06-28', '2022-07-28', 6, 2500, '圈圈', '台北市大安區', '2022-06-01 10:18:02', '2022-06-10 14:04:27'),
+(9, 'Breaking街舞體驗', '儘管街舞看似不顯眼，卻佔據了我的腦海。蒙田曾說過一句意義深遠的話，各市有各市的風俗，各鄉有各鄉的。這段話非常有意思。\r\n\r\n', 0, '2022-07-09', '2022-08-09', 6, 3000, '小佑', '台北市松山區', '2022-06-01 10:28:35', '2022-06-10 14:04:05'),
+(10, 'LA STYLE - TBC舞蹈', '        白哲特在不經意間這樣說過，堅強的信念能贏得強者的心，並使他們變得更堅強。。這不禁令我重新仔細的思考。白哲特說過一句很有意思的話，堅強的信念能贏得強者的心，並使他們變得更堅強。這段話讓我的心境提高了一個層次。街舞的出現，重寫了人生的意義。\r\n\r\n', 1, '2022-06-19', '2022-07-19', 8, 3000, '大壯', '台北市中正區', '2022-06-01 10:32:15', '2022-06-10 14:03:31'),
+(11, 'LISA - MONEY', '馬克思在過去曾經講過，科學絕不是一種自私自利的享受。有幸能夠致力於科學研究的人，首先應該拿自己的學識為人類服務。強烈建議大家把這段話牢牢記住。若到今天結束時我們都還無法釐清街舞的意義，那想必我們昨天也無法釐清。', NULL, '2022-06-20', '2022-07-26', 10, 2500, '小雞', '台北市北投區', '2022-06-08 11:37:06', '2022-06-10 16:12:23'),
+(12, 'J Balvin - Blanco', '赫茲里特曾提出，小人物在社會中是一種必要的調劑。這類角色是極端令人愉快的，甚至會受人寵愛如果他們滿足於自己不得不扮演的角色。希望大家實際感受一下這段話。街舞似乎是一種巧合，但如果我們從一個更大的角度看待問題，這似乎是一種不可避免的事實。', NULL, '2022-06-27', '2022-07-27', 6, 2500, '圈圈', '台北市大安區', '2022-06-10 16:13:31', '2022-06-10 16:13:31'),
+(13, 'B.I - BTBT', '        康有為說過一句經典的名言，虛驕自大者敗之媒，卑飛使用翼者擊之漸。想必各位已經看出了其中的端倪。街舞必定會成為未來世界的新標準。\r\n\r\n', NULL, '2022-07-13', '2022-08-31', 5, 2250, '小佑', '台北市松山區', '2022-06-10 16:14:43', '2022-06-10 16:14:43'),
+(14, 'Saweetie - Best Friend', '我想，把街舞的意義想清楚，對各位來說並不是一件壞事。看看別人，再想想自己，會發現問題的核心其實就在你身旁。儘管街舞看似不顯眼，卻佔據了我的腦海。', NULL, '2022-07-20', '2022-08-10', 6, 3000, '大壯', '台北市中正區', '2022-06-10 16:15:53', '2022-06-10 16:15:53'),
+(15, 'Anitta - Tócame', ' 對我個人而言，街舞不僅僅是一個重大的事件，還可能會改變我的人生。面對如此難題，我們必須設想周全。街舞因何而發生？', NULL, '2022-08-10', '2022-08-30', 10, 3000, '小ㄗ', '台北市信義區', '2022-06-10 16:16:54', '2022-06-10 16:16:54'),
+(16, 'PRETTYMUCH - Rock Witchu', ' 街舞究竟是怎麼樣的存在，始終是個謎題。若發現問題比我們想像的還要深奧，那肯定不簡單。\r\n不難發現，問題在於該用什麼標準來做決定呢？', NULL, '2022-07-07', '2022-08-17', 7, 2000, '小雞', '台北市松山區', '2022-06-10 16:21:42', '2022-06-10 16:21:42'),
+(17, 'Rema - Soundgasm', '巴爾扎克說過一句著名的話，痛苦跟歡樂一樣，會創造一種氣氛的。走進人家的屋子，你第一眼就可以知道它的基調是什麼，是愛情還是絕望。強烈建議大家把這段話牢牢記住。既然如此，現在，正視街舞的問題，是非常非常重要的。因為，巴金曾經說過，發達的科學技術是應當用來造福人類的，原子能應當為人類的進步服務。這段話雖短，卻足以改變人類的歷史。', NULL, '2022-08-03', '2022-09-20', 5, 2000, '圈圈', '台北市信義區', '2022-06-10 16:22:54', '2022-06-10 16:22:54'),
+(18, 'BLACKPINK - Lovesick Girls', ' 若能夠欣賞到街舞的美，相信我們一定會對街舞改觀。不要先入為主覺得街舞很複雜，實際上，街舞可能比你想的還要更複雜。', NULL, '2022-07-14', '2022-08-24', 10, 3000, '小ㄗ', '台北市信義區', '2022-06-10 16:24:06', '2022-06-10 16:24:06'),
+(19, 'Dr. Dre - The Next Episode', '那麼，我們不得不面對一個非常尷尬的事實，那就是，街舞對我來說有著舉足輕重的地位，必須要嚴肅認真的看待。我們可以很篤定的說，這需要花很多時間來嚴謹地論證。', NULL, '2022-07-06', '2022-08-18', 6, 2250, '小佑', '台北市松山區', '2022-06-10 16:24:51', '2022-06-10 16:24:51'),
+(20, 'Lizzo - About Damn Time', '馬克思說過一句富有哲理的話，最好是把真理比作燧石——它受到的敲打越厲害，發射出的光輝就越燦爛。這句話幾乎解讀出了問題的根本。總而言之，面對如此難題，我們必須設想周全。街舞的出現，必將帶領人類走向更高的巔峰。', NULL, '2022-08-11', '2022-09-20', 8, 2000, '圈圈', '台北市大安區', '2022-06-10 16:25:41', '2022-06-10 16:25:41');
 
 -- --------------------------------------------------------
 
@@ -209,49 +207,11 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`sid`, `mem-name`, `mem-nickname`, `mem-level`, `mem-account`, `mem-password`, `mem-email`, `mem-mobile`, `mem-birthday`, `mem-address`, `mem-avatar`, `mem-created_at`, `mem-bollen`) VALUES
-(1, '安安', '哈哈', '平民', 'gfdgdgdg', 'dfgdgdfgdgf', 'garylin0969@gmail.com', '0955555555', '2022-05-02', '台北市', '', '2022-05-31 16:15:43', 0),
-(3, '安安', '哈哈', '平民', 'gfdgdgdg', 'sdfsdfsdfsdfsd', 'garylin0969@gmail.com', '0955555555', '2022-05-02', 'sdfsdf', '', '2022-05-31 17:00:44', 0),
-(4, '林宸皞', '', '平民', 'jghghjhgjop[u[', 'uopiui[op[o', '', '', NULL, '', '', '2022-06-01 00:19:27', 0),
-(5, '林宸皞', '', '平民', 'jghghjhgjop[u[', 'uopiui[op[o', '', '', NULL, '', '', '2022-06-01 00:30:14', 0),
-(6, 'gary', '', '平民', 'gary', 'gary', '', '', NULL, '', '23c751784e5af37463cfdb622abfd824.jpg', '2022-06-02 00:18:40', 1),
-(8, 'gary', '', '平民', 'vxcvxcv', 'xcvxcvxcvx', '', '', NULL, '', '', '2022-06-02 17:21:19', 1),
-(10, 'aaaa', '', '平民', 'aaaa', 'aaaa', '', '', NULL, '', 'ecca2292b6dd157b459e19b0690d56fd.png', '2022-06-03 13:44:21', 1),
-(11, 'shinder', '', '平民', '111', '111', '', '', NULL, '', 'images.png', '2022-06-06 14:42:09', 0),
-(12, 'shinder01', 'shinder\'s fans', '平民', 'shinder01', 'shinder01', '', '0912312311', NULL, '', 'images.png', '2022-06-07 00:45:30', 1),
-(13, 'shinder02', 'shinder02', '平民', 'shinder02', 'shinder02', '', '', NULL, '', 'images.png', '2022-06-07 22:09:01', 1),
-(14, 'shinder03', '', '平民', 'shinder03', 'shinder03', '', '', NULL, '', '02216d360e3ba0dc6a29e7fea1bbec88.jpg', '2022-06-08 13:52:44', 1),
-(15, 'kevin', '', '平民', 'kevin', 'kevin', '', '', NULL, '', 'images.png', '2022-06-09 16:28:59', 1),
-(1438, '林玟葶', '老婆', '平民', '222', '222', '', '', NULL, '', '79981805580302ef5252b0a29d9e4107.jpg', '2022-06-05 03:54:23', 1),
-(1452, '林宸皞6', '', '平民', '11115', '111145', '', '', NULL, '', 'images.png', '2022-06-07 17:01:52', 1),
-(1453, '林宸皞', '', '平民', '888', '888', '', '', NULL, '', 'images.png', '2022-06-07 18:47:10', 1),
-(1454, '會員', '', '平民', '555', '555', '', '', NULL, '', 'images.png', '2022-06-06 22:15:17', 1),
-(1455, 'gary', '', '平民', '777', '777', '', '', NULL, '', 'images.png', '2022-06-07 23:05:47', 1),
-(1456, '好吧', '', '平民', '444', '444', '', '', NULL, '', 'images.png', '2022-06-07 23:14:41', 0),
-(1458, 'gary', '', '平民', 'uuu', 'uuu', '', '', NULL, '', 'images.png', '2022-06-08 00:55:15', 1),
-(1459, '林玟葶', '', '平民', 'mmm', 'mmm', '', '', NULL, '', 'a53d5f10b80316bc634ff2c4e0fb97cc.jpg', '2022-06-08 02:47:33', 1),
-(1461, 'ui', '', '平民', 'uiui', 'uiui', '', '', NULL, '', 'images.png', '2022-06-07 21:32:22', 1),
-(1462, '林玟葶', '', '平民', 'ttt', 'ttt', '', '', NULL, '', '1c5b6a049c15ed8e44fb92cc28a05202.jpg', '2022-06-08 23:22:56', 1),
-(1467, '林宸皞', '', '平民', '444', '444', '', '', NULL, '', 'images.png', '2022-06-09 03:03:38', 1),
-(1468, 'hjkhjkhjkj', '', '平民', 'hjkhjk', 'hjkhjkhjk', '', '', NULL, '', 'images.png', '2022-06-09 03:17:06', 1),
-(1469, 'hjkhjkhjkjp55', '', '平民', 'hjkhjk', 'hjkhjkhjk', '', '', NULL, '', 'images.png', '2022-06-09 03:17:49', 1),
-(1470, '會員', '', '平民', 'hfghfgh', 'fghfghg', '', '', NULL, '', 'images.png', '2022-06-09 03:17:59', 1),
-(1471, '會員', '', '平民', 'yyy', 'yyy', '', '', NULL, '', 'images.png', '2022-06-09 03:18:17', 1),
-(1472, '林宸皞', '', '平民', '555', '555', '', '', NULL, '', 'images.png', '2022-06-09 03:19:17', 1),
-(1473, '會員', '', '平民', 'erer', 'erer', '', '', NULL, '', 'images.png', '2022-06-09 03:19:25', 1),
-(1474, '會員', '', '平民', 'tyty', 'tytyty', '', '', NULL, '', 'images.png', '2022-06-09 03:25:09', 1),
-(1475, '林宸皞', '', '平民', 'erer', 'erer', '', '', NULL, '', 'images.png', '2022-06-09 03:25:39', 1),
-(1476, '會員', '', '平民', 'uiouio', 'uiouiouio', '', '', NULL, '', 'images.png', '2022-06-09 03:26:30', 1),
-(1477, '林玟葶', '', '平民', 'ererere', 'rererewfedfse', '', '', NULL, '', 'images.png', '2022-06-09 03:26:52', 1),
-(1478, '好吧', '', '平民', 'fff', 'fffsdfdsfsdf', '', '', NULL, '', 'images.png', '2022-06-09 03:27:52', 1),
-(1479, 'hdfgzdhrtyh', '', '平民', 'tytysadtht', 'hdfhaethyet', '', '', NULL, '', '3191872d134ffb077b1a2d6c29d96625.gif', '2022-06-09 03:29:23', 1),
-(1480, '會員', '', '平民', 'dfsdfgvw', 'rfgsdafvsdf', '', '', NULL, '', 'images.png', '2022-06-09 03:32:31', 1),
-(1481, 'FVAETYHERTH', '', '平民', 'garyfsdf', 'sdfwer21Q3TG', '', '', NULL, '', '39d9c431be99ac82db8269e4482f2b47.gif', '2022-06-09 03:32:49', 1),
-(1484, '會員', '', '平民', '5554', '5554', '', '', NULL, '', 'images.png', '2022-06-09 04:08:54', 0),
-(1485, 'garyIII', '', '平民', 'III', 'III', '', '', NULL, '', 'images.png', '2022-06-09 04:09:45', 0),
-(1486, '幹幹幹', '', '平民', '000', '000', '', '', NULL, '', '81b532bf70063913d76f8b3a5f405135.jpg', '2022-06-09 15:17:34', 1),
-(1487, '會員', '', '平民', 'yyy', 'yyy', '', '', NULL, '', 'images.png', '2022-06-09 20:32:24', 1),
-(1488, '會員', '', '平民', '444', '444', '', '', NULL, '', 'images.png', '2022-06-10 01:37:44', 1),
-(1490, '會員', '', '平民', '7878', '7878', '', '', NULL, '', 'images.png', '2022-06-10 02:17:03', 1);
+(1493, '宇智波新德', '拿乳頭', '平民', '222', '222', 'gaygay@gmail.com', '0912312311', NULL, '木葉村', 'bcf5b35c2e6c48815afbd90fc200356b.jpg', '2022-06-10 13:39:12', 1),
+(1494, 'shinder', 'shinder', '平民', 'sdadasd', 'adasdasd', 'gaygay@gmail.com', '0912312312', NULL, '', 'images.png', '2022-06-12 13:43:05', 0),
+(1495, 'aaaa', 'shinder的狂熱粉絲', '平民', 'asdsadasd', 'asdadad', 'gaygay@gmail.com', '0912312312', NULL, '', 'images.png', '2022-06-12 13:43:26', 1),
+(1496, 'shinder02', 'Nathan', '平民', 'ewfsdcwe', 'fwdcs', 'gaygay@gmail.com', '0912312311', NULL, '', 'images.png', '2022-06-12 13:43:42', 0),
+(1497, 'AAAA', 'WTF', '平民', 'vfvfefv', 'ewvwdvdf', 'gaygay@gmail.com', '0912312311', NULL, '', 'images.png', '2022-06-12 13:44:03', 1);
 
 -- --------------------------------------------------------
 
@@ -299,25 +259,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`sid`, `member_sid`, `total`, `order_date`) VALUES
-(202200015, 1438, 14630, '2022-06-06 22:26:57'),
-(202200016, 1438, 15970, '2022-06-06 23:54:02'),
-(202200017, 1439, 15970, '2022-06-07 01:32:57'),
-(202200018, 1438, 30620, '2022-06-07 02:46:55'),
-(202200019, 1453, 12792, '2022-06-07 19:24:44'),
-(202200020, 1454, 7504, '2022-06-07 22:32:04'),
-(202200021, 1454, 5600, '2022-06-07 22:33:21'),
-(202200022, 1454, 0, '2022-06-07 22:33:38'),
-(202200023, 1438, 22224, '2022-06-08 18:20:33'),
-(202200024, 1438, 8990, '2022-06-09 20:00:41'),
-(202200025, 1487, 5584, '2022-06-09 20:36:49'),
-(202200026, 1438, 5300, '2022-06-10 02:16:40'),
-(202200027, 1490, 5600, '2022-06-10 02:17:22'),
-(202200084, 14, 5584, '2022-06-08 21:33:22'),
-(202200086, 13, 21574, '2022-06-08 23:08:08'),
-(202200087, 6, 23620, '2022-06-08 23:08:31'),
-(202200088, 10, 14650, '2022-06-08 23:33:07'),
-(202200089, 10, 15990, '2022-06-08 23:34:09'),
-(202200090, 10, 13980, '2022-06-08 23:34:43');
+(202200100, 1493, 37220, '2021-04-12 13:41:28'),
+(202200101, 1497, 5280, '2021-05-12 13:48:47'),
+(202200102, 1497, 7504, '2021-10-12 13:48:55'),
+(202200103, 1497, 4480, '2021-11-12 13:49:01'),
+(202200104, 1497, 1280, '2021-12-12 13:49:08'),
+(202200105, 1497, 11184, '2022-01-12 13:51:05'),
+(202200106, 1497, 12784, '2022-02-12 13:51:13'),
+(202200107, 1497, 9744, '2022-02-14 13:51:19'),
+(202200108, 1497, 17304, '2022-05-12 13:53:43');
 
 -- --------------------------------------------------------
 
@@ -373,7 +323,33 @@ INSERT INTO `order_details` (`sid`, `order_sid`, `member_sid`, `produst_sid`, `p
 (86, 202200089, 10, 4, 8990, 1),
 (87, 202200089, 10, 1, 7000, 1),
 (88, 202200090, 10, 2, 6980, 1),
-(89, 202200090, 10, 1, 7000, 1);
+(89, 202200090, 10, 1, 7000, 1),
+(90, 202200092, 6, 1, 7000, 1),
+(91, 202200094, 6, 2, 6980, 1),
+(92, 202200094, 6, 1, 7000, 1),
+(93, 202200094, 6, 4, 8990, 1),
+(94, 202200095, 1492, 1, 5600, 1),
+(95, 202200095, 1492, 3, 6120, 1),
+(96, 202200097, 1492, 2, 5584, 1),
+(97, 202200099, 1492, 3, 6120, 3),
+(98, 202200100, 1493, 1, 7000, 1),
+(99, 202200100, 1493, 2, 6980, 1),
+(100, 202200100, 1493, 3, 7650, 1),
+(101, 202200100, 1493, 4, 8990, 1),
+(102, 202200100, 1493, 5, 6600, 1),
+(103, 202200101, 1497, 5, 5280, 1),
+(104, 202200102, 1497, 6, 7504, 1),
+(105, 202200103, 1497, 9, 4480, 1),
+(106, 202200104, 1497, 25, 1280, 1),
+(107, 202200105, 1497, 1, 5600, 1),
+(108, 202200105, 1497, 2, 5584, 1),
+(109, 202200106, 1497, 5, 5280, 1),
+(110, 202200106, 1497, 6, 7504, 1),
+(111, 202200107, 1497, 11, 5280, 1),
+(112, 202200107, 1497, 12, 4464, 1),
+(113, 202200108, 1497, 3, 6120, 2),
+(114, 202200108, 1497, 2, 5584, 2),
+(115, 202200108, 1497, 1, 5600, 2);
 
 -- --------------------------------------------------------
 
@@ -399,32 +375,31 @@ CREATE TABLE `produst` (
 --
 
 INSERT INTO `produst` (`sid`, `img`, `brand`, `name`, `info`, `price`, `create_at`, `update_at`, `category_id`, `color`) VALUES
-(1, '637894482023930000.jpg', 'POLAR', '那隻狗有三對內內0.0 整組滑板 8.0', '已完成組裝✅\r\n板身：POLAR 被正妹瞪好爽 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F119998000', '7000', '2021-12-05', '2022-04-08', '3', 'blue'),
-(2, '637894482025330000.jpg', 'POLAR', '他家蠻酷的 整組滑板 8.125', '已完成組裝✅\r\n板身：POLAR 他家蠻酷的 整組滑板 8.125\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F121998125', '6980', '2021-08-25', '2022-04-08', '3', 'yellow'),
-(3, '637894482031430000.jpg', 'POLAR', '真結合 整組滑板 7.875', '已完成組裝✅\r\n板身：（兒童/成人小尺寸）POLAR 真結合 整組滑板 7.875\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F118997875', '7650', '2021-07-28', '2022-03-24', '3', 'blue'),
-(4, '637894482033000000.jpg', 'POLAR', '鯊魚跳起來 整組滑板 8.25', '已完成組裝✅\r\n板身：POLAR 鯊魚跳起來 整組滑板 8.25\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 質感黑色基本款輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPS211F113998250', '8990', '2021-3-15', '2022-5-31', '3', 'pink'),
-(5, '637894482056430000.jpg', 'PALACE', '杜賓狗狗 整組滑板 8.0', '已完成組裝✅\r\n板身：PALACE 杜賓狗狗 整組滑板 8.0\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPL221F112998000', '6600', '2021-08-12', '2022-5-06', '3', 'white'),
-(6, '637894482043800000.jpg', 'PALACE', '一堆圖欸 整組滑板 8.06', '已完成組裝✅\r\n板身：PALACE 一堆圖欸 整組滑板 8.06\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPL221F103998060', '9380', '2021-08-25', '2022-04-08', '3', 'yellow'),
-(7, '637894482063130000.jpg', 'PALACE', '超派法鬥 整組滑板 7.75', '已完成組裝✅\r\n板身：PALACE 超派法鬥 整組滑板 7.75\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nPL212F120997750', '7650', '2021-07-28', '2022-03-24', '3', 'blue'),
-(8, '637894482088500000.jpg', 'FUCKING AWESOME', '巴黎的PASS時光 整組滑板 8.18（原木色隨幾不挑色）', '已完成組裝✅\r\n板身：FUCKING AWESOME 巴黎的PASS時光 整組滑板 8.18（原木色隨幾不挑色）\r\n砂紙：MOB x INDEPENDENT 世界第一的砂紙\r\n輪架：INDEPENDENT 中空輕量化輪架\r\n輪子：OJ WHEELS 最高品質系列 101A 54MM\r\n培林：BRONSON G3 高轉速培林\r\nFA221F104998180', '7880', '2021-3-15', '2022-5-31', '3', 'blue'),
-(9, '637883215517930000.jpg', 'SANTA CRUZ', 'DECODER HAND 9.51IN x 32.26IN CRUZER SHAPED CRUZER', '11116545-129806', '5600', '2021-08-25', '2022-04-20', '4', 'black'),
-(10, '637873706641370000.jpg', 'SANTA CRUZ', 'FLIER COLLAGE DOT 8.8IN x 27.7IN CRUZER SHARK', '11116544-129805', '5300', '2021-07-28', '2022-04-20', '4', 'green'),
-(11, '637883215377670000.jpg', 'SANTA CRUZ', 'PRISMATIC DOT 8.8IN x 27.7IN CRUZER SHARK', '11116543-129804', '6600', '2021-03-15', '2022-04-21', '4', 'blue'),
-(12, '637883215206270000.jpg', 'SANTA CRUZ', 'RASTA TIE DYE 8.79IN x 29.05IN CRUZER STREET CRUZER', '11116542-129803', '5580', '2021-08-12', '2022-5-31', '4', 'green'),
-(13, '637883214704170000.jpg', 'SANTA CRUZ', 'RAINBOW TIE DYE 8.79IN x 29.05IN CRUZER STREET CRUZER', '11116540-129801', '6700', '2019-08-27', '2022-02-23', '4', 'blue'),
-(14, '637886525279000000.jpg', 'SANTA CRUZ', 'CLASIC WAVE SPLICE 8.8IN x 27.7IN CRUZER SHARK', '11116441-124572', '4930', '2020-05-20', '2022-01-06', '4', 'red'),
-(15, '637883214259270000.jpg', 'SANTA CRUZ', 'AMOEBA STREET SKATE 8.4IN x 29.4IN', '11116435-124566', '5300', '2019-01-24', '2022-03-05', '4', 'black'),
-(16, '637894497999700000.jpg', 'HOCKEY', 'HP SYNTHETIC', 'HK221F113998250', '2800', '2021-12-05', '2022-04-20', '6', 'black'),
-(17, '637894498003270000.jpg', 'HOCKEY', 'UNCLE BOB', 'HK221F111998', '2650', '2021-07-28', '2022-03-24', '6', 'black'),
-(18, '637884746574500000.jpg', 'INDEPENDENT', '144 HOLLOW REYNOLDS BLOCK SILVER MID TRUCKS', '33132473-124418', '2400', '2021-03-15', '2022-04-20', '7', ''),
-(19, '637886518587700000.jpg', 'INDEPENDENT', 'STAGE 11 BTG SPEED BLUE SILVER STANDARD TRUCKS', '33132510-132442', '2200', '2021-07-28', '2022-04-21', '7', ''),
-(20, '637885826662400000.jpg', 'BRONSON', 'SAMARRIA BREVARD PRO BEARING G3', '33531356-1321510\r\n盒：33531356-132151', '1350', '2021-08-25', '2022-04-20', '8', ''),
-(21, '637889068679000000.jpg', 'INDEPENDENT', '培林', '操你媽', '1200', '2021-08-25', '2022-06-02 16:10:03', '8', ''),
-(22, '637884050205800000.jpg', 'OJ WHEELS', 'TEAM LINE ORIGINAL WHITE BLACK/ORANNGR HARDLINE 99A 55MM', '22222972-132923', '1500', '2021-08-25', '2022-04-08', '9', ''),
-(23, '637884051043030000.jpg', 'OJ WHEELS', 'WOOTEN SCREAMING CAST ELITE WHITE BLUE HARDLINE 101A 55MM', '22223007-132941', '1500', '2021-07-28', '2022-04-21', '9', ''),
-(24, '637890068368500000.jpg', 'BULLET', 'MATTE BLACK DELUXE HELMET 防護頭盔', '成人：58cm – 61cm', '1080', '2019-07-14', '2022-05-23', '10', ''),
-(25, '637890059759030000.jpg', 'BULLET', 'BLACK SETS ADULT 護具組', '8898201-14117 護腕 護肘 護膝', '1600', '2021-12-05', '2022-06-02 11:32:15', '10', ''),
-(47, 'd3776160c3c09f0bc7df9ee084a2d7e2.jpg', 'BULLET', 'BLACK ORIGINAL WHITE', '77687972-132923', '1700', '2022-06-02 15:58:07', '2022-06-02 20:30:22', '', '');
+(1, '637894482023930000.jpg', 'POLAR', 'ONECSS', 'Shortboard us et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,', '7000', '2021-12-05', '2022-04-08', '3', 'blue'),
+(2, '637894482025330000.jpg', 'POLAR', 'StartEnc', 'Shortboard nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,', '6980', '2021-08-25', '2022-04-08', '3', 'yellow'),
+(3, '637894482031430000.jpg', 'POLAR', 'VIBECSS', 'Shortboard Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu', '7650', '2021-07-28', '2022-03-24', '3', 'blue'),
+(4, '637894482033000000.jpg', 'POLAR', 'MassKV', 'Shortboard the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself,', '8990', '2021-3-15', '2022-5-31', '3', 'pink'),
+(5, '637894482056430000.jpg', 'PALACE', 'KoHUB', 'Shortboard Nor again is there anyone who loves or pursues or desires to obtain pain of itself,', '6600', '2021-08-12', '2022-5-06', '3', 'white'),
+(6, '637894482043800000.jpg', 'PALACE', 'FAIRKV', 'Shortboard or one who avoids a pain that produces no resultant pleasure? ', '9380', '2021-08-25', '2022-04-08', '3', 'yellow'),
+(7, '637894482063130000.jpg', 'PALACE', 'KVPOST', 'Shortboard At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles.', '7650', '2021-07-28', '2022-03-24', '3', 'blue'),
+(8, '637894482088500000.jpg', 'FUCKING AWESOME', 'KVFOCUS', 'Shortboard Occidental in fact, it va esser Occidental. A un Angleso it va semblar un simplificat Angles, quam un skeptic Cambridge amico dit me que', '7880', '2021-3-15', '2022-5-31', '3', 'blue'),
+(9, '637883215517930000.jpg', 'SANTA CRUZ', 'DECODER HAND CRUZER', 'Old School Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic', '5600', '2021-08-25', '2022-06-11 23:29:24', '4', 'black'),
+(10, '637873706641370000.jpg', 'SANTA CRUZ', 'FLIER COLLAGE DOT ', 'Old School The Big Oxmox advised her not to do so, because there were thousands of bad Commas', '5300', '2021-07-28', '2022-04-20', '4', 'green'),
+(11, '637883215377670000.jpg', 'SANTA CRUZ', 'PRISMATIC DOT', 'Old School Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.', '6600', '2021-03-15', '2022-04-21', '4', 'blue'),
+(12, '637883215206270000.jpg', 'SANTA CRUZ', 'RASTA TIE DYE', 'Old School the headline of Alphabet Village and the subline of her own road, the Line Lane.', '5580', '2021-08-12', '2022-5-31', '4', 'green'),
+(13, '637883214704170000.jpg', 'SANTA CRUZ', 'RAINBOW TIE DYE', 'Old School One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed ', '6700', '2019-08-27', '2022-02-23', '4', 'blue'),
+(14, '637886525279000000.jpg', 'SANTA CRUZ', 'CLASIC WAVE SPLICS', 'Old School The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of', '4930', '2020-05-20', '2022-01-06', '4', 'red'),
+(15, '637883214259270000.jpg', 'SANTA CRUZ', 'AMOEBA STREET SKATE', 'Old School he found himself transformed in his bed into a horrible vermin.', '5300', '2019-01-24', '2022-03-05', '4', 'black'),
+(16, '637894497999700000.jpg', 'HOCKEY', 'HP SYNTHETIC', 'Decks Gregor then turned to look out the window at the dull weather. Drops', '2800', '2021-12-05', '2022-04-20', '6', 'black'),
+(17, '637894498003270000.jpg', 'HOCKEY', 'UNCLE BOB', 'Decks A collection of textile samples lay spread out on the table', '2650', '2021-07-28', '2022-03-24', '6', 'black'),
+(18, '637884746574500000.jpg', 'INDEPENDENT', '144 HOLLOW REYNOLDS', 'Trucks and above it there hung a picture that he had recently cut out of an illustrated', '2400', '2021-03-15', '2022-04-20', '7', 'white'),
+(19, '637886518587700000.jpg', 'INDEPENDENT', 'STAGE 11 BTG SPEED', 'Trucks The bedding was hardly able to cover it and seemed ready to slide off any moment. ', '2200', '2021-07-28', '2022-04-21', '7', 'blue'),
+(20, '637885826662400000.jpg', 'BRONSON', 'SAMARRIA BREVARD PRO', 'Wheels Sed ut perspiciatis unde omnis iste natus error sit voluptatem', '1350', '2021-08-25', '2022-04-20', '8', 'green'),
+(21, '637889068679000000.jpg', 'INDEPENDENT', 'NULLA', 'Wheels accusantium doloremqu', '1200', '2021-08-25', '2022-06-02 16:10:03', '8', 'red'),
+(22, '637884050205800000.jpg', 'OJ WHEELS', 'TEAM LINE ORIGINAL', 'Bearings vitae dicta sunt', '1500', '2021-08-25', '2022-04-08', '9', 'white'),
+(23, '637884051043030000.jpg', 'OJ WHEELS', 'WOOTEN SCREAMINGHARDLINE', 'Bearings nisi ut aliquid ex ea', '2500', '2021-07-28', '2022-06-10 19:20:51', '9', 'blue'),
+(24, '637890068368500000.jpg', 'BULLET', 'MATTE BLACK DELUXE HELMET', 'Safety Gear qui in ea voluptate velit ess', '1080', '2019-07-14', '2022-05-23', '10', 'black'),
+(25, '637890059759030000.jpg', 'BULLET', 'BLACK SETS ADULT', 'Safety Gear aboriosam, nisi ut aliquid ex ea', '1600', '2021-12-05', '2022-06-02 11:32:15', '10', 'black');
 
 --
 -- 已傾印資料表的索引
@@ -504,7 +479,7 @@ ALTER TABLE `admin`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `category`
@@ -516,19 +491,19 @@ ALTER TABLE `category`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1491;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1498;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `news`
@@ -540,19 +515,19 @@ ALTER TABLE `news`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `sid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202200092;
+  MODIFY `sid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202200109;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `produst`
 --
 ALTER TABLE `produst`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
