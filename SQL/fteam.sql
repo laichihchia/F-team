@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022 年 06 月 12 日 14:16
+-- 產生時間： 2022 年 06 月 13 日 00:11
 -- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.4.29
 
@@ -57,6 +57,16 @@ CREATE TABLE `cart` (
   `price` varchar(50) NOT NULL,
   `member_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `cart`
+--
+
+INSERT INTO `cart` (`sid`, `produst_id`, `name`, `qty`, `price`, `member_id`) VALUES
+(227, '1', 'ONECSS', 1, '7000', '1493'),
+(228, '2', 'StartEnc', 1, '6980', '1493'),
+(231, '3', 'VIBECSS', 1, '7650', '1493'),
+(232, '4', 'MassKV', 1, '8990', '1493');
 
 -- --------------------------------------------------------
 
@@ -131,7 +141,19 @@ INSERT INTO `favorite` (`sid`, `mem_id`, `product_img`, `product_brand`, `produc
 (62, '1493', '637894497999700000.jpg', 'HOCKEY', 'HP SYNTHETIC', 'Decks Gregor then turned to look out the window at the dull weather. Drops', '2800', 16),
 (63, '1493', '637894498003270000.jpg', 'HOCKEY', 'UNCLE BOB', 'Decks A collection of textile samples lay spread out on the table', '2650', 17),
 (64, '1493', '637889068679000000.jpg', 'INDEPENDENT', 'NULLA', 'Wheels accusantium doloremqu', '1200', 21),
-(65, '1493', '637884051043030000.jpg', 'OJ WHEELS', 'WOOTEN SCREAMINGHARDLINE', 'Bearings nisi ut aliquid ex ea', '2500', 23);
+(65, '1493', '637884051043030000.jpg', 'OJ WHEELS', 'WOOTEN SCREAMINGHARDLINE', 'Bearings nisi ut aliquid ex ea', '2500', 23),
+(66, '1498', '637894482023930000.jpg', 'POLAR', 'ONECSS', 'Shortboard us et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,', '7000', 1),
+(67, '1498', '637894482031430000.jpg', 'POLAR', 'VIBECSS', 'Shortboard Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu', '7650', 3),
+(68, '1498', '637894482033000000.jpg', 'POLAR', 'MassKV', 'Shortboard the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself,', '8990', 4),
+(69, '1498', '637894482056430000.jpg', 'PALACE', 'KoHUB', 'Shortboard Nor again is there anyone who loves or pursues or desires to obtain pain of itself,', '6600', 5),
+(70, '1498', '637886525279000000.jpg', 'SANTA CRUZ', 'CLASIC WAVE SPLICS', 'Old School The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of', '4930', 14),
+(71, '1498', '637883214259270000.jpg', 'SANTA CRUZ', 'AMOEBA STREET SKATE', 'Old School he found himself transformed in his bed into a horrible vermin.', '5300', 15),
+(72, '1498', '637883214704170000.jpg', 'SANTA CRUZ', 'RAINBOW TIE DYE', 'Old School One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed ', '6700', 13),
+(73, '1498', '637894497999700000.jpg', 'HOCKEY', 'HP SYNTHETIC', 'Decks Gregor then turned to look out the window at the dull weather. Drops', '2800', 16),
+(74, '1498', '637894498003270000.jpg', 'HOCKEY', 'UNCLE BOB', 'Decks A collection of textile samples lay spread out on the table', '2650', 17),
+(75, '1498', '637884746574500000.jpg', 'INDEPENDENT', '144 HOLLOW REYNOLDS', 'Trucks and above it there hung a picture that he had recently cut out of an illustrated', '2400', 18),
+(76, '1498', '637889068679000000.jpg', 'INDEPENDENT', 'NULLA', 'Wheels accusantium doloremqu', '1200', 21),
+(77, '1498', '637890068368500000.jpg', 'BULLET', 'MATTE BLACK DELUXE HELMET', 'Safety Gear qui in ea voluptate velit ess', '1080', 24);
 
 -- --------------------------------------------------------
 
@@ -207,11 +229,12 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`sid`, `mem-name`, `mem-nickname`, `mem-level`, `mem-account`, `mem-password`, `mem-email`, `mem-mobile`, `mem-birthday`, `mem-address`, `mem-avatar`, `mem-created_at`, `mem-bollen`) VALUES
-(1493, '宇智波新德', '拿乳頭', '平民', '222', '222', 'gaygay@gmail.com', '0912312311', NULL, '木葉村', 'bcf5b35c2e6c48815afbd90fc200356b.jpg', '2022-06-10 13:39:12', 1),
+(1493, '宇智波新德', '拿乳頭', '平民', '222', '222', 'gaygay@gmail.com', '0912312311', NULL, '木葉村', 'c7d276ab5ea10b216d21fd9292b98d41.png', '2022-06-10 13:39:12', 1),
 (1494, 'shinder', 'shinder', '平民', 'sdadasd', 'adasdasd', 'gaygay@gmail.com', '0912312312', NULL, '', 'images.png', '2022-06-12 13:43:05', 0),
 (1495, 'aaaa', 'shinder的狂熱粉絲', '平民', 'asdsadasd', 'asdadad', 'gaygay@gmail.com', '0912312312', NULL, '', 'images.png', '2022-06-12 13:43:26', 1),
 (1496, 'shinder02', 'Nathan', '平民', 'ewfsdcwe', 'fwdcs', 'gaygay@gmail.com', '0912312311', NULL, '', 'images.png', '2022-06-12 13:43:42', 0),
-(1497, 'AAAA', 'WTF', '平民', 'vfvfefv', 'ewvwdvdf', 'gaygay@gmail.com', '0912312311', NULL, '', 'images.png', '2022-06-12 13:44:03', 1);
+(1497, 'AAAA', 'WTF', '平民', 'vfvfefv', 'ewvwdvdf', 'gaygay@gmail.com', '0912312311', NULL, '', 'images.png', '2022-06-12 13:44:03', 1),
+(1498, 'demo', '', '平民', 'demo', 'demo', '', '', NULL, '', '3dcc4b00818a98daf5d509d2b7dbe762.jpg', '2022-06-10 14:48:10', 1);
 
 -- --------------------------------------------------------
 
@@ -267,7 +290,9 @@ INSERT INTO `orders` (`sid`, `member_sid`, `total`, `order_date`) VALUES
 (202200105, 1497, 11184, '2022-01-12 13:51:05'),
 (202200106, 1497, 12784, '2022-02-12 13:51:13'),
 (202200107, 1497, 9744, '2022-02-14 13:51:19'),
-(202200108, 1497, 17304, '2022-05-12 13:53:43');
+(202200108, 1497, 17304, '2022-05-12 13:53:43'),
+(202200109, 1498, 7650, '2022-06-12 14:57:08'),
+(202200111, 1498, 67730, '2022-06-12 15:17:11');
 
 -- --------------------------------------------------------
 
@@ -349,7 +374,17 @@ INSERT INTO `order_details` (`sid`, `order_sid`, `member_sid`, `produst_sid`, `p
 (112, 202200107, 1497, 12, 4464, 1),
 (113, 202200108, 1497, 3, 6120, 2),
 (114, 202200108, 1497, 2, 5584, 2),
-(115, 202200108, 1497, 1, 5600, 2);
+(115, 202200108, 1497, 1, 5600, 2),
+(116, 202200109, 1498, 3, 7650, 1),
+(117, 202200111, 1498, 1, 7000, 1),
+(118, 202200111, 1498, 2, 6980, 1),
+(119, 202200111, 1498, 3, 7650, 1),
+(120, 202200111, 1498, 4, 8990, 1),
+(121, 202200111, 1498, 5, 6600, 1),
+(122, 202200111, 1498, 6, 9380, 1),
+(123, 202200111, 1498, 7, 7650, 1),
+(124, 202200111, 1498, 8, 7880, 1),
+(125, 202200111, 1498, 9, 5600, 1);
 
 -- --------------------------------------------------------
 
@@ -479,7 +514,7 @@ ALTER TABLE `admin`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `category`
@@ -491,7 +526,7 @@ ALTER TABLE `category`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson`
@@ -503,7 +538,7 @@ ALTER TABLE `lesson`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1498;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1499;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `news`
@@ -515,13 +550,13 @@ ALTER TABLE `news`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `sid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202200109;
+  MODIFY `sid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202200112;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `produst`
