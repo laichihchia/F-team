@@ -708,8 +708,8 @@ if (!empty($_GET["white"])) {
 
         </div>
 
-        <div class="row">
-            <div class="col">
+        <div class="row d-flex w-100">
+            <div class="col d-flex justify-content-center">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
