@@ -299,12 +299,12 @@ if (!empty($_GET["white"])) {
     }
 
     .fliter_search_input {
-        height: 2vh;
+        height: 3vh;
     }
 
     .fliter_search_btn {
         vertical-align: auto;
-        height: 2vh;
+        height: 3vh;
         border: none;
     }
 
