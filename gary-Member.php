@@ -28,11 +28,11 @@ if (isset($_SESSION['user'])) {
     }
 
     .memberNews-box {
-        margin-left: 150px;
+        margin-left: 50px;
     }
 
     .memberNews-word {
-        margin-left: 150px;
+        margin-left: 50px;
     }
 
     .memberNews-fw {
@@ -130,7 +130,7 @@ if (isset($_SESSION['user'])) {
 
     .scro-left {
         width: 97%;
-        height: 260px;
+        height: 200px;
         overflow: auto;
     }
 
@@ -144,7 +144,7 @@ if (isset($_SESSION['user'])) {
     }
 
     .Leftscrollbarbox {
-        margin-left: 20px;
+        margin-right: 20px;
         width: 150px;
     }
 
@@ -153,19 +153,19 @@ if (isset($_SESSION['user'])) {
     }
 
     .boxLeft-img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
     }
 
     .Leftscrollbarbox img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         overflow: hidden;
         object-fit: cover;
     }
-    
+
     .Leftscrollbarbox img:hover {
         border: 3px solid gray;
     }
@@ -187,85 +187,85 @@ if (isset($_SESSION['user'])) {
 </style>
 
 <?php if ($_SESSION['user']['grade'] === 'low') : ?>
-<div class="row d-flex justify-content-around">
-    <div class="col-6 memberNews">
-        <h3 class="mt-3 mb-4 text-center">會員資訊</h3>
-        <div class="memberNews-box">
-            <div class="d-flex mb-3">
-                <p class="memberNews-fw">會員姓名</p>
-                <p class="memberNews-word"><?= $memName ?></p>
+    <div class="row d-flex justify-content-around">
+        <div class="col-6 memberNews">
+            <h3 class="mt-3 mb-4 text-center">會員資訊</h3>
+            <div class="memberNews-box">
+                <div class="d-flex mb-3">
+                    <p class="memberNews-fw">會員姓名</p>
+                    <p class="memberNews-word"><?= $memName ?></p>
+                </div>
+                <div class="d-flex mb-3">
+                    <p class="memberNews-fw">會員等級</p>
+                    <p class="memberNews-word memberNews-fw"><?= $memLevel ?></p>
+                </div>
+                <div class="d-flex mb-3">
+                    <p class="memberNews-fw">Email</p>
+                    <p class="memberNews-word"><?= $memEmail ?></p>
+                </div>
+                <div class="d-flex mb-3">
+                    <p class="memberNews-fw">加入時間</p>
+                    <p class="memberNews-word"><?= $memCreated ?></p>
+                </div>
             </div>
-            <div class="d-flex mb-3">
-                <p class="memberNews-fw">會員等級</p>
-                <p class="memberNews-word memberNews-fw"><?= $memLevel ?></p>
-            </div>
-            <div class="d-flex mb-3">
-                <p class="memberNews-fw">Email</p>
-                <p class="memberNews-word"><?= $memEmail ?></p>
-            </div>
-            <div class="d-flex mb-3">
-                <p class="memberNews-fw">加入時間</p>
-                <p class="memberNews-word"><?= $memCreated ?></p>
+        </div>
+        <div class="col-5 memberNews d-flex justify-content-center mt-3">
+            <div class="photo" <?= $_SESSION['user']['grade'] === 'high' ? '' : 'onclick="Click()"' ?>>
+                <div class="front">
+                    <div class="Bigcard">
+                        <div class="CardBGC"></div>
+                        <div class="cardBOX">
+                            <h5 class="d-flex justify-content-center mb-5 mt-5 WordColor"><?= $_SESSION['user']['grade'] === 'high' ? 'ADMIN CARD' : 'MEMBERSHIP CARD' ?></h5>
+                            <div class="d-flex justify-content-around">
+                                <div class="WordColor">
+                                    <p><?= $iconName ?></p>
+                                    <p><?= $memLoginID ?></p>
+                                </div>
+                                <div>
+                                    <img src="<?= "gary-uploaded/$memAvatar" ?>" alt="" class="img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="Bigcard">
+                        <div class="CardBGC"></div>
+                        <div class="cardBOX">
+                            <div class="d-flex justify-content-around mb-5 mt-5 WordColor">
+                                <h5>MEMBER INFO</h5>
+                                <h5><?= $memLevel ?></h5>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="WordColor">
+                                    <p>Join Time</p>
+                                    <p><?= $memCreated ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-5 memberNews d-flex justify-content-center mt-3">
-        <div class="photo" <?= $_SESSION['user']['grade'] === 'high' ? '' : 'onclick="Click()"' ?>>
-            <div class="front">
-                <div class="Bigcard">
-                    <div class="CardBGC"></div>
-                    <div class="cardBOX">
-                        <h5 class="d-flex justify-content-center mb-5 mt-5 WordColor"><?= $_SESSION['user']['grade'] === 'high' ? 'ADMIN CARD' : 'MEMBERSHIP CARD' ?></h5>
-                        <div class="d-flex justify-content-around">
-                            <div class="WordColor">
-                                <p><?= $iconName ?></p>
-                                <p><?= $memLoginID ?></p>
+    <div class="row mt-5 d-flex justify-content-center">
+        <div class="scrollbar scro-left">
+            <div class="d-flex">
+                <?php foreach ($coll_sql as $coll_rows => $coll_r) : ?>
+                    <div class="Leftscrollbarbox">
+                        <a href="kevin-edit.php?sid=<?= $coll_r['product_id'] ?>" class="text-decoration-none">
+                            <div class="boxLeft-img">
+                                <img src="Fteam-produst_img/<?= $coll_r['img'] ?>" alt="">
                             </div>
                             <div>
-                                <img src="<?= "gary-uploaded/$memAvatar" ?>" alt="" class="img">
+                                <p><?= $coll_r['name'] ?></p>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
-            </div>
-            <div class="back">
-                <div class="Bigcard">
-                    <div class="CardBGC"></div>
-                    <div class="cardBOX">
-                        <div class="d-flex justify-content-around mb-5 mt-5 WordColor">
-                            <h5>MEMBER INFO</h5>
-                            <h5><?= $memLevel ?></h5>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="WordColor">
-                                <p>Join Time</p>
-                                <p><?= $memCreated ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
-</div>
-<div class="row mt-5 d-flex justify-content-center">
-    <div class="scrollbar scro-left">
-        <div class="d-flex">
-            <?php foreach ($coll_sql as $coll_rows => $coll_r) : ?>
-                <div class="Leftscrollbarbox">
-                    <a href="kevin-edit.php?sid=<?= $coll_r['product_id'] ?>" class="text-decoration-none">
-                        <div class="boxLeft-img">
-                            <img src="Fteam-produst_img/<?= $coll_r['img'] ?>" alt="">
-                        </div>
-                        <div>
-                            <p><?= $coll_r['name'] ?></p>
-                        </div>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</div>
 <?php endif; ?>
 
 <?php include __DIR__ . '/parts/scripts.php' ?>

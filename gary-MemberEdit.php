@@ -20,9 +20,9 @@ if (isset($_SESSION['user'])) {
 <?php include __DIR__ . '/gary-MemList.php' ?>
 
 <style>
-    .memberEdit {
+    /* .memberEdit {
         border-top: 1px solid gray;
-    }
+    } */
 
     .card {
         margin-top: 10px;
@@ -78,70 +78,72 @@ if (isset($_SESSION['user'])) {
     }
 </style>
 
-<div class="row memberEdit mt-3">
-    <div class="d-flex justify-content-center">
-        <div class="card">
-            <form name="form" onsubmit="sendData(); return false;" novoalidate>
-                <input type="hidden" name="mem_sid" value="<?= $memLogin['sid'] ?>">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-                        <div class="mb-3">
-                            <label for="mem_account" class="form-label">帳號</label>
-                            <!-- require 表示必填 -->
-                            <input type="text" class="form-control" id="mem_account" name="mem_account" require value="<?= htmlentities($memLogin['mem-account']) ?>">
-                            <div class="form-text red"></div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-around">
-                        <!-- novoalidate 不要用HTML5的檢查方式 -->
-                        <div class="col-3">
+<div class="container">
+    <div class="row memberEdit mt-3">
+        <div class="d-flex justify-content-center">
+            <div class="card">
+                <form name="form" onsubmit="sendData(); return false;" novoalidate>
+                    <input type="hidden" name="mem_sid" value="<?= $memLogin['sid'] ?>">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
                             <div class="mb-3">
-                                <label for="mem_name" class="form-label">姓名</label>
+                                <label for="mem_account" class="form-label">帳號</label>
                                 <!-- require 表示必填 -->
-                                <input type="text" class="form-control" id="mem_name" name="mem_name" require value="<?= htmlentities($memLogin['mem-name']) ?>">
-                                <div class="form-text red"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="mem_mobile" class="form-label">手機</label>
-                                <!-- pattern 設定輸入格式 -->
-                                <input type="text" class="form-control" id="mem_mobile" name="mem_mobile" pattern="09\d{2}-?\d{3}-?\d{3}" value="<?= htmlentities($memLogin['mem-mobile']) ?>">
+                                <input type="text" class="form-control" id="mem_account" name="mem_account" require value="<?= htmlentities($memLogin['mem-account']) ?>">
                                 <div class="form-text red"></div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="mb-3">
-                                <label for="mem_nickname" class="form-label">暱稱</label>
-                                <input type="text" class="form-control" id="mem_nickname" name="mem_nickname" value="<?= htmlentities($memLogin['mem-nickname']) ?>">
+                        <div class="d-flex justify-content-around">
+                            <!-- novoalidate 不要用HTML5的檢查方式 -->
+                            <div class="col-3">
+                                <div class="mb-3">
+                                    <label for="mem_name" class="form-label">姓名</label>
+                                    <!-- require 表示必填 -->
+                                    <input type="text" class="form-control" id="mem_name" name="mem_name" require value="<?= htmlentities($memLogin['mem-name']) ?>">
+                                    <div class="form-text red"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mem_mobile" class="form-label">手機</label>
+                                    <!-- pattern 設定輸入格式 -->
+                                    <input type="text" class="form-control" id="mem_mobile" name="mem_mobile" pattern="09\d{2}-?\d{3}-?\d{3}" value="<?= htmlentities($memLogin['mem-mobile']) ?>">
+                                    <div class="form-text red"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="mb-3">
+                                    <label for="mem_nickname" class="form-label">暱稱</label>
+                                    <input type="text" class="form-control" id="mem_nickname" name="mem_nickname" value="<?= htmlentities($memLogin['mem-nickname']) ?>">
+                                    <div class="form-text red"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mem_birthday" class="form-label">生日</label>
+                                    <input type="date" class="form-control" id="mem_birthday" name="mem_birthday" value="<?= ($memLogin['mem-birthday']) ?>">
+                                    <div class="form-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="mb-3 col-6">
+                                <label for="mem_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="mem_email" name="mem_email" value="<?= htmlentities($memLogin['mem-email']) ?>">
                                 <div class="form-text red"></div>
                             </div>
-                            <div class="mb-3">
-                                <label for="mem_birthday" class="form-label">生日</label>
-                                <input type="date" class="form-control" id="mem_birthday" name="mem_birthday" value="<?= ($memLogin['mem-birthday']) ?>">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="mb-3 col-6">
+                                <label for="mem_address" class="form-label">地址</label>
+                                <textarea class="form-control" name="mem_address" id="mem_address" cols="30" rows="1"><?= htmlentities($memLogin['mem-address']) ?></textarea>
                                 <div class="form-text"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="mb-3 col-6">
-                            <label for="mem_email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="mem_email" name="mem_email" value="<?= htmlentities($memLogin['mem-email']) ?>">
-                            <div class="form-text red"></div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="mb-3 col-6">
-                            <label for="mem_address" class="form-label">地址</label>
-                            <textarea class="form-control" name="mem_address" id="mem_address" cols="30" rows="1"><?= htmlentities($memLogin['mem-address']) ?></textarea>
-                            <div class="form-text"></div>
-                        </div>
-                    </div>
 
-                    <div class="d-flex justify-content-between">
-                        <a href="javascript: delete_it(<?= $memLogin['sid'] ?>)" class="btn btn-primary login">刪除帳號</a>
-                        <button type="submit" class="btn btn-primary">確認修改</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="javascript: delete_it(<?= $memLogin['sid'] ?>)" class="btn btn-primary login">刪除帳號</a>
+                            <button type="submit" class="btn btn-primary">確認修改</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -157,7 +159,7 @@ if (isset($_SESSION['user'])) {
             location.href = `gary-memself-del.php?sid=${sid}`;
         }
     }
-    
+
     // 設定eamil格式
     const email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
     // 設定手機格式

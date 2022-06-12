@@ -36,7 +36,7 @@ if (isset($_SESSION['user'])) {
         width: 300px;
         background: black;
         border-top: 1px solid white;
-        border-right: 1px solid white;
+        /* border-right: 1px solid white; */
     }
 
     .gary-list::after {
@@ -56,8 +56,8 @@ if (isset($_SESSION['user'])) {
     }
 
     .List-Avatar {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         overflow: hidden;
         object-fit: cover;
@@ -164,6 +164,7 @@ if (isset($_SESSION['user'])) {
         border-top: 10px solid white;
         border-left: 10px solid white;
         animation: circle-loop 0.8s linear infinite;
+        margin-left: 25px;
     }
 
     @keyframes circle-loop {
@@ -186,64 +187,66 @@ if (isset($_SESSION['user'])) {
     <div class="list-group text-center list-left">
         <a href="gary-Member.php" class="list-a list-group-item list-group-item-action <?= $pageName === "會員資訊" ? 'active' : ''; ?>"><?= $_SESSION['user']['grade'] === 'low' ? '會員資訊' : '資訊'; ?></a>
         <?php if ($_SESSION['user']['grade'] === 'low') : ?>
-        <a href="gary-MemberEdit.php" class="list-a list-group-item list-group-item-action <?= $pageName === "修改資料" ? 'active' : ''; ?>">修改資料</a>
-        <a href="gary-MemPassword.php" class="list-a list-group-item list-group-item-action <?= $pageName === "密碼專區" ? 'active' : ''; ?>">密碼專區</a>
-        <a href="" class="list-a list-group-item list-group-item-action">我的課程</a>
+            <a href="gary-MemberEdit.php" class="list-a list-group-item list-group-item-action <?= $pageName === "修改資料" ? 'active' : ''; ?>">修改資料</a>
+            <a href="gary-MemPassword.php" class="list-a list-group-item list-group-item-action <?= $pageName === "密碼專區" ? 'active' : ''; ?>">密碼專區</a>
+            <a href="" class="list-a list-group-item list-group-item-action">我的課程</a>
         <?php endif; ?>
     </div>
 </div>
 
-<div class="row rowbox">
-    <div class="d-flex mt-5">
-        <div class="col-4 d-flex justify-content-center">
-            <form name="AvatarForm" onsubmit="AvatarData(); return false;" novoalidate>
-                <div>
-                    <input type="hidden" name="mem_sid" value="<?= $memLoginID ?>">
-                    <input type="hidden" name="mem_avatar" value="<?= $memAvatar ?>">
-                    <img id="myimg" class="List-Avatar" src="<?= "gary-uploaded/$memAvatar" ?>" alt="">
-                </div>
-                <p class="text-center mt-3 List-Avatar-Name"><?= $iconName ?></p>
-                <?php if ($_SESSION['user']['grade'] === 'low') : ?>
-                    <div class="d-flex justify-content-around">
-                        <a id="upAvatar" onclick="uploadAvatar()" class="btn btn-link Uploaded"><i class="fa-solid fa-camera"></i></a>
-                        <button type="submit" class="btn btn-link text-decoration-none Change">Change</button>
+<div class="container">
+    <div class="row rowbox">
+        <div class="d-flex mt-5">
+            <div class="col-3 d-flex justify-content-center">
+                <form name="AvatarForm" onsubmit="AvatarData(); return false;" novoalidate>
+                    <div>
+                        <input type="hidden" name="mem_sid" value="<?= $memLoginID ?>">
+                        <input type="hidden" name="mem_avatar" value="<?= $memAvatar ?>">
+                        <img id="myimg" class="List-Avatar" src="<?= "gary-uploaded/$memAvatar" ?>" alt="">
                     </div>
-            </form>
-            <form name="AvatarForm2" action="gary-upload-avatar-api.php" method="post" enctype="multipart/form-data" style="display: none">
-                <input type="file" name="avatar" accept="image/*" />
-            </form>
-        </div>
-        <div class="col-2">
-            <div class="W-boder"></div>
-            <p class="W-word d-flex justify-content-center align-items-center">Welcome</p>
-        </div>
-        <div class="col-6 d-flex justify-content-center">
-            <div class="scrollbar">
-                <div class="scrollbarIN">
-                    <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
-                        <div class="scrollbarbox">
-                            <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
-                                <div class="scrollbarbox_left">
-                                    <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
-                                </div>
-                                <div class="scrollbarbox_right d-flex align-items-center">
-                                    <div>
-                                        <p class="box-TN"><?= $rec_r['order_date'] ?></p>
-                                        <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
-                                        <p class="box-word"><?= $rec_r['name'] ?></p>
-                                        <div class="d-flex">
-                                            <p class="box-word2">$<?= $rec_r['price'] ?></p>
-                                            <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                    <p class="text-center mt-3 List-Avatar-Name"><?= $iconName ?></p>
+                    <?php if ($_SESSION['user']['grade'] === 'low') : ?>
+                        <div class="d-flex justify-content-around">
+                            <a id="upAvatar" onclick="uploadAvatar()" class="btn btn-link Uploaded"><i class="fa-solid fa-camera"></i></a>
+                            <button type="submit" class="btn btn-link text-decoration-none Change">Change</button>
+                        </div>
+                </form>
+                <form name="AvatarForm2" action="gary-upload-avatar-api.php" method="post" enctype="multipart/form-data" style="display: none">
+                    <input type="file" name="avatar" accept="image/*" />
+                </form>
+            </div>
+            <div class="col-4">
+                <div class="W-boder"></div>
+                <p class="W-word d-flex justify-content-center align-items-center">Welcome</p>
+            </div>
+            <div class="col-5 d-flex justify-content-center">
+                <div class="scrollbar">
+                    <div class="scrollbarIN">
+                        <?php foreach ($rec_sql as $rec_rows => $rec_r) : ?>
+                            <div class="scrollbarbox">
+                                <a href="kevin-edit.php?sid=<?= $rec_r['produst_sid'] ?>" class="d-flex text-decoration-none">
+                                    <div class="scrollbarbox_left">
+                                        <img src="Fteam-produst_img/<?= $rec_r['img'] ?>" alt="" class="box_img">
+                                    </div>
+                                    <div class="scrollbarbox_right d-flex align-items-center">
+                                        <div>
+                                            <p class="box-TN"><?= $rec_r['order_date'] ?></p>
+                                            <p class="box-TN">Oder :<?= $rec_r['order_sid'] ?></p>
+                                            <p class="box-word"><?= $rec_r['name'] ?></p>
+                                            <div class="d-flex">
+                                                <p class="box-word2">$<?= $rec_r['price'] ?></p>
+                                                <p class="box-word3">* <?= $rec_r['quantity'] ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
+        <?php endif; ?>
         </div>
-    <?php endif; ?>
     </div>
 </div>
 

@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])) {
     }
 
     .passForm {
-        margin-top: 150px;
+        margin-top: 60px;
         width: 30%;
         height: 300px;
         background-color: black;
@@ -57,8 +57,8 @@ if (isset($_SESSION['user'])) {
         overflow: hidden;
         object-fit: contain;
         position: absolute;
-        top: 85%;
-        left: 80%;
+        top: 70%;
+        left: 90%;
         animation: error 0.8s linear;
         animation-fill-mode: forwards;
         display: none;
@@ -70,53 +70,55 @@ if (isset($_SESSION['user'])) {
         }
 
         25% {
-            transform: translate(-150px, -300px);
+            transform: translate(-50px, -200px);
             width: 100px;
             height: 100px;
         }
 
         50% {
-            transform: translate(-400px, -300px);
+            transform: translate(-200px, -100px);
             width: 440px;
             height: 440px;
         }
 
         75% {
-            transform: translate(-700px, -700px);
+            transform: translate(-500px, -500px);
             width: 150px;
             height: 150px;
         }
 
         100% {
-            transform: translate(-1100px, -300px);
-            width: 350px;
-            height: 350px;
+            transform: translate(-900px, -100px);
+            width: 250px;
+            height: 250px;
         }
     }
 </style>
 
-<div>
-    <img class="error" src="./gary-img/ebee6628b9bddb6fe101666410a58bb3.png" alt="">
-</div>
-<div class="row d-flex justify-content-center">
-    <form class="passForm" name="form" onsubmit="sendPass(); return false;" novoalidate>
-        <input type="hidden" name="mem_sid" value="<?= $memLogin['sid'] ?>">
-        <input type="hidden" class="form-control" id="hidden_password" value="<?= htmlentities($memLogin['mem-password']) ?>">
-        <div class="form-control d-flex justify-content-between mb-5">
-            <input type="password" class="form-control eyes-input" id="your_password" name="your_password" require placeholder="Your Password">
-            <a class="eyes d-flex align-items-center" onclick="togglePwd()">
-                <img src="./gary-img/eyes_off.png" alt="" id="eyes">
-            </a>
-        </div>
-        <div class="form-control d-flex justify-content-between mb-5">
-            <input type="password" class="form-control eyes-input" id="new_password" name="new_password" require placeholder="New Password">
-            <a class="eyes d-flex align-items-center" onclick="togglePwd2()">
-                <img src="./gary-img/eyes_off.png" alt="" id="eyes2">
-            </a>
-        </div>
-        <div class="form-text red text-center mb-3"></div>
-        <button type="submit" class="btn btn-primary passBtn">更新密碼</button>
-    </form>
+<div class="container">
+    <div>
+        <img class="error" src="./gary-img/ebee6628b9bddb6fe101666410a58bb3.png" alt="">
+    </div>
+    <div class="row d-flex justify-content-center">
+        <form class="passForm" name="form" onsubmit="sendPass(); return false;" novoalidate>
+            <input type="hidden" name="mem_sid" value="<?= $memLogin['sid'] ?>">
+            <input type="hidden" class="form-control" id="hidden_password" value="<?= htmlentities($memLogin['mem-password']) ?>">
+            <div class="form-control d-flex justify-content-between mb-5">
+                <input type="password" class="form-control eyes-input" id="your_password" name="your_password" require placeholder="Your Password">
+                <a class="eyes d-flex align-items-center" onclick="togglePwd()">
+                    <img src="./gary-img/eyes_off.png" alt="" id="eyes">
+                </a>
+            </div>
+            <div class="form-control d-flex justify-content-between mb-5">
+                <input type="password" class="form-control eyes-input" id="new_password" name="new_password" require placeholder="New Password">
+                <a class="eyes d-flex align-items-center" onclick="togglePwd2()">
+                    <img src="./gary-img/eyes_off.png" alt="" id="eyes2">
+                </a>
+            </div>
+            <div class="form-text red text-center mb-3"></div>
+            <button type="submit" class="btn btn-primary passBtn">更新密碼</button>
+        </form>
+    </div>
 </div>
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
