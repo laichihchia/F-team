@@ -697,8 +697,8 @@ if (!empty($_GET["white"])) {
                             <h5>Update Time: </h5><?= $r['update_at'] ?>
                         </li>
                     </ul>
-                    <div class="card-body border-bottom">
-                        <a href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <div class="card-body border-bottom d-flex w-100 justify-content-between">
+                        <a style="cursor: poninter;" href="kevin-edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a style="cursor: poninter;" onclick="favSend(<?= $r['sid'] ?>)"><i class="fa-solid fa-heart"></i></a>
                     </div>
                 </div>
