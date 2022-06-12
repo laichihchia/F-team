@@ -72,6 +72,9 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
         content: "$ ";
         color: red;
     }
+    .qty-width{
+        width: 50%;
+    }
 </style>
 <div class="cart-container">
     <!-- 內導覽 -->
@@ -108,7 +111,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
                         <input type="hidden" name="id" value="<?=$r['sid']?>">
                         <input type="hidden" name="name" value="<?=$r['name']?>">
                         <input type="hidden" name="price" value="<?=$r['price']?>">
-                        <input class="mb-2  w-75" type="number" name="qty" class="form-control" value="1">
+                        <div><input class="mb-2  qty-width" type="number" name="qty" class="form-control" value="1"></div>
                         <input onclick="return submitConfirm('加入購物車?')" type="submit" name="addCart" value="Add cart" class="btn btn-dark">
                     </form>
                 </div>
@@ -120,7 +123,7 @@ if ($totalPage > 0) { //如果有資料 在執行if內的內容
     <!-- 呈現區 -->
 
     <!-- 頁碼區 -->
-    <div class="row mt-3">
+    <div class="row mt-5">
         <div class="col">
             <nav class=" d-flex justify-content-center" aria-label="Page navigation example">
                 <ul class="pagination">
