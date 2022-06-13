@@ -166,7 +166,7 @@ if (isset($_SESSION['user'])) {
         border-top: 10px solid white;
         border-left: 10px solid white;
         animation: circle-loop 0.8s linear infinite;
-        margin-left: 25px;
+        margin-left: 120px;
     }
 
     @keyframes circle-loop {
@@ -196,8 +196,7 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>
 
-<div class="container">
-    <div class="row rowbox">
+<div class="row rowbox">
         <div class="d-flex mt-5">
             <div class="col-3 d-flex justify-content-center">
                 <form name="AvatarForm" onsubmit="AvatarData(); return false;" novoalidate>
@@ -250,7 +249,6 @@ if (isset($_SESSION['user'])) {
         <?php endif; ?>
         </div>
     </div>
-</div>
 
 <script>
     async function AvatarData() {

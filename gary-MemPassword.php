@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])) {
     }
 
     .passForm {
-        margin-top: 60px;
+        margin-top: 160px;
         width: 30%;
         height: 300px;
         background-color: black;
@@ -70,33 +70,32 @@ if (isset($_SESSION['user'])) {
         }
 
         25% {
-            transform: translate(-50px, -200px);
+            transform: translate(-250px, -200px);
             width: 100px;
             height: 100px;
         }
 
         50% {
-            transform: translate(-200px, -100px);
+            transform: translate(-400px, -100px);
             width: 440px;
             height: 440px;
         }
 
         75% {
-            transform: translate(-500px, -500px);
+            transform: translate(-700px, -500px);
             width: 150px;
             height: 150px;
         }
 
         100% {
-            transform: translate(-900px, -100px);
-            width: 250px;
-            height: 250px;
+            transform: translate(-1300px, -200px);
+            width: 450px;
+            height: 450px;
         }
     }
 </style>
 
-<div class="container">
-    <div>
+<div>
         <img class="error" src="./gary-img/ebee6628b9bddb6fe101666410a58bb3.png" alt="">
     </div>
     <div class="row d-flex justify-content-center">
@@ -119,7 +118,6 @@ if (isset($_SESSION['user'])) {
             <button type="submit" class="btn btn-primary passBtn">更新密碼</button>
         </form>
     </div>
-</div>
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
 

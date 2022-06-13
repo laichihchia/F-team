@@ -78,8 +78,7 @@ if (isset($_SESSION['user'])) {
     }
 </style>
 
-<div class="container">
-    <div class="row memberEdit mt-3">
+<div class="row memberEdit mt-3">
         <div class="d-flex justify-content-center">
             <div class="card">
                 <form name="form" onsubmit="sendData(); return false;" novoalidate>
@@ -146,7 +145,6 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-</div>
 
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
