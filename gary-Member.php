@@ -28,11 +28,11 @@ if (isset($_SESSION['user'])) {
     }
 
     .memberNews-box {
-        margin-left: 50px;
+        margin-left: 200px;
     }
 
     .memberNews-word {
-        margin-left: 50px;
+        margin-left: 150px;
     }
 
     .memberNews-fw {
